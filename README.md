@@ -31,7 +31,7 @@ index.html  을 브라우저로 연다.  끝.
 | `labs.html` | 실습 21개 — 단계별 지시문과 기대 결과 |
 | `tools.html` | AI 도구 가이드 홈 |
 | `tool-chatgpt/claude/gemini/perplexity/sheets/docs.html` | 도구별 상세 (6쪽) |
-| `promptlab.html` | 프롬프트 실습실 — 5요소 · 점수 기준 · 라이브러리 |
+| `promptlab.html` | 프롬프트 실습실 — **자동 채점** · 5요소 · 점수 기준 · 라이브러리 |
 | `appendix.html` | 업무별 프롬프트 부록 (7분류 · 21개) |
 | `about.html` · `instructor.html` · `company.html` | 제작 의도 · 강사 · 회사 |
 | `dashboard.html` | 학습 진도 |
@@ -52,6 +52,7 @@ nonghyup/
 │  │  ├─ load.mjs           _원본 의 ES 모듈을 Node 에서 읽는다
 │  │  ├─ blocks.mjs         본문 블록 14종 렌더러
 │  │  ├─ shell.mjs          헤더 · 사이드바(6모드) · 푸터
+│  │  ├─ scoring.mjs       프롬프트 자동 채점 (원본 evaluatePrompt 이식)
 │  │  ├─ pages-core.mjs     홈 · 교재 · 차시 · 일정 · 실습 · 진도
 │  │  ├─ pages-tools.mjs    도구 · 프롬프트 실습실 · 부록
 │  │  └─ pages-about.mjs    제작의도 · 강사 · 회사

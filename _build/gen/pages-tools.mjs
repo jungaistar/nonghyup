@@ -1,6 +1,7 @@
 /* 페이지 생성기 (2/2) — AI 도구 · 프롬프트 실습실 · 소개 · 강사 · 회사 · 부록 */
 import { esc, renderBlock } from './blocks.mjs';
 import { SITE, sbTools, sbAbout, sbAppendix } from './shell.mjs';
+import { scoringSection, SCORING_STYLE, scoringScript } from './scoring.mjs';
 
 const crumb = (items) => `<ol class="crumb">${items.map((it, i) =>
   i === items.length - 1 ? `<li>${esc(it[0])}</li>`
@@ -140,8 +141,9 @@ export function promptLab(d) {
     body: `${crumb([['홈', 'index.html'], ['AI 도구', 'tools.html'], ['프롬프트 실습실']])}
 ${ph('Prompt Lab', promptGuide.name, promptGuide.tagline)}
 <p class="b-para" style="white-space:pre-line">${esc(promptGuide.overview)}</p>
+${scoringSection(P)}
 
-<h2 class="sec-h" id="score"><span class="sec-h__n">1</span>좋은 프롬프트의 5요소</h2>
+<h2 class="sec-h" id="score"><span class="sec-h__n">2</span>좋은 프롬프트의 5요소</h2>
 <div class="grid g2">
 ${(P.scoreCriteria || []).map((c) => `  <div class="card">
     <h3>${esc(c.code)} · ${esc(c.key)} <span class="bdg bdg--green">${c.max}점</span></h3>
@@ -150,30 +152,30 @@ ${(P.scoreCriteria || []).map((c) => `  <div class="card">
   </div>`).join('\n')}
 </div>
 
-<h2 class="sec-h" id="grade"><span class="sec-h__n">2</span>점수 기준</h2>
+<h2 class="sec-h" id="grade"><span class="sec-h__n">3</span>점수 기준</h2>
 <div class="table-wrap"><table class="b-table__t">
   <thead><tr><th>등급</th><th>점수</th><th>평가</th><th>설명</th></tr></thead>
   <tbody>${(P.gradeTable || []).map((g) => `<tr><td><b>${esc(g.grade)}</b></td>
     <td class="nowrap">${esc(g.range)}</td><td>${esc(g.label)}</td><td>${esc(g.desc)}</td></tr>`).join('')}</tbody>
 </table></div>
 
-<h2 class="sec-h" id="tech"><span class="sec-h__n">3</span>고급 기법</h2>
+<h2 class="sec-h" id="tech"><span class="sec-h__n">4</span>고급 기법</h2>
 <div class="grid g2">
 ${(P.techniques || []).map((t) => `  <div class="card"><h3>${esc(t.title)}</h3><p>${esc(t.desc)}</p></div>`).join('\n')}
 </div>
 
-<h2 class="sec-h" id="mistake"><span class="sec-h__n">4</span>흔한 실수</h2>
+<h2 class="sec-h" id="mistake"><span class="sec-h__n">5</span>흔한 실수</h2>
 ${(P.commonMistakes || []).map((m) => `<div class="card" style="margin-bottom:13px">
   <p><b style="color:#c2410c">이렇게 쓰면</b> ${esc(m.bad)}</p>
   <p style="margin-top:7px"><b style="color:var(--g500)">왜</b> ${esc(m.why)}</p>
   <p style="margin-top:7px"><b style="color:var(--b700)">이렇게</b> ${esc(m.fix)}</p>
 </div>`).join('')}
 
-<h2 class="sec-h" id="lib"><span class="sec-h__n">5</span>업무별 프롬프트 라이브러리</h2>
+<h2 class="sec-h" id="lib"><span class="sec-h__n">6</span>업무별 프롬프트 라이브러리</h2>
 ${(P.promptLibrary || []).map((g) => `<h3 class="sub-h">${esc(g.subject)}</h3>
 ${(g.prompts || []).map((p) => prompt(p.prompt || p.text || '', p.title)).join('\n')}`).join('\n')}
 
-<h2 class="sec-h" id="follow"><span class="sec-h__n">6</span>따라하기 실습</h2>
+<h2 class="sec-h" id="follow"><span class="sec-h__n">7</span>따라하기 실습</h2>
 ${(P.followTutorials || []).map((t) => `<article class="lab">
   <div class="lab__h"><span class="bdg bdg--solid">${esc(t.level)}</span><h3>${esc(t.title)}</h3>
     <span class="bdg bdg--gray">${esc(t.tool)}</span></div>
@@ -182,7 +184,7 @@ ${(P.followTutorials || []).map((t) => `<article class="lab">
     `<li>${esc(typeof s === 'string' ? s : (s.instruction || s.text || ''))}</li>`).join('')}</ol>` : ''}
 </article>`).join('\n')}
 
-<h2 class="sec-h" id="sc"><span class="sec-h__n">7</span>업무 상황별 연습</h2>
+<h2 class="sec-h" id="sc"><span class="sec-h__n">8</span>업무 상황별 연습</h2>
 ${(P.scenarios || []).map((s) => `<div class="card" style="margin-bottom:13px">
   <h3>${esc(s.title)} <span class="bdg bdg--gray">${esc(s.category)}</span></h3>
   <p><b style="color:var(--b700)">상황</b> ${esc(s.situation)}</p>
@@ -204,7 +206,8 @@ ${(P.scenarios || []).map((s) => `<div class="card" style="margin-bottom:13px">
 .lab__h{display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-bottom:11px}
 .lab__h h3{font-size:16px; font-weight:800; color:var(--g900)}
 .lab__goal{font-size:14.5px; color:var(--g600); line-height:1.8}
-.lab__goal b{color:var(--b700); font-weight:800; margin-right:5px}`,
+.lab__goal b{color:var(--b700); font-weight:800; margin-right:5px}` + SCORING_STYLE,
+    script: scoringScript(P),
   };
 }
 

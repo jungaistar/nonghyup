@@ -429,6 +429,60 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
 .lab__h h3{font-size:16px; font-weight:800; color:var(--g900)}
 .lab__goal{font-size:14.5px; color:var(--g600); line-height:1.8}
 .lab__goal b{color:var(--b700); font-weight:800; margin-right:5px}
+.lab-box{margin:16px 0 24px; padding:20px; border:1px solid var(--g200);
+  border-radius:var(--radius-lg); background:#fff}
+.lab-box__pick{margin-bottom:14px}
+.lab-box__pick label{display:block; margin-bottom:7px; font-size:14px; color:var(--g600)}
+.sel,.ta{width:100%; font-family:inherit; font-size:16px; color:var(--g800);
+  background:#fff; border:1px solid var(--g200); border-radius:10px; padding:12px 14px}
+.sel{min-height:48px}
+.ta{min-height:190px; line-height:1.8; resize:vertical}
+.sel:focus,.ta:focus{border-color:var(--b500); box-shadow:0 0 0 3px rgba(31,160,84,.16); outline:none}
+.sc-brief{margin-bottom:14px; padding:14px 16px; border-radius:10px;
+  background:var(--b50); border:1px solid var(--b100); font-size:14.5px; line-height:1.8; color:var(--b900)}
+.sc-brief b{color:var(--b700)}
+.sc-brief .kw{display:flex; flex-wrap:wrap; gap:6px; margin-top:9px}
+.sc-brief .kw span{padding:3px 10px; border-radius:var(--pill); background:#fff;
+  border:1px solid var(--b200); font-size:12px; font-weight:700; color:var(--b700)}
+.sc-actions{display:flex; flex-wrap:wrap; align-items:center; gap:9px; margin-top:11px}
+.sc-len{margin-right:auto; font-size:13px; color:var(--g400)}
+.sc-len b{color:var(--b700); font-weight:800}
+
+.sc-result{margin-top:20px; padding-top:18px; border-top:1px dashed var(--g200)}
+.sc-head{display:flex; align-items:center; gap:16px; margin-bottom:16px}
+.sc-grade{flex:none; display:grid; place-items:center; width:66px; height:66px; border-radius:18px;
+  background:var(--g400); color:#fff; font-size:30px; font-weight:800; transition:background .3s var(--ease)}
+.sc-total b{font-size:32px; font-weight:800; color:var(--g900); line-height:1}
+.sc-total span{margin-left:5px; font-size:14px; color:var(--g400)}
+.sc-total p{margin-top:5px; font-size:14px; color:var(--g500)}
+
+.sc-bars li{display:grid; grid-template-columns:104px 1fr 58px; align-items:center; gap:11px; margin-bottom:9px}
+.sc-bars__k{font-size:13px; font-weight:700; color:var(--g600)}
+.sc-bars__t{height:9px; border-radius:var(--pill); background:var(--g200); overflow:hidden}
+.sc-bars__t i{display:block; height:100%; border-radius:var(--pill);
+  background:linear-gradient(90deg,var(--b600),var(--b400)); transition:width .45s var(--ease)}
+.sc-bars li.low .sc-bars__t i{background:linear-gradient(90deg,#d97706,var(--s400))}
+.sc-bars__v{font-size:13px; color:var(--g400); text-align:right; font-variant-numeric:tabular-nums}
+.sc-bars__v b{color:var(--g700); font-weight:800}
+
+.sc-fb{margin-top:15px}
+.sc-fb li{position:relative; padding:9px 13px 9px 34px; margin-bottom:7px; border-radius:10px;
+  background:var(--s50); color:#713f12; font-size:14px; line-height:1.75}
+.sc-fb li::before{content:"→"; position:absolute; left:13px; top:9px; font-weight:800; color:var(--s600)}
+.sc-fb li.ok{background:var(--b50); color:var(--b900)}
+.sc-fb li.ok::before{content:"✓"; color:var(--b600)}
+
+.sc-cmp pre{margin:10px 0 0; padding:13px 15px; border-radius:10px; background:var(--g50);
+  border:1px solid var(--g200); font-size:13px; line-height:1.8; white-space:pre-wrap;
+  word-break:break-word; color:var(--g700); max-height:250px; overflow:auto}
+.sc-cmp--bad{border-color:#fca5a5}
+.sc-cmp--good{border-color:var(--b400)}
+@media (max-width:640px){
+  .sc-bars li{grid-template-columns:80px 1fr 52px; gap:8px}
+  .sc-bars__k{font-size:12px}
+  .sc-grade{width:54px; height:54px; font-size:24px}
+  .sc-total b{font-size:26px}
+}
 </style>
 <noscript><style>
 /* 스크립트가 꺼져 있어도 목차는 보여야 한다 */
@@ -478,7 +532,90 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
 </div>
 <p class="b-para" style="white-space:pre-line">프롬프트는 AI에게 주는 업무 지시서다. 같은 도구라도 프롬프트의 품질이 결과의 품질을 좌우한다. 막연한 질문 대신 역할·맥락·과제·제약·출력형식(5요소)을 명확히 주면, 공지문·회의록·시장조사·보고서 등 사무관리 실무에 바로 쓸 수 있는 결과를 얻는다.</p>
 
-<h2 class="sec-h" id="score"><span class="sec-h__n">1</span>좋은 프롬프트의 5요소</h2>
+<h2 class="sec-h" id="score-lab"><span class="sec-h__n">1</span>프롬프트 자동 채점</h2>
+<p class="b-para">아래에 프롬프트를 직접 써 보세요. 5요소(역할 · 맥락 · 과제 · 제약 · 출력형식)를
+얼마나 갖췄는지 <b>100점 만점</b>으로 즉시 채점합니다. 채점은 이 브라우저 안에서만
+이뤄지고 어디로도 전송되지 않습니다.</p>
+
+<div class="lab-box">
+  <div class="lab-box__pick">
+    <label for="sc-sel"><b>업무 상황 고르기</b></label>
+    <select class="sel" id="sc-sel" data-sc-sel></select>
+  </div>
+
+  <div class="sc-brief" data-sc-brief></div>
+
+  <label class="sr-only" for="sc-input">프롬프트 입력</label>
+  <textarea class="ta" id="sc-input" data-sc-input rows="9"
+    placeholder="예) [역할] 너는 15년차 사무관리 실무 전문가야.&#10;[맥락] 대상은 …&#10;[과제] …&#10;[제약] …&#10;[출력형식] …"></textarea>
+
+  <div class="sc-actions">
+    <span class="sc-len"><b data-sc-len>0</b>자</span>
+    <button class="btn btn--line btn--sm" type="button" data-sc-example>예시 답안 넣기</button>
+    <button class="btn btn--line btn--sm" type="button" data-sc-clear>지우기</button>
+  </div>
+
+  <div class="sc-result" data-sc-result hidden>
+    <div class="sc-head">
+      <div class="sc-grade" data-sc-grade>D</div>
+      <div class="sc-total">
+        <b data-sc-total>0</b><span>/ 100점</span>
+        <p data-sc-label>아직 채점 전입니다</p>
+      </div>
+    </div>
+
+    <ul class="sc-bars">
+      <li data-sc-bar="역할">
+        <span class="sc-bars__k">R · 역할</span>
+        <span class="sc-bars__t"><i style="width:0%"></i></span>
+        <span class="sc-bars__v"><b>0</b>/20</span>
+      </li>
+      <li data-sc-bar="맥락">
+        <span class="sc-bars__k">C · 맥락</span>
+        <span class="sc-bars__t"><i style="width:0%"></i></span>
+        <span class="sc-bars__v"><b>0</b>/20</span>
+      </li>
+      <li data-sc-bar="과제">
+        <span class="sc-bars__k">T · 과제</span>
+        <span class="sc-bars__t"><i style="width:0%"></i></span>
+        <span class="sc-bars__v"><b>0</b>/20</span>
+      </li>
+      <li data-sc-bar="제약">
+        <span class="sc-bars__k">Co · 제약</span>
+        <span class="sc-bars__t"><i style="width:0%"></i></span>
+        <span class="sc-bars__v"><b>0</b>/20</span>
+      </li>
+      <li data-sc-bar="출력형식">
+        <span class="sc-bars__k">F · 출력형식</span>
+        <span class="sc-bars__t"><i style="width:0%"></i></span>
+        <span class="sc-bars__v"><b>0</b>/20</span>
+      </li>
+    </ul>
+
+    <div class="sc-fb" data-sc-fb></div>
+  </div>
+</div>
+
+
+<h3 class="sub-h">같은 업무, 프롬프트만 바꿨을 때</h3>
+<div class="grid g2">
+  <div class="card sc-cmp sc-cmp--bad">
+    <h3>다듬기 전 <span class="bdg bdg--gray">D · 20점</span></h3>
+    <pre>공지문 정리해줘</pre>
+  </div>
+  <div class="card sc-cmp sc-cmp--good">
+    <h3>다듬은 뒤 <span class="bdg bdg--gold">S · 94점</span></h3>
+    <pre>[역할] 너는 15년차 사무관리 실무 전문가야.
+[맥락] 대상은 사내 전 임직원, 하계 휴가 신청 절차 변경 안내 공지문(시행일 7월 15일).
+[과제] 변경된 신청 절차를 정확하고 이해하기 쉬운 공지문으로 작성해줘.
+[제약] A4 반 장 이내, 정중한 사내 공지 톤, 확정 안 된 일정은 [확인 후 공지]로 표기.
+[출력형식] &quot;제목 / 변경 요약 / 신청 방법(단계 목록) / 문의처&quot; 구조.</pre>
+  </div>
+</div>
+<p class="b-source">위 두 예시를 채점기에 그대로 넣어 보면 점수 차이를 확인할 수 있습니다.</p>
+
+
+<h2 class="sec-h" id="score"><span class="sec-h__n">2</span>좋은 프롬프트의 5요소</h2>
 <div class="grid g2">
   <div class="card">
     <h3>R · 역할 <span class="bdg bdg--green">20점</span></h3>
@@ -507,7 +644,7 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
   </div>
 </div>
 
-<h2 class="sec-h" id="grade"><span class="sec-h__n">2</span>점수 기준</h2>
+<h2 class="sec-h" id="grade"><span class="sec-h__n">3</span>점수 기준</h2>
 <div class="table-wrap"><table class="b-table__t">
   <thead><tr><th>등급</th><th>점수</th><th>평가</th><th>설명</th></tr></thead>
   <tbody><tr><td><b>S</b></td>
@@ -518,7 +655,7 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
     <td class="nowrap">0–49</td><td>부족</td><td>프롬프트로서 기본 기능을 못 함</td></tr></tbody>
 </table></div>
 
-<h2 class="sec-h" id="tech"><span class="sec-h__n">3</span>고급 기법</h2>
+<h2 class="sec-h" id="tech"><span class="sec-h__n">4</span>고급 기법</h2>
 <div class="grid g2">
   <div class="card"><h3>역할 부여(Role)</h3><p>&quot;너는 ~ 전문가야&quot;로 시작하면 답변의 톤과 전문성이 올라간다.</p></div>
   <div class="card"><h3>예시 제공(Few-shot)</h3><p>원하는 형식의 예시 1~3개를 주면 모델이 그 구조를 모방한다.</p></div>
@@ -527,7 +664,7 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
   <div class="card"><h3>출력형식 지정</h3><p>표·목록·섹션 구조를 지정해 바로 쓰는 결과를 받는다.</p></div>
 </div>
 
-<h2 class="sec-h" id="mistake"><span class="sec-h__n">4</span>흔한 실수</h2>
+<h2 class="sec-h" id="mistake"><span class="sec-h__n">5</span>흔한 실수</h2>
 <div class="card" style="margin-bottom:13px">
   <p><b style="color:#c2410c">이렇게 쓰면</b> 공지문 정리해줘</p>
   <p style="margin-top:7px"><b style="color:var(--g500)">왜</b> 역할·맥락·형식이 모두 빠져 매번 다른 결과가 나온다.</p>
@@ -550,7 +687,7 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
   <p style="margin-top:7px"><b style="color:var(--b700)">이렇게</b> 부서장이 30초에 파악하도록 한 문장 요약 + 핵심 3가지 + 후속 조치로 정리해줘.</p>
 </div>
 
-<h2 class="sec-h" id="lib"><span class="sec-h__n">5</span>업무별 프롬프트 라이브러리</h2>
+<h2 class="sec-h" id="lib"><span class="sec-h__n">6</span>업무별 프롬프트 라이브러리</h2>
 <h3 class="sub-h">실무 공통 · 문서/메일 자동화</h3>
 <div class="b-prompt">
   <p class="b-prompt__cap">회의록 자동 정리</p>
@@ -753,7 +890,7 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
   </div>
 </div>
 
-<h2 class="sec-h" id="follow"><span class="sec-h__n">6</span>따라하기 실습</h2>
+<h2 class="sec-h" id="follow"><span class="sec-h__n">7</span>따라하기 실습</h2>
 <article class="lab">
   <div class="lab__h"><span class="bdg bdg--solid">입문</span><h3>엑셀 데이터 분석 자동화 따라하기</h3>
     <span class="bdg bdg--gray">ChatGPT (Code Interpreter)</span></div>
@@ -779,7 +916,7 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
   <ol class="steps"><li>Gemini에서 Deep Research(또는 Perplexity Pro Search)를 선택하세요.</li><li>조사 범위를 구체적으로 지정한 프롬프트를 입력하세요.</li><li>핵심 수치의 각주를 클릭해 원문으로 사실을 확인하세요.</li><li>보고서를 발표용으로 다듬도록 요청하세요.</li></ol>
 </article>
 
-<h2 class="sec-h" id="sc"><span class="sec-h__n">7</span>업무 상황별 연습</h2>
+<h2 class="sec-h" id="sc"><span class="sec-h__n">8</span>업무 상황별 연습</h2>
 <div class="card" style="margin-bottom:13px">
   <h3>공지문 작성 프롬프트 <span class="bdg bdg--gray">업무1 · 사내 공지</span></h3>
   <p><b style="color:var(--b700)">상황</b> 하계 휴가 신청 절차가 바뀌어 전 임직원에게 보낼 사내 공지문을 정확하게 작성하려 합니다.</p>
@@ -981,6 +1118,146 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
 })();
 
 </script>
+<script>
 
+/* ---- 프롬프트 자동 채점 (원본 evaluatePrompt 이식) ---- */
+(function () {
+  var $ = NH.$, $$ = NH.$$;
+  var SCENARIOS = [{"id":1,"category":"업무1 · 사내 공지","title":"공지문 작성 프롬프트","situation":"하계 휴가 신청 절차가 바뀌어 전 임직원에게 보낼 사내 공지문을 정확하게 작성하려 합니다.","goal":"오해 없이 전달되는 사내 공지문 프롬프트를 작성하세요.","keywords":["공지","안내","임직원","절차","변경","시행","문의"],"roleKeywords":["사무관리","총무","작성자","전문가","담당자"],"constraintKeywords":["이내","문장","톤","정중","금지","유지"],"formatKeywords":["표","섹션","목록","항목","형식","구조"],"exampleAnswer":"[역할] 너는 15년차 사무관리 실무 전문가야.\n[맥락] 대상은 사내 전 임직원, 하계 휴가 신청 절차 변경(시행일 7월 15일, 결재 시스템 변경).\n[과제] 변경된 신청 절차를 안내하는 사내 공지문을 작성해줘.\n[제약] A4 반 장 이내, 정중한 사내 공지 톤, 확정 안 된 내용은 [확인 후 공지]로 표기.\n[출력형식] \"제목 / 변경 요약 / 신청 방법(단계 목록) / 시행일 / 문의처\" 구조."},{"id":2,"category":"업무2 · 회의록","title":"회의록 요약 프롬프트","situation":"주간 팀 회의 녹취/메모를 구조화된 회의록으로 정리해 공유하려 합니다.","goal":"결정사항·할 일이 명확한 회의록 요약 프롬프트를 작성하세요.","keywords":["회의록","요약","결정","논의","할일","담당","기한"],"roleKeywords":["사무관리","비서","작성자","전문가","담당자"],"constraintKeywords":["사실","추측","금지","이내","근거"],"formatKeywords":["표","목록","항목","섹션","열","형식"],"exampleAnswer":"[역할] 너는 회의록 정리에 능숙한 사무관리 실무 전문가야.\n[맥락] 아래는 사료 영업팀 주간 회의 메모다. 참석자는 팀장 외 5명.\n[과제] 이 내용을 공유용 회의록으로 정리해줘.\n[제약] 사실만 반영하고 추측은 금지, 결정사항과 할 일을 분리해서.\n[출력형식] \"참석자 / 주요 논의 3~5 / 결정사항 / 할 일(담당·기한 표) / 다음 회의\" 구조."},{"id":3,"category":"업무3 · 업계 조사","title":"시장·업계 조사 프롬프트","situation":"배합사료 원료가·축산 사육두수 동향 등 업계 현황을 빠르게 정리하려 합니다.","goal":"출처가 붙은 업계 조사 요약 프롬프트를 작성하세요.","keywords":["시장","조사","사료","축산","동향","출처","원료"],"roleKeywords":["조사","애널리스트","리서처","전문가","담당자"],"constraintKeywords":["출처","근거","최신","확인","금지"],"formatKeywords":["표","목록","항목","섹션","열","형식"],"exampleAnswer":"[역할] 너는 축산·사료 업계를 조사하는 시장 리서처야.\n[맥락] 관심 주제는 최근 배합사료 원료가(옥수수·대두박) 추이와 국내 축종별 사육두수 변화다.\n[과제] 최신 동향을 출처와 함께 정리하고 시사점을 요약해줘.\n[제약] 각 수치에 출처를 표기하고, 확신이 낮으면 \"확인 필요\"로 표기, 오래된 자료 지양.\n[출력형식] \"항목 / 현황 / 변화 방향 / 출처\" 4열 표 + 핵심 시사점 3가지."},{"id":4,"category":"업무4 · 보고서","title":"보고서 초안 프롬프트","situation":"분기 실적과 이슈를 담은 팀 보고서 초안을 일관된 양식으로 만들려 합니다.","goal":"논리적인 보고서 초안을 요청하는 프롬프트를 작성하세요.","keywords":["보고서","초안","실적","이슈","현황","개선","제언"],"roleKeywords":["기획","보고서","작성자","전문가","담당자"],"constraintKeywords":["분량","톤","정중","금지","사실"],"formatKeywords":["항목","섹션","표","구조","목록","형식"],"exampleAnswer":"[역할] 너는 기획·보고서 작성에 능숙한 사무관리 전문가야.\n[맥락] 대상은 팀 분기 실적 보고, 독자는 부서장(핵심 수치는 아래 첨부).\n[과제] 보고서 초안을 작성해줘.\n[제약] A4 1~2장 분량, 정중한 비즈니스 톤, 미확정 수치는 [확인]으로 표기.\n[출력형식] 요약 / 실적 현황(표) / 주요 이슈 / 개선 방안 / 향후 계획 섹션."},{"id":5,"category":"업무5 · 데이터 요약","title":"데이터 요약 프롬프트","situation":"월별 거래처 주문·매출 데이터에서 핵심 흐름을 뽑아 보고에 쓰려 합니다.","goal":"핵심 지표를 짚어주는 데이터 요약 프롬프트를 작성하세요.","keywords":["데이터","요약","매출","거래처","추세","지표","분석"],"roleKeywords":["데이터","애널리스트","분석","전문가","담당자"],"constraintKeywords":["근거","수치","금지","확인","기준"],"formatKeywords":["표","목록","차트","항목","열","형식"],"exampleAnswer":"[역할] 너는 업무 데이터 분석에 능숙한 사무관리 전문가야.\n[맥락] 아래는 최근 6개월 거래처별 사료 주문·매출 데이터다.\n[과제] 핵심 흐름과 특이점을 요약해줘.\n[제약] 데이터에 있는 사실만 근거로, 없는 값은 추정 금지, 확신 낮으면 \"확인 필요\".\n[출력형식] \"지표 / 값 / 전월 대비 / 코멘트\" 표 + 눈에 띄는 점 3가지 요약."},{"id":6,"category":"업무6 · 의사결정","title":"의사결정 매트릭스 프롬프트","situation":"신규 거래처 관리 도구 후보 3개를 기준별로 비교해 선택 근거를 만들려 합니다.","goal":"기준·가중치로 후보를 비교하는 의사결정 프롬프트를 작성하세요.","keywords":["의사결정","매트릭스","비교","기준","가중치","후보","선택"],"roleKeywords":["기획","컨설턴트","분석","전문가","담당자"],"constraintKeywords":["기준","근거","가중치","금지","확인"],"formatKeywords":["표","매트릭스","점수","열","형식","구조"],"exampleAnswer":"[역할] 너는 의사결정을 돕는 기획 컨설턴트야.\n[맥락] 거래처 관리 도구 후보 3개(A/B/C)를 도입하려 하고, 예산·사용성·연동성이 중요하다.\n[과제] 후보를 기준별로 비교해 선택 근거를 정리해줘.\n[제약] 각 기준에 가중치를 매기고 점수 산정 근거를 적어, 임의 추정은 \"확인 필요\"로 표기.\n[출력형식] \"후보 / 기준별 점수(가중치 반영) / 총점 / 강약점\" 매트릭스 표 + 추천 1안."}];
+  var GRADE_COLOR = {"S":"#1D7A4F","A":"#1D4E89","B":"#3D6FE0","C":"#D4760A","D":"#C8102E"};
+  var LABEL = {"S":"탁월","A":"우수","B":"보통","C":"미흡","D":"부족"};
+
+  var sel = $('[data-sc-sel]'), ta = $('[data-sc-input]'),
+      brief = $('[data-sc-brief]'), result = $('[data-sc-result]');
+  if (!sel || !ta) return;
+
+  SCENARIOS.forEach(function (s, i) {
+    sel.appendChild(new Option(s.category + ' — ' + s.title, String(i)));
+  });
+
+  function cur() { return SCENARIOS[Number(sel.value) || 0]; }
+
+  function paintBrief() {
+    var s = cur();
+    brief.innerHTML =
+      '<p><b>상황</b> ' + esc(s.situation) + '</p>' +
+      '<p style="margin-top:6px"><b>목표</b> ' + esc(s.goal) + '</p>' +
+      '<div class="kw">' + (s.keywords || []).map(function (k) {
+        return '<span>' + esc(k) + '</span>'; }).join('') + '</div>';
+  }
+
+  /* ===== 원본 evaluatePrompt 와 같은 셈법 ===== */
+  function evaluatePrompt(input, s) {
+    var text = input.toLowerCase().replace(/\s+/g, ' ');
+    var len = input.trim().length;
+    var fb = [];
+    var has = function (list) {
+      return (list || []).filter(function (k) { return text.indexOf(k.toLowerCase()) > -1; }).length;
+    };
+
+    // 역할
+    var role = 0;
+    if (/(너는|당신은|역할|전문가|담당자|으로서|act as|you are)/.test(input)) role += 12;
+    if (has(s.roleKeywords) > 0) role += 8;
+    role = Math.min(role, 20);
+    if (role < 12) fb.push('역할을 지정하세요 — 예: "너는 15년차 사무관리 실무 전문가야"');
+
+    // 맥락
+    var context = 0, ctxHit = has(s.keywords);
+    if (ctxHit >= 5) context += 12;
+    else if (ctxHit >= 3) context += 9;
+    else if (ctxHit >= 2) context += 6;
+    else if (ctxHit >= 1) context += 3;
+    if (/\d/.test(input)) context += 3;
+    if (/\[.+\]|"""|타깃|대상|문서|보고서|고객|거래처/.test(input)) context += 5;
+    context = Math.min(context, 20);
+    if (context < 12) fb.push('맥락(문서·대상·상황)을 더 담으세요 — 예: ' + (s.keywords || []).slice(0, 3).join(', '));
+
+    // 과제
+    var task = 0;
+    var actionRe = /(작성|만들|써|분석|정리|요약|생성|제안|기획|설계|평가|비교|추천|도출|변주|번역|진단|검토)/;
+    var actionCount = (input.match(/(작성|만들|써|분석|정리|요약|생성|제안|기획|설계|평가|비교|추천|도출|변주|번역|진단|검토)/g) || []).length;
+    if (actionRe.test(input)) task += 10;
+    if (actionCount >= 2) task += 5;
+    if (len >= 120) task += 5;
+    task = Math.min(task, 20);
+    if (task < 12) fb.push('무엇을 만들지 명확한 지시문을 넣으세요 — 예: "~를 작성해줘"');
+
+    // 제약
+    var constraint = 0;
+    if (/(자 이내|이내|글자|단어|분량|줄|문단|페이지|a4)/i.test(input)) constraint += 7;
+    if (/(톤|말투|어투|존댓말|반말|친근|정중|위트)/.test(input)) constraint += 6;
+    if (/(금지|하지 ?마|제외|제한|단,|주의|없이|유지|안전)/.test(input)) constraint += 4;
+    if (has(s.constraintKeywords) > 0) constraint += 3;
+    constraint = Math.min(constraint, 20);
+    if (constraint < 10) fb.push('제약(길이·톤·금지어·안전문구 유지)을 명시하면 결과가 안정됩니다');
+
+    // 출력형식
+    var format = 0, fmtHit = has(s.formatKeywords);
+    if (fmtHit >= 2) format += 8;
+    else if (fmtHit >= 1) format += 4;
+    if (/[1-9][.)]\s|[-·•]\s|#{1,3}\s|\[출력|\[형식|①②③/.test(input)) format += 7;
+    if (/(표|목록|불릿|json|마크다운|구조|칼럼|열)/i.test(input)) format += 5;
+    format = Math.min(format, 20);
+    if (format < 10) fb.push('출력형식(표·목록·섹션 구조)을 지정하세요');
+
+    var total = role + context + task + constraint + format;
+    if (len < 50) fb.unshift('프롬프트가 너무 짧습니다. 100자 이상으로 5요소를 모두 담아보세요.');
+    if (total >= 85) fb.push('5요소가 균형 있게 잘 갖춰졌습니다! 👍');
+
+    var grade = 'D';
+    if (total >= 90) grade = 'S';
+    else if (total >= 80) grade = 'A';
+    else if (total >= 65) grade = 'B';
+    else if (total >= 50) grade = 'C';
+
+    return { total: total, grade: grade, feedback: fb,
+      scores: { '역할': role, '맥락': context, '과제': task, '제약': constraint, '출력형식': format } };
+  }
+
+  function esc(t) {
+    return String(t == null ? '' : t).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function paint() {
+    var v = ta.value;
+    $('[data-sc-len]').textContent = v.length;
+    if (!v.trim()) { result.hidden = true; return; }
+    result.hidden = false;
+
+    var r = evaluatePrompt(v, cur());
+    $('[data-sc-total]').textContent = r.total;
+    var g = $('[data-sc-grade]');
+    g.textContent = r.grade;
+    g.style.background = GRADE_COLOR[r.grade] || 'var(--g400)';
+    $('[data-sc-label]').textContent = LABEL[r.grade] || '';
+
+    $$('[data-sc-bar]').forEach(function (li) {
+      var v2 = r.scores[li.dataset.scBar] || 0;
+      li.querySelector('i').style.width = (v2 / 20 * 100) + '%';
+      li.querySelector('b').textContent = v2;
+      li.classList.toggle('low', v2 < 12);
+    });
+
+    $('[data-sc-fb]').innerHTML = '<ul>' + r.feedback.map(function (f) {
+      var ok = f.indexOf('잘 갖춰졌습니다') > -1;
+      return '<li class="' + (ok ? 'ok' : '') + '">' + esc(f) + '</li>';
+    }).join('') + '</ul>';
+  }
+
+  sel.addEventListener('change', function () { paintBrief(); paint(); });
+  ta.addEventListener('input', paint);
+  $('[data-sc-example]').addEventListener('click', function () {
+    ta.value = cur().exampleAnswer || ''; paint(); ta.focus();
+  });
+  $('[data-sc-clear]').addEventListener('click', function () {
+    ta.value = ''; paint(); ta.focus();
+  });
+
+  paintBrief(); paint();
+})();
+</script>
 </body>
 </html>
