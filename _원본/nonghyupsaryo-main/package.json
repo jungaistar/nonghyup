@@ -1,0 +1,27 @@
+{
+  "name": "nonghyupsaryo-learning",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "생성형 AI 기반 사무관리 업무혁신 실무 과정 학습사이트 (농협사료 · 1일 8차시)",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "npm run build && gh-pages -d dist -t true"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.20",
+    "gh-pages": "^6.1.1",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13",
+    "vite": "^5.4.8"
+  }
+}
