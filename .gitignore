@@ -1,0 +1,10 @@
+# 로컬 작업 부스러기
+node_modules/
+_site/
+.DS_Store
+Thumbs.db
+*.log
+
+# 편집기
+.vscode/
+.idea/
