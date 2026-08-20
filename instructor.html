@@ -4,53 +4,56 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="format-detection" content="telephone=no">
-<title>강사 소개 — 정동엽</title>
-<meta name="description" content="커리어 전략가 · 미래예측 전문가 · 대학 겸임교수 정동엽. 학력 · 경력 · 핵심역량 · 자격 · 저서.">
-<meta property="og:title" content="강사 소개 — 정동엽">
-<meta property="og:description" content="커리어 전략가 · 미래예측 전문가 · 대학 겸임교수 정동엽. 학력 · 경력 · 핵심역량 · 자격 · 저서.">
+<title>강사 소개 · 농협사료 AI 실무</title>
+<meta name="description" content="정동엽 — 커리어 전략가 · 미래예측 전문가 · 대학 겸임교수">
+<meta property="og:title" content="강사 소개 · 농협사료 AI 실무">
+<meta property="og:description" content="정동엽 — 커리어 전략가 · 미래예측 전문가 · 대학 겸임교수">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%228%22%20fill%3D%22%2300A651%22%2F%3E%3Cpath%20d%3D%22M16%206c5%203%208%206.5%208%2011a8%208%200%200%201-16%200c0-4.5%203-8%208-11Z%22%20fill%3D%22%23fff%22%20opacity%3D%22.92%22%2F%3E%3Cpath%20d%3D%22M16%2011v12%22%20stroke%3D%22%2300A651%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%228%22%20fill%3D%22%2312522e%22%2F%3E%3Cpath%20d%3D%22M16%207c4.6%202.8%207.4%206.2%207.4%2010.4a7.4%207.4%200%200%201-14.8%200C8.6%2013.2%2011.4%209.8%2016%207Z%22%20fill%3D%22%23fec20d%22%2F%3E%3Cpath%20d%3D%22M16%2012v11%22%20stroke%3D%22%2312522e%22%20stroke-width%3D%222.2%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
 <style>
 /* ==========================================================================
-   농협사료 클론 실습 — 공용 스타일
-   강의용 실습본. 빌드 시 각 HTML 의 <style> 안으로 인라인 삽입된다.
+   농협사료 · 생성형 AI 사무관리 업무혁신 학습사이트
+   공용 스타일 — 빌드 시 각 HTML 의 <style> 안으로 인라인 삽입된다.
+   색·글꼴은 원본(tailwind.config.js)의 NH 아이덴티티를 그대로 옮겼다.
    ========================================================================== */
 
 /* --- 1. 디자인 토큰 ------------------------------------------------------ */
 :root{
-  --green:#00A651;          /* 주색 — 버튼 · 링크 · 강조 */
-  --green-dark:#00703C;     /* 헤더 · 표 머리 · hover */
-  --green-soft:#E9F6EF;     /* 옅은 배경 */
-  --orange:#F7941E;         /* 포인트 — 뱃지 · 숫자 */
-  --blue:#0B63CE;
+  /* 신뢰의 딥 그린 (NH) */
+  --b50:#edfaf1;  --b100:#d2f2dd; --b200:#a6e5bd; --b300:#6fd196;
+  --b400:#3cb96f; --b500:#1fa054; --b600:#158043; --b700:#136637;
+  --b800:#12522e; --b900:#0d3b21; --b950:#072414;
+  /* 결실의 골드 (농협 심볼 공식 CI) */
+  --s50:#fffaeb;  --s100:#fef0c7; --s200:#fde08a; --s300:#fccb4d;
+  --s400:#fec20d; --s500:#e09a0b; --s600:#c17706; --s700:#a05a0a;
+  /* 중립 */
+  --g50:#f8fafc;  --g100:#f1f5f9; --g200:#e2e8f0; --g300:#cbd5e1;
+  --g400:#94a3b8; --g500:#64748b; --g600:#475569; --g700:#334155;
+  --g800:#1e293b; --g900:#0f172a;
 
-  --ink:#161A18;            /* 제목 */
-  --body:#4A5150;           /* 본문 */
-  --muted:#7C8583;          /* 보조 */
-  --line:#E3E8E6;           /* 테두리 1px */
-  --bg:#FFFFFF;
-  --bg-soft:#F5F8F6;
-
-  --radius:12px;
-  --radius-lg:16px;
-  --pill:999px;
-  --max:1200px;
-
-  --shadow:0 6px 24px rgba(0,60,30,.10);
+  --radius:12px; --radius-lg:16px; --pill:999px;
+  --shadow-sm:0 1px 2px rgba(15,23,42,.06);
+  --shadow:0 6px 24px rgba(7,36,20,.10);
   --ease:cubic-bezier(.22,.61,.36,1);
+
+  --header-h:56px;
+  --sidebar-w:272px;
 }
 
 /* --- 2. 리셋 ------------------------------------------------------------- */
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth; -webkit-text-size-adjust:100%; scroll-padding-top:72px}
 body{
   margin:0;
   font-family:Pretendard,"Pretendard Variable",-apple-system,BlinkMacSystemFont,
-              "Apple SD Gothic Neo","Malgun Gothic","맑은 고딕",system-ui,sans-serif;
-  font-size:16px; line-height:1.65; color:var(--body);
-  background:var(--bg);
-  word-break:keep-all;              /* 한글은 단어 단위로 줄바꿈 */
-  overflow-x:hidden;                /* 본문이 통째로 옆으로 밀리지 않게 */
+              system-ui,Roboto,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
+  font-size:16px; line-height:1.7; color:var(--g700);
+  background:var(--g50);
+  font-feature-settings:'tnum';
+  word-break:keep-all;      /* 한글은 낱말 단위로 줄바꿈 */
+  overflow-wrap:break-word; /* 단, 한 줄을 넘기는 덩어리는 끊는다 */
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
 }
 img,svg{max-width:100%; height:auto; vertical-align:middle}
 a{color:inherit; text-decoration:none}
@@ -58,995 +61,654 @@ button{font:inherit; color:inherit; cursor:pointer; background:none; border:0}
 ul,ol{margin:0; padding:0; list-style:none}
 h1,h2,h3,h4,p{margin:0}
 table{border-collapse:collapse; width:100%}
-:focus-visible{outline:3px solid var(--green); outline-offset:2px; border-radius:4px}
+:focus-visible{outline:3px solid var(--b500); outline-offset:2px; border-radius:4px}
 
-/* 화면에는 없고 스크린리더만 읽는 텍스트 */
-.sr-only{
-  position:absolute; width:1px; height:1px; margin:-1px; padding:0;
-  overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
-}
-.skip-link{
-  position:absolute; left:0; top:-60px; z-index:200;
-  background:var(--green-dark); color:#fff; padding:12px 20px;
-  transition:top .2s var(--ease);
-}
+.sr-only{position:absolute; width:1px; height:1px; margin:-1px; padding:0;
+  overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0}
+.skip-link{position:absolute; left:0; top:-60px; z-index:200;
+  background:var(--b800); color:#fff; padding:12px 20px; transition:top .2s var(--ease)}
 .skip-link:focus{top:0}
 
-/* --- 3. 레이아웃 --------------------------------------------------------- */
-.container{width:100%; max-width:var(--max); margin:0 auto; padding:0 20px}
-.section{padding:72px 0}
-.section--soft{background:var(--bg-soft)}
-.grid{display:grid; gap:20px}
-.grid-2{grid-template-columns:repeat(2,1fr)}
-.grid-3{grid-template-columns:repeat(3,1fr)}
-.grid-4{grid-template-columns:repeat(4,1fr)}
+/* 표 셀의 줄바꿈 보존 (원본 .cell-pre) */
+.cell-pre{white-space:pre-line}
 
-/* 넓은 표는 반드시 이걸로 감싼다 — 가로 스크롤은 표 안에서만 */
-.table-wrap{overflow-x:auto; -webkit-overflow-scrolling:touch}
-.table-wrap > table{min-width:640px}
+/* --- 3. 헤더 ------------------------------------------------------------- */
+.hd{
+  position:sticky; top:0; z-index:40; height:var(--header-h);
+  display:flex; align-items:center; gap:12px; padding:0 16px;
+  background:var(--b800); color:#fff;
+}
+.hd__burger{
+  display:grid; place-items:center; width:40px; height:40px; border-radius:9px;
+  color:#fff; flex:none;
+}
+.hd__burger:hover{background:rgba(255,255,255,.14)}
+.hd__logo{display:flex; align-items:center; gap:9px; font-weight:800; font-size:15px; letter-spacing:-.02em}
+.hd__mark{
+  display:grid; place-items:center; width:30px; height:30px; border-radius:8px;
+  background:var(--s400); color:var(--b900); font-size:12px; font-weight:900; flex:none;
+}
+.hd__logo small{display:block; font-size:10.5px; font-weight:600; color:rgba(255,255,255,.65); letter-spacing:.04em}
+.hd__nav{margin-left:auto; display:flex; align-items:center; gap:2px}
+.hd__nav a{
+  padding:8px 12px; border-radius:8px; font-size:13.5px; font-weight:600;
+  color:rgba(255,255,255,.86); white-space:nowrap;
+}
+.hd__nav a:hover{background:rgba(255,255,255,.14); color:#fff}
+.hd__nav a.on{background:rgba(255,255,255,.18); color:#fff}
 
-/* --- 4. 타이포 ----------------------------------------------------------- */
-.section-title{
-  position:relative; padding-left:16px; margin-bottom:28px;
-  font-size:30px; font-weight:800; line-height:1.3; color:var(--ink);
-  letter-spacing:-.02em;
+/* --- 4. 골격: 사이드바 + 본문 -------------------------------------------- */
+.shell{display:flex; align-items:flex-start; max-width:1440px; margin:0 auto}
+.sb{
+  position:sticky; top:var(--header-h); z-index:30; flex:none;
+  width:var(--sidebar-w); height:calc(100vh - var(--header-h));
+  overflow-y:auto; padding:16px;
+  background:#fff; border-right:1px solid var(--g200);
+  scrollbar-width:thin;
 }
-.section-title::before{
-  content:""; position:absolute; left:0; top:.18em; bottom:.18em;
-  width:4px; border-radius:2px; background:var(--green);
+.sb__title{
+  margin-bottom:12px; padding:10px 12px; border-radius:var(--radius);
+  background:var(--b800); color:#fff; font-size:12.5px; font-weight:800; text-align:center;
+  line-height:1.5;
 }
-.section-title .en{
-  display:block; margin-top:6px;
-  font-size:13px; font-weight:600; letter-spacing:.16em; text-transform:uppercase;
-  color:var(--green);
+.sb__cta{
+  display:block; margin-bottom:12px; padding:9px 10px; border-radius:10px;
+  background:var(--s50); color:var(--s700); font-size:12px; font-weight:700;
 }
-.lead{font-size:18px; color:var(--body)}
-.muted{color:var(--muted)}
-.txt-center{text-align:center}
+.sb__cta:hover{background:var(--s100)}
+.sb__label{padding:0 8px; margin:14px 0 6px; font-size:11px; font-weight:800;
+  letter-spacing:.08em; text-transform:uppercase; color:var(--g400)}
+.sb a.sb__item{
+  display:flex; align-items:center; gap:8px; min-height:40px; padding:8px 10px;
+  border-radius:9px; font-size:13.5px; color:var(--g600); font-weight:500;
+}
+.sb a.sb__item:hover{background:var(--b50); color:var(--b700)}
+.sb a.sb__item.on{background:var(--b50); color:var(--b700); font-weight:800}
+.sb__num{
+  flex:none; display:grid; place-items:center; min-width:22px; height:22px; padding:0 5px;
+  border-radius:6px; background:var(--g100); color:var(--g500);
+  font-size:11px; font-weight:800;
+}
+.sb a.sb__item.on .sb__num{background:var(--b600); color:#fff}
+.sb__sub{margin:2px 0 6px 30px}
+.sb__sub a{display:block; padding:6px 8px; border-radius:7px; font-size:12.5px; color:var(--g500)}
+.sb__sub a:hover{background:var(--g100); color:var(--b700)}
 
-/* --- 5. 버튼 · 뱃지 ------------------------------------------------------ */
+.sb__scrim{display:none}
+
+.main{flex:1; min-width:0; padding:28px 28px 72px}
+.wrap{max-width:920px; margin:0 auto}
+.wrap--wide{max-width:1180px}
+
+/* --- 5. 페이지 머리 ------------------------------------------------------ */
+.crumb{display:flex; flex-wrap:wrap; gap:6px; font-size:12.5px; color:var(--g400); margin-bottom:10px}
+.crumb li+li::before{content:"›"; margin-right:6px}
+.crumb a:hover{color:var(--b600)}
+
+.ph{margin-bottom:26px}
+.ph__eyebrow{
+  display:inline-flex; align-items:center; gap:6px; margin-bottom:10px;
+  padding:4px 11px; border-radius:var(--pill);
+  background:var(--b50); color:var(--b700); font-size:12px; font-weight:800;
+}
+.ph h1{font-size:30px; font-weight:800; letter-spacing:-.03em; color:var(--g900); line-height:1.3}
+.ph p{margin-top:10px; font-size:16px; color:var(--g500)}
+
+.sec-h{
+  display:flex; align-items:flex-start; gap:11px;
+  margin:38px 0 16px; padding-top:6px;
+  font-size:21px; font-weight:800; letter-spacing:-.02em; color:var(--g900); line-height:1.4;
+}
+.sec-h__n{
+  flex:none; display:grid; place-items:center; min-width:30px; height:30px; padding:0 8px;
+  margin-top:2px; border-radius:8px;
+  background:var(--b800); color:#fff; font-size:13px; font-weight:800;
+}
+.sub-h{
+  margin:26px 0 12px; padding-left:11px; border-left:3px solid var(--b300);
+  font-size:17px; font-weight:800; color:var(--b800); line-height:1.45;
+}
+
+/* --- 6. 카드 · 뱃지 · 버튼 ----------------------------------------------- */
+.card{
+  background:#fff; border:1px solid var(--g200); border-radius:var(--radius);
+  padding:20px; box-shadow:var(--shadow-sm);
+  transition:border-color .2s var(--ease), box-shadow .2s var(--ease), transform .2s var(--ease);
+}
+a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow); transform:translateY(-2px)}
+.card h3{font-size:16.5px; font-weight:800; color:var(--g900); margin-bottom:6px}
+.card p{font-size:14px; color:var(--g500); line-height:1.75}
+
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.grid > *{min-width:0}
+
+.bdg{display:inline-block; padding:3px 10px; border-radius:var(--pill);
+  font-size:11.5px; font-weight:800; line-height:1.7; white-space:nowrap}
+.bdg--green{background:var(--b50); color:var(--b700)}
+.bdg--gold{background:var(--s50); color:var(--s700)}
+.bdg--gray{background:var(--g100); color:var(--g500)}
+.bdg--solid{background:var(--b800); color:#fff}
+
 .btn{
   display:inline-flex; align-items:center; justify-content:center; gap:8px;
-  min-height:48px; padding:0 22px;
-  border:1px solid transparent; border-radius:var(--pill);
-  font-size:15px; font-weight:700; letter-spacing:-.01em;
-  transition:background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease);
+  min-height:46px; padding:0 20px; border:1px solid transparent; border-radius:var(--pill);
+  font-size:14.5px; font-weight:800; transition:background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease);
 }
-.btn--primary{background:var(--green); color:#fff}
-.btn--primary:hover{background:var(--green-dark)}
-.btn--ghost{border-color:var(--line); color:var(--ink); background:#fff}
-.btn--ghost:hover{border-color:var(--green); color:var(--green)}
-.btn--line-white{border-color:rgba(255,255,255,.7); color:#fff}
-.btn--line-white:hover{background:#fff; color:var(--green-dark)}
-.btn--sm{min-height:40px; padding:0 16px; font-size:14px}
-.btn--block{width:100%}
+.btn--fill{background:var(--b600); color:#fff}
+.btn--fill:hover{background:var(--b700)}
+.btn--gold{background:var(--s400); color:var(--b900)}
+.btn--gold:hover{background:var(--s300)}
+.btn--line{border-color:var(--g200); background:#fff; color:var(--g700)}
+.btn--line:hover{border-color:var(--b500); color:var(--b700)}
+.btn--white{border-color:rgba(255,255,255,.65); color:#fff}
+.btn--white:hover{background:#fff; color:var(--b800)}
+.btn--sm{min-height:38px; padding:0 14px; font-size:13px}
 
-.badge{
-  display:inline-block; padding:4px 12px; border-radius:var(--pill);
-  font-size:12px; font-weight:700; line-height:1.6;
-  background:var(--green-soft); color:var(--green-dark);
-}
-.badge--orange{background:#FFF3E0; color:#B36A00}
-.badge--gray{background:#EEF1F0; color:var(--muted)}
+.table-wrap{overflow-x:auto; -webkit-overflow-scrolling:touch}
 
-/* --- 6. 카드 ------------------------------------------------------------- */
-.card{
-  background:#fff; border:1px solid var(--line); border-radius:var(--radius);
-  padding:24px; transition:border-color .2s var(--ease), box-shadow .2s var(--ease),
-                            transform .2s var(--ease);
-}
-.card:hover{border-color:var(--green); box-shadow:var(--shadow); transform:translateY(-3px)}
-.card h3{font-size:18px; font-weight:700; color:var(--ink); margin-bottom:8px}
-.card p{font-size:15px; color:var(--muted)}
+/* --- 7. 본문 블록 (원본 BlockRenderer 의 14종) ---------------------------- */
+.blk{margin:0 0 4px}
 
-/* --- 7. 헤더 · 전역 내비게이션 ------------------------------------------- */
-.header{position:sticky; top:0; z-index:100; background:#fff; border-bottom:1px solid var(--line)}
-.header__util{background:var(--bg-soft); border-bottom:1px solid var(--line); font-size:13px}
-.header__util .container{display:flex; justify-content:flex-end; align-items:center; gap:18px; min-height:38px}
-.header__util a{color:var(--muted)}
-.header__util a:hover{color:var(--green-dark)}
-
-.header__bar{display:flex; align-items:center; gap:24px; min-height:76px}
-.logo{display:flex; align-items:center; gap:10px; font-weight:800; font-size:21px; color:var(--ink); letter-spacing:-.03em}
-.logo__mark{
-  display:grid; place-items:center; width:38px; height:38px; border-radius:10px;
-  background:var(--green); color:#fff; font-size:15px; font-weight:800;
-}
-.logo small{display:block; font-size:11px; font-weight:600; color:var(--muted); letter-spacing:.06em}
-
-.gnb{margin-left:auto}
-.gnb > ul{display:flex; gap:6px}
-.gnb > ul > li{position:relative}
-.gnb > ul > li > a{
-  display:flex; align-items:center; min-height:76px; padding:0 18px;
-  font-size:17px; font-weight:700; color:var(--ink);
-}
-.gnb > ul > li > a::after{
-  content:""; position:absolute; left:18px; right:18px; bottom:0; height:3px;
-  background:var(--green); transform:scaleX(0); transform-origin:left;
-  transition:transform .25s var(--ease);
-}
-.gnb > ul > li:hover > a::after,
-.gnb > ul > li.is-active > a::after{transform:scaleX(1)}
-.gnb > ul > li:hover > a,
-.gnb > ul > li.is-active > a{color:var(--green-dark)}
-
-/* 드롭다운 (2depth) */
-.gnb__sub{
-  position:absolute; left:0; top:100%; min-width:190px;
-  background:#fff; border:1px solid var(--line); border-radius:0 0 var(--radius) var(--radius);
-  padding:10px 0; box-shadow:var(--shadow);
-  opacity:0; visibility:hidden; transform:translateY(6px);
-  transition:opacity .2s var(--ease), transform .2s var(--ease), visibility .2s;
-}
-.gnb > ul > li:hover .gnb__sub,
-.gnb > ul > li:focus-within .gnb__sub{opacity:1; visibility:visible; transform:translateY(0)}
-.gnb__sub a{display:block; padding:9px 20px; font-size:15px; color:var(--body)}
-.gnb__sub a:hover{background:var(--green-soft); color:var(--green-dark)}
-
-.nav-toggle{display:none; width:44px; height:44px; margin-left:auto; border-radius:8px}
-.nav-toggle span{display:block; width:22px; height:2px; margin:5px auto; background:var(--ink);
-  transition:transform .25s var(--ease), opacity .2s var(--ease)}
-.nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
-.nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-
-/* --- 8. 히어로 · 페이지 상단 -------------------------------------------- */
-.page-hero{
-  position:relative; overflow:hidden; color:#fff;
-  background:linear-gradient(135deg,#00703C 0%,#00A651 55%,#7CC24A 100%);
-  padding:56px 0;
-}
-.page-hero::after{
-  content:""; position:absolute; right:-80px; bottom:-120px;
-  width:340px; height:340px; border-radius:50%;
-  background:rgba(255,255,255,.10);
-}
-.page-hero .container{position:relative; z-index:1}
-.page-hero h1{font-size:36px; font-weight:800; letter-spacing:-.03em; margin-top:8px}
-.page-hero .en{
-  display:block; margin-top:10px; font-size:13px; font-weight:600;
-  letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.8);
-}
-.breadcrumb{display:flex; flex-wrap:wrap; gap:8px; font-size:14px; color:rgba(255,255,255,.85)}
-.breadcrumb li+li::before{content:"›"; margin-right:8px; opacity:.7}
-
-/* --- 9. 서브 페이지 좌측 메뉴 ------------------------------------------- */
-.sub-layout{display:grid; grid-template-columns:220px 1fr; gap:44px; padding:56px 0 80px}
-/* grid 칸은 기본이 min-width:auto 라서 안쪽 표 너비만큼 칸이 벌어진다.
-   0 으로 눌러 줘야 .table-wrap 이 제 몫(가로 스크롤)을 한다. */
-.sub-layout > *,.grid > *{min-width:0}
-.sub-nav{position:sticky; top:120px; align-self:start}
-.sub-nav h2{
-  padding:18px 20px; border-radius:var(--radius) var(--radius) 0 0;
-  background:var(--green-dark); color:#fff; font-size:18px; font-weight:700;
-}
-.sub-nav ul{border:1px solid var(--line); border-top:0; border-radius:0 0 var(--radius) var(--radius); overflow:hidden}
-.sub-nav a{display:block; min-height:48px; padding:12px 20px; font-size:15px; border-bottom:1px solid var(--line)}
-.sub-nav li:last-child a{border-bottom:0}
-.sub-nav a:hover{background:var(--bg-soft); color:var(--green-dark)}
-.sub-nav a.is-active{background:var(--green-soft); color:var(--green-dark); font-weight:700}
-.sub-nav__select{display:none}
-
-/* --- 10. 폼 ------------------------------------------------------------- */
-.field{margin-bottom:18px}
-.field label{display:block; margin-bottom:7px; font-size:15px; font-weight:700; color:var(--ink)}
-.field .req{color:var(--orange)}
-.input,.select,.textarea{
-  width:100%; min-height:48px; padding:12px 14px;
-  font-size:16px;                       /* 16px 미만이면 iOS 가 화면을 확대한다 */
-  font-family:inherit; color:var(--ink);
-  background:#fff; border:1px solid var(--line); border-radius:10px;
-  transition:border-color .2s var(--ease), box-shadow .2s var(--ease);
-}
-.textarea{min-height:150px; resize:vertical}
-.input:focus,.select:focus,.textarea:focus{
-  border-color:var(--green); box-shadow:0 0 0 3px rgba(0,166,81,.16); outline:none;
-}
-.input[aria-invalid="true"],.textarea[aria-invalid="true"]{border-color:#D93025}
-.field__err{display:none; margin-top:6px; font-size:13px; color:#D93025}
-.field__err.is-on{display:block}
-.check{display:flex; align-items:flex-start; gap:10px; font-size:15px}
-.check input{width:20px; height:20px; margin-top:2px; accent-color:var(--green); flex:none}
-
-/* 화면 아래 고정 제출 버튼 */
-.sticky-actions{
-  position:sticky; bottom:0; z-index:20;
-  display:flex; gap:10px; justify-content:center;
-  padding:14px 0; margin-top:28px;
-  background:linear-gradient(180deg,rgba(255,255,255,0),#fff 34%);
+/* 가운뎃점(·)으로만 이어진 도구 이름 나열은 keep-all 아래에서 한 낱말로 취급되어
+   좁은 화면을 넘긴다. 본문 텍스트에서는 어디서든 끊을 수 있게 둔다. */
+.b-para,.b-bullets li,.b-obj li,.b-note,.b-note p,.b-note li,
+.b-ex__b,.b-keywords span,.cell-pre,.lab__goal,.apx__when,.apx__why{
+  overflow-wrap:anywhere;
 }
 
-/* --- 11. 표 ------------------------------------------------------------- */
-.tbl th,.tbl td{padding:14px 16px; border-bottom:1px solid var(--line); font-size:15px; text-align:left}
-.tbl thead th{background:var(--green-dark); color:#fff; font-weight:700; border-bottom:0}
-.tbl tbody tr:hover{background:var(--bg-soft)}
-.tbl--rows th{width:150px; background:var(--bg-soft); color:var(--ink); font-weight:700}
+/* para — 본문 문단 */
+.b-para{margin:14px 0; font-size:15.5px; line-height:1.85; color:var(--g600)}
 
-/* --- 12. 탭 ------------------------------------------------------------- */
-.tabs{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px}
-.tabs button{
-  min-height:44px; padding:0 20px; border:1px solid var(--line); border-radius:var(--pill);
-  font-size:15px; font-weight:700; color:var(--muted); background:#fff;
-  transition:all .2s var(--ease);
-}
-.tabs button:hover{border-color:var(--green); color:var(--green-dark)}
-.tabs button[aria-selected="true"]{background:var(--green); border-color:var(--green); color:#fff}
+/* label — 작은 머리표 */
+.b-label{margin:22px 0 8px; font-size:14.5px; font-weight:800; color:var(--b800)}
 
-/* --- 13. 아코디언 ------------------------------------------------------- */
-.acc{border-top:2px solid var(--ink)}
-.acc__item{border-bottom:1px solid var(--line)}
-.acc__btn{
-  display:flex; align-items:center; gap:14px; width:100%;
-  min-height:60px; padding:16px 0; text-align:left;
-  font-size:16px; font-weight:700; color:var(--ink);
-}
-.acc__btn .q{
-  flex:none; display:grid; place-items:center; width:30px; height:30px; border-radius:50%;
-  background:var(--green); color:#fff; font-size:14px; font-weight:800;
-}
-.acc__btn .arw{margin-left:auto; flex:none; transition:transform .25s var(--ease); color:var(--muted)}
-.acc__btn[aria-expanded="true"] .arw{transform:rotate(180deg)}
-.acc__panel{display:none; padding:0 0 22px 44px; font-size:15px; color:var(--body)}
-.acc__panel.is-open{display:block; animation:fadeUp .25s var(--ease)}
+/* bullets — 목록 */
+.b-bullets{margin:12px 0 16px}
+.b-bullets li{position:relative; padding-left:17px; margin-bottom:7px; font-size:15px; color:var(--g600); line-height:1.8}
+.b-bullets li::before{content:""; position:absolute; left:2px; top:.75em;
+  width:5px; height:5px; border-radius:50%; background:var(--b400)}
 
-/* --- 14. 푸터 ----------------------------------------------------------- */
-.footer{background:#1E2A24; color:#B9C4BF; padding:48px 0 36px; font-size:14px}
-.footer__top{display:flex; flex-wrap:wrap; gap:16px 28px; align-items:center;
-  padding-bottom:22px; border-bottom:1px solid rgba(255,255,255,.12)}
-.footer__top a{font-weight:700; color:#fff}
-.footer__body{display:flex; flex-wrap:wrap; gap:28px; justify-content:space-between; padding-top:26px}
-.footer address{font-style:normal; line-height:1.9}
-.footer .copy{margin-top:14px; font-size:13px; color:#7E8A85}
-.footer .family{min-width:230px}
-.footer .family .select{background:#26332C; border-color:#3A4A42; color:#fff}
-.footer .notice{
-  margin-top:18px; padding:12px 14px; border-radius:10px;
-  background:rgba(247,148,30,.12); color:#F3C58A; font-size:13px; line-height:1.7;
-}
+/* keywords — 키워드 칩 */
+.b-keywords{display:flex; flex-wrap:wrap; gap:7px; margin:14px 0 18px}
+.b-keywords span{padding:5px 12px; border-radius:var(--pill);
+  background:var(--b50); color:var(--b700); font-size:12.5px; font-weight:700}
 
-/* --- 15. 애니메이션 ----------------------------------------------------- */
+/* objectives — 학습 목표 */
+.b-obj{margin:16px 0 20px; padding:18px 20px; border-radius:var(--radius);
+  background:var(--b50); border:1px solid var(--b100)}
+.b-obj__t{display:flex; align-items:center; gap:7px; margin-bottom:10px;
+  font-size:13.5px; font-weight:800; color:var(--b800)}
+.b-obj li{position:relative; padding-left:24px; margin-bottom:6px; font-size:14.5px; color:var(--b900); line-height:1.8}
+.b-obj li::before{content:"✓"; position:absolute; left:2px; top:0; color:var(--b500); font-weight:900}
+
+/* table */
+.b-table{margin:20px 0}
+.b-table__cap{margin-bottom:8px; font-size:13px; font-weight:800; color:var(--b700)}
+.b-table .table-wrap{border:1px solid var(--g200); border-radius:var(--radius); box-shadow:var(--shadow-sm)}
+.b-table table{font-size:13.5px; min-width:520px}
+.b-table thead th{background:var(--b800); color:#fff; font-weight:700; text-align:left;
+  padding:11px 13px; border-right:1px solid rgba(255,255,255,.16)}
+.b-table thead th:last-child{border-right:0}
+.b-table tbody tr:nth-child(even){background:var(--g50)}
+.b-table td{padding:11px 13px; border-top:1px solid var(--g100); border-right:1px solid var(--g100);
+  vertical-align:top; color:var(--g600)}
+.b-table td:last-child{border-right:0}
+
+/* promptbox — 복사 가능한 프롬프트 */
+.b-prompt{margin:18px 0}
+.b-prompt__cap{margin-bottom:8px; font-size:13px; font-weight:800; color:var(--b700)}
+.b-prompt__box{position:relative; border-radius:var(--radius); overflow:hidden;
+  background:var(--b950); border:1px solid var(--b800)}
+.b-prompt__bar{display:flex; align-items:center; gap:8px; padding:8px 12px;
+  background:rgba(255,255,255,.06); border-bottom:1px solid rgba(255,255,255,.09)}
+.b-prompt__bar span{font-size:11.5px; font-weight:800; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--s300)}
+.b-prompt pre{
+  margin:0; padding:16px 18px; overflow-x:auto;
+  font-family:"D2Coding",ui-monospace,SFMono-Regular,Menlo,Consolas,"Malgun Gothic",monospace;
+  font-size:13.5px; line-height:1.85; color:#e6f5ec; white-space:pre-wrap; word-break:break-word;
+}
+.copy-btn{
+  margin-left:auto; min-height:32px; padding:0 12px; border-radius:var(--pill);
+  background:rgba(255,255,255,.12); color:#fff; font-size:12px; font-weight:800;
+}
+.copy-btn:hover{background:rgba(255,255,255,.22)}
+.copy-btn.done{background:var(--s400); color:var(--b900)}
+
+/* tip · warning · outcome · case · exercise — 색 띠 상자 */
+.b-note{margin:18px 0; padding:16px 18px 16px 17px; border-radius:var(--radius);
+  border-left:4px solid; font-size:14.5px; line-height:1.8}
+.b-note__t{display:flex; align-items:center; gap:7px; margin-bottom:7px; font-size:13.5px; font-weight:800}
+.b-note p{font-size:14.5px; line-height:1.8}
+.b-note li{position:relative; padding-left:16px; margin-bottom:5px}
+.b-note li::before{content:""; position:absolute; left:2px; top:.72em; width:4px; height:4px;
+  border-radius:50%; background:currentColor; opacity:.5}
+
+.b-tip{background:var(--b50); border-color:var(--b400); color:var(--b900)}
+.b-tip .b-note__t{color:var(--b700)}
+.b-warn{background:#fff7ed; border-color:#fb923c; color:#7c2d12}
+.b-warn .b-note__t{color:#c2410c}
+.b-out{background:var(--s50); border-color:var(--s400); color:#713f12}
+.b-out .b-note__t{color:var(--s700)}
+.b-case{background:#eff6ff; border-color:#60a5fa; color:#1e3a8a}
+.b-case .b-note__t{color:#1d4ed8}
+
+/* exercise — 실습 과제 */
+.b-ex{margin:20px 0; border-radius:var(--radius); overflow:hidden;
+  border:1px solid var(--b200); background:#fff}
+.b-ex__h{display:flex; align-items:center; gap:9px; padding:12px 16px;
+  background:var(--b600); color:#fff; font-size:14px; font-weight:800}
+.b-ex__h .bdg{background:rgba(255,255,255,.2); color:#fff}
+.b-ex__b{padding:16px 18px; font-size:14.5px; line-height:1.85; color:var(--g600)}
+.b-ex__b li{position:relative; padding-left:22px; margin-bottom:7px}
+.b-ex__b li::before{
+  content:counter(exli); counter-increment:exli;
+  position:absolute; left:0; top:.28em;
+  display:grid; place-items:center; width:16px; height:16px; border-radius:50%;
+  background:var(--b100); color:var(--b700); font-size:10.5px; font-weight:800;
+}
+.b-ex__b ol{counter-reset:exli}
+
+/* link · download */
+.b-link{display:inline-flex; align-items:center; gap:8px; margin:10px 8px 10px 0;
+  padding:9px 15px; border-radius:var(--pill); border:1px solid var(--g200);
+  background:#fff; font-size:13.5px; font-weight:700; color:var(--b700)}
+.b-link:hover{border-color:var(--b500); background:var(--b50)}
+.b-dl{display:inline-flex; align-items:center; gap:8px; margin:10px 0;
+  padding:11px 17px; border-radius:var(--pill);
+  background:var(--s400); color:var(--b900); font-size:13.5px; font-weight:800}
+.b-dl:hover{background:var(--s300)}
+
+/* source — 출처 */
+.b-source{margin:8px 0 16px; font-size:12px; color:var(--g400)}
+
+/* --- 8. 진도 체크 -------------------------------------------------------- */
+.done-bar{display:flex; flex-wrap:wrap; gap:10px; align-items:center;
+  margin:30px 0 0; padding:16px 18px; border-radius:var(--radius);
+  background:#fff; border:1px solid var(--g200)}
+.done-btn{min-height:44px; padding:0 20px; border-radius:var(--pill);
+  border:1px solid var(--b200); background:var(--b50); color:var(--b700); font-size:14px; font-weight:800}
+.done-btn:hover{background:var(--b100)}
+.done-btn.on{background:var(--b600); border-color:var(--b600); color:#fff}
+
+.prog{height:9px; border-radius:var(--pill); background:var(--g200); overflow:hidden}
+.prog__fill{height:100%; border-radius:var(--pill);
+  background:linear-gradient(90deg,var(--b600),var(--b400)); transition:width .5s var(--ease)}
+
+/* --- 9. 애니메이션 ------------------------------------------------------- */
 @keyframes fadeUp{from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none}}
-.reveal{opacity:0; transform:translateY(18px); transition:opacity .6s var(--ease), transform .6s var(--ease)}
-.reveal.is-in{opacity:1; transform:none}
+.fade{animation:fadeUp .4s var(--ease)}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(-3deg)} 50%{transform:translateY(-18px) rotate(3deg)}}
+.floaty{animation:floaty 6s ease-in-out infinite}
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.01ms !important; transition-duration:.01ms !important}
-  .reveal{opacity:1; transform:none}
+  html{scroll-behavior:auto}
 }
 
-/* --- 16. 반응형 --------------------------------------------------------- */
-/* 1200px 이하 — 4열을 2열로 */
-@media (max-width:1200px){
-  .grid-4{grid-template-columns:repeat(2,1fr)}
+/* --- 10. 푸터 ------------------------------------------------------------ */
+.ft{background:var(--b950); color:#9fb8a9; padding:34px 0 30px; font-size:13.5px}
+.ft__in{max-width:1180px; margin:0 auto; padding:0 24px}
+.ft__top{display:flex; flex-wrap:wrap; gap:10px 22px; padding-bottom:16px;
+  border-bottom:1px solid rgba(255,255,255,.1)}
+.ft__top a{font-weight:700; color:#fff}
+.ft__top a:hover{color:var(--s300)}
+.ft__body{padding-top:18px; line-height:1.9}
+.ft strong{color:#fff}
+.ft__note{margin-top:14px; padding:11px 14px; border-radius:10px;
+  background:rgba(254,194,13,.1); color:#f2d38a; font-size:12.5px; line-height:1.7}
+
+/* --- 11. 반응형 ---------------------------------------------------------- */
+@media (max-width:1100px){
+  .g4{grid-template-columns:repeat(2,1fr)}
 }
 
-/* 900px 이하 — 데스크톱 GNB 를 서랍으로, 좌측 메뉴를 네이티브 select 로 */
+/* 사이드바를 서랍으로 */
+@media (max-width:1024px){
+  .sb{
+    position:fixed; left:0; top:var(--header-h); z-index:35;
+    transform:translateX(-100%); transition:transform .28s var(--ease);
+    box-shadow:0 12px 40px rgba(7,36,20,.18);
+  }
+  .sb.open{transform:none}
+  .sb__scrim{display:block; position:fixed; inset:var(--header-h) 0 0; z-index:34;
+    background:rgba(15,23,42,.42); opacity:0; visibility:hidden; transition:opacity .28s var(--ease), visibility .28s}
+  .sb__scrim.on{opacity:1; visibility:visible}
+  .main{padding:22px 20px 64px}
+  .hd__nav a{padding:8px 9px; font-size:13px}
+}
+
 @media (max-width:900px){
-  .header__bar{min-height:64px}
-  .nav-toggle{display:block; position:relative; z-index:120}  /* 서랍 위로 올린다 */
-  .gnb{
-    position:fixed; left:0; right:0; top:0; bottom:0; z-index:110;
-    margin:0; padding:76px 20px 40px; overflow-y:auto;
-    background:#fff;
-    transform:translateX(100%); transition:transform .3s var(--ease);
-  }
-  .gnb.is-open{transform:none}
-  .gnb > ul{display:block}
-  .gnb > ul > li > a{min-height:56px; padding:0; border-bottom:1px solid var(--line); font-size:18px}
-  .gnb > ul > li > a::after{display:none}
-  .gnb__sub{
-    position:static; opacity:1; visibility:visible; transform:none;
-    border:0; box-shadow:none; padding:8px 0 12px 12px; min-width:0;
-  }
-  .gnb__sub a{padding:10px 8px; min-height:44px; display:flex; align-items:center}
-
-  .section{padding:52px 0}
-  .section-title{font-size:24px}
-  .page-hero{padding:38px 0}
-  .page-hero h1{font-size:27px}
-
-  .sub-layout{grid-template-columns:1fr; gap:24px; padding:28px 0 56px}
-  .sub-nav{position:static}
-  .sub-nav h2,.sub-nav ul{display:none}
-  .sub-nav__select{display:block}          /* 세로 메뉴 → 네이티브 select */
-
-  .grid-3{grid-template-columns:repeat(2,1fr)}
+  .ph h1{font-size:24px}
+  .ph p{font-size:15px}
+  .sec-h{font-size:18.5px; margin:30px 0 14px}
+  .sub-h{font-size:16px}
+  .g3{grid-template-columns:repeat(2,1fr)}
   /* 좁은 화면에서 인라인으로 박힌 작은 글씨를 16px 으로 되돌린다 */
   input,select,textarea{font-size:16px !important}
 }
 
-/* 640px 이하 — 한 열 */
+@media (max-width:768px){
+  .hd__nav{display:none}          /* 상단 메뉴는 서랍 안으로 */
+  .hd__logo small{display:none}
+}
+
 @media (max-width:640px){
-  .container{padding:0 16px}
-  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
-  .section-title{font-size:21px}
-  .page-hero h1{font-size:23px}
-  .footer__body{flex-direction:column}
+  .main{padding:18px 16px 56px}
+  .g2,.g3,.g4{grid-template-columns:1fr}
+  .ph h1{font-size:21px}
+  .sec-h{font-size:17px; gap:9px}
+  .b-para,.b-note,.b-note p{font-size:15px}
   .btn{width:100%}
-  .sticky-actions .btn{width:auto; flex:1}
+  .ft__in{padding:0 16px}
 }
 
-/* 인쇄 */
 @media print{
-  .header,.footer,.sticky-actions,.nav-toggle{display:none !important}
-  body{color:#000}
+  .hd,.sb,.sb__scrim,.ft,.done-bar,.copy-btn{display:none !important}
+  .main{padding:0}
+  body{background:#fff}
 }
 
 
-/* ===== 이 페이지에만 쓰는 스타일 ===== */
-/* ---------- 프로필 카드 ---------- */
-.cv-card{
-  display:grid; grid-template-columns:220px 1fr; gap:32px; align-items:start;
-  padding:32px; margin-bottom:56px;
-  border:1px solid var(--line); border-radius:var(--radius-lg); background:#fff;
-}
-.cv-photo{
-  aspect-ratio:3/4; border-radius:var(--radius);
-  background:linear-gradient(160deg,#00512B,#00A651 62%,#8CC63F);
-  display:grid; place-items:center; text-align:center; padding:16px;
-  color:rgba(255,255,255,.92); font-size:13px; line-height:1.7;
-}
-.cv-name{font-size:34px; font-weight:800; letter-spacing:-.03em; color:var(--ink); line-height:1.2}
-.cv-en{
-  display:block; margin-top:8px; font-size:13px; font-weight:600;
-  letter-spacing:.22em; text-transform:uppercase; color:var(--green);
-}
-.cv-role{display:flex; flex-wrap:wrap; gap:8px; margin:18px 0}
-.cv-contact{
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:10px;
-  margin-top:20px; padding-top:20px; border-top:1px solid var(--line);
-}
-.cv-contact div{display:flex; align-items:center; gap:10px; font-size:15px; min-height:44px}
-.cv-contact .k{
-  flex:none; display:grid; place-items:center; width:34px; height:34px; border-radius:9px;
-  background:var(--green-soft); color:var(--green-dark);
-}
-.cv-contact a:hover{color:var(--green-dark); text-decoration:underline}
-
-/* ---------- 공통 목록 ---------- */
-.cv-sec{margin-bottom:60px}
-.cv-lead{
-  padding:22px 24px; margin-bottom:8px;
-  border-left:4px solid var(--green); border-radius:0 var(--radius) var(--radius) 0;
-  background:var(--bg-soft); font-size:16px; line-height:1.9;
-}
-
-/* 학력 — 연도가 오른쪽에 붙는 줄 */
-.edu li{
-  display:flex; flex-wrap:wrap; gap:6px 16px; align-items:baseline;
-  padding:16px 4px; border-bottom:1px solid var(--line);
-}
-.edu li b{flex:1; min-width:200px; font-size:16px; font-weight:600; color:var(--ink)}
-.edu li time{
-  flex:none; font-size:15px; font-weight:700; color:var(--green-dark);
-  font-variant-numeric:tabular-nums;
-}
-
-/* 경력 · 강의 — 점 목록 */
-.dots li{position:relative; padding:9px 0 9px 18px; font-size:15px; line-height:1.75}
-.dots li::before{
-  content:""; position:absolute; left:0; top:1.05em;
-  width:6px; height:6px; border-radius:50%; background:var(--green);
-}
-.dots li b{color:var(--ink); font-weight:700}
-.dots li .yr{
-  margin-left:6px; font-size:13px; font-weight:700; color:var(--muted);
-  font-variant-numeric:tabular-nums; white-space:nowrap;
-}
-
-/* 소제목 */
-.cv-sub{
-  display:flex; align-items:center; gap:10px;
-  margin:28px 0 10px; font-size:17px; font-weight:800; color:var(--ink);
-}
-.cv-sub::before{
-  content:""; flex:none; width:10px; height:10px; border-radius:3px;
-  background:var(--orange); transform:rotate(45deg);
-}
-.cv-sec > .cv-sub:first-of-type{margin-top:0}
-
-/* 저서 */
-.books{display:grid; grid-template-columns:repeat(2,1fr); gap:20px}
-.book{display:flex; gap:18px; align-items:center}
-.book .cover{
-  flex:none; width:74px; height:100px; border-radius:6px;
-  background:linear-gradient(150deg,#00512B,#00A651);
-  box-shadow:var(--shadow);
-  display:grid; place-items:center; color:#fff; font-size:11px; letter-spacing:.1em;
-}
-.book h3{font-size:17px; margin-bottom:4px}
-
-/* 비전 띠 */
-.vision-band{
-  padding:44px 36px; border-radius:var(--radius-lg); color:#fff; text-align:center;
-  background:linear-gradient(135deg,#00512B,#00A651);
-}
-.vision-band .en{
-  font-size:13px; font-weight:600; letter-spacing:.24em; text-transform:uppercase;
-  color:rgba(255,255,255,.82);
-}
-.vision-band p:last-child{
-  margin-top:14px; font-size:19px; font-weight:700; line-height:1.7; letter-spacing:-.02em;
-}
-
-@media (max-width:900px){
-  .cv-card{grid-template-columns:1fr; gap:22px; padding:22px 18px}
-  .cv-photo{max-width:200px; aspect-ratio:4/3}
-  .cv-name{font-size:27px}
-  .books{grid-template-columns:1fr}
-  .vision-band{padding:30px 20px}
-  .vision-band p:last-child{font-size:17px}
-}
+/* ===== 이 페이지 전용 ===== */
+.kv{background:#fff; border:1px solid var(--g200); border-radius:var(--radius); overflow:hidden; min-width:420px}
+.kv th{width:132px; background:var(--g50); color:var(--g700); font-weight:800; text-align:left;
+  padding:11px 14px; border-top:1px solid var(--g100); font-size:14px}
+.kv td{padding:11px 14px; border-top:1px solid var(--g100); color:var(--g600); font-size:14.5px}
+.kv tr:first-child th,.kv tr:first-child td{border-top:0}
+.prof{display:grid; grid-template-columns:150px 1fr; gap:26px; align-items:start; margin-bottom:26px}
+.prof__ava{aspect-ratio:1; border-radius:var(--radius-lg); display:grid; place-items:center;
+  background:linear-gradient(140deg,var(--b800),var(--b500)); color:#fff;
+  font-size:40px; font-weight:800; letter-spacing:-.04em}
+.prof h2{font-size:25px; font-weight:800; color:var(--g900); letter-spacing:-.03em}
+.prof__en{font-size:12px; font-weight:700; letter-spacing:.16em; color:var(--b600); margin-top:5px}
+.prof__role{margin-top:9px; font-size:15px; color:var(--g500); line-height:1.7}
+.prof__mail{display:inline-flex; align-items:center; gap:7px; margin-top:12px; padding:7px 14px;
+  border-radius:var(--pill); background:var(--b50); color:var(--b700); font-size:13.5px; font-weight:700}
+.tl2{position:relative; padding-left:22px; margin:14px 0 6px}
+.tl2::before{content:""; position:absolute; left:5px; top:8px; bottom:8px; width:2px; background:var(--g200)}
+.tl2 li{position:relative; display:grid; grid-template-columns:96px 1fr; gap:16px; padding:9px 0}
+.tl2 li::before{content:""; position:absolute; left:-21px; top:17px; width:11px; height:11px;
+  border-radius:50%; background:#fff; border:3px solid var(--b500)}
+.tl2 b{font-size:14px; font-weight:800; color:var(--b700); white-space:nowrap}
+.tl2 span{font-size:14.5px; color:var(--g600); line-height:1.75}
+.vision{margin-top:30px; padding:26px 28px; border-radius:var(--radius-lg); color:#fff;
+  background:linear-gradient(135deg,var(--b900),var(--b600))}
+.vision b{display:block; font-size:12px; font-weight:800; letter-spacing:.18em; color:var(--s300); margin-bottom:9px}
+.vision p{font-size:16px; line-height:1.85}
 @media (max-width:640px){
-  .edu li time{width:100%}
+  .prof{grid-template-columns:1fr; gap:16px}
+  .prof__ava{max-width:120px; font-size:32px}
+  .tl2 li{grid-template-columns:1fr; gap:2px}
 }
 </style>
 <noscript><style>
-/* 스크립트가 꺼져 있으면 등장 애니메이션 대상이 영영 안 보인다 — 그때는 그냥 보여 준다 */
-.reveal{opacity:1 !important; transform:none !important}
+/* 스크립트가 꺼져 있어도 목차는 보여야 한다 */
+.sb{transform:none !important; position:static !important; height:auto !important}
 </style></noscript>
 </head>
 <body data-page="instructor">
 
 <a class="skip-link" href="#main">본문 바로가기</a>
-
-<header class="header">
-  <!-- 상단 유틸 바 -->
-  <div class="header__util">
-    <div class="container">
-      <a href="support.html#inquiry">온라인 문의</a>
-      <a href="notice.html">채용 공고</a>
-      <a href="about.html#location">오시는 길</a>
-    </div>
-  </div>
-
-  <!-- 로고 + 전역 내비게이션 -->
-  <div class="container header__bar">
-    <a class="logo" href="index.html">
-      <span class="logo__mark" aria-hidden="true">NH</span>
-      <span>농협사료<small>NONGHYUP FEED</small></span>
-    </a>
-
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="gnb">
-      <span></span><span></span><span></span>
-      <span class="sr-only">전체 메뉴 열기</span>
-    </button>
-
-    <nav class="gnb" id="gnb" aria-label="주 메뉴">
-      <ul>
-        <li data-key="about">
-          <a href="about.html">회사소개</a>
-          <ul class="gnb__sub">
-            <li><a href="about.html#greeting">인사말</a></li>
-            <li><a href="about.html#vision">미션과 비전</a></li>
-            <li><a href="about.html#history">연혁</a></li>
-            <li><a href="about.html#ci">CI 소개</a></li>
-            <li><a href="about.html#location">오시는 길</a></li>
-          </ul>
-        </li>
-        <li data-key="instructor">
-          <a href="instructor.html">강사 소개</a>
-          <ul class="gnb__sub">
-            <li><a href="instructor.html#profile">프로필</a></li>
-            <li><a href="instructor.html#education">학력사항</a></li>
-            <li><a href="instructor.html#career">주요 경력</a></li>
-            <li><a href="instructor.html#competency">핵심역량</a></li>
-            <li><a href="instructor.html#certification">자격사항</a></li>
-            <li><a href="instructor.html#publication">저서</a></li>
-          </ul>
-        </li>
-        <li data-key="products">
-          <a href="products.html">제품소개</a>
-          <ul class="gnb__sub">
-            <li><a href="products.html?cat=cattle">한우 · 육우 사료</a></li>
-            <li><a href="products.html?cat=dairy">낙농 사료</a></li>
-            <li><a href="products.html?cat=pig">양돈 사료</a></li>
-            <li><a href="products.html?cat=poultry">양계 사료</a></li>
-            <li><a href="products.html?cat=special">특수 · 기능성 사료</a></li>
-          </ul>
-        </li>
-        <li data-key="notice">
-          <a href="notice.html">알림마당</a>
-          <ul class="gnb__sub">
-            <li><a href="notice.html?cat=공지사항">공지사항</a></li>
-            <li><a href="notice.html?cat=보도자료">보도자료</a></li>
-            <li><a href="notice.html?cat=입찰공고">입찰공고</a></li>
-            <li><a href="notice.html?cat=채용공고">채용공고</a></li>
-          </ul>
-        </li>
-        <li data-key="support">
-          <a href="support.html">고객지원</a>
-          <ul class="gnb__sub">
-            <li><a href="support.html#faq">자주 묻는 질문</a></li>
-            <li><a href="support.html#inquiry">온라인 문의</a></li>
-            <li><a href="support.html#agency">대리점 찾기</a></li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-  </div>
+<header class="hd">
+  <button class="hd__burger" type="button" aria-expanded="false" aria-controls="sb" aria-label="목차 열기">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  </button>
+  <a class="hd__logo" href="index.html">
+    <span class="hd__mark" aria-hidden="true">NH</span>
+    <span>농협사료<small>AI 사무관리 업무혁신</small></span>
+  </a>
+  <nav class="hd__nav" aria-label="주 메뉴">
+    <a href="index.html">홈</a>
+    <a href="course.html">교재</a>
+    <a href="schedule.html">일정</a>
+    <a href="labs.html">실습</a>
+    <a href="tools.html">AI 도구</a>
+    <a href="appendix.html">부록</a>
+    <a href="about.html" class="on" aria-current="page">소개</a>
+    <a href="dashboard.html">진도</a>
+  </nav>
 </header>
 
+<div class="shell">
+  <aside class="sb" id="sb"><div class="sb__title">소개</div>
+<div class="sb__label">사이트 안내</div>
+<a class="sb__item" href="about.html"><span>제작 의도</span></a>
+<a class="sb__item on" href="instructor.html"><span>강사 소개</span></a>
+<a class="sb__item" href="company.html"><span>회사 소개</span></a></aside>
+  <main id="main" style="flex:1;min-width:0">
+<div class="main"><div class="wrap">
+<ol class="crumb"><li><a href="index.html">홈</a></li><li><a href="about.html">소개</a></li><li>강사 소개</li></ol>
+<div class="ph">
+  <span class="ph__eyebrow">Instructor</span>
+  <h1>강사 소개</h1>
 
-<main id="main">
-<section class="page-hero">
-  <div class="container">
-    <ol class="breadcrumb">
-      <li><a href="index.html">홈</a></li>
-      <li>강사 소개</li>
-    </ol>
-    <h1>강사 소개</h1>
-    <span class="en">Instructor</span>
-  </div>
-</section>
+</div>
 
-<div class="container sub-layout">
-
-  <aside class="sub-nav">
-    <h2>강사 소개</h2>
-    <ul>
-      <li><a href="#profile" class="is-active">프로필</a></li>
-      <li><a href="#education">학력사항</a></li>
-      <li><a href="#career">주요 경력</a></li>
-      <li><a href="#competency">핵심역량</a></li>
-      <li><a href="#certification">자격사항</a></li>
-      <li><a href="#publication">저서</a></li>
-    </ul>
-  </aside>
-
+<div class="prof">
+  <div class="prof__ava" aria-hidden="true">정</div>
   <div>
-    <!-- ---------- 프로필 ---------- -->
-    <section id="profile" class="cv-sec">
-      <h2 class="section-title">프로필<span class="en">Profile</span></h2>
-
-      <div class="cv-card">
-        <div class="cv-photo">강사 사진 자리<br><small>(이미지 준비 시 교체)</small></div>
-        <div>
-          <p class="cv-name">정동엽<span class="cv-en">Jeong Dong-Yeop</span></p>
-
-          <div class="cv-role">
-            <span class="badge">커리어 전략가</span>
-            <span class="badge">미래예측 전문가</span>
-            <span class="badge badge--orange">대학 겸임교수</span>
-          </div>
-
-          <p style="font-size:16px; line-height:1.9">
-            &lsquo;인간중심 AI 기본사회&rsquo;로의 이행을 설계하는 커리어 전략가입니다.
-            대학 겸임교수로서 생성형 AI 강의와 청소년 · 청년 · 성인 · 베이비부머의 상담,
-            경력 재설계 · 전직 · 면접 코칭을 지원합니다. 미래예측 전문가로서
-            20년간의 IT 교육정보화 · 이러닝 구축 경험을 기반으로
-            AI 시대의 직업 패러다임 전환을 견인하고 있습니다.
-          </p>
-
-          <div class="cv-contact">
-            <div>
-              <span class="k" aria-hidden="true">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
-              </span>
-              <a href="tel:01073154585">010-7315-4585</a>
-            </div>
-            <div>
-              <span class="k" aria-hidden="true">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
-              </span>
-              <a href="mailto:newjob4u@kyonggi.ac.kr">newjob4u@kyonggi.ac.kr</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ---------- 학력 ---------- -->
-    <section id="education" class="cv-sec">
-      <h2 class="section-title">학력사항<span class="en">Education</span></h2>
-      <ul class="edu">
-        <li><b>경기대학교 일반대학원 직업학과 박사과정 수료</b><time datetime="2026-05">2026.05</time></li>
-        <li><b>가천대학교 경영대학원 고용 및 직업상담학과 석사</b><time datetime="2014-08">2014.08</time></li>
-        <li><b>국제문화대학원대학교 학습코칭 전공 졸업 · 교육학석사</b><time datetime="2012-02">2012.02</time></li>
-        <li><b>사회복지사 졸업 · 행정학학사 (교육과학기술부)</b><time datetime="2012-02">2012.02</time></li>
-        <li><b>부산외국어대학교 컴퓨터공학 졸업 · 공학사</b><time datetime="1994-08">1994.08</time></li>
-      </ul>
-    </section>
-
-    <!-- ---------- 경력 ---------- -->
-    <section id="career" class="cv-sec">
-      <h2 class="section-title">주요 경력<span class="en">Career</span></h2>
-
-      <p class="cv-lead">
-        대학생 IT 분야 취업 · 진로지도, 사회공헌(NGO · NPO) 교육 및 기금 모금 활동 교육
-      </p>
-
-      <ul class="dots">
-        <li><b>AI미래직업연구소</b> 소장</li>
-        <li><b>키다리진로직업협동조합</b> 이사장(대표)</li>
-        <li><b>사단법인 기본사회</b> AI기본사회 교육센터장</li>
-        <li><b>아시아미래인재연구소</b> 실장 <span class="yr">(전)</span></li>
-        <li><b>한국뉴욕주립대학교</b> Futures Master &amp; Futures Coach</li>
-        <li><b>와우캠프</b> 대표 강사 · 경기 · 인천 진로지도 특강</li>
-        <li><b>서울시 산업진흥원</b> IT 플랫폼 전문컨설턴트 · 창업전문위원(창업닥터) ·
-            Edu Tool Kit 디자이너 · 신직업 전문코치 · 신직업 자문위원</li>
-      </ul>
-    </section>
-
-    <!-- ---------- 핵심역량 ---------- -->
-    <section id="competency" class="cv-sec">
-      <h2 class="section-title">핵심역량<span class="en">Core Competencies</span></h2>
-
-      <p class="cv-sub">미래 진로지도 · 창업 · 창직 · 빅데이터 · 전직지원 강의</p>
-      <ul class="dots">
-        <li><b>한국기술교육대학교 능력개발원</b> ·
-            「4차 산업혁명시대 일과 직업의 변화」 전임교수 <span class="yr">2016–2020</span></li>
-        <li><b>동아예술방송대학교 교양융합학부</b> 겸임교수 ·
-            1인 예술과 창업, 문화예술콘텐츠 창업, 창업실무, 취업과 경력개발, NCS기초
-            <span class="yr">2017–현재</span></li>
-        <li><b>서울산업진흥원</b> · 신직업 자문위원(4차산업), IT 플랫폼 컨설턴트, 창업닥터</li>
-        <li><b>K-Digital 양성과정</b> · 빅데이터 개론 및 데이터 전처리 강의</li>
-        <li><b>제이엠커리어 · 인저어스</b> · 4차 산업혁명과 일자리 변화, 전직지원사업 강의</li>
-        <li><b>전남대학교</b> · 생성형 AI ADVANCED 과정 (교수설계, 교수 대상)</li>
-        <li><b>전남대학교</b> · 생성형 AI 기반 문서 / 인사행정 실무자동화 과정 (행정직 대상)</li>
-        <li><b>동신대학교</b> · 클로드 기반 교수 설계 강의 (교수 대상)</li>
-        <li><b>조선대학교</b> · 클로드를 활용한 업무자동화 강의 (교수 대상)</li>
-        <li><b>SKALA 4기</b> AI 캠퍼스 및 K-뉴딜 과정 실기 강사</li>
-        <li><b>8개 교육지원청</b> (금산 · 논산 · 음성 · 서산 · 공주 등) ·
-            「4차 산업혁명과 진로지도」 특강</li>
-      </ul>
-
-      <p class="cv-sub">직업 · 진로 · 창업 · 학습 분야 강의</p>
-      <ul class="dots">
-        <li>미래학 기반 전략컨설팅 및 진로지도 (전략컨설팅 · 비전수립)</li>
-        <li>전 연령층 대상 직업상담 및 전직 강의</li>
-        <li>자기주도적 학습코칭 강의 · 학부모 코칭 (감정코칭 · 자녀 진로지도)</li>
-        <li>파워포인트 제안 PM · 프리젠테이션 기획 및 강의</li>
-        <li>직무스트레스 관리 워크샵 · 강의 (NLP 기반 스트레스 조절)</li>
-        <li>시뮬레이션형 창업 컨설팅 (미래예측기법) · 미래전략 컨설턴트 및 비전코칭</li>
-      </ul>
-    </section>
-
-    <!-- ---------- 자격 ---------- -->
-    <section id="certification" class="cv-sec">
-      <h2 class="section-title">자격사항<span class="en">Certifications</span></h2>
-
-      <div class="grid grid-2">
-        <div class="card">
-          <h3>직업심리 전문가 · 한국고용정보원</h3>
-          <ul class="dots" style="margin-top:6px">
-            <li>직업심리전문가 (청소년 · 대학생 · 성인 부문)</li>
-            <li>청소년 온라인 직업상담원 · 온라인 직업심리전문가</li>
-            <li>희망취업프로그램 · 취업성공패키지 운영자</li>
-            <li>CAP+ 진행자 · 사무직 베이비부머 퇴직설계프로그램 진행자</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>미래학 분야 전문 자격</h3>
-          <ul class="dots" style="margin-top:6px">
-            <li>미래학 마스터 6학기 졸업 (한국뉴욕주립대 아시아미래인재연구소)</li>
-            <li>Futures Master &amp; Futures Coach</li>
-            <li>미래준비학교 Master Coach</li>
-            <li>미래전략 컨설턴트 및 비전코칭</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>창업 · 창직 · 직업상담 · 고용훈련</h3>
-          <ul class="dots" style="margin-top:6px">
-            <li>신직업 전문코칭 · EduTool KIT 디자이너 · IT 플랫폼 컨설턴트 (서울시 산업진흥원)</li>
-            <li>제3기 희망설계아카데미 (서울시 청년 창업닥터)</li>
-            <li>커리어 컨설턴트 (삼성SDS 멀티캠퍼스)</li>
-            <li>하프타임 강사 (하프타임코리아)</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>국가 · 민간 공인 자격</h3>
-          <ul class="dots" style="margin-top:6px">
-            <li>사회복지사 2급 (보건복지부) · 평생교육사 2급 (교육과학기술부)</li>
-            <li>외국인을 위한 한국어교사 2급 (문화관광부)</li>
-            <li>직업훈련교사 3급 — 마케팅 / 정보기술전략 · 계획(빅데이터) (고용노동부)</li>
-            <li>프레디저 전문강사 (한국프레디저) · 국제공인 NLP Practitioner</li>
-            <li>모금전문가 수료 (희망제작소) · 직무스트레스 관리 강사 (러너코리아)</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- ---------- 저서 ---------- -->
-    <section id="publication" class="cv-sec">
-      <h2 class="section-title">저서<span class="en">Publications</span></h2>
-
-      <div class="books" style="margin-bottom:44px">
-        <div class="book">
-          <span class="cover" aria-hidden="true">BOOK</span>
-          <div>
-            <h3>생각의 미래</h3>
-            <p class="muted" style="font-size:14px">지식노마드 · 2016.12</p>
-          </div>
-        </div>
-        <div class="book">
-          <span class="cover" aria-hidden="true">BOOK</span>
-          <div>
-            <h3>강서구 사회적 경제</h3>
-            <p class="muted" style="font-size:14px">고등학교 교재 집필</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="vision-band">
-        <p class="en">Vision</p>
-        <p>
-          미래예측 전문가로서 20년의 IT 교육정보화 경험을 토대로,<br>
-          인간중심 AI 기본사회로의 이행을 설계하는 커리어 전략가로 활동하고 있습니다.
-        </p>
-      </div>
-    </section>
+    <h2>정동엽</h2>
+    <p class="prof__en">JEONG DONG-YEOP</p>
+    <p class="prof__role">커리어 전략가 · 미래예측 전문가 · 대학 겸임교수</p>
+    <a class="prof__mail" href="mailto:newjob4u@kyonggi.ac.kr">✉ newjob4u@kyonggi.ac.kr</a>
   </div>
 </div>
-</main>
 
-<footer class="footer">
-  <div class="container">
-    <div class="footer__top">
-      <a href="about.html">회사소개</a>
-      <a href="support.html#inquiry">온라인 문의</a>
-      <a href="#">개인정보처리방침</a>
-      <a href="#">이용약관</a>
-      <a href="#">사이트맵</a>
+<p class="b-para">‘인간중심 AI 기본사회’로의 이행을 설계하는 커리어 전략가입니다. 대학 겸임교수로서 생성형 AI 강의와 청소년·청년·성인·베이비부머의 상담, 경력 재설계·전직·면접 코칭을 지원합니다.</p>
+<p class="b-para">미래예측 전문가로서 20년간의 IT 교육정보화·이러닝 구축 경험을 기반으로 AI 시대의 직업 패러다임 전환을 견인하고 있습니다.</p>
+<div class="table-wrap"><table class="kv"><tbody><tr><th>소속</th><td>AI미래직업연구소 소장</td></tr><tr><th>겸임</th><td>동아예술방송대학교 교양융합학부 겸임교수</td></tr><tr><th>전문</th><td>생성형 AI · 미래예측 · 커리어 설계</td></tr><tr><th>교육 대상</th><td>대학 · 기업 · 공공기관 · 교육지원청</td></tr></tbody></table></div>
+
+<h2 class="sec-h"><span class="sec-h__n">1</span>학력</h2>
+<ul class="tl2"><li><b>2026.05</b><span>경기대학교 일반대학원 직업학과 박사과정 수료</span></li><li><b>2014.08</b><span>가천대학교 경영대학원 고용 및 직업상담학과 석사</span></li><li><b>2012.02</b><span>국제문화대학원대학교 학습코칭 전공 · 교육학석사</span></li><li><b>2012.02</b><span>사회복지사 졸업 · 행정학학사 (교육과학기술부)</span></li><li><b>1994.08</b><span>부산외국어대학교 컴퓨터공학 졸업 · 공학사</span></li></ul>
+
+<h2 class="sec-h"><span class="sec-h__n">2</span>주요 경력</h2>
+<ul class="b-bullets"><li>AI미래직업연구소 소장</li><li>키다리진로직업협동조합 이사장(대표)</li><li>사단법인 기본사회 AI기본사회 교육센터장</li><li>(전) 아시아미래인재연구소 실장</li><li>한국뉴욕주립대학교 Futures Master &amp; Futures Coach</li><li>와우캠프 대표 강사 · 경기·인천 진로지도 특강</li><li>서울시 산업진흥원 IT 플랫폼 전문컨설턴트 · 창업전문위원(창업닥터) · 신직업 전문코치</li></ul>
+
+<h2 class="sec-h"><span class="sec-h__n">3</span>핵심 역량</h2>
+<h3 class="sub-h">미래 진로지도 · 창업 · 창직 · 빅데이터 · 전직지원 강의</h3>
+<ul class="b-bullets"><li>한국기술교육대학교 능력개발원 · 「4차 산업혁명시대 일과 직업의 변화」 전임교수 (2016–2020)</li><li>동아예술방송대학교 교양융합학부 겸임교수 · 문화예술콘텐츠 창업, 취업과 경력개발 외 (2017–현재)</li><li>전남대학교 · 생성형 AI ADVANCED 과정 (교수 대상) · 생성형 AI 기반 문서/인사행정 실무자동화 과정</li><li>동신대학교 · 클로드 기반 교수 설계 강의 (교수 대상)</li><li>조선대학교 · 클로드를 활용한 업무자동화 강의 (교수 대상)</li><li>K-Digital 양성과정 · 빅데이터 개론 및 데이터 전처리 강의</li><li>SKALA 4기 AI 캠퍼스 및 K-뉴딜 과정 실기 강사</li><li>8개 교육지원청(금산·논산·음성·서산·공주 등) · 「4차 산업혁명과 진로지도」 특강</li></ul>
+<h3 class="sub-h">직업 · 진로 · 창업 · 학습 분야 강의</h3>
+<ul class="b-bullets"><li>미래학 기반 전략컨설팅 및 진로지도 (전략컨설팅 · 비전수립)</li><li>전 연령층 대상 직업상담 및 전직 강의</li><li>자기주도적 학습코칭 강의 · 학부모 코칭 (감정코칭 · 자녀 진로지도)</li><li>직무스트레스 관리 워크샵 (NLP 기반 스트레스 조절)</li><li>시뮬레이션형 창업 컨설팅 (미래예측기법) · 미래전략 컨설턴트 및 비전코칭</li></ul>
+
+<h2 class="sec-h"><span class="sec-h__n">4</span>자격</h2>
+<div class="grid g2">
+  <div class="card"><h3>직업심리 전문가 · 한국고용정보원</h3>
+    <ul class="b-bullets" style="margin-bottom:0"><li>직업심리전문가 (청소년 · 대학생 · 성인 부문)</li><li>청소년 온라인 직업상담원 · 온라인 직업심리전문가</li><li>희망취업프로그램 · 취업성공패키지 운영자 · CAP+ 진행자</li></ul>
+  </div>
+  <div class="card"><h3>미래학 분야</h3>
+    <ul class="b-bullets" style="margin-bottom:0"><li>미래학 마스터 6학기 졸업 (한국뉴욕주립대 아시아미래인재연구소)</li><li>Futures Master &amp; Futures Coach · 미래준비학교 Master Coach</li></ul>
+  </div>
+  <div class="card"><h3>창업 · 창직 · 직업상담</h3>
+    <ul class="b-bullets" style="margin-bottom:0"><li>신직업 전문코칭 · EduTool KIT 디자이너 · IT 플랫폼 컨설턴트 (서울시 산업진흥원)</li><li>제3기 희망설계아카데미(서울시 청년 창업닥터) · 커리어 컨설턴트(삼성SDS 멀티캠퍼스)</li></ul>
+  </div>
+  <div class="card"><h3>국가 · 민간 공인</h3>
+    <ul class="b-bullets" style="margin-bottom:0"><li>사회복지사 2급 · 평생교육사 2급 · 외국인을 위한 한국어교사 2급</li><li>직업훈련교사 3급 — 마케팅 / 정보기술전략·계획(빅데이터), 고용노동부</li><li>국제공인 NLP Practitioner · 프레디저 전문강사 · 모금전문가 수료(희망제작소)</li></ul>
+  </div>
+</div>
+
+<h2 class="sec-h"><span class="sec-h__n">5</span>저서</h2>
+<div class="table-wrap"><table class="kv"><tbody><tr><th>『생각의 미래』</th><td>지식노마드 · 2016.12</td></tr><tr><th>『강서구 사회적 경제』</th><td>고등학교 교재 집필</td></tr></tbody></table></div>
+
+<div class="vision"><b>VISION</b><p>미래예측 전문가로서 20년의 IT 교육정보화 경험을 토대로, 인간중심 AI 기본사회로의 이행을 설계하는 커리어 전략가로 활동하고 있습니다.</p></div>
+</div></div>
+  </main>
+</div>
+
+<footer class="ft">
+  <div class="ft__in">
+    <div class="ft__top">
+      <a href="about.html">제작 의도</a>
+      <a href="instructor.html">강사 소개</a>
+      <a href="company.html">회사 소개</a>
+      <a href="appendix.html">프롬프트 부록</a>
+      <a href="dashboard.html">학습 진도</a>
     </div>
-
-    <div class="footer__body">
-      <div>
-        <div class="logo" style="color:#fff; margin-bottom:14px">
-          <span class="logo__mark" aria-hidden="true">NH</span>
-          <span>농협사료<small style="color:#7E8A85">NONGHYUP FEED</small></span>
-        </div>
-        <address>
-          실습용 주소 · 대표번호 0000-0000<br>
-          평일 09:00 – 18:00 (점심 12:00 – 13:00) · 주말 · 공휴일 휴무
-        </address>
-        <p class="copy">© 2026 농협사료 클론 실습본. 강의 실습 목적으로 제작되었습니다.</p>
-      </div>
-
-      <div class="family">
-        <label class="sr-only" for="family-site">관련 사이트</label>
-        <select class="select" id="family-site" data-family>
-          <option value="">관련 사이트 바로가기</option>
-          <option value="index.html">농협사료 (실습본)</option>
-          <option value="products.html">제품소개</option>
-          <option value="notice.html">알림마당</option>
-          <option value="support.html">고객지원</option>
-        </select>
-        <p class="notice">
-          이 사이트는 <strong>웹 프론트엔드 강의 실습본</strong>입니다.
-          실제 기업 · 제품 · 연락처와 무관하며, 모든 문구와 데이터는 실습을 위해
-          임의로 작성한 예시입니다.
-        </p>
-      </div>
+    <div class="ft__body">
+      <strong>생성형 AI 기반 사무관리 업무혁신 실무</strong><br>
+      농협사료 사무관리직 임직원 대상 · 1일 8차시 (08:00–17:00)<br>
+      이론 30% + 실습 50% + 사례 20% · 무료 AI 도구 중심
+      <p class="ft__note">
+        이 사이트는 <strong>강의용 학습자료</strong>입니다. 네트워크 없이 동작하도록
+        모든 스타일과 스크립트를 파일 안에 넣었고, 학습 진도는 이 브라우저에만 저장됩니다.
+      </p>
     </div>
   </div>
 </footer>
 
-
 <script>
 /* ==========================================================================
-   농협사료 클론 실습 — 공용 스크립트
-   프레임워크 없이 표준 DOM API 만 쓴다. 빌드 시 <script> 안으로 인라인 삽입.
+   공용 스크립트 — 프레임워크 없이 표준 DOM API 만 쓴다.
+   원본은 React + Supabase 였지만, 강의실이 폐쇄망이라 네트워크를 쓰지 않는다.
+   진도는 localStorage 한 곳에만 남긴다.
    ========================================================================== */
 (function () {
   'use strict';
 
-  var $  = function (sel, root) { return (root || document).querySelector(sel); };
-  var $$ = function (sel, root) {
-    return Array.prototype.slice.call((root || document).querySelectorAll(sel));
-  };
+  var $  = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
-  /* --- 1) 현재 페이지 메뉴에 활성 표시 --------------------------------- */
-  function markActiveMenu() {
-    var key = document.body.dataset.page;
-    if (!key) return;
-    var li = $('.gnb > ul > li[data-key="' + key + '"]');
-    if (li) {
-      li.classList.add('is-active');
-      li.querySelector('a').setAttribute('aria-current', 'page');
-    }
+  var STORE = 'nonghyupsaryo_progress';   // 원본과 같은 접두사
+
+  /* --- 진도: 읽기/쓰기 ------------------------------------------------- */
+  function readProgress() {
+    try { return JSON.parse(localStorage.getItem(STORE) || '{}'); }
+    catch (e) { return {}; }              // 값이 깨졌으면 빈 것으로 시작한다
+  }
+  function writeProgress(p) {
+    try { localStorage.setItem(STORE, JSON.stringify(p)); } catch (e) {}
+  }
+  function isDone(key) { return !!readProgress()[key]; }
+  function setDone(key, on) {
+    var p = readProgress();
+    if (on) p[key] = new Date().toISOString(); else delete p[key];
+    writeProgress(p);
   }
 
-  /* --- 2) 모바일 서랍 메뉴 --------------------------------------------- */
-  function initNavToggle() {
-    var btn = $('.nav-toggle');
-    var nav = $('#gnb');
-    if (!btn || !nav) return;
+  /* --- 1) 사이드바 서랍 ------------------------------------------------- */
+  function initSidebar() {
+    var btn = $('.hd__burger'), sb = $('.sb');
+    if (!btn || !sb) return;
+
+    var scrim = document.createElement('div');
+    scrim.className = 'sb__scrim';
+    document.body.appendChild(scrim);
 
     function setOpen(open) {
+      sb.classList.toggle('open', open);
+      scrim.classList.toggle('on', open);
       btn.setAttribute('aria-expanded', String(open));
-      nav.classList.toggle('is-open', open);
       // 서랍이 열린 동안 뒤 본문이 스크롤되지 않게 잠근다
-      document.body.style.overflow = open ? 'hidden' : '';
-      $('.sr-only', btn).textContent = open ? '전체 메뉴 닫기' : '전체 메뉴 열기';
+      document.body.style.overflow = open && window.innerWidth <= 1024 ? 'hidden' : '';
     }
-
     btn.addEventListener('click', function () {
-      setOpen(btn.getAttribute('aria-expanded') !== 'true');
+      setOpen(!sb.classList.contains('open'));
     });
-
-    // ESC 로 닫기
+    scrim.addEventListener('click', function () { setOpen(false); });
+    sb.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
-        setOpen(false);
-        btn.focus();
-      }
+      if (e.key === 'Escape' && sb.classList.contains('open')) { setOpen(false); btn.focus(); }
     });
-
-    // 메뉴 안 링크를 누르면 닫기
-    nav.addEventListener('click', function (e) {
-      if (e.target.closest('a')) setOpen(false);
-    });
-
-    // 데스크톱 폭으로 돌아오면 잠금 해제
-    window.matchMedia('(min-width: 901px)').addEventListener('change', function (m) {
+    window.matchMedia('(min-width: 1025px)').addEventListener('change', function (m) {
       if (m.matches) setOpen(false);
     });
-  }
 
-  /* --- 3) 스크롤 등장 애니메이션 ---------------------------------------- */
-  function initReveal() {
-    var items = $$('.reveal');
-    if (!items.length) return;
-
-    // IntersectionObserver 를 못 쓰는 환경이면 그냥 다 보여준다
-    if (!('IntersectionObserver' in window)) {
-      items.forEach(function (el) { el.classList.add('is-in'); });
-      return;
+    // 열려 있는 메뉴 항목이 보이도록 사이드바를 스크롤해 둔다
+    var on = $('.sb a.sb__item.on');
+    if (on) {
+      var t = on.offsetTop - sb.clientHeight / 2;
+      if (t > 0) sb.scrollTop = t;
     }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('is-in');
-        io.unobserve(entry.target);          // 한 번만 실행
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-    items.forEach(function (el) { io.observe(el); });
   }
 
-  /* --- 4) 숫자 카운트업 ------------------------------------------------- */
-  function initCounters() {
-    var nums = $$('[data-count]');
-    if (!nums.length || !('IntersectionObserver' in window)) {
-      nums.forEach(function (el) { el.textContent = el.dataset.count; });
-      return;
-    }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        var el = entry.target;
-        io.unobserve(el);
-        var target = Number(el.dataset.count);
-        var dur = 1100, t0 = performance.now();
-        (function step(now) {
-          var p = Math.min((now - t0) / dur, 1);
-          var eased = 1 - Math.pow(1 - p, 3);           // easeOutCubic
-          el.textContent = Math.round(target * eased).toLocaleString('ko-KR');
-          if (p < 1) requestAnimationFrame(step);
-        })(t0);
-      });
-    }, { threshold: 0.5 });
-    nums.forEach(function (el) { io.observe(el); });
-  }
+  /* --- 2) 프롬프트 복사 ------------------------------------------------- */
+  function initCopy() {
+    $$('.copy-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var pre = $('pre', btn.closest('.b-prompt__box'));
+        if (!pre) return;
+        var text = pre.textContent;
 
-  /* --- 5) 푸터 관련 사이트 select --------------------------------------- */
-  function initFamilySelect() {
-    var sel = $('[data-family]');
-    if (!sel) return;
-    sel.addEventListener('change', function () {
-      if (sel.value) location.href = sel.value;
+        function ok() {
+          var old = btn.textContent;
+          btn.textContent = '복사됨';
+          btn.classList.add('done');
+          setTimeout(function () { btn.textContent = old; btn.classList.remove('done'); }, 1600);
+        }
+        // file:// 에서는 clipboard API 가 막히는 브라우저가 있어 대비책을 둔다
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(text).then(ok, fallback);
+        } else fallback();
+
+        function fallback() {
+          var ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.cssText = 'position:fixed;top:-1000px';
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand('copy'); ok(); } catch (e) { btn.textContent = '복사 실패'; }
+          document.body.removeChild(ta);
+        }
+      });
     });
   }
 
-  /* --- 6) 서브 페이지 좌측 메뉴 → 좁은 화면에서 select ------------------- */
-  function initSubNavSelect() {
-    var nav = $('.sub-nav');
-    if (!nav) return;
-    var links = $$('.sub-nav ul a');
-    if (!links.length) return;
+  /* --- 3) 진도 체크 버튼 ------------------------------------------------ */
+  function initDone() {
+    $$('[data-done]').forEach(function (btn) {
+      var key = btn.dataset.done;
+      function paint() {
+        var on = isDone(key);
+        btn.classList.toggle('on', on);
+        btn.setAttribute('aria-pressed', String(on));
+        btn.textContent = on ? '✓ 학습 완료' : '학습 완료로 표시';
+      }
+      btn.addEventListener('click', function () { setDone(key, !isDone(key)); paint(); });
+      paint();
+    });
+  }
 
-    // 같은 배열(DOM)에서 만들어 쓴다 — 좁은 화면용 마크업을 따로 두지 않는다
-    var wrap = document.createElement('div');
-    wrap.className = 'sub-nav__select';
-    var sel = document.createElement('select');
-    sel.className = 'select';
-    sel.setAttribute('aria-label', '하위 메뉴 이동');
+  /* --- 4) 사이드바·목록에 완료 표시 ------------------------------------- */
+  function paintDoneMarks() {
+    var p = readProgress();
+    $$('[data-done-mark]').forEach(function (el) {
+      if (p[el.dataset.doneMark]) el.classList.add('is-done');
+    });
+  }
 
+  /* --- 5) 본문 목차 스크롤 추적 ----------------------------------------- */
+  function initSpy() {
+    var links = $$('.sb__sub a[href^="#"]');
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    var map = {};
     links.forEach(function (a) {
-      var op = document.createElement('option');
-      op.value = a.getAttribute('href');
-      op.textContent = a.textContent.trim();
-      if (a.classList.contains('is-active')) op.selected = true;
-      sel.appendChild(op);
+      var el = document.getElementById(a.getAttribute('href').slice(1));
+      if (el) map[el.id] = a;
     });
-    sel.addEventListener('change', function () { location.hash = sel.value.replace(/^.*#/, '#'); });
-
-    wrap.appendChild(sel);
-    nav.appendChild(wrap);
-  }
-
-  /* --- 7) sticky 헤더 높이만큼 앵커 위치 보정 --------------------------- */
-  function initAnchorOffset() {
-    var header = $('.header');
-    if (!header) return;
-    document.documentElement.style.scrollPaddingTop = (header.offsetHeight + 12) + 'px';
-  }
-
-  /* --- 8) 아코디언 (FAQ · 게시판 상세 공용) ------------------------------ */
-  function initAccordion() {
-    $$('.acc').forEach(function (acc) {
-      var single = acc.dataset.single === 'true';   // 한 번에 하나만 열기
-      $$('.acc__btn', acc).forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          var open = btn.getAttribute('aria-expanded') === 'true';
-          if (single && !open) {
-            $$('.acc__btn', acc).forEach(function (b) {
-              b.setAttribute('aria-expanded', 'false');
-              document.getElementById(b.getAttribute('aria-controls'))
-                      .classList.remove('is-open');
-            });
-          }
-          btn.setAttribute('aria-expanded', String(!open));
-          document.getElementById(btn.getAttribute('aria-controls'))
-                  .classList.toggle('is-open', !open);
-        });
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        links.forEach(function (a) { a.style.color = ''; a.style.fontWeight = ''; });
+        var a = map[e.target.id];
+        if (a) { a.style.color = 'var(--b700)'; a.style.fontWeight = '800'; }
       });
-    });
+    }, { rootMargin: '-25% 0px -65% 0px' });
+    Object.keys(map).forEach(function (id) { io.observe(document.getElementById(id)); });
   }
 
-  /* --- 실행 ------------------------------------------------------------- */
   function boot() {
-    markActiveMenu();
-    initNavToggle();
-    initReveal();
-    initCounters();
-    initFamilySelect();
-    initSubNavSelect();
-    initAnchorOffset();
-    initAccordion();
+    initSidebar(); initCopy(); initDone(); paintDoneMarks(); initSpy();
   }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot);
-  } else {
-    boot();
-  }
-
-  // 페이지별 스크립트가 쓸 수 있게 최소한만 노출한다
-  window.NH = { $: $, $$: $$ };
+  // 페이지별 스크립트가 쓸 수 있게 최소한만 내보낸다
+  window.NH = { $: $, $$: $$, readProgress: readProgress, setDone: setDone, isDone: isDone, STORE: STORE };
 })();
 
 </script>
-<script>
-/* ================= 강사 소개 전용 스크립트 ================= */
-(function () {
-  'use strict';
-  var $$ = NH.$$;
 
-  /* 스크롤 위치에 따라 좌측 메뉴 활성 표시 (about.html 과 같은 방식) */
-  var links = $$('.sub-nav ul a');
-  if (!links.length || !('IntersectionObserver' in window)) return;
-
-  var map = {};
-  links.forEach(function (a) {
-    var sec = document.getElementById(a.getAttribute('href').slice(1));
-    if (sec) map[sec.id] = a;
-  });
-
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (!e.isIntersecting) return;
-      links.forEach(function (a) { a.classList.remove('is-active'); });
-      if (map[e.target.id]) map[e.target.id].classList.add('is-active');
-    });
-  }, { rootMargin: '-30% 0px -60% 0px' });
-
-  Object.keys(map).forEach(function (id) { io.observe(document.getElementById(id)); });
-})();
-</script>
 </body>
 </html>

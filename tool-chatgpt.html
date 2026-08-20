@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="format-detection" content="telephone=no">
-<title>생성형 AI 기반 사무관리 업무혁신 실무 · 학습사이트</title>
-<meta name="description" content="농협사료 임직원 대상 1일 8차시 생성형 AI 실무 과정 학습사이트. 8차시 교재 · 실습 · AI 도구 가이드 · 업무별 프롬프트 부록.">
-<meta property="og:title" content="생성형 AI 기반 사무관리 업무혁신 실무 · 학습사이트">
-<meta property="og:description" content="농협사료 임직원 대상 1일 8차시 생성형 AI 실무 과정 학습사이트. 8차시 교재 · 실습 · AI 도구 가이드 · 업무별 프롬프트 부록.">
+<title>ChatGPT · 농협사료 AI 실무</title>
+<meta name="description" content="가장 범용적인 올라운더 — Custom GPT와 데이터 분석으로 사무 업무 자동화">
+<meta property="og:title" content="ChatGPT · 농협사료 AI 실무">
+<meta property="og:description" content="가장 범용적인 올라운더 — Custom GPT와 데이터 분석으로 사무 업무 자동화">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%228%22%20fill%3D%22%2312522e%22%2F%3E%3Cpath%20d%3D%22M16%207c4.6%202.8%207.4%206.2%207.4%2010.4a7.4%207.4%200%200%201-14.8%200C8.6%2013.2%2011.4%209.8%2016%207Z%22%20fill%3D%22%23fec20d%22%2F%3E%3Cpath%20d%3D%22M16%2012v11%22%20stroke%3D%22%2312522e%22%20stroke-width%3D%222.2%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
 <style>
@@ -413,38 +413,30 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
 
 
 /* ===== 이 페이지 전용 ===== */
-.hero{background:linear-gradient(135deg,var(--b900) 0%,var(--b800) 45%,var(--b600) 100%);
-  color:#fff; padding:56px 28px 60px; position:relative; overflow:hidden}
-.hero::after{content:""; position:absolute; right:-90px; top:-90px; width:340px; height:340px;
-  border-radius:50%; background:rgba(254,194,13,.12)}
-.hero__in{position:relative; z-index:1; max-width:1180px; margin:0 auto}
-.hero__tag{display:inline-block; padding:5px 13px; border-radius:var(--pill);
-  background:rgba(255,255,255,.16); font-size:12.5px; font-weight:800; margin-bottom:14px}
-.hero h1{font-size:38px; font-weight:800; letter-spacing:-.035em; line-height:1.28; max-width:20ch}
-.hero p{margin-top:12px; font-size:17px; color:rgba(255,255,255,.9); max-width:52ch}
-.hero__cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px}
-.hero__meta{display:flex; flex-wrap:wrap; gap:12px 32px; margin-top:32px;
-  padding-top:22px; border-top:1px solid rgba(255,255,255,.18)}
-.hero__meta b{display:block; font-size:19px; font-weight:800; color:var(--s300)}
-.hero__meta span{font-size:13px; color:rgba(255,255,255,.75)}
-.part-card__n{font-size:12px; font-weight:800; color:var(--b600); margin-bottom:5px}
-.part-card__badges{display:flex; flex-wrap:wrap; gap:6px; margin-top:12px}
-.part-card.is-done{border-color:var(--b400); background:var(--b50)}
-.part-card.is-done .part-card__n::after{content:" ✓ 완료"; color:var(--b600)}
-.tl{background:#fff; border:1px solid var(--g200); border-radius:var(--radius); overflow:hidden; min-width:560px}
-.tl thead th{background:var(--b800); color:#fff; padding:11px 13px; text-align:left; font-size:13.5px}
-.tl td{padding:11px 13px; border-top:1px solid var(--g100); font-size:14px}
-.tl .c{text-align:center}
-.tl .nowrap{white-space:nowrap; color:var(--g500)}
-@media (max-width:900px){ .hero{padding:40px 20px 46px} .hero h1{font-size:26px} .hero p{font-size:15px} }
-@media (max-width:640px){ .hero h1{font-size:22px} .hero__cta .btn{width:auto; flex:1} }
+.steps{counter-reset:st; margin:14px 0 18px}
+.steps li{counter-increment:st; position:relative; padding-left:32px; margin-bottom:9px;
+  font-size:14.5px; line-height:1.8; color:var(--g600)}
+.steps li::before{content:counter(st); position:absolute; left:0; top:.15em;
+  display:grid; place-items:center; width:22px; height:22px; border-radius:50%;
+  background:var(--b600); color:#fff; font-size:12px; font-weight:800}
+.b-table__t{background:#fff; border:1px solid var(--g200); border-radius:var(--radius);
+  overflow:hidden; min-width:480px; font-size:14px}
+.b-table__t thead th{background:var(--b800); color:#fff; padding:10px 13px; text-align:left}
+.b-table__t td{padding:10px 13px; border-top:1px solid var(--g100); color:var(--g600)}
+.b-table__t .nowrap{white-space:nowrap}
+.lab{margin:14px 0 22px; border:1px solid var(--g200); border-radius:var(--radius); background:#fff; padding:18px 20px}
+.lab__h{display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-bottom:11px}
+.lab__h h3{font-size:16px; font-weight:800; color:var(--g900)}
+.lab__goal{font-size:14.5px; color:var(--g600); line-height:1.8}
+.lab__goal b,.lab__out b{color:var(--b700); font-weight:800; margin-right:5px}
+.lab__out{margin-top:10px; padding:11px 14px; border-radius:10px; background:var(--s50); color:#713f12; font-size:14px}
 </style>
 <noscript><style>
 /* 스크립트가 꺼져 있어도 목차는 보여야 한다 */
 .sb{transform:none !important; position:static !important; height:auto !important}
 </style></noscript>
 </head>
-<body data-page="home">
+<body data-page="tool-chatgpt">
 
 <a class="skip-link" href="#main">본문 바로가기</a>
 <header class="hd">
@@ -456,11 +448,11 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
     <span>농협사료<small>AI 사무관리 업무혁신</small></span>
   </a>
   <nav class="hd__nav" aria-label="주 메뉴">
-    <a href="index.html" class="on" aria-current="page">홈</a>
+    <a href="index.html">홈</a>
     <a href="course.html">교재</a>
     <a href="schedule.html">일정</a>
     <a href="labs.html">실습</a>
-    <a href="tools.html">AI 도구</a>
+    <a href="tools.html" class="on" aria-current="page">AI 도구</a>
     <a href="appendix.html">부록</a>
     <a href="about.html">소개</a>
     <a href="dashboard.html">진도</a>
@@ -468,192 +460,162 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
 </header>
 
 <div class="shell">
-  <aside class="sb" id="sb"><div class="sb__title">생성형 AI 기반 사무관리 업무혁신 실무</div>
-<a class="sb__cta" href="schedule.html">📅 8차시 교육 일정 보기</a>
-<div class="sb__label">학습 목차</div>
-<a class="sb__item on" href="course.html"><span>교재 전체 개요</span></a>
-<a class="sb__item" href="part-1.html" data-done-mark="part-1"><span class="sb__num">1</span><span>생성형 AI와 프롬프트 엔지니어링 이해</span></a>
-<a class="sb__item" href="part-2.html" data-done-mark="part-2"><span class="sb__num">2</span><span>사무관리 업무별 AI 활용 구조 이해</span></a>
-<a class="sb__item" href="part-3.html" data-done-mark="part-3"><span class="sb__num">3</span><span>AI 기반 시장분석 및 트렌드 도출</span></a>
-<a class="sb__item" href="part-4.html" data-done-mark="part-4"><span class="sb__num">4</span><span>AI 활용 전략 기획 및 아이디어션</span></a>
-<a class="sb__item" href="part-5.html" data-done-mark="part-5"><span class="sb__num">5</span><span>GPT 활용 기획 문서 및 보고서 자동화</span></a>
-<a class="sb__item" href="part-6.html" data-done-mark="part-6"><span class="sb__num">6</span><span>AI 기반 데이터 분석</span></a>
-<a class="sb__item" href="part-7.html" data-done-mark="part-7"><span class="sb__num">7</span><span>AI 활용 의사결정 지원 시스템 구축</span></a>
-<a class="sb__item" href="part-8.html" data-done-mark="part-8"><span class="sb__num">8</span><span>종합 실습 및 현업 적용 계획 수립</span></a></aside>
+  <aside class="sb" id="sb"><div class="sb__title">AI 도구 가이드</div>
+<div class="sb__label">무료 AI 도구</div>
+<a class="sb__item" href="promptlab.html"><span>프롬프트 실습실</span></a>
+<a class="sb__item on" href="tool-chatgpt.html"><span>ChatGPT</span></a>
+<a class="sb__item" href="tool-claude.html"><span>Claude</span></a>
+<a class="sb__item" href="tool-gemini.html"><span>Gemini</span></a>
+<a class="sb__item" href="tool-perplexity.html"><span>Perplexity</span></a>
+<a class="sb__item" href="tool-sheets.html"><span>Google Sheets</span></a>
+<a class="sb__item" href="tool-docs.html"><span>Google Docs</span></a></aside>
   <main id="main" style="flex:1;min-width:0">
+<div class="main"><div class="wrap">
+<ol class="crumb"><li><a href="index.html">홈</a></li><li><a href="tools.html">AI 도구</a></li><li>ChatGPT</li></ol>
+<div class="ph">
+  <span class="ph__eyebrow">OpenAI</span>
+  <h1>ChatGPT</h1>
+  <p>가장 범용적인 올라운더 — Custom GPT와 데이터 분석으로 사무 업무 자동화</p>
+</div>
+<p class="b-para" style="white-space:pre-line">가장 널리 쓰이는 생성형 AI로, 문서작성·요약·번역·데이터 분석·이미지 생성까지 폭넓게 처리한다. Custom GPT로 공지·보고 양식에 특화한 나만의 어시스턴트를 만들 수 있고, Code Interpreter로 엑셀·CSV를 코딩 없이 분석한다. 사무관리 전반의 반복 업무를 자동화하는 데 강하다.</p>
 
-<section class="hero">
-  <div class="hero__in">
-    <span class="hero__tag">농협사료 임직원 교육 · 1일 8차시</span>
-    <h1>생성형 AI 기반 사무관리 업무혁신 실무</h1>
-    <p>무료 AI 도구로 완성하는 1일 8차시 실습 과정</p>
-    <div class="hero__cta">
-      <a class="btn btn--gold" href="part-1.html">1차시부터 시작하기</a>
-      <a class="btn btn--white" href="schedule.html">교육 일정 보기</a>
+<h2 class="sec-h" id="strengths"><span class="sec-h__n">■</span>강점</h2>
+<ul class="b-bullets"><li>범용성 — 공지·기안·보고·번역 등 거의 모든 사무 업무 처리</li><li>Custom GPT — 코딩 없이 업무 특화 봇 제작·부서 공유</li><li>Code Interpreter — 엑셀·CSV 업로드만으로 데이터 분석·차트</li><li>멀티모달 — 표·스캔 문서 이미지 분석(Vision), 이미지 생성</li><li>Tasks — 주간 보고 등 정기 업무 예약 자동 실행</li></ul>
+<h2 class="sec-h" id="start"><span class="sec-h__n">■</span>시작하기</h2>
+<ol class="steps"><li>chatgpt.com 접속 후 구글 계정 등으로 로그인</li><li>상단에서 모델 선택(빠른 응답/추론 모델)</li><li>메시지 입력창에 파일·이미지 첨부 가능</li><li>자주 쓰는 작업은 Custom GPT로 저장해 재사용</li></ol>
+<h2 class="sec-h" id="plans"><span class="sec-h__n">■</span>요금제</h2>
+<div class="table-wrap"><table class="b-table__t"><thead><tr><th>구분</th><th>가격</th><th>내용</th></tr></thead>
+     <tbody><tr><td><b>Free</b></td><td class="nowrap">무료</td><td>기본 모델, 일부 기능 제한</td></tr><tr><td><b>Plus</b></td><td class="nowrap">약 $20/월</td><td>최신 모델·고급 기능·사용량 확대(개인 실무 표준)</td></tr><tr><td><b>Pro</b></td><td class="nowrap">약 $200/월</td><td>최상위 추론 모델 무제한급, 고부하 작업</td></tr><tr><td><b>Team / Enterprise</b></td><td class="nowrap">문의</td><td>조직 관리·보안·데이터 학습 옵트아웃</td></tr></tbody></table></div>
+<h2 class="sec-h" id="features"><span class="sec-h__n">■</span>주요 기능</h2>
+<div class="grid g2"><div class="card"><h3>Custom GPT</h3>
+       <p>회사 공지·보고 양식·자료를 넣은 전용 어시스턴트를 만들어 부서별로 공유.</p></div><div class="card"><h3>Code Interpreter</h3>
+       <p>판매·업무 데이터 파일 업로드 → 분석·시각화·리포트. 코딩 지식 불필요.</p></div><div class="card"><h3>Vision</h3>
+       <p>스캔한 문서·표·양식 이미지를 분석해 정보 추출·표 변환.</p></div><div class="card"><h3>이미지 생성</h3>
+       <p>사내 안내물·행사 포스터·다이어그램 초안 생성.</p></div><div class="card"><h3>Web 검색 · Tasks</h3>
+       <p>실시간 정보 검색 + 반복 보고 업무 예약 실행.</p></div></div>
+<h2 class="sec-h" id="guide"><span class="sec-h__n">■</span>기능별 사용법</h2>
+<div class="card" style="margin-bottom:14px">
+      <h3>Custom GPT</h3>
+      <p><b style="color:var(--b700)">무엇</b> 코딩 없이 사무 업무에 특화된 나만의 GPT를 만들어 부서와 공유한다. 지시문·양식·동작 규칙을 고정할 수 있다.</p>
+      <p style="margin-top:7px"><b style="color:var(--b700)">방법</b> Explore GPTs → Create → Configure,이름·설명·지시문(Instructions) 입력,Knowledge에 공지·보고 양식 PDF 업로드,미리보기로 테스트 후 링크 공유</p>
+      <p style="margin-top:7px"><b style="color:var(--s700)">Tip</b> “업로드한 사내 양식을 따르고, 없으면 확인 필요로”라고 규칙을 박아두면 결과가 일관된다.</p>
+    </div><div class="card" style="margin-bottom:14px">
+      <h3>Code Interpreter (데이터 분석)</h3>
+      <p><b style="color:var(--b700)">무엇</b> 엑셀·CSV를 올리면 코드를 자동 실행해 분석·시각화·리포트를 만든다. 코딩 지식이 필요 없다.</p>
+      <p style="margin-top:7px"><b style="color:var(--b700)">방법</b> 데이터 파일 업로드,“월별 판매 추이를 막대그래프로” 등 자연어로 요청,결과 차트·표를 이미지/파일로 다운로드</p>
+      <p style="margin-top:7px"><b style="color:var(--s700)">Tip</b> 원하는 그래프 종류와 축을 명시하면 한 번에 원하는 결과가 나온다.</p>
+    </div><div class="card" style="margin-bottom:14px">
+      <h3>Vision (문서·표 이미지 분석)</h3>
+      <p><b style="color:var(--b700)">무엇</b> 스캔 문서·손글씨 양식·표 이미지를 이해해 정보를 추출하거나 디지털 표로 변환한다.</p>
+      <p style="margin-top:7px"><b style="color:var(--b700)">방법</b> 이미지 첨부,“항목·수치를 표로 정리” 요청,불확실 항목은 “확인 필요” 표기 지시</p>
+      <p style="margin-top:7px"><b style="color:var(--s700)">Tip</b> 손글씨·저화질은 오독 가능 — 핵심 수치는 사람이 검수.</p>
+    </div><div class="card" style="margin-bottom:14px">
+      <h3>이미지 생성 (DALL·E)</h3>
+      <p><b style="color:var(--b700)">무엇</b> 설명만으로 사내 안내물·행사 포스터·다이어그램 초안 이미지를 생성한다.</p>
+      <p style="margin-top:7px"><b style="color:var(--b700)">방법</b> “~한 분위기의 ~이미지” 묘사,비율·스타일·텍스트 포함 여부 지정,초안 후 부분 수정 요청</p>
+      <p style="margin-top:7px"><b style="color:var(--s700)">Tip</b> 상표·실제 인물·정확한 로고 재현에는 부적합하다.</p>
+    </div><div class="card" style="margin-bottom:14px">
+      <h3>Tasks (예약 자동화)</h3>
+      <p><b style="color:var(--b700)">무엇</b> 정해진 시각에 반복 사무 업무를 자동 실행하도록 예약한다.</p>
+      <p style="margin-top:7px"><b style="color:var(--b700)">방법</b> “매주 금요일 16시에 ~ 생성” 형태로 Task 등록,출력 형식·검수 항목 지정,결과 알림 확인</p>
+      <p style="margin-top:7px"><b style="color:var(--s700)">Tip</b> 생성물은 사람이 검수하는 게이트를 반드시 둔다.</p>
     </div>
-    <ul class="hero__meta">
-      <li><b>08:00–17:00</b><span>점심 1시간 제외</span></li>
-      <li><b>8차시</b><span>이론 30 · 실습 50 · 사례 20</span></li>
-      <li><b>무료 도구</b><span>ChatGPT · Claude · Gemini 외</span></li>
-    </ul>
-  </div>
-</section>
+<h2 class="sec-h" id="usecases"><span class="sec-h__n">■</span>사무관리 활용</h2>
+<div class="grid g2"><div class="card"><h3>문서작성·공지</h3>
+       <p>Custom GPT로 사내 문체·양식을 학습시켜 공지문·기안문 초안 자동화.</p></div><div class="card"><h3>보고서 자동화</h3>
+       <p>주간·월간 보고 템플릿 기반 자동 초안 생성으로 일관성 확보.</p></div><div class="card"><h3>데이터 분석</h3>
+       <p>판매·업무·고객 데이터를 업로드해 추세·이상치 분석과 차트 생성.</p></div></div>
+<h2 class="sec-h" id="practices"><span class="sec-h__n">■</span>실습</h2>
 
-<div class="main"><div class="wrap wrap--wide">
-  <h2 class="sec-h"><span class="sec-h__n">1</span>8차시 커리큘럼</h2>
-  <div class="grid g2">
-    <a class="card part-card" href="part-1.html" data-done-mark="part-1">
-      <div class="part-card__n">1차시</div>
-      <h3>생성형 AI와 프롬프트 엔지니어링 이해</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 46</span>
-        <span class="bdg bdg--green">실습 2</span>
-        <span class="bdg bdg--gold">표 5</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-2.html" data-done-mark="part-2">
-      <div class="part-card__n">2차시</div>
-      <h3>사무관리 업무별 AI 활용 구조 이해</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 37</span>
-        <span class="bdg bdg--green">실습 2</span>
-        <span class="bdg bdg--gold">표 5</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-3.html" data-done-mark="part-3">
-      <div class="part-card__n">3차시</div>
-      <h3>AI 기반 시장분석 및 트렌드 도출</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 47</span>
-        <span class="bdg bdg--green">실습 3</span>
-        <span class="bdg bdg--gold">표 3</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-4.html" data-done-mark="part-4">
-      <div class="part-card__n">4차시</div>
-      <h3>AI 활용 전략 기획 및 아이디어션</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 51</span>
-        <span class="bdg bdg--green">실습 6</span>
-        <span class="bdg bdg--gold">표 4</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-5.html" data-done-mark="part-5">
-      <div class="part-card__n">5차시</div>
-      <h3>GPT 활용 기획 문서 및 보고서 자동화</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 59</span>
-        <span class="bdg bdg--green">실습 5</span>
-        <span class="bdg bdg--gold">표 3</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-6.html" data-done-mark="part-6">
-      <div class="part-card__n">6차시</div>
-      <h3>AI 기반 데이터 분석</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 53</span>
-        <span class="bdg bdg--green">실습 5</span>
-        <span class="bdg bdg--gold">표 3</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-7.html" data-done-mark="part-7">
-      <div class="part-card__n">7차시</div>
-      <h3>AI 활용 의사결정 지원 시스템 구축</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 61</span>
-        <span class="bdg bdg--green">실습 3</span>
-        <span class="bdg bdg--gold">표 3</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-8.html" data-done-mark="part-8">
-      <div class="part-card__n">8차시</div>
-      <h3>종합 실습 및 현업 적용 계획 수립</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 54</span>
-        <span class="bdg bdg--green">실습 3</span>
-        <span class="bdg bdg--gold">표 4</span>
-      </p>
-    </a>
-  </div>
+  <article class="lab">
+    <div class="lab__h"><span class="bdg bdg--solid">실전</span><h3>실습 ① 부서 전용 Custom GPT 만들기</h3></div>
+    <p class="lab__goal"><b>목표</b> 총무팀 공지·기안 작성을 돕는 전용 GPT를 코딩 없이 구축한다.</p>
+    <ol class="steps"><li>ChatGPT → ‘GPT 만들기(Explore GPTs &gt; Create)’ 진입</li><li>이름·설명 설정: “총무팀 공지·기안 어시스턴트”</li><li>Instructions에 역할·문체·양식 규칙 입력(아래 프롬프트 참고)</li><li>Knowledge에 사내 공지·기안 양식 PDF 업로드</li><li>대화로 테스트 후 ‘부서 공유’ 링크 발급</li></ol>
+    
+  </article>
 
-  <h2 class="sec-h"><span class="sec-h__n">2</span>이 과정에서 쓰는 무료 AI 도구</h2>
-  <div class="grid g3">
-    <a class="card" href="tool-chatgpt.html">
-      <h3>ChatGPT <span class="bdg bdg--gray">OpenAI</span></h3>
-      <p>가장 범용적인 올라운더 — Custom GPT와 데이터 분석으로 사무 업무 자동화</p>
-    </a>
-    <a class="card" href="tool-claude.html">
-      <h3>Claude <span class="bdg bdg--gray">Anthropic</span></h3>
-      <p>장문·정확성·안전성의 강자 — Artifacts로 즉석 문서·표 제작</p>
-    </a>
-    <a class="card" href="tool-gemini.html">
-      <h3>Gemini <span class="bdg bdg--gray">Google</span></h3>
-      <p>Google 생태계 통합 + 초대형 컨텍스트 + Deep Research</p>
-    </a>
-    <a class="card" href="tool-perplexity.html">
-      <h3>Perplexity <span class="bdg bdg--gray">Perplexity AI</span></h3>
-      <p>출처를 인용하는 AI 검색 — 최신 시장·업계 조사에 최적</p>
-    </a>
-    <a class="card" href="tool-sheets.html">
-      <h3>Google Sheets <span class="bdg bdg--gray">Google</span></h3>
-      <p>데이터 정리·집계·기초 분석 + AI와 결합해 인사이트까지</p>
-    </a>
-    <a class="card" href="tool-docs.html">
-      <h3>Google Docs <span class="bdg bdg--gray">Google</span></h3>
-      <p>문서 작성·공동 편집 + AI 초안 정리·문체 교정</p>
-    </a>
-  </div>
+  <article class="lab">
+    <div class="lab__h"><span class="bdg bdg--solid">실전</span><h3>실습 ② Code Interpreter로 판매 데이터 분석</h3></div>
+    <p class="lab__goal"><b>목표</b> 월별 사료 판매 엑셀을 업로드해 추세와 이상치를 자동 분석·시각화한다.</p>
+    <ol class="steps"><li>판매 데이터 파일(.xlsx/.csv) 업로드</li><li>“품목별 매출 상위 10개를 막대그래프로” 요청</li><li>“월별 매출 추세선과 이상치 표시” 요청</li><li>“전월 대비 급증·급감 품목과 원인 가설” 요청</li></ol>
+    
+  </article>
 
-  <h2 class="sec-h"><span class="sec-h__n">3</span>바로가기</h2>
-  <div class="grid g4">
-    <a class="card" href="promptlab.html"><h3>프롬프트 실습실</h3><p>5요소로 프롬프트를 쓰고 점수로 확인한다.</p></a>
-    <a class="card" href="labs.html"><h3>실습 모음</h3><p>8차시 실습을 단계별 지시문으로 정리했다.</p></a>
-    <a class="card" href="appendix.html"><h3>업무별 프롬프트</h3><p>메일·보고서·회의록 등 바로 쓰는 예제.</p></a>
-    <a class="card" href="dashboard.html"><h3>학습 진도</h3><p>어디까지 봤는지 이 브라우저에 기록된다.</p></a>
-  </div>
+  <article class="lab">
+    <div class="lab__h"><span class="bdg bdg--solid">입문</span><h3>실습 ③ Vision으로 종이 양식 디지털화</h3></div>
+    <p class="lab__goal"><b>목표</b> 손글씨 신청서·스캔 표에서 정보를 자동 추출한다.</p>
+    <ol class="steps"><li>스캔 문서 또는 손글씨 양식 사진 업로드</li><li>“이 양식의 항목·값을 표로 정리” 요청</li><li>“손글씨 표를 디지털 표로 변환(불명확한 글자는 [?] 표기)” 요청</li></ol>
+    
+  </article>
 
-  <h2 class="sec-h"><span class="sec-h__n">4</span>하루 흐름</h2>
-  <div class="table-wrap"><table class="tl">
-    <thead><tr><th>차시</th><th>시간</th><th>구분</th><th>주제</th></tr></thead>
-    <tbody><tr>
-      <td class="c"><b>1차시</b></td>
-      <td class="c nowrap">08:00–09:00</td>
-      <td class="c"><span class="bdg bdg--green">학습</span></td>
-      <td>프롬프트 엔지니어링 이해</td></tr><tr>
-      <td class="c"><b>2차시</b></td>
-      <td class="c nowrap">09:00–10:00</td>
-      <td class="c"><span class="bdg bdg--green">학습</span></td>
-      <td>사무관리 업무별 AI 활용 구조 이해</td></tr><tr>
-      <td class="c"><b>3차시</b></td>
-      <td class="c nowrap">10:00–11:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>AI 기반 시장분석 및 트렌드 도출</td></tr><tr>
-      <td class="c"><b>4차시</b></td>
-      <td class="c nowrap">11:00–12:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>AI 활용 전략 기획 및 아이디어션</td></tr><tr>
-      <td class="c"><b>점심</b></td>
-      <td class="c nowrap">12:00–13:00</td>
-      <td class="c"><span class="bdg bdg--green">점심</span></td>
-      <td>점심 식사</td></tr><tr>
-      <td class="c"><b>5차시</b></td>
-      <td class="c nowrap">13:00–14:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>GPT 활용 기획 문서 및 보고서 자동화</td></tr><tr>
-      <td class="c"><b>6차시</b></td>
-      <td class="c nowrap">14:00–15:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>AI 기반 데이터 분석</td></tr><tr>
-      <td class="c"><b>7차시</b></td>
-      <td class="c nowrap">15:00–16:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>AI 활용 의사결정 지원 시스템 구축</td></tr><tr>
-      <td class="c"><b>8차시</b></td>
-      <td class="c nowrap">16:00–17:00</td>
-      <td class="c"><span class="bdg bdg--green">정리</span></td>
-      <td>종합 실습 및 현업 적용 계획 수립</td></tr></tbody>
-  </table></div>
-  <p style="margin-top:14px"><a class="btn btn--line btn--sm" href="schedule.html">자세한 일정 보기 →</a></p>
+  <article class="lab">
+    <div class="lab__h"><span class="bdg bdg--solid">심화</span><h3>실습 ④ Tasks로 주간 보고 자동화</h3></div>
+    <p class="lab__goal"><b>목표</b> 매주 정해진 시각에 반복 보고 업무를 자동 실행시킨다.</p>
+    <ol class="steps"><li>“매주 금요일 오후 4시에 이번 주 업무 요약 템플릿을 생성” 형태로 Task 등록</li><li>생성 결과를 검수하는 체크 항목 지정</li><li>필요 시 Custom GPT와 결합해 사내 보고 양식으로 출력</li></ol>
+    
+  </article>
+
+  <article class="lab">
+    <div class="lab__h"><span class="bdg bdg--solid">입문</span><h3>실습 ⑤ 이미지 생성으로 사내 행사 안내물</h3></div>
+    <p class="lab__goal"><b>목표</b> 사내 행사·캠페인 안내를 한눈에 보이는 포스터 이미지로 만든다.</p>
+    <ol class="steps"><li>ChatGPT 입력창에서 이미지 생성을 요청</li><li>문구·비율·분위기 지정</li><li>초안 후 문구 수정 요청</li></ol>
+    
+  </article>
+<h2 class="sec-h" id="prompts"><span class="sec-h__n">■</span>추천 프롬프트</h2>
+<div class="b-prompt">
+  <p class="b-prompt__cap">공지문 작성</p>
+  <div class="b-prompt__box">
+    <div class="b-prompt__bar"><span>Prompt</span>
+      <button class="copy-btn" type="button">복사</button></div>
+    <pre>너는 농협사료 총무팀 담당자다. 아래 내용으로 전 직원 대상 사내 공지문을 제목·본문·문의처 형식으로 작성해줘. 확정 안 된 일정은 “확인 필요”로 표기해줘.</pre>
+  </div>
+</div>
+<div class="b-prompt">
+  <p class="b-prompt__cap">회의록 요약</p>
+  <div class="b-prompt__box">
+    <div class="b-prompt__bar"><span>Prompt</span>
+      <button class="copy-btn" type="button">복사</button></div>
+    <pre>아래 회의록에서 결정사항과 할 일만 뽑아 “구분/내용/담당/기한” 표로 정리해줘. 원문에 없는 내용은 추가하지 마.</pre>
+  </div>
+</div>
+<div class="b-prompt">
+  <p class="b-prompt__cap">데이터 분석</p>
+  <div class="b-prompt__box">
+    <div class="b-prompt__bar"><span>Prompt</span>
+      <button class="copy-btn" type="button">복사</button></div>
+    <pre>첨부한 판매 실적 CSV를 분석해 품목별 매출 TOP10과 월별 매출 추세를 차트로 그려줘.</pre>
+  </div>
+</div>
+<h2 class="sec-h" id="cases"><span class="sec-h__n">■</span>활용 사례</h2>
+<div class="card" style="margin-bottom:14px">
+    <h3>사내 문서 작성 표준화 <span class="bdg bdg--gray">총무·인사</span></h3>
+    <p><b style="color:#b45309">문제</b> 담당자마다 공지·기안 문체와 양식이 제각각이고 작성 시간이 김.</p>
+    <p style="margin-top:7px"><b style="color:var(--b700)">해결</b> Custom GPT에 사내 양식·문체 규칙을 학습시켜 공지·기안 초안 자동 생성 → 담당자 검수.</p>
+    <p style="margin-top:7px"><b style="color:var(--b700)">결과</b> 문서작성 시간 단축, 사내 문서 톤·양식 일관성 확보.</p>
+  </div><div class="card" style="margin-bottom:14px">
+    <h3>판매·업무 데이터 인사이트 <span class="bdg bdg--gray">영업지원·기획</span></h3>
+    <p><b style="color:#b45309">문제</b> 판매·업무 데이터가 엑셀에 쌓이지만 분석 인력이 없어 활용 못 함.</p>
+    <p style="margin-top:7px"><b style="color:var(--b700)">해결</b> Code Interpreter에 데이터 업로드 → 추세·이상치·증감 요인 자동 분석.</p>
+    <p style="margin-top:7px"><b style="color:var(--b700)">결과</b> 실적 인사이트 도출, 임원 보고 자료 제작 시간 대폭 절감.</p>
+  </div><div class="card" style="margin-bottom:14px">
+    <h3>부서 보고서 어시스턴트 <span class="bdg bdg--gray">전부서</span></h3>
+    <p><b style="color:#b45309">문제</b> 주간·월간 보고서 양식·품질이 담당자별로 제각각.</p>
+    <p style="margin-top:7px"><b style="color:var(--b700)">해결</b> 사내 보고 양식을 넣은 Custom GPT로 보고서 초안 표준화.</p>
+    <p style="margin-top:7px"><b style="color:var(--b700)">결과</b> 보고서 작성 시간 단축, 산출물 품질 균일화.</p>
+  </div><div class="card" style="margin-bottom:14px">
+    <h3>신입 업무 어시스턴트 <span class="bdg bdg--gray">인사·교육</span></h3>
+    <p><b style="color:#b45309">문제</b> 신입사원 문서·절차 안내에 선배 시간이 과도하게 소모됨.</p>
+    <p style="margin-top:7px"><b style="color:var(--b700)">해결</b> Custom GPT에 사내 규정·FAQ를 넣어 24시간 질문 가능한 안내 봇 운영.</p>
+    <p style="margin-top:7px"><b style="color:var(--b700)">결과</b> 선배 문의 응대 시간 절감, 신입 적응 속도 향상.</p>
+  </div>
+<h2 class="sec-h" id="tips"><span class="sec-h__n">■</span>프롬프트 요령</h2>
+<ul class="b-bullets"><li>“너는 ○○팀 담당자다”로 역할을 먼저 지정한다.</li><li>반복 업무는 Custom GPT로 만들어 두고 재사용한다.</li><li>데이터는 파일로 올리고 “표/차트로” 출력 형식을 지정한다.</li></ul>
+<h2 class="sec-h" id="limits"><span class="sec-h__n">■</span>한계와 유의점</h2>
+<ul class="b-bullets"><li>학습 시점 이후 최신 정보는 웹 검색을 켜야 정확하다(기본 답변은 과거 시점일 수 있음).</li><li>수치·통계·규정·인용문은 환각 가능 — 반드시 원문/공식 자료로 검수한다.</li><li>사내·고객·거래처 자료는 데이터 학습 옵트아웃 또는 Team/Enterprise 정책을 확인한 뒤 입력한다.</li></ul>
+<h2 class="sec-h" id="links"><span class="sec-h__n">■</span>링크</h2>
+<a class="b-link" href="https://chatgpt.com" target="_blank" rel="noopener">공식 사이트 ↗</a><a class="b-link" href="https://help.openai.com" target="_blank" rel="noopener">OpenAI 도움말 ↗</a>
+<h2 class="sec-h" id="refs"><span class="sec-h__n">■</span>본 과정 연계</h2>
+<a class="b-link" href="part-5.html">본 과정 5차시 · 보고서 자동화 →</a><a class="b-link" href="part-2.html">본 과정 2차시 · 사무관리 업무별 AI 활용 구조 →</a>
 </div></div>
   </main>
 </div>

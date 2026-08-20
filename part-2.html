@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="format-detection" content="telephone=no">
-<title>생성형 AI 기반 사무관리 업무혁신 실무 · 학습사이트</title>
-<meta name="description" content="농협사료 임직원 대상 1일 8차시 생성형 AI 실무 과정 학습사이트. 8차시 교재 · 실습 · AI 도구 가이드 · 업무별 프롬프트 부록.">
-<meta property="og:title" content="생성형 AI 기반 사무관리 업무혁신 실무 · 학습사이트">
-<meta property="og:description" content="농협사료 임직원 대상 1일 8차시 생성형 AI 실무 과정 학습사이트. 8차시 교재 · 실습 · AI 도구 가이드 · 업무별 프롬프트 부록.">
+<title>2차시 · 사무관리 업무별 AI 활용 구조 이해 — 농협사료 AI 실무</title>
+<meta name="description" content="2차시: 사무관리 업무별 AI 활용 구조 이해">
+<meta property="og:title" content="2차시 · 사무관리 업무별 AI 활용 구조 이해 — 농협사료 AI 실무">
+<meta property="og:description" content="2차시: 사무관리 업무별 AI 활용 구조 이해">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%228%22%20fill%3D%22%2312522e%22%2F%3E%3Cpath%20d%3D%22M16%207c4.6%202.8%207.4%206.2%207.4%2010.4a7.4%207.4%200%200%201-14.8%200C8.6%2013.2%2011.4%209.8%2016%207Z%22%20fill%3D%22%23fec20d%22%2F%3E%3Cpath%20d%3D%22M16%2012v11%22%20stroke%3D%22%2312522e%22%20stroke-width%3D%222.2%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
 <style>
@@ -413,38 +413,21 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
 
 
 /* ===== 이 페이지 전용 ===== */
-.hero{background:linear-gradient(135deg,var(--b900) 0%,var(--b800) 45%,var(--b600) 100%);
-  color:#fff; padding:56px 28px 60px; position:relative; overflow:hidden}
-.hero::after{content:""; position:absolute; right:-90px; top:-90px; width:340px; height:340px;
-  border-radius:50%; background:rgba(254,194,13,.12)}
-.hero__in{position:relative; z-index:1; max-width:1180px; margin:0 auto}
-.hero__tag{display:inline-block; padding:5px 13px; border-radius:var(--pill);
-  background:rgba(255,255,255,.16); font-size:12.5px; font-weight:800; margin-bottom:14px}
-.hero h1{font-size:38px; font-weight:800; letter-spacing:-.035em; line-height:1.28; max-width:20ch}
-.hero p{margin-top:12px; font-size:17px; color:rgba(255,255,255,.9); max-width:52ch}
-.hero__cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px}
-.hero__meta{display:flex; flex-wrap:wrap; gap:12px 32px; margin-top:32px;
-  padding-top:22px; border-top:1px solid rgba(255,255,255,.18)}
-.hero__meta b{display:block; font-size:19px; font-weight:800; color:var(--s300)}
-.hero__meta span{font-size:13px; color:rgba(255,255,255,.75)}
-.part-card__n{font-size:12px; font-weight:800; color:var(--b600); margin-bottom:5px}
-.part-card__badges{display:flex; flex-wrap:wrap; gap:6px; margin-top:12px}
-.part-card.is-done{border-color:var(--b400); background:var(--b50)}
-.part-card.is-done .part-card__n::after{content:" ✓ 완료"; color:var(--b600)}
-.tl{background:#fff; border:1px solid var(--g200); border-radius:var(--radius); overflow:hidden; min-width:560px}
-.tl thead th{background:var(--b800); color:#fff; padding:11px 13px; text-align:left; font-size:13.5px}
-.tl td{padding:11px 13px; border-top:1px solid var(--g100); font-size:14px}
-.tl .c{text-align:center}
-.tl .nowrap{white-space:nowrap; color:var(--g500)}
-@media (max-width:900px){ .hero{padding:40px 20px 46px} .hero h1{font-size:26px} .hero p{font-size:15px} }
-@media (max-width:640px){ .hero h1{font-size:22px} .hero__cta .btn{width:auto; flex:1} }
+.pn{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:22px}
+.pn__a{display:block; padding:15px 18px; border-radius:var(--radius);
+  border:1px solid var(--g200); background:#fff; transition:border-color .2s var(--ease)}
+.pn__a:hover{border-color:var(--b400)}
+.pn__a span{display:block; font-size:12px; font-weight:800; color:var(--b600); margin-bottom:3px}
+.pn__a b{font-size:14px; color:var(--g700); font-weight:700; line-height:1.5}
+.pn__a--r{text-align:right}
+@media (max-width:640px){ .pn{grid-template-columns:1fr} .pn__a--r{text-align:left} }
 </style>
 <noscript><style>
 /* 스크립트가 꺼져 있어도 목차는 보여야 한다 */
 .sb{transform:none !important; position:static !important; height:auto !important}
 </style></noscript>
 </head>
-<body data-page="home">
+<body data-page="part-2">
 
 <a class="skip-link" href="#main">본문 바로가기</a>
 <header class="hd">
@@ -456,8 +439,8 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
     <span>농협사료<small>AI 사무관리 업무혁신</small></span>
   </a>
   <nav class="hd__nav" aria-label="주 메뉴">
-    <a href="index.html" class="on" aria-current="page">홈</a>
-    <a href="course.html">교재</a>
+    <a href="index.html">홈</a>
+    <a href="course.html" class="on" aria-current="page">교재</a>
     <a href="schedule.html">일정</a>
     <a href="labs.html">실습</a>
     <a href="tools.html">AI 도구</a>
@@ -471,9 +454,14 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
   <aside class="sb" id="sb"><div class="sb__title">생성형 AI 기반 사무관리 업무혁신 실무</div>
 <a class="sb__cta" href="schedule.html">📅 8차시 교육 일정 보기</a>
 <div class="sb__label">학습 목차</div>
-<a class="sb__item on" href="course.html"><span>교재 전체 개요</span></a>
+<a class="sb__item" href="course.html"><span>교재 전체 개요</span></a>
 <a class="sb__item" href="part-1.html" data-done-mark="part-1"><span class="sb__num">1</span><span>생성형 AI와 프롬프트 엔지니어링 이해</span></a>
-<a class="sb__item" href="part-2.html" data-done-mark="part-2"><span class="sb__num">2</span><span>사무관리 업무별 AI 활용 구조 이해</span></a>
+<a class="sb__item on" href="part-2.html" data-done-mark="part-2"><span class="sb__num">2</span><span>사무관리 업무별 AI 활용 구조 이해</span></a>
+<div class="sb__sub"><a href="#sec-1">1. 내 업무를 &#39;조각&#39;으로 나눠 보기</a>
+<a href="#sec-2">2. AI가 강한 일 vs 약한 일 — 그리고 왜</a>
+<a href="#sec-3">3. 업무 유형별 추천 도구 매칭</a>
+<a href="#sec-4">4. &#39;업무 지도&#39; 그리는 법</a>
+<a href="#sec-5">5. 실습 — 자동화 후보 5가지 도출</a></div>
 <a class="sb__item" href="part-3.html" data-done-mark="part-3"><span class="sb__num">3</span><span>AI 기반 시장분석 및 트렌드 도출</span></a>
 <a class="sb__item" href="part-4.html" data-done-mark="part-4"><span class="sb__num">4</span><span>AI 활용 전략 기획 및 아이디어션</span></a>
 <a class="sb__item" href="part-5.html" data-done-mark="part-5"><span class="sb__num">5</span><span>GPT 활용 기획 문서 및 보고서 자동화</span></a>
@@ -481,179 +469,166 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
 <a class="sb__item" href="part-7.html" data-done-mark="part-7"><span class="sb__num">7</span><span>AI 활용 의사결정 지원 시스템 구축</span></a>
 <a class="sb__item" href="part-8.html" data-done-mark="part-8"><span class="sb__num">8</span><span>종합 실습 및 현업 적용 계획 수립</span></a></aside>
   <main id="main" style="flex:1;min-width:0">
+<div class="main"><div class="wrap">
+<ol class="crumb"><li><a href="index.html">홈</a></li><li><a href="course.html">교재</a></li><li>2차시</li></ol>
+<div class="ph">
+  <span class="ph__eyebrow">2차시</span>
+  <h1>사무관리 업무별 AI 활용 구조 이해</h1>
 
-<section class="hero">
-  <div class="hero__in">
-    <span class="hero__tag">농협사료 임직원 교육 · 1일 8차시</span>
-    <h1>생성형 AI 기반 사무관리 업무혁신 실무</h1>
-    <p>무료 AI 도구로 완성하는 1일 8차시 실습 과정</p>
-    <div class="hero__cta">
-      <a class="btn btn--gold" href="part-1.html">1차시부터 시작하기</a>
-      <a class="btn btn--white" href="schedule.html">교육 일정 보기</a>
-    </div>
-    <ul class="hero__meta">
-      <li><b>08:00–17:00</b><span>점심 1시간 제외</span></li>
-      <li><b>8차시</b><span>이론 30 · 실습 50 · 사례 20</span></li>
-      <li><b>무료 도구</b><span>ChatGPT · Claude · Gemini 외</span></li>
-    </ul>
-  </div>
+</div>
+<div class="b-obj">
+  <div class="b-obj__t"><span aria-hidden="true">🎯</span>학습 목표</div>
+  <ul><li>내 사무 업무를 문서작성·요약·보고·회의준비·자료조사·일정정리 등 유형으로 분해할 수 있다.</li><li>AI가 강한 일(반복·정리·초안)과 약한 일(최종판단·책임·기밀)을 구분하고, 그 이유를 LLM 원리로 설명할 수 있다.</li><li>업무 유형별로 ChatGPT·Claude·Gemini·Perplexity·Google Sheets·Docs를 매칭하는 표를 만들 수 있다.</li><li>&#39;업무 지도&#39;를 그려 AI로 줄일 수 있는 자동화 후보 업무 5가지를 효과·방법·도구와 함께 도출할 수 있다.</li></ul>
+</div>
+<div class="b-keywords"><span>업무 분해</span><span>업무 유형</span><span>AI 강점/약점</span><span>최종판단</span><span>책임</span><span>기밀</span><span>업무 지도</span><span>도구 매칭</span><span>자동화 후보</span><span>Google Sheets</span><span>Google Docs</span></div>
+
+<section id="sec-1">
+  <h2 class="sec-h"><span class="sec-h__n">1</span>내 업무를 &#39;조각&#39;으로 나눠 보기</h2>
+  <p class="b-para" style="white-space:pre-line">&#39;내 업무를 AI로 바꾼다&#39;고 하면 막막합니다. 업무를 하나의 큰 덩어리로 보기 때문입니다. 요리를 예로 들어 봅시다. &#39;김치찌개 끓이기&#39;는 통째로 보면 어렵지만, 재료 손질·물 올리기·간 맞추기·끓이기로 나누면 어느 단계를 도구에 맡길지 보입니다. 업무도 똑같습니다. 잘게 나눠야 어디에 AI를 넣을지 보입니다.</p>
+<div class="b-note b-case">
+  <div class="b-note__t"><span aria-hidden="true">🔗</span>연계 학습</div>
+  <p style="white-space:pre-line">지난 차시에서 배운 프롬프트 5요소와 도구별 강점을 떠올리며, 이번엔 &#39;어떤 일에&#39; 그 프롬프트를 쓸지를 정리해 봅니다.</p>
+</div>
+<p class="b-label">사무 업무의 6가지 대표 유형</p>
+<p class="b-para" style="white-space:pre-line">농협사료 사무관리직이 하는 일은 대부분 다음 여섯 가지 유형으로 나뉩니다. 내 하루 업무를 이 여섯 칸에 나눠 담아 보면, 생각보다 반복적인 일이 많다는 걸 알게 됩니다.</p>
+<div class="b-table">
+  <p class="b-table__cap">사무 업무 6대 유형과 농협사료 예시</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th class="cell-pre">유형</th><th class="cell-pre">무슨 일</th><th class="cell-pre">농협사료 예시</th></tr></thead>
+    <tbody><tr><td class="cell-pre">문서작성</td><td class="cell-pre">글을 새로 씀</td><td class="cell-pre">공문, 안내문, 거래처 메일, 품의서</td></tr><tr><td class="cell-pre">요약</td><td class="cell-pre">긴 것을 짧게</td><td class="cell-pre">회의록·계약서·긴 메일 요약</td></tr><tr><td class="cell-pre">보고</td><td class="cell-pre">정보를 정리해 전달</td><td class="cell-pre">주간 실적 보고, 시세 동향 보고</td></tr><tr><td class="cell-pre">회의준비</td><td class="cell-pre">안건·자료 준비</td><td class="cell-pre">안건 정리, 회의 자료 초안, 예상 질문</td></tr><tr><td class="cell-pre">자료조사</td><td class="cell-pre">정보를 찾아 모음</td><td class="cell-pre">사료 원료 시세, 규정·통계 조사</td></tr><tr><td class="cell-pre">일정정리</td><td class="cell-pre">시간·일을 배치</td><td class="cell-pre">납품 일정, 회의 일정, 마감 관리</td></tr></tbody>
+  </table></div>
+</div>
+<div class="b-note b-tip">
+  <div class="b-note__t"><span aria-hidden="true">💡</span>Tip</div>
+  <p style="white-space:pre-line">한 주간 내가 한 일을 이 6개 유형으로 나눠 시간을 적어 보세요. 가장 시간이 많이 든 유형이 곧 AI 도입 효과가 가장 큰 지점입니다.</p>
+</div>
+  
 </section>
 
-<div class="main"><div class="wrap wrap--wide">
-  <h2 class="sec-h"><span class="sec-h__n">1</span>8차시 커리큘럼</h2>
-  <div class="grid g2">
-    <a class="card part-card" href="part-1.html" data-done-mark="part-1">
-      <div class="part-card__n">1차시</div>
-      <h3>생성형 AI와 프롬프트 엔지니어링 이해</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 46</span>
-        <span class="bdg bdg--green">실습 2</span>
-        <span class="bdg bdg--gold">표 5</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-2.html" data-done-mark="part-2">
-      <div class="part-card__n">2차시</div>
-      <h3>사무관리 업무별 AI 활용 구조 이해</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 37</span>
-        <span class="bdg bdg--green">실습 2</span>
-        <span class="bdg bdg--gold">표 5</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-3.html" data-done-mark="part-3">
-      <div class="part-card__n">3차시</div>
-      <h3>AI 기반 시장분석 및 트렌드 도출</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 47</span>
-        <span class="bdg bdg--green">실습 3</span>
-        <span class="bdg bdg--gold">표 3</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-4.html" data-done-mark="part-4">
-      <div class="part-card__n">4차시</div>
-      <h3>AI 활용 전략 기획 및 아이디어션</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 51</span>
-        <span class="bdg bdg--green">실습 6</span>
-        <span class="bdg bdg--gold">표 4</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-5.html" data-done-mark="part-5">
-      <div class="part-card__n">5차시</div>
-      <h3>GPT 활용 기획 문서 및 보고서 자동화</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 59</span>
-        <span class="bdg bdg--green">실습 5</span>
-        <span class="bdg bdg--gold">표 3</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-6.html" data-done-mark="part-6">
-      <div class="part-card__n">6차시</div>
-      <h3>AI 기반 데이터 분석</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 53</span>
-        <span class="bdg bdg--green">실습 5</span>
-        <span class="bdg bdg--gold">표 3</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-7.html" data-done-mark="part-7">
-      <div class="part-card__n">7차시</div>
-      <h3>AI 활용 의사결정 지원 시스템 구축</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 61</span>
-        <span class="bdg bdg--green">실습 3</span>
-        <span class="bdg bdg--gold">표 3</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-8.html" data-done-mark="part-8">
-      <div class="part-card__n">8차시</div>
-      <h3>종합 실습 및 현업 적용 계획 수립</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 54</span>
-        <span class="bdg bdg--green">실습 3</span>
-        <span class="bdg bdg--gold">표 4</span>
-      </p>
-    </a>
-  </div>
-
-  <h2 class="sec-h"><span class="sec-h__n">2</span>이 과정에서 쓰는 무료 AI 도구</h2>
-  <div class="grid g3">
-    <a class="card" href="tool-chatgpt.html">
-      <h3>ChatGPT <span class="bdg bdg--gray">OpenAI</span></h3>
-      <p>가장 범용적인 올라운더 — Custom GPT와 데이터 분석으로 사무 업무 자동화</p>
-    </a>
-    <a class="card" href="tool-claude.html">
-      <h3>Claude <span class="bdg bdg--gray">Anthropic</span></h3>
-      <p>장문·정확성·안전성의 강자 — Artifacts로 즉석 문서·표 제작</p>
-    </a>
-    <a class="card" href="tool-gemini.html">
-      <h3>Gemini <span class="bdg bdg--gray">Google</span></h3>
-      <p>Google 생태계 통합 + 초대형 컨텍스트 + Deep Research</p>
-    </a>
-    <a class="card" href="tool-perplexity.html">
-      <h3>Perplexity <span class="bdg bdg--gray">Perplexity AI</span></h3>
-      <p>출처를 인용하는 AI 검색 — 최신 시장·업계 조사에 최적</p>
-    </a>
-    <a class="card" href="tool-sheets.html">
-      <h3>Google Sheets <span class="bdg bdg--gray">Google</span></h3>
-      <p>데이터 정리·집계·기초 분석 + AI와 결합해 인사이트까지</p>
-    </a>
-    <a class="card" href="tool-docs.html">
-      <h3>Google Docs <span class="bdg bdg--gray">Google</span></h3>
-      <p>문서 작성·공동 편집 + AI 초안 정리·문체 교정</p>
-    </a>
-  </div>
-
-  <h2 class="sec-h"><span class="sec-h__n">3</span>바로가기</h2>
-  <div class="grid g4">
-    <a class="card" href="promptlab.html"><h3>프롬프트 실습실</h3><p>5요소로 프롬프트를 쓰고 점수로 확인한다.</p></a>
-    <a class="card" href="labs.html"><h3>실습 모음</h3><p>8차시 실습을 단계별 지시문으로 정리했다.</p></a>
-    <a class="card" href="appendix.html"><h3>업무별 프롬프트</h3><p>메일·보고서·회의록 등 바로 쓰는 예제.</p></a>
-    <a class="card" href="dashboard.html"><h3>학습 진도</h3><p>어디까지 봤는지 이 브라우저에 기록된다.</p></a>
-  </div>
-
-  <h2 class="sec-h"><span class="sec-h__n">4</span>하루 흐름</h2>
-  <div class="table-wrap"><table class="tl">
-    <thead><tr><th>차시</th><th>시간</th><th>구분</th><th>주제</th></tr></thead>
-    <tbody><tr>
-      <td class="c"><b>1차시</b></td>
-      <td class="c nowrap">08:00–09:00</td>
-      <td class="c"><span class="bdg bdg--green">학습</span></td>
-      <td>프롬프트 엔지니어링 이해</td></tr><tr>
-      <td class="c"><b>2차시</b></td>
-      <td class="c nowrap">09:00–10:00</td>
-      <td class="c"><span class="bdg bdg--green">학습</span></td>
-      <td>사무관리 업무별 AI 활용 구조 이해</td></tr><tr>
-      <td class="c"><b>3차시</b></td>
-      <td class="c nowrap">10:00–11:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>AI 기반 시장분석 및 트렌드 도출</td></tr><tr>
-      <td class="c"><b>4차시</b></td>
-      <td class="c nowrap">11:00–12:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>AI 활용 전략 기획 및 아이디어션</td></tr><tr>
-      <td class="c"><b>점심</b></td>
-      <td class="c nowrap">12:00–13:00</td>
-      <td class="c"><span class="bdg bdg--green">점심</span></td>
-      <td>점심 식사</td></tr><tr>
-      <td class="c"><b>5차시</b></td>
-      <td class="c nowrap">13:00–14:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>GPT 활용 기획 문서 및 보고서 자동화</td></tr><tr>
-      <td class="c"><b>6차시</b></td>
-      <td class="c nowrap">14:00–15:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>AI 기반 데이터 분석</td></tr><tr>
-      <td class="c"><b>7차시</b></td>
-      <td class="c nowrap">15:00–16:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>AI 활용 의사결정 지원 시스템 구축</td></tr><tr>
-      <td class="c"><b>8차시</b></td>
-      <td class="c nowrap">16:00–17:00</td>
-      <td class="c"><span class="bdg bdg--green">정리</span></td>
-      <td>종합 실습 및 현업 적용 계획 수립</td></tr></tbody>
+<section id="sec-2">
+  <h2 class="sec-h"><span class="sec-h__n">2</span>AI가 강한 일 vs 약한 일 — 그리고 왜</h2>
+  <p class="b-para" style="white-space:pre-line">AI는 만능이 아닙니다. 잘하는 일과 못하는 일이 뚜렷하게 갈립니다. 이 경계를 알아야 &#39;맡길 일&#39;과 &#39;내가 할 일&#39;을 나눌 수 있습니다. 그리고 왜 그런지는 지난 차시에서 배운 LLM 원리로 깔끔하게 설명됩니다.</p>
+<p class="b-label">AI가 강한 일 — 반복·정리·초안</p>
+<p class="b-para" style="white-space:pre-line">AI는 &#39;다음에 올 그럴듯한 말&#39;을 잘 만들어 냅니다. 그래서 형식이 정해진 반복 업무, 뒤섞인 정보를 표로 정리하는 일, 빈 종이에서 초안을 뽑는 일에 강합니다. 매번 비슷한 발주 메일이나 회의록 요약처럼 &#39;패턴이 있는 일&#39;은 AI의 주특기입니다.</p>
+<p class="b-label">AI가 약한 일 — 최종판단·책임·기밀</p>
+<p class="b-para" style="white-space:pre-line">반대로 AI는 &#39;최종 판단&#39;, &#39;책임&#39;, &#39;기밀&#39;에는 약합니다. 이유가 있습니다. 첫째, AI는 진짜로 이해하는 게 아니라 그럴듯한 문장을 이어 붙이는 것이라, 이 단가로 계약해도 되는가 같은 판단은 근거 없이 그럴듯하게만 답할 수 있습니다(환각). 둘째, AI는 결과에 책임지지 못합니다. 잘못된 세금 신고의 책임은 사람에게 있습니다. 셋째, 무료 도구에 넣은 내용은 외부로 나갈 수 있어 기밀에 부적합합니다.</p>
+<div class="b-table">
+  <p class="b-table__cap">AI 강점과 약점 — 원리로 이해하기</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th class="cell-pre">구분</th><th class="cell-pre">예시 업무</th><th class="cell-pre">왜 그런가 (원리)</th></tr></thead>
+    <tbody><tr><td class="cell-pre">강함</td><td class="cell-pre">반복 메일, 회의록 요약, 표 정리, 초안</td><td class="cell-pre">패턴 예측이 특기, 형식 반복에 최적</td></tr><tr><td class="cell-pre">강함</td><td class="cell-pre">번역, 톤 조정, 오탈자 점검</td><td class="cell-pre">언어 패턴 학습량이 방대함</td></tr><tr><td class="cell-pre">약함</td><td class="cell-pre">계약 여부·단가 결정 등 최종판단</td><td class="cell-pre">이해가 아닌 예측이라 근거 없이 그럴듯</td></tr><tr><td class="cell-pre">약함</td><td class="cell-pre">법적·회계적 책임이 따르는 확정</td><td class="cell-pre">AI는 책임 주체가 될 수 없음</td></tr><tr><td class="cell-pre">약함</td><td class="cell-pre">대외비·개인정보 처리</td><td class="cell-pre">입력 내용이 학습·유출될 수 있음</td></tr></tbody>
   </table></div>
-  <p style="margin-top:14px"><a class="btn btn--line btn--sm" href="schedule.html">자세한 일정 보기 →</a></p>
+</div>
+<div class="b-note b-warn">
+  <div class="b-note__t"><span aria-hidden="true">⚠️</span>유의</div>
+  <p style="white-space:pre-line">&#39;AI가 그렇게 답했다&#39;는 변명이 되지 않습니다. AI 결과물은 초안일 뿐, 최종 검토와 책임은 항상 사람에게 있습니다. 특히 숫자·계약·규정은 반드시 원본으로 확인하세요.</p>
+</div>
+<div class="b-note b-case">
+  <div class="b-note__t"><span aria-hidden="true">📌</span>경계 사례</div>
+  <p style="white-space:pre-line">회계팀 박 주임은 월 마감 자료의 &#39;숫자 계산&#39;은 사람이 직접 하되, &#39;보고서 문장 다듬기&#39;만 AI에 맡깁니다. 판단과 책임이 걸린 숫자는 사람, 반복되는 글쓰기는 AI로 나눈 현명한 분업입니다.</p>
+</div>
+  
+  <h3 class="sub-h" id="sub-1">1 &#39;사람 손&#39;을 꼭 거쳐야 하는 3단계</h3>
+  <p class="b-para" style="white-space:pre-line">AI에게 일을 맡기더라도, 마지막에 사람이 반드시 확인해야 하는 지점이 있습니다. 이 3단계만 지켜도 사고를 크게 줄일 수 있습니다.</p>
+<ul class="b-bullets"><li>사실 확인: 숫자·날짜·규정·이름이 맞는지 원본과 대조</li><li>톤·대상 점검: 거래처·임원 등 받는 사람에게 적절한지</li><li>책임 확정: 발송·제출 전 담당자가 최종 승인</li></ul>
+<div class="b-note b-tip">
+  <div class="b-note__t"><span aria-hidden="true">💡</span>Tip</div>
+  <p style="white-space:pre-line">AI 초안에는 &#39;[확인 필요]&#39; 표시를 남기게 하세요. &#39;확실하지 않은 부분은 [확인 필요]로 표시해 줘&#39;라고 부탁하면, 사람이 어디를 검토할지 한눈에 보입니다.</p>
+</div>
+</section>
+
+<section id="sec-3">
+  <h2 class="sec-h"><span class="sec-h__n">3</span>업무 유형별 추천 도구 매칭</h2>
+  <p class="b-para" style="white-space:pre-line">이제 6대 업무 유형에 어떤 도구가 잘 맞는지 짝지어 봅시다. 도구마다 성격이 다르다는 걸 지난 차시에 배웠으니, 일의 성격에 맞춰 고르면 됩니다. 여기에 Google Sheets와 Docs를 더하면, 조사·작성·정리까지 한 흐름으로 이어집니다.</p>
+<div class="b-table">
+  <p class="b-table__cap">업무 유형별 추천 도구 매칭표</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th class="cell-pre">업무 유형</th><th class="cell-pre">추천 도구</th><th class="cell-pre">이유</th></tr></thead>
+    <tbody><tr><td class="cell-pre">문서작성</td><td class="cell-pre">Claude, ChatGPT</td><td class="cell-pre">자연스러운 문장, 정중한 톤 조정</td></tr><tr><td class="cell-pre">요약</td><td class="cell-pre">Claude</td><td class="cell-pre">긴 문서를 한 번에 넣어도 잘 정리</td></tr><tr><td class="cell-pre">보고</td><td class="cell-pre">ChatGPT + Google Docs</td><td class="cell-pre">초안 작성 후 문서로 옮겨 다듬기</td></tr><tr><td class="cell-pre">회의준비</td><td class="cell-pre">ChatGPT, Gemini</td><td class="cell-pre">안건 구조화, 예상 질문 도출</td></tr><tr><td class="cell-pre">자료조사</td><td class="cell-pre">Perplexity, Gemini</td><td class="cell-pre">출처 있는 답변, 최신 정보 검색</td></tr><tr><td class="cell-pre">일정정리</td><td class="cell-pre">ChatGPT + Google Sheets</td><td class="cell-pre">표·목록으로 일정 구조화, 계산</td></tr></tbody>
+  </table></div>
+</div>
+<p class="b-para" style="white-space:pre-line">이 표가 절대 규칙은 아닙니다. 익숙한 도구 하나로 시작해도 충분합니다. 다만 &#39;조사는 출처 대는 Perplexity, 긴 글다듬기는 Claude&#39;처럼 도구의 강점을 알고 고르면 결과의 질이 달라집니다.</p>
+<div class="b-note b-case">
+  <div class="b-note__t"><span aria-hidden="true">📌</span>한 흐름 사례</div>
+  <p style="white-space:pre-line">영업지원팀 최 대리는 &#39;원료 시세 보고서&#39;를 이렇게 만듭니다. ① Perplexity로 출처 있는 최신 시세 조사 → ② ChatGPT로 보고 문장 초안 → ③ Google Sheets에 수치 표로 정리 → ④ Google Docs로 옮겨 최종 편집. 도구를 이어 붙여 하나의 작업 흐름을 만든 것입니다.</p>
+</div>
+<div class="b-note b-tip">
+  <div class="b-note__t"><span aria-hidden="true">💡</span>Tip</div>
+  <p style="white-space:pre-line">Google Sheets에서는 셀에 함수를 넣기 어려울 때 ChatGPT에 &#39;이런 계산을 하는 시트 함수를 알려 줘&#39;라고 물으면 수식을 만들어 줍니다. Docs는 초안을 옮겨 협업·수정하기에 좋습니다.</p>
+</div>
+  
+</section>
+
+<section id="sec-4">
+  <h2 class="sec-h"><span class="sec-h__n">4</span>&#39;업무 지도&#39; 그리는 법</h2>
+  <p class="b-para" style="white-space:pre-line">업무 지도란, 내 일을 유형별로 펼쳐 놓고 &#39;이건 AI에 맡길 것, 저건 내가 할 것&#39;을 표시한 한 장의 그림입니다. 여행 전에 지도를 펴고 갈 곳과 안 갈 곳을 표시하는 것과 같습니다. 지도가 있으면 어디부터 AI를 도입할지 길이 보입니다.</p>
+<p class="b-label">업무 지도 4단계</p>
+<ul class="b-bullets"><li>1단계 나열: 한 주 동안 한 업무를 빠짐없이 적는다</li><li>2단계 분류: 각 업무를 6대 유형으로 나눈다</li><li>3단계 판정: 각 업무에 &#39;AI 강함/약함/사람만&#39;을 표시한다</li><li>4단계 선정: 강함으로 표시된 것 중 시간·빈도가 큰 순으로 후보를 고른다</li></ul>
+<div class="b-table">
+  <p class="b-table__cap">업무 지도 예시 (일부)</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th class="cell-pre">내 업무</th><th class="cell-pre">유형</th><th class="cell-pre">빈도</th><th class="cell-pre">AI 적합도</th><th class="cell-pre">판정</th></tr></thead>
+    <tbody><tr><td class="cell-pre">주간 발주 확인 메일</td><td class="cell-pre">문서작성</td><td class="cell-pre">주 5회</td><td class="cell-pre">강함</td><td class="cell-pre">자동화 후보</td></tr><tr><td class="cell-pre">회의록 정리</td><td class="cell-pre">요약</td><td class="cell-pre">주 2회</td><td class="cell-pre">강함</td><td class="cell-pre">자동화 후보</td></tr><tr><td class="cell-pre">단가 최종 결정</td><td class="cell-pre">보고/판단</td><td class="cell-pre">월 1회</td><td class="cell-pre">약함</td><td class="cell-pre">사람이 직접</td></tr><tr><td class="cell-pre">원료 시세 조사</td><td class="cell-pre">자료조사</td><td class="cell-pre">주 1회</td><td class="cell-pre">강함</td><td class="cell-pre">자동화 후보</td></tr><tr><td class="cell-pre">급여·세금 확정</td><td class="cell-pre">판단/책임</td><td class="cell-pre">월 1회</td><td class="cell-pre">약함</td><td class="cell-pre">사람이 직접</td></tr></tbody>
+  </table></div>
+</div>
+<p class="b-para" style="white-space:pre-line">이렇게 표를 채우면 &#39;자동화 후보&#39;가 자연스럽게 드러납니다. 빈도가 높고 형식이 반복되며 AI 적합도가 강한 것부터 손대면, 적은 노력으로 큰 시간을 아낄 수 있습니다.</p>
+<div class="b-note b-tip">
+  <div class="b-note__t"><span aria-hidden="true">💡</span>Tip</div>
+  <p style="white-space:pre-line">처음부터 완벽한 지도를 그리려 하지 마세요. 자동화 후보 1~2개를 먼저 시도해 효과를 체감한 뒤 늘려 가는 것이, 지도를 다 그린 뒤 시작하는 것보다 빠릅니다.</p>
+</div>
+  
+</section>
+
+<section id="sec-5">
+  <h2 class="sec-h"><span class="sec-h__n">5</span>실습 — 자동화 후보 5가지 도출</h2>
+  <p class="b-para" style="white-space:pre-line">오늘의 실습은 내 업무 지도에서 &#39;자동화 후보 5가지&#39;를 뽑아 정리하는 것입니다. 단순히 나열하는 데 그치지 말고, 각각의 &#39;효과·방법·도구&#39;를 함께 적어야 실제 실행으로 이어집니다.</p>
+<div class="b-ex">
+  <div class="b-ex__h"><span aria-hidden="true">✏️</span>실습 1</div>
+  <div class="b-ex__b" style="white-space:pre-line">업무 지도에서 AI로 줄일 수 있는 업무 5가지를 골라, 아래 표 형식으로 정리하세요. &#39;효과(줄어드는 시간)&#39;, &#39;방법(어떻게 시킬지)&#39;, &#39;도구(무엇으로)&#39;를 각각 채웁니다.</div>
+</div>
+<div class="b-table">
+  <p class="b-table__cap">실습 1 양식 — 자동화 후보 5가지</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th class="cell-pre">후보 업무</th><th class="cell-pre">예상 효과</th><th class="cell-pre">방법</th><th class="cell-pre">도구</th></tr></thead>
+    <tbody><tr><td class="cell-pre">(예) 주간 발주 메일</td><td class="cell-pre">주 40분 절약</td><td class="cell-pre">재사용 프롬프트로 품목만 교체</td><td class="cell-pre">ChatGPT</td></tr><tr><td class="cell-pre">1.</td><td class="cell-pre"></td><td class="cell-pre"></td><td class="cell-pre"></td></tr><tr><td class="cell-pre">2.</td><td class="cell-pre"></td><td class="cell-pre"></td><td class="cell-pre"></td></tr><tr><td class="cell-pre">3.</td><td class="cell-pre"></td><td class="cell-pre"></td><td class="cell-pre"></td></tr><tr><td class="cell-pre">4.</td><td class="cell-pre"></td><td class="cell-pre"></td><td class="cell-pre"></td></tr><tr><td class="cell-pre">5.</td><td class="cell-pre"></td><td class="cell-pre"></td><td class="cell-pre"></td></tr></tbody>
+  </table></div>
+</div>
+<div class="b-ex">
+  <div class="b-ex__h"><span aria-hidden="true">✏️</span>실습 2</div>
+  <div class="b-ex__b" style="white-space:pre-line">5가지 후보 중 가장 효과가 클 것 같은 하나를 골라, 지난 차시에서 배운 5요소로 실제 지시문을 작성해 보세요. 아래 promptbox를 뼈대로 삼습니다.</div>
+</div>
+<div class="b-prompt">
+  <p class="b-prompt__cap">실습 2 뼈대 — 자동화 후보 1위를 실제 프롬프트로</p>
+  <div class="b-prompt__box">
+    <div class="b-prompt__bar"><span>Prompt</span>
+      <button class="copy-btn" type="button">복사</button></div>
+    <pre>[역할] 너는 농협사료 [내 부서]의 업무 자동화를 돕는 조수야.
+[맥락] 나는 [자동화 후보 업무, 예: 주간 회의록 정리]를 매번 반복하는데, 형식은 비슷하고 내용만 달라져.
+[과제] 아래 원문을 넣으면 정해진 형식으로 정리해 줘. 원문: [회의록/메모 붙여넣기].
+[제약] 확실하지 않은 부분은 [확인 필요]로 표시하고, 회사 정보는 익명(○○거래처 등)으로 다뤄 줘.
+[출력형식] 결정사항·담당자·기한 3개 열로 된 표로 정리해 줘.</pre>
+  </div>
+</div>
+<div class="b-note b-out">
+  <div class="b-note__t"><span aria-hidden="true">📦</span>핵심 산출물</div>
+  <p style="white-space:pre-line">산출물: &#39;자동화 후보 5가지 목록&#39; — 각 후보의 업무명·예상 효과·방법·도구를 채운 표 1장, 그리고 1순위 후보의 실제 지시문 1건.</p>
+</div>
+<div class="b-note b-case">
+  <div class="b-note__t"><span aria-hidden="true">🔗</span>연계 학습</div>
+  <p style="white-space:pre-line">여기까지 오면 &#39;어떤 일을, 어떤 도구로, 어떻게 시킬지&#39;의 밑그림이 완성됩니다. 이 자동화 후보 목록은 이후 차시에서 실제 문서작성·요약·보고 실습을 진행하는 출발점이 됩니다.</p>
+</div>
+  
+</section>
+
+<div class="done-bar">
+  <button class="done-btn" type="button" data-done="part-2" aria-pressed="false">학습 완료로 표시</button>
+  <span class="muted" style="font-size:13px;color:var(--g400)">이 브라우저에만 저장됩니다.</span>
+</div>
+
+<nav class="pn" aria-label="차시 이동">
+  <a class="pn__a" href="part-1.html"><span>← 1차시</span><b>생성형 AI와 프롬프트 엔지니어링 이해</b></a>
+  <a class="pn__a pn__a--r" href="part-3.html"><span>3차시 →</span><b>AI 기반 시장분석 및 트렌드 도출</b></a>
+</nav>
 </div></div>
   </main>
 </div>

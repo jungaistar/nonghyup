@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="format-detection" content="telephone=no">
-<title>생성형 AI 기반 사무관리 업무혁신 실무 · 학습사이트</title>
-<meta name="description" content="농협사료 임직원 대상 1일 8차시 생성형 AI 실무 과정 학습사이트. 8차시 교재 · 실습 · AI 도구 가이드 · 업무별 프롬프트 부록.">
-<meta property="og:title" content="생성형 AI 기반 사무관리 업무혁신 실무 · 학습사이트">
-<meta property="og:description" content="농협사료 임직원 대상 1일 8차시 생성형 AI 실무 과정 학습사이트. 8차시 교재 · 실습 · AI 도구 가이드 · 업무별 프롬프트 부록.">
+<title>6차시 · AI 기반 데이터 분석 — 농협사료 AI 실무</title>
+<meta name="description" content="6차시: AI 기반 데이터 분석">
+<meta property="og:title" content="6차시 · AI 기반 데이터 분석 — 농협사료 AI 실무">
+<meta property="og:description" content="6차시: AI 기반 데이터 분석">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%228%22%20fill%3D%22%2312522e%22%2F%3E%3Cpath%20d%3D%22M16%207c4.6%202.8%207.4%206.2%207.4%2010.4a7.4%207.4%200%200%201-14.8%200C8.6%2013.2%2011.4%209.8%2016%207Z%22%20fill%3D%22%23fec20d%22%2F%3E%3Cpath%20d%3D%22M16%2012v11%22%20stroke%3D%22%2312522e%22%20stroke-width%3D%222.2%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
 <style>
@@ -413,38 +413,21 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
 
 
 /* ===== 이 페이지 전용 ===== */
-.hero{background:linear-gradient(135deg,var(--b900) 0%,var(--b800) 45%,var(--b600) 100%);
-  color:#fff; padding:56px 28px 60px; position:relative; overflow:hidden}
-.hero::after{content:""; position:absolute; right:-90px; top:-90px; width:340px; height:340px;
-  border-radius:50%; background:rgba(254,194,13,.12)}
-.hero__in{position:relative; z-index:1; max-width:1180px; margin:0 auto}
-.hero__tag{display:inline-block; padding:5px 13px; border-radius:var(--pill);
-  background:rgba(255,255,255,.16); font-size:12.5px; font-weight:800; margin-bottom:14px}
-.hero h1{font-size:38px; font-weight:800; letter-spacing:-.035em; line-height:1.28; max-width:20ch}
-.hero p{margin-top:12px; font-size:17px; color:rgba(255,255,255,.9); max-width:52ch}
-.hero__cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px}
-.hero__meta{display:flex; flex-wrap:wrap; gap:12px 32px; margin-top:32px;
-  padding-top:22px; border-top:1px solid rgba(255,255,255,.18)}
-.hero__meta b{display:block; font-size:19px; font-weight:800; color:var(--s300)}
-.hero__meta span{font-size:13px; color:rgba(255,255,255,.75)}
-.part-card__n{font-size:12px; font-weight:800; color:var(--b600); margin-bottom:5px}
-.part-card__badges{display:flex; flex-wrap:wrap; gap:6px; margin-top:12px}
-.part-card.is-done{border-color:var(--b400); background:var(--b50)}
-.part-card.is-done .part-card__n::after{content:" ✓ 완료"; color:var(--b600)}
-.tl{background:#fff; border:1px solid var(--g200); border-radius:var(--radius); overflow:hidden; min-width:560px}
-.tl thead th{background:var(--b800); color:#fff; padding:11px 13px; text-align:left; font-size:13.5px}
-.tl td{padding:11px 13px; border-top:1px solid var(--g100); font-size:14px}
-.tl .c{text-align:center}
-.tl .nowrap{white-space:nowrap; color:var(--g500)}
-@media (max-width:900px){ .hero{padding:40px 20px 46px} .hero h1{font-size:26px} .hero p{font-size:15px} }
-@media (max-width:640px){ .hero h1{font-size:22px} .hero__cta .btn{width:auto; flex:1} }
+.pn{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:22px}
+.pn__a{display:block; padding:15px 18px; border-radius:var(--radius);
+  border:1px solid var(--g200); background:#fff; transition:border-color .2s var(--ease)}
+.pn__a:hover{border-color:var(--b400)}
+.pn__a span{display:block; font-size:12px; font-weight:800; color:var(--b600); margin-bottom:3px}
+.pn__a b{font-size:14px; color:var(--g700); font-weight:700; line-height:1.5}
+.pn__a--r{text-align:right}
+@media (max-width:640px){ .pn{grid-template-columns:1fr} .pn__a--r{text-align:left} }
 </style>
 <noscript><style>
 /* 스크립트가 꺼져 있어도 목차는 보여야 한다 */
 .sb{transform:none !important; position:static !important; height:auto !important}
 </style></noscript>
 </head>
-<body data-page="home">
+<body data-page="part-6">
 
 <a class="skip-link" href="#main">본문 바로가기</a>
 <header class="hd">
@@ -456,8 +439,8 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
     <span>농협사료<small>AI 사무관리 업무혁신</small></span>
   </a>
   <nav class="hd__nav" aria-label="주 메뉴">
-    <a href="index.html" class="on" aria-current="page">홈</a>
-    <a href="course.html">교재</a>
+    <a href="index.html">홈</a>
+    <a href="course.html" class="on" aria-current="page">교재</a>
     <a href="schedule.html">일정</a>
     <a href="labs.html">실습</a>
     <a href="tools.html">AI 도구</a>
@@ -471,189 +454,271 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
   <aside class="sb" id="sb"><div class="sb__title">생성형 AI 기반 사무관리 업무혁신 실무</div>
 <a class="sb__cta" href="schedule.html">📅 8차시 교육 일정 보기</a>
 <div class="sb__label">학습 목차</div>
-<a class="sb__item on" href="course.html"><span>교재 전체 개요</span></a>
+<a class="sb__item" href="course.html"><span>교재 전체 개요</span></a>
 <a class="sb__item" href="part-1.html" data-done-mark="part-1"><span class="sb__num">1</span><span>생성형 AI와 프롬프트 엔지니어링 이해</span></a>
 <a class="sb__item" href="part-2.html" data-done-mark="part-2"><span class="sb__num">2</span><span>사무관리 업무별 AI 활용 구조 이해</span></a>
 <a class="sb__item" href="part-3.html" data-done-mark="part-3"><span class="sb__num">3</span><span>AI 기반 시장분석 및 트렌드 도출</span></a>
 <a class="sb__item" href="part-4.html" data-done-mark="part-4"><span class="sb__num">4</span><span>AI 활용 전략 기획 및 아이디어션</span></a>
 <a class="sb__item" href="part-5.html" data-done-mark="part-5"><span class="sb__num">5</span><span>GPT 활용 기획 문서 및 보고서 자동화</span></a>
-<a class="sb__item" href="part-6.html" data-done-mark="part-6"><span class="sb__num">6</span><span>AI 기반 데이터 분석</span></a>
+<a class="sb__item on" href="part-6.html" data-done-mark="part-6"><span class="sb__num">6</span><span>AI 기반 데이터 분석</span></a>
+<div class="sb__sub"><a href="#sec-1">1. 데이터 → 정보 → 인사이트: 재료에서 요리까지</a>
+<a href="#sec-2">2. 기본 통계, 쉽게 이해하기</a>
+<a href="#sec-3">3. 이상치(outlier), 튀는 값을 알아채기</a>
+<a href="#sec-4">4. Google Sheets 표를 AI에 붙여 분석하기</a>
+<a href="#sec-5">5. 어떤 차트를 언제 쓸까</a>
+<a href="#sec-6">6. 인사이트 문장과 보고용 표로 마무리하기</a></div>
 <a class="sb__item" href="part-7.html" data-done-mark="part-7"><span class="sb__num">7</span><span>AI 활용 의사결정 지원 시스템 구축</span></a>
 <a class="sb__item" href="part-8.html" data-done-mark="part-8"><span class="sb__num">8</span><span>종합 실습 및 현업 적용 계획 수립</span></a></aside>
   <main id="main" style="flex:1;min-width:0">
+<div class="main"><div class="wrap">
+<ol class="crumb"><li><a href="index.html">홈</a></li><li><a href="course.html">교재</a></li><li>6차시</li></ol>
+<div class="ph">
+  <span class="ph__eyebrow">6차시</span>
+  <h1>AI 기반 데이터 분석</h1>
 
-<section class="hero">
-  <div class="hero__in">
-    <span class="hero__tag">농협사료 임직원 교육 · 1일 8차시</span>
-    <h1>생성형 AI 기반 사무관리 업무혁신 실무</h1>
-    <p>무료 AI 도구로 완성하는 1일 8차시 실습 과정</p>
-    <div class="hero__cta">
-      <a class="btn btn--gold" href="part-1.html">1차시부터 시작하기</a>
-      <a class="btn btn--white" href="schedule.html">교육 일정 보기</a>
-    </div>
-    <ul class="hero__meta">
-      <li><b>08:00–17:00</b><span>점심 1시간 제외</span></li>
-      <li><b>8차시</b><span>이론 30 · 실습 50 · 사례 20</span></li>
-      <li><b>무료 도구</b><span>ChatGPT · Claude · Gemini 외</span></li>
-    </ul>
-  </div>
+</div>
+<div class="b-obj">
+  <div class="b-obj__t"><span aria-hidden="true">🎯</span>학습 목표</div>
+  <ul><li>&#39;데이터 → 정보 → 인사이트&#39;로 이어지는 3단계 원리를 재료-요리 비유로 이해한다.</li><li>합계·평균·비중·증감·최대/최소 등 기본 통계 개념을 쉬운 말로 익힌다.</li><li>이상치(outlier)가 무엇인지 비유로 이해하고, 왜 조심해야 하는지 안다.</li><li>Google Sheets 표를 AI에 붙여 요약·해석·차트 아이디어를 얻는 흐름을 실습한다.</li><li>막대·꺾은선·원 그래프를 언제 써야 하는지 구분하고, 데이터 요약표·인사이트 문장·보고용 표를 만든다.</li></ul>
+</div>
+<div class="b-keywords"><span>데이터-정보-인사이트</span><span>합계</span><span>평균</span><span>비중</span><span>증감률</span><span>최대</span><span>최소</span><span>이상치(outlier)</span><span>Google Sheets</span><span>차트 선택(막대</span><span>꺾은선</span><span>원)</span><span>데이터 요약</span><span>인사이트 문장</span><span>가상 샘플 데이터</span></div>
+
+<section id="sec-1">
+  <h2 class="sec-h"><span class="sec-h__n">1</span>데이터 → 정보 → 인사이트: 재료에서 요리까지</h2>
+  <p class="b-para" style="white-space:pre-line">&#39;데이터 분석&#39;이라는 말이 어렵게 들리지만, 사실은 요리와 똑같은 과정입니다. 냉장고 속 재료를 손질하고 조리해서 맛있는 한 끼를 차려내는 것처럼, 흩어진 숫자를 다듬어 &#39;그래서 뭘 하면 되는지&#39;를 만들어내는 일입니다.</p>
+<p class="b-label">세 단계 비유로 이해하기</p>
+<ul class="b-bullets"><li>데이터(재료): 아직 손질 안 된 숫자 그 자체. 예) 1월부터 12월까지 월별 사료 판매량 표.</li><li>정보(요리): 재료를 다듬어 의미를 붙인 것. 예) &#39;하반기 평균 판매량이 상반기보다 높다.&#39;</li><li>인사이트(한 끼 상차림): 정보를 보고 &#39;무엇을 할지&#39; 판단한 것. 예) &#39;수요가 느는 하반기에 판촉을 집중하자.&#39;</li></ul>
+<p class="b-para" style="white-space:pre-line">많은 사람이 데이터(재료)만 잔뜩 모으고 끝냅니다. 하지만 상급자가 원하는 것은 재료가 아니라 &#39;그래서 어쩌라는 것&#39;인 인사이트입니다. 오늘 배울 것은 재료(숫자)를 인사이트(판단)까지 끌고 가는 방법이고, AI가 그 요리를 크게 도와줍니다.</p>
+<p class="b-para" style="white-space:pre-line">원리를 조금 더 보태면, 숫자 자체는 아무 말도 하지 않습니다. &#39;판매량 1,200&#39;이라는 숫자는 그 옆에 &#39;지난달은 1,000이었다&#39;라는 비교 대상이 붙는 순간 비로소 &#39;20% 늘었다&#39;는 정보가 됩니다. 즉 데이터는 &#39;비교&#39;를 통해 정보가 되고, 정보는 &#39;판단&#39;을 통해 인사이트가 됩니다. AI는 이 비교와 판단을 빠르게 도와주는 요리 보조입니다.</p>
+<div class="b-note b-tip">
+  <div class="b-note__t"><span aria-hidden="true">💡</span>Tip</div>
+  <p style="white-space:pre-line">보고서에 숫자를 넣을 때는 항상 &#39;무엇과 비교한 숫자인지&#39;를 함께 쓰세요. &#39;판매량 1,200&#39;보다 &#39;전월 대비 20% 증가한 1,200&#39;이 훨씬 힘 있는 문장이 됩니다.</p>
+</div>
+  
 </section>
 
-<div class="main"><div class="wrap wrap--wide">
-  <h2 class="sec-h"><span class="sec-h__n">1</span>8차시 커리큘럼</h2>
-  <div class="grid g2">
-    <a class="card part-card" href="part-1.html" data-done-mark="part-1">
-      <div class="part-card__n">1차시</div>
-      <h3>생성형 AI와 프롬프트 엔지니어링 이해</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 46</span>
-        <span class="bdg bdg--green">실습 2</span>
-        <span class="bdg bdg--gold">표 5</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-2.html" data-done-mark="part-2">
-      <div class="part-card__n">2차시</div>
-      <h3>사무관리 업무별 AI 활용 구조 이해</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 37</span>
-        <span class="bdg bdg--green">실습 2</span>
-        <span class="bdg bdg--gold">표 5</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-3.html" data-done-mark="part-3">
-      <div class="part-card__n">3차시</div>
-      <h3>AI 기반 시장분석 및 트렌드 도출</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 47</span>
-        <span class="bdg bdg--green">실습 3</span>
-        <span class="bdg bdg--gold">표 3</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-4.html" data-done-mark="part-4">
-      <div class="part-card__n">4차시</div>
-      <h3>AI 활용 전략 기획 및 아이디어션</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 51</span>
-        <span class="bdg bdg--green">실습 6</span>
-        <span class="bdg bdg--gold">표 4</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-5.html" data-done-mark="part-5">
-      <div class="part-card__n">5차시</div>
-      <h3>GPT 활용 기획 문서 및 보고서 자동화</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 59</span>
-        <span class="bdg bdg--green">실습 5</span>
-        <span class="bdg bdg--gold">표 3</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-6.html" data-done-mark="part-6">
-      <div class="part-card__n">6차시</div>
-      <h3>AI 기반 데이터 분석</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 53</span>
-        <span class="bdg bdg--green">실습 5</span>
-        <span class="bdg bdg--gold">표 3</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-7.html" data-done-mark="part-7">
-      <div class="part-card__n">7차시</div>
-      <h3>AI 활용 의사결정 지원 시스템 구축</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 61</span>
-        <span class="bdg bdg--green">실습 3</span>
-        <span class="bdg bdg--gold">표 3</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-8.html" data-done-mark="part-8">
-      <div class="part-card__n">8차시</div>
-      <h3>종합 실습 및 현업 적용 계획 수립</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 54</span>
-        <span class="bdg bdg--green">실습 3</span>
-        <span class="bdg bdg--gold">표 4</span>
-      </p>
-    </a>
-  </div>
-
-  <h2 class="sec-h"><span class="sec-h__n">2</span>이 과정에서 쓰는 무료 AI 도구</h2>
-  <div class="grid g3">
-    <a class="card" href="tool-chatgpt.html">
-      <h3>ChatGPT <span class="bdg bdg--gray">OpenAI</span></h3>
-      <p>가장 범용적인 올라운더 — Custom GPT와 데이터 분석으로 사무 업무 자동화</p>
-    </a>
-    <a class="card" href="tool-claude.html">
-      <h3>Claude <span class="bdg bdg--gray">Anthropic</span></h3>
-      <p>장문·정확성·안전성의 강자 — Artifacts로 즉석 문서·표 제작</p>
-    </a>
-    <a class="card" href="tool-gemini.html">
-      <h3>Gemini <span class="bdg bdg--gray">Google</span></h3>
-      <p>Google 생태계 통합 + 초대형 컨텍스트 + Deep Research</p>
-    </a>
-    <a class="card" href="tool-perplexity.html">
-      <h3>Perplexity <span class="bdg bdg--gray">Perplexity AI</span></h3>
-      <p>출처를 인용하는 AI 검색 — 최신 시장·업계 조사에 최적</p>
-    </a>
-    <a class="card" href="tool-sheets.html">
-      <h3>Google Sheets <span class="bdg bdg--gray">Google</span></h3>
-      <p>데이터 정리·집계·기초 분석 + AI와 결합해 인사이트까지</p>
-    </a>
-    <a class="card" href="tool-docs.html">
-      <h3>Google Docs <span class="bdg bdg--gray">Google</span></h3>
-      <p>문서 작성·공동 편집 + AI 초안 정리·문체 교정</p>
-    </a>
-  </div>
-
-  <h2 class="sec-h"><span class="sec-h__n">3</span>바로가기</h2>
-  <div class="grid g4">
-    <a class="card" href="promptlab.html"><h3>프롬프트 실습실</h3><p>5요소로 프롬프트를 쓰고 점수로 확인한다.</p></a>
-    <a class="card" href="labs.html"><h3>실습 모음</h3><p>8차시 실습을 단계별 지시문으로 정리했다.</p></a>
-    <a class="card" href="appendix.html"><h3>업무별 프롬프트</h3><p>메일·보고서·회의록 등 바로 쓰는 예제.</p></a>
-    <a class="card" href="dashboard.html"><h3>학습 진도</h3><p>어디까지 봤는지 이 브라우저에 기록된다.</p></a>
-  </div>
-
-  <h2 class="sec-h"><span class="sec-h__n">4</span>하루 흐름</h2>
-  <div class="table-wrap"><table class="tl">
-    <thead><tr><th>차시</th><th>시간</th><th>구분</th><th>주제</th></tr></thead>
-    <tbody><tr>
-      <td class="c"><b>1차시</b></td>
-      <td class="c nowrap">08:00–09:00</td>
-      <td class="c"><span class="bdg bdg--green">학습</span></td>
-      <td>프롬프트 엔지니어링 이해</td></tr><tr>
-      <td class="c"><b>2차시</b></td>
-      <td class="c nowrap">09:00–10:00</td>
-      <td class="c"><span class="bdg bdg--green">학습</span></td>
-      <td>사무관리 업무별 AI 활용 구조 이해</td></tr><tr>
-      <td class="c"><b>3차시</b></td>
-      <td class="c nowrap">10:00–11:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>AI 기반 시장분석 및 트렌드 도출</td></tr><tr>
-      <td class="c"><b>4차시</b></td>
-      <td class="c nowrap">11:00–12:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>AI 활용 전략 기획 및 아이디어션</td></tr><tr>
-      <td class="c"><b>점심</b></td>
-      <td class="c nowrap">12:00–13:00</td>
-      <td class="c"><span class="bdg bdg--green">점심</span></td>
-      <td>점심 식사</td></tr><tr>
-      <td class="c"><b>5차시</b></td>
-      <td class="c nowrap">13:00–14:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>GPT 활용 기획 문서 및 보고서 자동화</td></tr><tr>
-      <td class="c"><b>6차시</b></td>
-      <td class="c nowrap">14:00–15:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>AI 기반 데이터 분석</td></tr><tr>
-      <td class="c"><b>7차시</b></td>
-      <td class="c nowrap">15:00–16:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>AI 활용 의사결정 지원 시스템 구축</td></tr><tr>
-      <td class="c"><b>8차시</b></td>
-      <td class="c nowrap">16:00–17:00</td>
-      <td class="c"><span class="bdg bdg--green">정리</span></td>
-      <td>종합 실습 및 현업 적용 계획 수립</td></tr></tbody>
+<section id="sec-2">
+  <h2 class="sec-h"><span class="sec-h__n">2</span>기본 통계, 쉽게 이해하기</h2>
+  <p class="b-para" style="white-space:pre-line">분석에 꼭 필요한 통계는 다섯 가지면 충분합니다. 어렵게 외울 필요 없이, 일상 비유로 감만 잡으면 됩니다.</p>
+<div class="b-table">
+  <p class="b-table__cap">실무에 꼭 필요한 5가지 기본 통계</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th class="cell-pre">개념</th><th class="cell-pre">쉬운 뜻 (비유)</th><th class="cell-pre">농협사료 활용 예</th></tr></thead>
+    <tbody><tr><td class="cell-pre">합계</td><td class="cell-pre">다 더한 값 (장바구니 총액)</td><td class="cell-pre">한 해 전체 사료 판매량</td></tr><tr><td class="cell-pre">평균</td><td class="cell-pre">고르게 나눈 값 (반 학생 평균 키)</td><td class="cell-pre">월평균 판매량, 거래처당 평균 주문량</td></tr><tr><td class="cell-pre">비중</td><td class="cell-pre">전체 중 차지하는 몫 (피자 몇 조각)</td><td class="cell-pre">제품별 판매 비중, 지역별 매출 비중</td></tr><tr><td class="cell-pre">증감(률)</td><td class="cell-pre">지난번보다 얼마나 늘고 줄었나</td><td class="cell-pre">전월 대비 판매 증감률</td></tr><tr><td class="cell-pre">최대·최소</td><td class="cell-pre">가장 큰 값·가장 작은 값</td><td class="cell-pre">가장 많이 팔린 달, 가장 적게 팔린 거래처</td></tr></tbody>
   </table></div>
-  <p style="margin-top:14px"><a class="btn btn--line btn--sm" href="schedule.html">자세한 일정 보기 →</a></p>
+</div>
+<p class="b-label">평균의 함정 하나</p>
+<p class="b-para" style="white-space:pre-line">평균은 편리하지만 속기도 쉽습니다. 예를 들어 거래처 4곳의 주문량이 각각 10, 10, 10, 200이라면 평균은 57.5입니다. 그런데 실제로는 네 곳 중 세 곳이 10밖에 안 됩니다. 평균만 보면 &#39;다들 57쯤 시키는구나&#39;라고 착각하게 됩니다. 유난히 큰 한 값(200)이 평균을 확 끌어올렸기 때문인데, 이것이 바로 다음에 배울 &#39;이상치&#39;입니다.</p>
+<p class="b-para" style="white-space:pre-line">증감률 계산도 원리는 간단합니다. (이번 값 − 지난 값) ÷ 지난 값 × 100. 예를 들어 지난달 1,000, 이번 달 1,200이면 (1200−1000)÷1000×100 = 20%. AI에게 &#39;증감률을 계산해줘&#39;라고 하면 이 공식을 대신 적용해 주지만, 원리를 알면 결과가 맞는지 검증할 수 있습니다.</p>
+<div class="b-note b-tip">
+  <div class="b-note__t"><span aria-hidden="true">💡</span>Tip</div>
+  <p style="white-space:pre-line">평균을 볼 때는 항상 &#39;최대·최소도 같이&#39; 확인하는 습관을 들이세요. 평균 하나만 보면 숨은 쏠림을 놓칩니다.</p>
+</div>
+  
+  <h3 class="sub-h" id="sub-1">1 AI에게 기본 통계 계산 맡기기</h3>
+  <div class="b-prompt">
+  <p class="b-prompt__cap">표를 붙여 기본 통계를 한 번에 얻는 프롬프트</p>
+  <div class="b-prompt__box">
+    <div class="b-prompt__bar"><span>Prompt</span>
+      <button class="copy-btn" type="button">복사</button></div>
+    <pre>[역할] 너는 숫자를 쉽게 풀어 설명하는 데이터 분석 도우미야.
+[맥락] 아래는 우리 팀의 월별 사료 판매량 가상 데이터야(단위: 톤).
+1월 1000, 2월 1050, 3월 980, 4월 1100, 5월 1200, 6월 1150
+[과제] 합계, 월평균, 가장 많이 팔린 달과 가장 적게 팔린 달, 그리고 5월의 전월 대비 증감률을 계산해줘.
+[제약] 계산 과정을 한 줄씩 보여주고, 결과는 표로 정리해줘.
+[출력형식] 계산 요약 표 + 한 줄 코멘트.</pre>
+  </div>
+</div>
+<div class="b-ex">
+  <div class="b-ex__h"><span aria-hidden="true">✏️</span>실습 1</div>
+  <div class="b-ex__b" style="white-space:pre-line">위 프롬프트를 실행해 합계·평균·최대·최소·증감률을 받아보세요. 그리고 증감률 하나를 직접 손으로 계산해 AI 결과와 맞는지 대조해보세요.</div>
+</div>
+</section>
+
+<section id="sec-3">
+  <h2 class="sec-h"><span class="sec-h__n">3</span>이상치(outlier), 튀는 값을 알아채기</h2>
+  <p class="b-para" style="white-space:pre-line">이상치는 다른 값들과 유난히 동떨어진 &#39;튀는 값&#39;입니다. 반 학생 키가 대부분 150cm 안팎인데 한 명만 210cm라면, 그 210cm가 이상치입니다.</p>
+<p class="b-label">왜 이상치를 조심해야 할까</p>
+<p class="b-para" style="white-space:pre-line">이상치가 섞여 있으면 평균이나 합계 같은 요약값이 왜곡됩니다. 앞에서 본 &#39;10, 10, 10, 200&#39; 사례처럼, 튀는 한 값이 전체 그림을 실제와 다르게 보이게 만듭니다. 그래서 데이터를 요약하기 전에 &#39;유난히 큰 값이나 작은 값이 있나?&#39;를 먼저 살피는 것이 중요합니다.</p>
+<p class="b-para" style="white-space:pre-line">다만 이상치가 항상 &#39;오류&#39;인 것은 아닙니다. 두 가지 경우가 있습니다. (1) 진짜 오류: 입력 실수로 1,000을 10,000으로 적은 경우 → 고쳐야 함. (2) 진짜 사건: 특정 거래처가 그달에 대량 계약을 해서 정말로 주문이 폭증한 경우 → 버리지 말고 이유를 확인해야 함. 그래서 이상치를 발견하면 지우기 전에 &#39;왜 이렇게 튀었지?&#39;를 먼저 물어야 합니다.</p>
+<p class="b-para" style="white-space:pre-line">기술적으로 분석가들은 이상치를 찾을 때 &#39;평균에서 얼마나 멀리 떨어졌는가&#39;를 기준으로 삼습니다. 하지만 사무관리 실무에서는 그렇게 복잡하게 할 필요 없이, AI에게 &#39;이 데이터에서 유난히 튀는 값이 있으면 알려줘&#39;라고 부탁하면 충분합니다.</p>
+<div class="b-note b-warn">
+  <div class="b-note__t"><span aria-hidden="true">⚠️</span>유의</div>
+  <p style="white-space:pre-line">이상치를 발견해도 함부로 삭제하지 마세요. 먼저 &#39;입력 실수인지, 실제 사건인지&#39; 담당자에게 확인하세요. 실제 사건인데 지워버리면 중요한 정보를 버리는 셈이 됩니다.</p>
+</div>
+<div class="b-note b-case">
+  <div class="b-note__t"><span aria-hidden="true">📌</span>현장 사례</div>
+  <p style="white-space:pre-line">영업지원팀이 지역별 월 주문량을 평균 냈더니 한 지역만 유난히 높게 나왔습니다. 확인해보니 대형 축산단지 신규 계약 때문이었고, 이 &#39;이상치&#39;는 오류가 아니라 오히려 &#39;이 지역을 더 공략하자&#39;는 인사이트의 실마리가 되었습니다.</p>
+</div>
+  
+  <h3 class="sub-h" id="sub-1">1 AI로 이상치 찾아보기</h3>
+  <div class="b-prompt">
+  <p class="b-prompt__cap">이상치 탐지 프롬프트</p>
+  <div class="b-prompt__box">
+    <div class="b-prompt__bar"><span>Prompt</span>
+      <button class="copy-btn" type="button">복사</button></div>
+    <pre>[역할] 너는 데이터에서 이상한 값을 찾아주는 분석 도우미야.
+[맥락] 아래는 거래처 8곳의 이번 달 주문량 가상 데이터야(단위: 톤).
+A 30, B 28, C 32, D 27, E 210, F 29, G 31, H 26
+[과제] 이 중에서 유난히 튀는 값(이상치)이 있으면 찾아주고, 왜 그렇게 판단했는지 쉬운 말로 설명해줘. 그리고 이 값이 오류일 수도, 실제 대량 계약일 수도 있다는 두 가능성을 함께 알려줘.
+[제약] 전문 용어는 최소화하고 초급자도 이해하게. 임의로 값을 지우지 말고 &#39;확인이 필요하다&#39;고만 안내해줘.
+[출력형식] 이상치 값 + 판단 이유 + 확인해야 할 점.</pre>
+  </div>
+</div>
+<div class="b-ex">
+  <div class="b-ex__h"><span aria-hidden="true">✏️</span>실습 2</div>
+  <div class="b-ex__b" style="white-space:pre-line">위 데이터를 AI로 분석해 이상치를 찾아보세요. 그리고 이 이상치를 &#39;포함했을 때 평균&#39;과 &#39;제외했을 때 평균&#39;을 각각 계산해 얼마나 차이 나는지 확인해보세요.</div>
+</div>
+</section>
+
+<section id="sec-4">
+  <h2 class="sec-h"><span class="sec-h__n">4</span>Google Sheets 표를 AI에 붙여 분석하기</h2>
+  <p class="b-para" style="white-space:pre-line">이제 실제 작업 흐름을 익힙니다. 핵심은 아주 간단합니다. Google Sheets에 정리된 표를 그대로 복사해서 AI 대화창에 붙여넣고, 무엇을 알고 싶은지 물어보는 것입니다.</p>
+<div class="blk">
+  <p class="b-label">실습 자료 다운로드 (가상 데이터)</p>
+<a class="b-dl" href="https://raw.githubusercontent.com/aebonlee/materials/main/nonghyupsaryo/%EC%9B%94%EB%B3%84_%EC%82%AC%EB%A3%8C%ED%8C%90%EB%A7%A4_%EC%83%98%ED%94%8C.csv"
+       target="_blank" rel="noopener">⬇ 월별 사료판매 샘플</a>
+<a class="b-dl" href="https://raw.githubusercontent.com/aebonlee/materials/main/nonghyupsaryo/%EA%B1%B0%EB%9E%98%EC%B2%98_%EC%A3%BC%EB%AC%B8_%EC%83%98%ED%94%8C.csv"
+       target="_blank" rel="noopener">⬇ 거래처 주문 샘플</a>
+<a class="b-dl" href="https://raw.githubusercontent.com/aebonlee/materials/main/nonghyupsaryo/%EA%B3%A0%EA%B0%9D%EB%AC%B8%EC%9D%98_%EC%B2%98%EB%A6%AC_%EC%83%98%ED%94%8C.csv"
+       target="_blank" rel="noopener">⬇ 고객문의 처리 샘플</a>
+  <p class="b-source">실제 데이터가 아닌 교육용 가상 데이터입니다. 내려받아 Google Sheets로 연 뒤, 표를 복사해 AI에 붙여넣고 요약·인사이트·차트 아이디어를 실습하세요.</p>
+</div>
+<p class="b-label">왜 표를 그대로 붙여도 될까</p>
+<p class="b-para" style="white-space:pre-line">AI는 줄과 칸으로 정렬된 표를 잘 이해합니다. Sheets에서 셀 범위를 복사해 붙여넣으면 탭으로 칸이 구분된 형태로 들어가는데, AI는 이걸 표로 알아봅니다. 그래서 &#39;이 표를 요약해줘&#39;라고만 해도 각 열이 무슨 뜻인지 파악해 분석해 줍니다. 다만 첫 줄에 &#39;월, 판매량, 거래처수&#39;처럼 열 이름(머리글)을 꼭 붙여주면 훨씬 정확해집니다.</p>
+<div class="b-table">
+  <p class="b-table__cap">실습용 가상 월별 데이터 (그대로 복사해 사용)</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th class="cell-pre">월</th><th class="cell-pre">판매량(톤)</th><th class="cell-pre">거래처수</th><th class="cell-pre">반품(건)</th></tr></thead>
+    <tbody><tr><td class="cell-pre">1월</td><td class="cell-pre">1000</td><td class="cell-pre">40</td><td class="cell-pre">3</td></tr><tr><td class="cell-pre">2월</td><td class="cell-pre">1050</td><td class="cell-pre">41</td><td class="cell-pre">2</td></tr><tr><td class="cell-pre">3월</td><td class="cell-pre">980</td><td class="cell-pre">39</td><td class="cell-pre">5</td></tr><tr><td class="cell-pre">4월</td><td class="cell-pre">1100</td><td class="cell-pre">43</td><td class="cell-pre">2</td></tr><tr><td class="cell-pre">5월</td><td class="cell-pre">1200</td><td class="cell-pre">45</td><td class="cell-pre">1</td></tr><tr><td class="cell-pre">6월</td><td class="cell-pre">1150</td><td class="cell-pre">44</td><td class="cell-pre">2</td></tr></tbody>
+  </table></div>
+</div>
+<div class="b-note b-warn">
+  <div class="b-note__t"><span aria-hidden="true">⚠️</span>유의</div>
+  <p style="white-space:pre-line">실제 고객명·계약금액·개인정보 같은 민감한 실데이터는 절대 AI에 붙여넣지 마세요. 오늘처럼 가상·샘플 데이터로 연습하고, 실무에서는 이름을 &#39;A거래처&#39;처럼 익명화하거나 회사 보안 지침을 먼저 확인하세요.</p>
+</div>
+<div class="b-prompt">
+  <p class="b-prompt__cap">표 요약·해석 프롬프트</p>
+  <div class="b-prompt__box">
+    <div class="b-prompt__bar"><span>Prompt</span>
+      <button class="copy-btn" type="button">복사</button></div>
+    <pre>[역할] 너는 표를 읽고 핵심을 뽑아주는 데이터 분석 도우미야.
+[맥락] 아래는 상반기 월별 사료 판매 가상 데이터야. 첫 줄은 열 이름이야.
+월	판매량(톤)	거래처수	반품(건)
+1월	1000	40	3
+2월	1050	41	2
+3월	980	39	5
+4월	1100	43	2
+5월	1200	45	1
+6월	1150	44	2
+[과제] (1) 판매량 추세를 한 문단으로 요약하고, (2) 판매량과 거래처수, 반품 사이에 눈에 띄는 관계가 있으면 알려줘. (3) 유난히 튀는 달이 있으면 짚어줘.
+[제약] 초급자도 이해하게 쉬운 말로. 데이터에 없는 내용은 추측하지 마.
+[출력형식] (1)추세 요약 (2)관계 해석 (3)특이점 세 부분으로.</pre>
+  </div>
+</div>
+<div class="b-ex">
+  <div class="b-ex__h"><span aria-hidden="true">✏️</span>실습 3</div>
+  <div class="b-ex__b" style="white-space:pre-line">위 표를 Google Sheets에 그대로 옮겨 적고, 셀을 복사해 AI에 붙여 요약을 받아보세요. AI가 &#39;판매가 늘수록 반품이 주는 경향&#39;을 찾아내는지 확인해보세요.</div>
+</div>
+  
+  <h3 class="sub-h" id="sub-1">1 차트 아이디어까지 얻기</h3>
+  <div class="b-prompt">
+  <p class="b-prompt__cap">이 데이터에 맞는 차트 추천 프롬프트</p>
+  <div class="b-prompt__box">
+    <div class="b-prompt__bar"><span>Prompt</span>
+      <button class="copy-btn" type="button">복사</button></div>
+    <pre>[역할] 너는 데이터를 보기 좋게 시각화하도록 돕는 분석 도우미야.
+[맥락] 위 상반기 월별 판매 데이터를 보고서에 넣을 그래프로 표현하고 싶어.
+[과제] 이 데이터에 어떤 차트(막대/꺾은선/원 등)가 가장 적합한지 이유와 함께 추천해줘. 그리고 각 축에 무엇을 넣을지도 알려줘.
+[제약] 2가지 이내로 추천하고, 왜 그 차트가 좋은지 쉬운 말로 설명해줘.
+[출력형식] 추천 차트 + 이유 + 축 구성 안내.</pre>
+  </div>
+</div>
+<div class="b-note b-tip">
+  <div class="b-note__t"><span aria-hidden="true">💡</span>Tip</div>
+  <p style="white-space:pre-line">Google Sheets는 데이터를 선택한 뒤 &#39;삽입 → 차트&#39;만 누르면 차트를 자동으로 그려줍니다. AI가 추천한 차트 종류를 Sheets에서 골라 바로 만들어보세요.</p>
+</div>
+</section>
+
+<section id="sec-5">
+  <h2 class="sec-h"><span class="sec-h__n">5</span>어떤 차트를 언제 쓸까</h2>
+  <p class="b-para" style="white-space:pre-line">차트는 숫자를 그림으로 바꿔 한눈에 이해시키는 도구입니다. 그런데 상황에 안 맞는 차트를 쓰면 오히려 헷갈립니다. 세 가지 기본 차트만 정확히 구분하면 실무의 대부분을 해결할 수 있습니다.</p>
+<div class="b-table">
+  <p class="b-table__cap">3대 기본 차트, 언제 쓰나</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th class="cell-pre">차트</th><th class="cell-pre">언제 쓰나 (한 줄 기준)</th><th class="cell-pre">농협사료 예</th></tr></thead>
+    <tbody><tr><td class="cell-pre">막대그래프</td><td class="cell-pre">여러 항목의 크기를 나란히 비교할 때</td><td class="cell-pre">제품별·지역별 판매량 비교</td></tr><tr><td class="cell-pre">꺾은선그래프</td><td class="cell-pre">시간에 따라 어떻게 변하는지 흐름을 볼 때</td><td class="cell-pre">1~12월 월별 판매 추세</td></tr><tr><td class="cell-pre">원(파이)그래프</td><td class="cell-pre">전체 100% 중 각 몫(비중)을 보여줄 때</td><td class="cell-pre">제품별 매출 비중</td></tr></tbody>
+  </table></div>
+</div>
+<p class="b-label">고르는 요령 (원리)</p>
+<p class="b-para" style="white-space:pre-line">간단한 질문 하나로 고를 수 있습니다. &#39;비교인가, 흐름인가, 비중인가?&#39; 여러 대상을 견주면 막대, 시간에 따른 변화면 꺾은선, 전체 대비 몫이면 원 그래프입니다. 이 세 단어만 기억하면 됩니다.</p>
+<div class="b-note b-warn">
+  <div class="b-note__t"><span aria-hidden="true">⚠️</span>유의</div>
+  <p style="white-space:pre-line">원 그래프는 조각이 너무 많으면(5~6개 넘어가면) 오히려 알아보기 어렵습니다. 항목이 많을 때는 원 그래프 대신 막대그래프가 더 명확합니다. 또 꺾은선은 &#39;시간 순서&#39;가 아닌 데이터에 쓰면 잘못된 인상을 줄 수 있으니 주의하세요.</p>
+</div>
+<div class="b-note b-case">
+  <div class="b-note__t"><span aria-hidden="true">📌</span>현장 사례</div>
+  <p style="white-space:pre-line">한 담당자가 제품 8종의 판매 비중을 원 그래프로 그렸더니 조각이 잘게 쪼개져 아무도 이해하지 못했습니다. 막대그래프로 바꾸자 &#39;어느 제품이 잘 팔리는지&#39;가 한눈에 보였습니다.</p>
+</div>
+<div class="b-ex">
+  <div class="b-ex__h"><span aria-hidden="true">✏️</span>실습 4</div>
+  <div class="b-ex__b" style="white-space:pre-line">4차시 표의 &#39;판매량&#39;은 꺾은선으로, 가상의 &#39;제품별 매출 비중(A 40%, B 35%, C 25%)&#39;은 원 그래프로 각각 Google Sheets에서 그려보세요. 두 차트가 각각 무엇을 잘 보여주는지 한 줄로 적어보세요.</div>
+</div>
+  
+</section>
+
+<section id="sec-6">
+  <h2 class="sec-h"><span class="sec-h__n">6</span>인사이트 문장과 보고용 표로 마무리하기</h2>
+  <p class="b-para" style="white-space:pre-line">분석의 마지막은 &#39;보고할 수 있는 형태&#39;로 정리하는 것입니다. 아무리 잘 분석해도 상급자가 읽을 문장과 표로 바꾸지 않으면 소용이 없습니다. 여기서도 AI가 큰 도움을 줍니다.</p>
+<p class="b-label">인사이트 문장이란</p>
+<p class="b-para" style="white-space:pre-line">인사이트 문장은 &#39;숫자 + 그래서 무엇&#39; 형태의 한두 문장입니다. 예를 들어 &#39;상반기 판매량은 5월 최고치(1,200톤)를 기록하며 꾸준히 증가함. 하반기 수요 확대에 대비해 5~6월에 재고를 미리 확보할 필요가 있음.&#39; 앞은 정보, 뒤는 판단입니다. 이 &#39;그래서 무엇&#39;이 붙어야 진짜 인사이트가 됩니다.</p>
+<div class="b-prompt">
+  <p class="b-prompt__cap">인사이트 문장 + 보고용 표 생성 프롬프트</p>
+  <div class="b-prompt__box">
+    <div class="b-prompt__bar"><span>Prompt</span>
+      <button class="copy-btn" type="button">복사</button></div>
+    <pre>[역할] 너는 분석 결과를 보고 문장으로 바꿔주는 사무관리 담당자야.
+[맥락] 앞서 요약한 상반기 월별 판매 가상 데이터(1월 1000 → 5월 1200 → 6월 1150톤, 반품은 감소 추세)를 상급자에게 보고하려고 해.
+[과제] (1) 핵심 인사이트를 개조식 3문장으로 정리하고(각 문장은 &#39;현상 + 그래서 할 일&#39; 형태), (2) 보고서에 넣을 요약 표(항목·수치·해석)를 만들어줘.
+[제약] 데이터에 근거한 내용만. 과장 금지. 개조식(~함/~임) 사용.
+[출력형식] &#39;핵심 인사이트&#39; 불릿 3개 + 요약 표 1개.</pre>
+  </div>
+</div>
+<div class="b-note b-tip">
+  <div class="b-note__t"><span aria-hidden="true">💡</span>Tip</div>
+  <p style="white-space:pre-line">인사이트 문장은 반드시 &#39;그래서 무엇을 하자&#39;로 끝맺으세요. &#39;판매가 늘었음&#39;에서 멈추지 말고 &#39;판매가 늘었으니 하반기 판촉을 확대하자&#39;까지 가야 상급자가 결정을 내릴 수 있습니다.</p>
+</div>
+<div class="b-ex">
+  <div class="b-ex__h"><span aria-hidden="true">✏️</span>실습 5</div>
+  <div class="b-ex__b" style="white-space:pre-line">오늘 만든 요약과 차트를 바탕으로, 위 프롬프트로 인사이트 문장 3개와 보고용 표를 만들어 5차시에서 배운 기획 보고서의 &#39;현황&#39;과 &#39;기대효과&#39; 항목에 붙여넣어 보세요.</div>
+</div>
+<div class="b-note b-out">
+  <div class="b-note__t"><span aria-hidden="true">📦</span>핵심 산출물</div>
+  <p style="white-space:pre-line">산출물: (1) 데이터 요약표, (2) &#39;현상 + 그래서 할 일&#39; 형태의 인사이트 문장 3개, (3) 보고용 표 — 총 3종. 모두 가상·샘플 데이터 기반으로 작성.</p>
+</div>
+<div class="b-note b-warn">
+  <div class="b-note__t"><span aria-hidden="true">⚠️</span>유의</div>
+  <p style="white-space:pre-line">다시 강조합니다. 이 모든 실습은 반드시 가상·샘플 데이터로만 진행하세요. 실제 거래처명·매출액·개인정보를 AI에 넣는 것은 회사 보안 위반이 될 수 있습니다.</p>
+</div>
+<div class="b-note b-case">
+  <div class="b-note__t"><span aria-hidden="true">🔗</span>연계 학습</div>
+  <p style="white-space:pre-line">이로써 5차시(문서·보고서 자동화)와 6차시(데이터 분석)가 하나로 연결됩니다. 6차시에서 만든 숫자 근거를 5차시의 보고서 구조에 채워 넣으면, &#39;구조 + 근거&#39;를 모두 갖춘 완성도 높은 실무 보고서가 됩니다.</p>
+</div>
+  
+  <h3 class="sub-h" id="sub-1">1 오늘 배운 것 한눈에 정리</h3>
+  <ul class="b-bullets"><li>데이터(재료) → 정보(요리) → 인사이트(상차림)의 3단계로 숫자를 판단까지 끌고 간다.</li><li>합계·평균·비중·증감·최대/최소 5가지만 알면 기본 분석은 충분하다.</li><li>이상치는 지우기 전에 &#39;오류인지 사건인지&#39; 먼저 확인한다.</li><li>Google Sheets 표를 복사해 AI에 붙이고, 열 이름을 붙여 정확도를 높인다.</li><li>차트는 &#39;비교=막대, 흐름=꺾은선, 비중=원&#39;으로 고른다.</li><li>인사이트 문장은 &#39;현상 + 그래서 할 일&#39;로 끝맺는다.</li><li>실습은 언제나 가상·샘플 데이터로만 진행한다.</li></ul>
+<p class="b-para" style="white-space:pre-line">이 일곱 가지를 기억하면, 앞으로 어떤 표를 마주쳐도 당황하지 않고 &#39;AI 요리 보조&#39;와 함께 인사이트까지 만들어낼 수 있습니다.</p>
+</section>
+
+<div class="done-bar">
+  <button class="done-btn" type="button" data-done="part-6" aria-pressed="false">학습 완료로 표시</button>
+  <span class="muted" style="font-size:13px;color:var(--g400)">이 브라우저에만 저장됩니다.</span>
+</div>
+
+<nav class="pn" aria-label="차시 이동">
+  <a class="pn__a" href="part-5.html"><span>← 5차시</span><b>GPT 활용 기획 문서 및 보고서 자동화</b></a>
+  <a class="pn__a pn__a--r" href="part-7.html"><span>7차시 →</span><b>AI 활용 의사결정 지원 시스템 구축</b></a>
+</nav>
 </div></div>
   </main>
 </div>

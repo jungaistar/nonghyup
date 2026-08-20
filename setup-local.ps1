@@ -1,7 +1,7 @@
 <#
   농협 강의용 클론 실습본 — 로컬 배치 스크립트
   --------------------------------------------------------------------------
-  이 폴더의 내용을 D:\data\dev\nonghyup 으로 복사한다.
+  이 폴더의 내용을 D:\dev\nonghyup 으로 복사한다.
 
   실행:
       powershell -ExecutionPolicy Bypass -File setup-local.ps1
@@ -13,7 +13,7 @@
 #>
 
 param(
-    [string]$Target = "D:\data\dev\nonghyup",
+    [string]$Target = "D:\dev\nonghyup",
     [switch]$Force                      # 물어보지 않고 덮어쓴다
 )
 

@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="format-detection" content="telephone=no">
-<title>생성형 AI 기반 사무관리 업무혁신 실무 · 학습사이트</title>
-<meta name="description" content="농협사료 임직원 대상 1일 8차시 생성형 AI 실무 과정 학습사이트. 8차시 교재 · 실습 · AI 도구 가이드 · 업무별 프롬프트 부록.">
-<meta property="og:title" content="생성형 AI 기반 사무관리 업무혁신 실무 · 학습사이트">
-<meta property="og:description" content="농협사료 임직원 대상 1일 8차시 생성형 AI 실무 과정 학습사이트. 8차시 교재 · 실습 · AI 도구 가이드 · 업무별 프롬프트 부록.">
+<title>1차시 · 생성형 AI와 프롬프트 엔지니어링 이해 — 농협사료 AI 실무</title>
+<meta name="description" content="1차시: 생성형 AI와 프롬프트 엔지니어링 이해">
+<meta property="og:title" content="1차시 · 생성형 AI와 프롬프트 엔지니어링 이해 — 농협사료 AI 실무">
+<meta property="og:description" content="1차시: 생성형 AI와 프롬프트 엔지니어링 이해">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%228%22%20fill%3D%22%2312522e%22%2F%3E%3Cpath%20d%3D%22M16%207c4.6%202.8%207.4%206.2%207.4%2010.4a7.4%207.4%200%200%201-14.8%200C8.6%2013.2%2011.4%209.8%2016%207Z%22%20fill%3D%22%23fec20d%22%2F%3E%3Cpath%20d%3D%22M16%2012v11%22%20stroke%3D%22%2312522e%22%20stroke-width%3D%222.2%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
 <style>
@@ -413,38 +413,21 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
 
 
 /* ===== 이 페이지 전용 ===== */
-.hero{background:linear-gradient(135deg,var(--b900) 0%,var(--b800) 45%,var(--b600) 100%);
-  color:#fff; padding:56px 28px 60px; position:relative; overflow:hidden}
-.hero::after{content:""; position:absolute; right:-90px; top:-90px; width:340px; height:340px;
-  border-radius:50%; background:rgba(254,194,13,.12)}
-.hero__in{position:relative; z-index:1; max-width:1180px; margin:0 auto}
-.hero__tag{display:inline-block; padding:5px 13px; border-radius:var(--pill);
-  background:rgba(255,255,255,.16); font-size:12.5px; font-weight:800; margin-bottom:14px}
-.hero h1{font-size:38px; font-weight:800; letter-spacing:-.035em; line-height:1.28; max-width:20ch}
-.hero p{margin-top:12px; font-size:17px; color:rgba(255,255,255,.9); max-width:52ch}
-.hero__cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px}
-.hero__meta{display:flex; flex-wrap:wrap; gap:12px 32px; margin-top:32px;
-  padding-top:22px; border-top:1px solid rgba(255,255,255,.18)}
-.hero__meta b{display:block; font-size:19px; font-weight:800; color:var(--s300)}
-.hero__meta span{font-size:13px; color:rgba(255,255,255,.75)}
-.part-card__n{font-size:12px; font-weight:800; color:var(--b600); margin-bottom:5px}
-.part-card__badges{display:flex; flex-wrap:wrap; gap:6px; margin-top:12px}
-.part-card.is-done{border-color:var(--b400); background:var(--b50)}
-.part-card.is-done .part-card__n::after{content:" ✓ 완료"; color:var(--b600)}
-.tl{background:#fff; border:1px solid var(--g200); border-radius:var(--radius); overflow:hidden; min-width:560px}
-.tl thead th{background:var(--b800); color:#fff; padding:11px 13px; text-align:left; font-size:13.5px}
-.tl td{padding:11px 13px; border-top:1px solid var(--g100); font-size:14px}
-.tl .c{text-align:center}
-.tl .nowrap{white-space:nowrap; color:var(--g500)}
-@media (max-width:900px){ .hero{padding:40px 20px 46px} .hero h1{font-size:26px} .hero p{font-size:15px} }
-@media (max-width:640px){ .hero h1{font-size:22px} .hero__cta .btn{width:auto; flex:1} }
+.pn{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:22px}
+.pn__a{display:block; padding:15px 18px; border-radius:var(--radius);
+  border:1px solid var(--g200); background:#fff; transition:border-color .2s var(--ease)}
+.pn__a:hover{border-color:var(--b400)}
+.pn__a span{display:block; font-size:12px; font-weight:800; color:var(--b600); margin-bottom:3px}
+.pn__a b{font-size:14px; color:var(--g700); font-weight:700; line-height:1.5}
+.pn__a--r{text-align:right}
+@media (max-width:640px){ .pn{grid-template-columns:1fr} .pn__a--r{text-align:left} }
 </style>
 <noscript><style>
 /* 스크립트가 꺼져 있어도 목차는 보여야 한다 */
 .sb{transform:none !important; position:static !important; height:auto !important}
 </style></noscript>
 </head>
-<body data-page="home">
+<body data-page="part-1">
 
 <a class="skip-link" href="#main">본문 바로가기</a>
 <header class="hd">
@@ -456,8 +439,8 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
     <span>농협사료<small>AI 사무관리 업무혁신</small></span>
   </a>
   <nav class="hd__nav" aria-label="주 메뉴">
-    <a href="index.html" class="on" aria-current="page">홈</a>
-    <a href="course.html">교재</a>
+    <a href="index.html">홈</a>
+    <a href="course.html" class="on" aria-current="page">교재</a>
     <a href="schedule.html">일정</a>
     <a href="labs.html">실습</a>
     <a href="tools.html">AI 도구</a>
@@ -471,8 +454,14 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
   <aside class="sb" id="sb"><div class="sb__title">생성형 AI 기반 사무관리 업무혁신 실무</div>
 <a class="sb__cta" href="schedule.html">📅 8차시 교육 일정 보기</a>
 <div class="sb__label">학습 목차</div>
-<a class="sb__item on" href="course.html"><span>교재 전체 개요</span></a>
-<a class="sb__item" href="part-1.html" data-done-mark="part-1"><span class="sb__num">1</span><span>생성형 AI와 프롬프트 엔지니어링 이해</span></a>
+<a class="sb__item" href="course.html"><span>교재 전체 개요</span></a>
+<a class="sb__item on" href="part-1.html" data-done-mark="part-1"><span class="sb__num">1</span><span>생성형 AI와 프롬프트 엔지니어링 이해</span></a>
+<div class="sb__sub"><a href="#sec-1">1. 생성형 AI, 도대체 무엇인가</a>
+<a href="#sec-2">2. LLM은 어떻게 생각할까 — 끝말잇기하는 기계</a>
+<a href="#sec-3">3. 무료 AI 도구 4종 — 어디에 뭘 쓸까</a>
+<a href="#sec-4">4. 좋은 프롬프트 vs 나쁜 프롬프트</a>
+<a href="#sec-5">5. 업무 지시형 프롬프트 5요소</a>
+<a href="#sec-6">6. 실습 — 내 업무를 AI에게 설명하고 자동화하기</a></div>
 <a class="sb__item" href="part-2.html" data-done-mark="part-2"><span class="sb__num">2</span><span>사무관리 업무별 AI 활용 구조 이해</span></a>
 <a class="sb__item" href="part-3.html" data-done-mark="part-3"><span class="sb__num">3</span><span>AI 기반 시장분석 및 트렌드 도출</span></a>
 <a class="sb__item" href="part-4.html" data-done-mark="part-4"><span class="sb__num">4</span><span>AI 활용 전략 기획 및 아이디어션</span></a>
@@ -481,179 +470,206 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
 <a class="sb__item" href="part-7.html" data-done-mark="part-7"><span class="sb__num">7</span><span>AI 활용 의사결정 지원 시스템 구축</span></a>
 <a class="sb__item" href="part-8.html" data-done-mark="part-8"><span class="sb__num">8</span><span>종합 실습 및 현업 적용 계획 수립</span></a></aside>
   <main id="main" style="flex:1;min-width:0">
+<div class="main"><div class="wrap">
+<ol class="crumb"><li><a href="index.html">홈</a></li><li><a href="course.html">교재</a></li><li>1차시</li></ol>
+<div class="ph">
+  <span class="ph__eyebrow">1차시</span>
+  <h1>생성형 AI와 프롬프트 엔지니어링 이해</h1>
 
-<section class="hero">
-  <div class="hero__in">
-    <span class="hero__tag">농협사료 임직원 교육 · 1일 8차시</span>
-    <h1>생성형 AI 기반 사무관리 업무혁신 실무</h1>
-    <p>무료 AI 도구로 완성하는 1일 8차시 실습 과정</p>
-    <div class="hero__cta">
-      <a class="btn btn--gold" href="part-1.html">1차시부터 시작하기</a>
-      <a class="btn btn--white" href="schedule.html">교육 일정 보기</a>
-    </div>
-    <ul class="hero__meta">
-      <li><b>08:00–17:00</b><span>점심 1시간 제외</span></li>
-      <li><b>8차시</b><span>이론 30 · 실습 50 · 사례 20</span></li>
-      <li><b>무료 도구</b><span>ChatGPT · Claude · Gemini 외</span></li>
-    </ul>
-  </div>
+</div>
+<div class="b-obj">
+  <div class="b-obj__t"><span aria-hidden="true">🎯</span>학습 목표</div>
+  <ul><li>생성형 AI와 LLM이 &#39;다음에 올 말을 예측&#39;하는 원리를 끝말잇기 비유로 이해하고, 왜 가끔 그럴듯한 거짓말(환각)을 하는지 설명할 수 있다.</li><li>ChatGPT·Claude·Gemini·Perplexity 네 가지 무료 도구의 강점을 구분하고, 농협사료 사무 업무에 어떤 도구를 고를지 판단할 수 있다.</li><li>좋은 프롬프트와 나쁜 프롬프트의 차이를 알고, 업무 지시형 프롬프트의 5요소(역할·맥락·과제·제약·출력형식)를 적용할 수 있다.</li><li>내 업무를 AI에게 설명하는 프롬프트와 반복 업무 자동화 지시문을 직접 작성해 산출물로 남길 수 있다.</li></ul>
+</div>
+<div class="b-keywords"><span>생성형 AI</span><span>LLM</span><span>다음단어 예측</span><span>토큰</span><span>컨텍스트 윈도우</span><span>환각(hallucination)</span><span>온도(temperature)</span><span>프롬프트 5요소</span><span>ChatGPT</span><span>Claude</span><span>Gemini</span><span>Perplexity</span></div>
+
+<section id="sec-1">
+  <h2 class="sec-h"><span class="sec-h__n">1</span>생성형 AI, 도대체 무엇인가</h2>
+  <p class="b-para" style="white-space:pre-line">&#39;생성형 AI&#39;라는 말이 요즘 뉴스에도, 사내 공지에도 자주 등장합니다. 어렵게 느껴지지만 뜻은 의외로 단순합니다. 기존의 컴퓨터가 &#39;이미 있는 것을 찾아주는&#39; 도구였다면, 생성형 AI는 &#39;새로 만들어 주는&#39; 도구입니다. 검색은 서랍 속에서 이미 써 둔 서류를 꺼내 오는 일이고, 생성형 AI는 빈 종이 위에 새 문장을 써 내려가는 일입니다.</p>
+<p class="b-para" style="white-space:pre-line">예를 들어 축산농가에 보낼 배합사료 단가 인상 안내문을 떠올려 봅시다. 예전에는 작년 문서를 찾아 날짜와 숫자만 고쳤습니다. 생성형 AI는 &#39;단가가 3% 오른다, 정중하게, 다섯 문장으로 써 줘&#39;라고 부탁하면 처음부터 새 안내문을 만들어 냅니다. 글, 표, 요약, 번역, 아이디어까지 &#39;없던 것을 만들어 주는&#39; 것이 핵심입니다.</p>
+<p class="b-label">왜 지금 갑자기 잘하게 됐을까</p>
+<p class="b-para" style="white-space:pre-line">이 똑똑함의 뒤에는 LLM(Large Language Model, 거대 언어 모델)이 있습니다. 이름이 거창하지만, 인터넷에 있는 어마어마한 양의 글을 미리 읽으며 &#39;사람들은 이런 말 다음에 보통 저런 말을 쓰더라&#39;라는 패턴을 익힌 프로그램입니다. 도서관 몇 개 분량의 글을 읽은 신입사원이라고 생각하면 편합니다. 지식은 방대하지만, 우리 회사 내부 규정은 모르는 신입사원입니다.</p>
+<div class="b-table">
+  <p class="b-table__cap">검색 vs 생성형 AI, 무엇이 다른가</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th class="cell-pre">구분</th><th class="cell-pre">기존 검색(포털)</th><th class="cell-pre">생성형 AI</th></tr></thead>
+    <tbody><tr><td class="cell-pre">하는 일</td><td class="cell-pre">이미 있는 문서를 찾아줌</td><td class="cell-pre">새로운 문장을 만들어 줌</td></tr><tr><td class="cell-pre">결과물</td><td class="cell-pre">링크 목록</td><td class="cell-pre">완성된 초안</td></tr><tr><td class="cell-pre">사무 예시</td><td class="cell-pre">&#39;거래처 안내문 양식&#39; 검색</td><td class="cell-pre">우리 상황에 맞는 안내문 작성</td></tr><tr><td class="cell-pre">주의점</td><td class="cell-pre">출처가 명확함</td><td class="cell-pre">그럴듯해도 틀릴 수 있음</td></tr></tbody>
+  </table></div>
+</div>
+<div class="b-note b-tip">
+  <div class="b-note__t"><span aria-hidden="true">💡</span>Tip</div>
+  <p style="white-space:pre-line">생성형 AI는 &#39;똑똑한 검색&#39;이 아니라 &#39;빠른 초안 작성 도우미&#39;로 생각하세요. 완성본을 그대로 쓰는 게 아니라, 초안을 받아 사람이 다듬는 것이 올바른 사용법입니다.</p>
+</div>
+  
+  <h3 class="sub-h" id="sub-1">1 사무관리 업무에서 체감되는 변화</h3>
+  <p class="b-para" style="white-space:pre-line">총무·회계·구매·영업지원 업무는 &#39;글을 쓰고, 정리하고, 요약하는&#39; 일이 대부분입니다. 바로 이 부분이 생성형 AI가 가장 잘 돕는 영역입니다. 회의록 초안, 거래처 회신 메일, 구매 품의 사유, 월간 실적 요약처럼 매번 비슷한 형식으로 반복되는 일이라면 AI가 시간을 크게 줄여 줍니다.</p>
+<ul class="b-bullets"><li>문서 초안: 공문·안내문·메일의 첫 버전을 몇 초 만에</li><li>요약: 긴 회의록이나 계약서를 3줄 핵심으로</li><li>정리: 뒤섞인 메모를 표와 목록으로 재배열</li><li>번역·톤 조정: 딱딱한 문장을 정중하게, 또는 반대로</li></ul>
+<div class="b-note b-case">
+  <div class="b-note__t"><span aria-hidden="true">📌</span>현장 사례</div>
+  <p style="white-space:pre-line">구매팀 김 대리는 매주 5개 거래처에 발주 확인 메일을 씁니다. 예전엔 건당 10분, 총 50분이 걸렸는데, AI에게 형식을 한 번 학습시킨 뒤로는 품목만 바꿔 넣어 10분 만에 끝냅니다. 남은 40분은 단가 협상 자료를 검토하는 데 씁니다.</p>
+</div>
 </section>
 
-<div class="main"><div class="wrap wrap--wide">
-  <h2 class="sec-h"><span class="sec-h__n">1</span>8차시 커리큘럼</h2>
-  <div class="grid g2">
-    <a class="card part-card" href="part-1.html" data-done-mark="part-1">
-      <div class="part-card__n">1차시</div>
-      <h3>생성형 AI와 프롬프트 엔지니어링 이해</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 46</span>
-        <span class="bdg bdg--green">실습 2</span>
-        <span class="bdg bdg--gold">표 5</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-2.html" data-done-mark="part-2">
-      <div class="part-card__n">2차시</div>
-      <h3>사무관리 업무별 AI 활용 구조 이해</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 37</span>
-        <span class="bdg bdg--green">실습 2</span>
-        <span class="bdg bdg--gold">표 5</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-3.html" data-done-mark="part-3">
-      <div class="part-card__n">3차시</div>
-      <h3>AI 기반 시장분석 및 트렌드 도출</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 47</span>
-        <span class="bdg bdg--green">실습 3</span>
-        <span class="bdg bdg--gold">표 3</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-4.html" data-done-mark="part-4">
-      <div class="part-card__n">4차시</div>
-      <h3>AI 활용 전략 기획 및 아이디어션</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 51</span>
-        <span class="bdg bdg--green">실습 6</span>
-        <span class="bdg bdg--gold">표 4</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-5.html" data-done-mark="part-5">
-      <div class="part-card__n">5차시</div>
-      <h3>GPT 활용 기획 문서 및 보고서 자동화</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 59</span>
-        <span class="bdg bdg--green">실습 5</span>
-        <span class="bdg bdg--gold">표 3</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-6.html" data-done-mark="part-6">
-      <div class="part-card__n">6차시</div>
-      <h3>AI 기반 데이터 분석</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 53</span>
-        <span class="bdg bdg--green">실습 5</span>
-        <span class="bdg bdg--gold">표 3</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-7.html" data-done-mark="part-7">
-      <div class="part-card__n">7차시</div>
-      <h3>AI 활용 의사결정 지원 시스템 구축</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 61</span>
-        <span class="bdg bdg--green">실습 3</span>
-        <span class="bdg bdg--gold">표 3</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-8.html" data-done-mark="part-8">
-      <div class="part-card__n">8차시</div>
-      <h3>종합 실습 및 현업 적용 계획 수립</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 54</span>
-        <span class="bdg bdg--green">실습 3</span>
-        <span class="bdg bdg--gold">표 4</span>
-      </p>
-    </a>
-  </div>
-
-  <h2 class="sec-h"><span class="sec-h__n">2</span>이 과정에서 쓰는 무료 AI 도구</h2>
-  <div class="grid g3">
-    <a class="card" href="tool-chatgpt.html">
-      <h3>ChatGPT <span class="bdg bdg--gray">OpenAI</span></h3>
-      <p>가장 범용적인 올라운더 — Custom GPT와 데이터 분석으로 사무 업무 자동화</p>
-    </a>
-    <a class="card" href="tool-claude.html">
-      <h3>Claude <span class="bdg bdg--gray">Anthropic</span></h3>
-      <p>장문·정확성·안전성의 강자 — Artifacts로 즉석 문서·표 제작</p>
-    </a>
-    <a class="card" href="tool-gemini.html">
-      <h3>Gemini <span class="bdg bdg--gray">Google</span></h3>
-      <p>Google 생태계 통합 + 초대형 컨텍스트 + Deep Research</p>
-    </a>
-    <a class="card" href="tool-perplexity.html">
-      <h3>Perplexity <span class="bdg bdg--gray">Perplexity AI</span></h3>
-      <p>출처를 인용하는 AI 검색 — 최신 시장·업계 조사에 최적</p>
-    </a>
-    <a class="card" href="tool-sheets.html">
-      <h3>Google Sheets <span class="bdg bdg--gray">Google</span></h3>
-      <p>데이터 정리·집계·기초 분석 + AI와 결합해 인사이트까지</p>
-    </a>
-    <a class="card" href="tool-docs.html">
-      <h3>Google Docs <span class="bdg bdg--gray">Google</span></h3>
-      <p>문서 작성·공동 편집 + AI 초안 정리·문체 교정</p>
-    </a>
-  </div>
-
-  <h2 class="sec-h"><span class="sec-h__n">3</span>바로가기</h2>
-  <div class="grid g4">
-    <a class="card" href="promptlab.html"><h3>프롬프트 실습실</h3><p>5요소로 프롬프트를 쓰고 점수로 확인한다.</p></a>
-    <a class="card" href="labs.html"><h3>실습 모음</h3><p>8차시 실습을 단계별 지시문으로 정리했다.</p></a>
-    <a class="card" href="appendix.html"><h3>업무별 프롬프트</h3><p>메일·보고서·회의록 등 바로 쓰는 예제.</p></a>
-    <a class="card" href="dashboard.html"><h3>학습 진도</h3><p>어디까지 봤는지 이 브라우저에 기록된다.</p></a>
-  </div>
-
-  <h2 class="sec-h"><span class="sec-h__n">4</span>하루 흐름</h2>
-  <div class="table-wrap"><table class="tl">
-    <thead><tr><th>차시</th><th>시간</th><th>구분</th><th>주제</th></tr></thead>
-    <tbody><tr>
-      <td class="c"><b>1차시</b></td>
-      <td class="c nowrap">08:00–09:00</td>
-      <td class="c"><span class="bdg bdg--green">학습</span></td>
-      <td>프롬프트 엔지니어링 이해</td></tr><tr>
-      <td class="c"><b>2차시</b></td>
-      <td class="c nowrap">09:00–10:00</td>
-      <td class="c"><span class="bdg bdg--green">학습</span></td>
-      <td>사무관리 업무별 AI 활용 구조 이해</td></tr><tr>
-      <td class="c"><b>3차시</b></td>
-      <td class="c nowrap">10:00–11:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>AI 기반 시장분석 및 트렌드 도출</td></tr><tr>
-      <td class="c"><b>4차시</b></td>
-      <td class="c nowrap">11:00–12:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>AI 활용 전략 기획 및 아이디어션</td></tr><tr>
-      <td class="c"><b>점심</b></td>
-      <td class="c nowrap">12:00–13:00</td>
-      <td class="c"><span class="bdg bdg--green">점심</span></td>
-      <td>점심 식사</td></tr><tr>
-      <td class="c"><b>5차시</b></td>
-      <td class="c nowrap">13:00–14:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>GPT 활용 기획 문서 및 보고서 자동화</td></tr><tr>
-      <td class="c"><b>6차시</b></td>
-      <td class="c nowrap">14:00–15:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>AI 기반 데이터 분석</td></tr><tr>
-      <td class="c"><b>7차시</b></td>
-      <td class="c nowrap">15:00–16:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>AI 활용 의사결정 지원 시스템 구축</td></tr><tr>
-      <td class="c"><b>8차시</b></td>
-      <td class="c nowrap">16:00–17:00</td>
-      <td class="c"><span class="bdg bdg--green">정리</span></td>
-      <td>종합 실습 및 현업 적용 계획 수립</td></tr></tbody>
+<section id="sec-2">
+  <h2 class="sec-h"><span class="sec-h__n">2</span>LLM은 어떻게 생각할까 — 끝말잇기하는 기계</h2>
+  <p class="b-para" style="white-space:pre-line">AI를 잘 부리려면 그 속마음을 조금 알아야 합니다. 어렵지 않습니다. LLM의 작동 원리는 초등학교 때 하던 &#39;끝말잇기&#39;와 &#39;빈칸 채우기&#39;로 거의 다 설명됩니다.</p>
+<p class="b-label">원리 1. 다음에 올 단어를 확률로 예측한다</p>
+<p class="b-para" style="white-space:pre-line">&#39;오늘 점심은 김치...&#39;까지 말하면 대부분 &#39;찌개&#39;를 떠올립니다. 우리 머릿속에 &#39;김치 다음엔 찌개가 자주 온다&#39;는 경험이 쌓여 있기 때문입니다. LLM도 똑같습니다. 수많은 글을 읽으며 &#39;이 단어 다음엔 저 단어가 올 확률이 높다&#39;를 계산해 두었고, 문장을 한 단어씩 이어 붙이며 답을 만듭니다. 즉 AI는 정답을 &#39;알아서&#39; 말하는 게 아니라, 가장 그럴듯한 다음 단어를 계속 골라 붙이는 것입니다.</p>
+<p class="b-label">원리 2. 토큰 — 단어를 잘게 쪼갠 조각</p>
+<p class="b-para" style="white-space:pre-line">AI는 글자를 통째로 보지 않고 &#39;토큰(token)&#39;이라는 조각으로 잘라 봅니다. 레고 블록을 떠올리면 쉽습니다. &#39;농협사료&#39;라는 단어도 AI 눈에는 &#39;농협&#39;, &#39;사료&#39; 같은 여러 조각으로 나뉠 수 있습니다. 왜 알아야 하냐면, 무료 도구들이 &#39;한 번에 처리할 수 있는 토큰 양&#39;에 한계가 있기 때문입니다. 너무 긴 문서를 통째로 넣으면 앞부분을 잊어버릴 수 있습니다.</p>
+<p class="b-label">원리 3. 컨텍스트 윈도우 — AI의 &#39;기억 가능한 분량&#39;</p>
+<p class="b-para" style="white-space:pre-line">컨텍스트 윈도우는 AI가 &#39;한 번의 대화에서 기억할 수 있는 분량&#39;입니다. 책상 위에 한 번에 펼쳐 놓을 수 있는 서류의 양이라고 보면 됩니다. 책상이 좁으면 새 서류를 올릴 때 오래된 서류가 밀려 떨어지듯, 대화가 아주 길어지면 AI는 맨 처음에 한 말을 잊습니다. 그래서 중요한 지시는 다시 한 번 상기시켜 주는 것이 좋습니다.</p>
+<div class="b-table">
+  <p class="b-table__cap">초등학교 비유로 정리한 LLM 핵심 개념</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th class="cell-pre">기술 용어</th><th class="cell-pre">쉬운 비유</th><th class="cell-pre">실무에서 주의할 점</th></tr></thead>
+    <tbody><tr><td class="cell-pre">다음단어 예측</td><td class="cell-pre">끝말잇기</td><td class="cell-pre">AI는 &#39;아는&#39; 게 아니라 &#39;그럴듯한 것&#39;을 고름</td></tr><tr><td class="cell-pre">토큰</td><td class="cell-pre">레고 블록 조각</td><td class="cell-pre">너무 긴 입력은 조각 한도를 넘김</td></tr><tr><td class="cell-pre">컨텍스트 윈도우</td><td class="cell-pre">책상 위 서류 공간</td><td class="cell-pre">긴 대화는 앞부분을 잊을 수 있음</td></tr><tr><td class="cell-pre">환각</td><td class="cell-pre">모르면 얼버무리는 습관</td><td class="cell-pre">숫자·규정·이름은 반드시 사람이 확인</td></tr></tbody>
   </table></div>
-  <p style="margin-top:14px"><a class="btn btn--line btn--sm" href="schedule.html">자세한 일정 보기 →</a></p>
+</div>
+  
+  <h3 class="sub-h" id="sub-1">1 환각(hallucination) — 왜 그럴듯한 거짓말을 할까</h3>
+  <p class="b-para" style="white-space:pre-line">AI에게 존재하지 않는 규정 번호를 물어도, &#39;모릅니다&#39;라고 하기보다 그럴듯한 번호를 지어내는 경우가 있습니다. 이것을 &#39;환각&#39;이라고 부릅니다. 왜 이런 일이 생길까요? 앞에서 배웠듯 AI는 &#39;가장 그럴듯한 다음 단어&#39;를 고르도록 만들어졌기 때문입니다. 빈칸을 비워 두기보다 &#39;문장을 그럴듯하게 완성&#39;하는 쪽으로 훈련된 것이죠. 시험에서 모르는 문제도 일단 그럴싸하게 답을 적는 학생과 비슷합니다.</p>
+<div class="b-note b-warn">
+  <div class="b-note__t"><span aria-hidden="true">⚠️</span>유의</div>
+  <p style="white-space:pre-line">환각은 특히 숫자, 날짜, 법령·규정 번호, 사람 이름, 거래처 정보에서 자주 나타납니다. 배합사료 단가, 계약 조항, 세금 계산 같은 것은 AI 답을 절대 그대로 믿지 말고 원본 자료로 교차 확인하세요.</p>
+</div>
+<p class="b-label">온도(temperature) — 창의성과 정확성의 손잡이</p>
+<p class="b-para" style="white-space:pre-line">일부 도구에는 &#39;온도(temperature)&#39;라는 설정이 있습니다. 온도가 낮으면 AI는 가장 무난하고 안정적인 단어만 골라 딱딱하지만 일관된 답을 냅니다. 온도가 높으면 덜 흔한 단어도 과감히 골라 창의적이지만 튀는 답을 냅니다. 라디오 주파수 다이얼처럼 생각하면 됩니다. 회계 보고서 초안처럼 정확성이 중요한 일은 &#39;낮은 온도&#39;, 홍보 문구 아이디어처럼 참신함이 필요한 일은 &#39;높은 온도&#39;가 어울립니다.</p>
+<div class="b-note b-tip">
+  <div class="b-note__t"><span aria-hidden="true">💡</span>Tip</div>
+  <p style="white-space:pre-line">온도 설정이 없는 무료 채팅에서도 원리는 통합니다. &#39;정확한 사실만, 확실하지 않으면 모른다고 답해 줘&#39;라고 문장으로 부탁하면 AI가 안전하게 답하도록 유도할 수 있습니다.</p>
+</div>
+</section>
+
+<section id="sec-3">
+  <h2 class="sec-h"><span class="sec-h__n">3</span>무료 AI 도구 4종 — 어디에 뭘 쓸까</h2>
+  <p class="b-para" style="white-space:pre-line">AI 도구는 저마다 성격이 다릅니다. 사람으로 치면 만능처럼 두루 잘하는 동료, 글을 특히 정성껏 쓰는 동료, 검색을 빠릿하게 하는 동료, 출처를 꼬박꼬박 대는 동료가 따로 있는 셈입니다. 무료 버전만으로도 사무 업무 대부분을 처리할 수 있으니, 성격을 알고 골라 쓰는 것이 중요합니다.</p>
+<div class="b-table">
+  <p class="b-table__cap">무료 AI 도구 4종 비교와 농협사료 활용 예</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th class="cell-pre">도구</th><th class="cell-pre">성격 한마디</th><th class="cell-pre">강점</th><th class="cell-pre">사무 활용 예</th></tr></thead>
+    <tbody><tr><td class="cell-pre">ChatGPT</td><td class="cell-pre">만능 올라운더</td><td class="cell-pre">폭넓은 작업, 아이디어, 표 정리</td><td class="cell-pre">회의록 요약, 메일 초안, 엑셀 수식 질문</td></tr><tr><td class="cell-pre">Claude</td><td class="cell-pre">정성스러운 글쟁이</td><td class="cell-pre">긴 문서 처리, 자연스러운 문장, 정중한 톤</td><td class="cell-pre">긴 계약서 요약, 공문·안내문 다듬기</td></tr><tr><td class="cell-pre">Gemini</td><td class="cell-pre">구글과 한 몸</td><td class="cell-pre">구글 검색·문서 연동, 최신 정보</td><td class="cell-pre">최신 시세·뉴스 확인, Docs 연계 작성</td></tr><tr><td class="cell-pre">Perplexity</td><td class="cell-pre">출처 대는 조사원</td><td class="cell-pre">근거 링크와 함께 답변, 사실 조사</td><td class="cell-pre">사료 원료 시세 조사, 규정·통계 근거 찾기</td></tr></tbody>
+  </table></div>
+</div>
+<p class="b-para" style="white-space:pre-line">정리하면, 초안을 폭넓게 만들고 싶으면 ChatGPT, 긴 문서를 정중하게 다듬고 싶으면 Claude, 구글 문서·최신 정보와 엮고 싶으면 Gemini, 출처가 중요한 조사에는 Perplexity가 잘 맞습니다. 한 도구만 고집하지 말고 일의 성격에 따라 갈아타는 습관이 실력입니다.</p>
+<div class="b-note b-case">
+  <div class="b-note__t"><span aria-hidden="true">📌</span>도구 조합 사례</div>
+  <p style="white-space:pre-line">총무팀 이 과장은 옥수수·대두박 시세 동향 보고를 만들 때, 먼저 Perplexity로 출처 있는 최신 시세를 조사하고, 그 내용을 Claude에 넣어 임원 보고용 정중한 문장으로 다듬었습니다. &#39;조사는 Perplexity, 글다듬기는 Claude&#39;라는 역할 분담입니다.</p>
+</div>
+<div class="b-note b-warn">
+  <div class="b-note__t"><span aria-hidden="true">⚠️</span>유의</div>
+  <p style="white-space:pre-line">어떤 무료 도구든 입력한 내용이 학습에 쓰일 수 있습니다. 거래처 실명, 계약 단가, 주민등록번호, 내부 대외비 자료는 넣지 마세요. 넣어야 한다면 &#39;○○거래처&#39;, &#39;A품목&#39;처럼 익명화한 뒤 사용합니다.</p>
+</div>
+  
+</section>
+
+<section id="sec-4">
+  <h2 class="sec-h"><span class="sec-h__n">4</span>좋은 프롬프트 vs 나쁜 프롬프트</h2>
+  <p class="b-para" style="white-space:pre-line">&#39;프롬프트(prompt)&#39;는 AI에게 건네는 지시문, 쉽게 말해 &#39;부탁하는 말&#39;입니다. 같은 AI라도 어떻게 부탁하느냐에 따라 결과가 하늘과 땅 차이입니다. 신입사원에게 &#39;알아서 잘해 봐&#39;라고 하면 엉뚱한 걸 가져오지만, &#39;누구에게, 무슨 목적으로, 어떤 형식으로&#39;를 알려 주면 원하는 걸 가져오는 것과 똑같습니다.</p>
+<div class="b-table">
+  <p class="b-table__cap">나쁜 프롬프트 vs 좋은 프롬프트</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th class="cell-pre">나쁜 프롬프트</th><th class="cell-pre">무엇이 문제인가</th><th class="cell-pre">좋은 프롬프트</th></tr></thead>
+    <tbody><tr><td class="cell-pre">안내문 써 줘</td><td class="cell-pre">대상·목적·형식이 없음</td><td class="cell-pre">배합사료 단가 3% 인상을 축산농가에 알리는 안내문을 정중한 존댓말 5문장으로 써 줘</td></tr><tr><td class="cell-pre">이거 요약해 줘</td><td class="cell-pre">분량·관점이 없음</td><td class="cell-pre">이 회의록을 임원 보고용으로 결정사항·담당자·기한 3항목 표로 요약해 줘</td></tr><tr><td class="cell-pre">메일 고쳐 줘</td><td class="cell-pre">어떻게 고칠지 없음</td><td class="cell-pre">이 메일을 거래처에 보낼 정중한 톤으로 바꾸고, 3문장 이내로 줄여 줘</td></tr></tbody>
+  </table></div>
+</div>
+<p class="b-para" style="white-space:pre-line">핵심은 &#39;구체성&#39;입니다. AI는 눈치가 없어서, 우리가 말하지 않은 것은 추측으로 채웁니다. 그 추측이 틀리면 다시 시켜야 하니 오히려 시간이 더 듭니다. 처음부터 구체적으로 부탁하는 것이 결국 가장 빠릅니다.</p>
+<div class="b-note b-tip">
+  <div class="b-note__t"><span aria-hidden="true">💡</span>Tip</div>
+  <p style="white-space:pre-line">원하는 결과가 안 나오면 프롬프트를 버리지 말고 &#39;한 문장씩 덧붙이며&#39; 고쳐 보세요. &#39;더 짧게&#39;, &#39;표로&#39;, &#39;존댓말로&#39;, &#39;숫자는 그대로 둬&#39;처럼 조건을 추가하면 대화하듯 결과가 다듬어집니다.</p>
+</div>
+  
+</section>
+
+<section id="sec-5">
+  <h2 class="sec-h"><span class="sec-h__n">5</span>업무 지시형 프롬프트 5요소</h2>
+  <p class="b-para" style="white-space:pre-line">좋은 프롬프트에는 공통된 뼈대가 있습니다. 바로 다섯 가지 요소, 역할·맥락·과제·제약·출력형식입니다. 이 다섯 가지를 챙기면 초보자도 전문가처럼 지시할 수 있습니다. 신입사원에게 일을 맡길 때 자연스럽게 알려 주는 정보와 똑같습니다.</p>
+<div class="b-table">
+  <p class="b-table__cap">프롬프트 5요소 — 신입사원에게 일 시키듯</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th class="cell-pre">요소</th><th class="cell-pre">무엇을 담나</th><th class="cell-pre">농협사료 예시</th></tr></thead>
+    <tbody><tr><td class="cell-pre">역할</td><td class="cell-pre">AI가 누구인 척할지</td><td class="cell-pre">&#39;너는 농협사료 총무팀 담당자야&#39;</td></tr><tr><td class="cell-pre">맥락</td><td class="cell-pre">배경 상황·목적</td><td class="cell-pre">&#39;배합사료 단가가 3% 오른다, 농가에 미리 알려야 해&#39;</td></tr><tr><td class="cell-pre">과제</td><td class="cell-pre">구체적으로 시킬 일</td><td class="cell-pre">&#39;인상 안내문 초안을 써 줘&#39;</td></tr><tr><td class="cell-pre">제약</td><td class="cell-pre">지켜야 할 조건</td><td class="cell-pre">&#39;정중한 존댓말, 5문장, 사과와 이유 포함&#39;</td></tr><tr><td class="cell-pre">출력형식</td><td class="cell-pre">결과물 모양</td><td class="cell-pre">&#39;제목 + 본문 형태로&#39;</td></tr></tbody>
+  </table></div>
+</div>
+<div class="b-prompt">
+  <p class="b-prompt__cap">5요소를 모두 담은 완성형 예시 (그대로 복붙 후 상황만 바꿔 사용)</p>
+  <div class="b-prompt__box">
+    <div class="b-prompt__bar"><span>Prompt</span>
+      <button class="copy-btn" type="button">복사</button></div>
+    <pre>[역할] 너는 농협사료 총무팀에서 대외 문서를 담당하는 실무자야.
+[맥락] 원자재 가격 상승으로 다음 달부터 배합사료 공급 단가가 평균 3% 인상돼. 오랜 거래 축산농가들이 놀라지 않도록 사전에 정중히 알려야 해.
+[과제] 단가 인상 안내문 초안을 작성해 줘.
+[제약] 정중한 존댓말, 5~6문장 이내, 인상 배경 설명과 양해 요청을 포함하고, 구체적 금액 대신 &#39;평균 3%&#39;로만 표기해 줘.
+[출력형식] 맨 위에 안내문 제목 한 줄, 그 아래 본문 형태로 작성해 줘.</pre>
+  </div>
+</div>
+<p class="b-para" style="white-space:pre-line">다섯 요소를 매번 완벽히 채울 필요는 없습니다. 하지만 결과가 아쉬울 때 &#39;내가 빠뜨린 요소가 뭐지?&#39;라고 점검하면 대개 답이 나옵니다. 보통은 &#39;맥락&#39;과 &#39;제약&#39;을 빠뜨려서 엉뚱한 결과가 나옵니다.</p>
+<div class="b-note b-tip">
+  <div class="b-note__t"><span aria-hidden="true">💡</span>Tip</div>
+  <p style="white-space:pre-line">역할을 지정하면 결과가 확 좋아집니다. &#39;너는 15년 차 회계 담당자야&#39;처럼 전문가 역할을 부여하면, AI가 그 역할에 어울리는 어휘와 관점으로 답을 만듭니다.</p>
+</div>
+  
+</section>
+
+<section id="sec-6">
+  <h2 class="sec-h"><span class="sec-h__n">6</span>실습 — 내 업무를 AI에게 설명하고 자동화하기</h2>
+  <p class="b-para" style="white-space:pre-line">이제 배운 것을 내 업무에 직접 적용해 봅시다. 두 가지 프롬프트를 만들어 오늘의 산출물로 남깁니다. 완벽하지 않아도 좋습니다. 5요소를 떠올리며 채워 보는 연습 자체가 실력이 됩니다.</p>
+<div class="b-ex">
+  <div class="b-ex__h"><span aria-hidden="true">✏️</span>실습 1</div>
+  <div class="b-ex__b" style="white-space:pre-line">내 업무를 AI에게 설명하는 프롬프트를 만들어 보세요. 내가 맡은 대표 업무 하나를 골라, 역할·맥락·과제·제약·출력형식 5요소로 AI에게 설명하는 지시문을 작성합니다. 아래 promptbox를 뼈대로 삼아 내 상황에 맞게 고치면 됩니다.</div>
+</div>
+<div class="b-prompt">
+  <p class="b-prompt__cap">실습 1 뼈대 — 대괄호 안을 내 업무로 바꾸기</p>
+  <div class="b-prompt__box">
+    <div class="b-prompt__bar"><span>Prompt</span>
+      <button class="copy-btn" type="button">복사</button></div>
+    <pre>[역할] 너는 농협사료 [내 부서, 예: 영업지원팀]에서 [내 직무]를 돕는 실무 조수야.
+[맥락] 나는 매주 [반복 업무, 예: 거래처별 발주 현황]을 처리하는데, [현재 겪는 어려움, 예: 형식을 매번 새로 쓰는 것]이 번거로워.
+[과제] 이 업무를 더 빠르게 처리하도록 도와줘.
+[제약] 우리 회사 자료는 익명으로 다루고, 확실하지 않은 숫자는 지어내지 말고 &#39;확인 필요&#39;로 표시해 줘.
+[출력형식] 먼저 내 업무를 어떻게 이해했는지 3줄로 요약하고, 이어서 도와줄 방법을 목록으로 제안해 줘.</pre>
+  </div>
+</div>
+<div class="b-ex">
+  <div class="b-ex__h"><span aria-hidden="true">✏️</span>실습 2</div>
+  <div class="b-ex__b" style="white-space:pre-line">반복 업무 자동화 지시문을 만들어 보세요. 매번 형식이 비슷한 반복 업무(예: 주간 발주 확인 메일, 회의록 요약, 월간 실적 정리)를 하나 골라, 항목만 바꿔 넣으면 결과가 나오는 &#39;재사용 프롬프트&#39;를 작성합니다.</div>
+</div>
+<div class="b-prompt">
+  <p class="b-prompt__cap">실습 2 예시 — 주간 발주 확인 메일 자동화</p>
+  <div class="b-prompt__box">
+    <div class="b-prompt__bar"><span>Prompt</span>
+      <button class="copy-btn" type="button">복사</button></div>
+    <pre>[역할] 너는 농협사료 구매팀의 문서 작성 조수야.
+[맥락] 나는 매주 여러 거래처에 발주 확인 메일을 보내. 형식은 늘 같고 품목·수량·납기만 달라져.
+[과제] 아래 정보를 넣으면 발주 확인 메일을 완성해 줘. 거래처: [○○사료], 품목: [비육우 배합사료], 수량: [20톤], 납기: [7월 10일].
+[제약] 정중한 존댓말, 4문장 이내, 마지막에 &#39;변경 사항 있으면 회신 부탁드립니다&#39; 문구 포함.
+[출력형식] 제목 한 줄 + 본문 형태의 메일로 작성해 줘.</pre>
+  </div>
+</div>
+<div class="b-note b-out">
+  <div class="b-note__t"><span aria-hidden="true">📦</span>핵심 산출물</div>
+  <p style="white-space:pre-line">산출물 1: &#39;개인 업무 설명 프롬프트&#39; 1건 — 내 대표 업무를 5요소로 설명한 지시문.</p>
+</div>
+<div class="b-note b-out">
+  <div class="b-note__t"><span aria-hidden="true">📦</span>핵심 산출물</div>
+  <p style="white-space:pre-line">산출물 2: &#39;반복 업무 자동화 프롬프트&#39; 1건 — 항목만 바꾸면 재사용 가능한 지시문.</p>
+</div>
+<div class="b-note b-case">
+  <div class="b-note__t"><span aria-hidden="true">🔗</span>연계 학습</div>
+  <p style="white-space:pre-line">다음 차시에서는 오늘 만든 프롬프트를 발판 삼아, 내 사무 업무 전체를 유형별로 분해하고 어떤 일을 AI에게 맡길지 &#39;업무 지도&#39;를 그려 봅니다.</p>
+</div>
+  
+</section>
+
+<div class="done-bar">
+  <button class="done-btn" type="button" data-done="part-1" aria-pressed="false">학습 완료로 표시</button>
+  <span class="muted" style="font-size:13px;color:var(--g400)">이 브라우저에만 저장됩니다.</span>
+</div>
+
+<nav class="pn" aria-label="차시 이동">
+  <span></span>
+  <a class="pn__a pn__a--r" href="part-2.html"><span>2차시 →</span><b>사무관리 업무별 AI 활용 구조 이해</b></a>
+</nav>
 </div></div>
   </main>
 </div>

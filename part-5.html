@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="format-detection" content="telephone=no">
-<title>생성형 AI 기반 사무관리 업무혁신 실무 · 학습사이트</title>
-<meta name="description" content="농협사료 임직원 대상 1일 8차시 생성형 AI 실무 과정 학습사이트. 8차시 교재 · 실습 · AI 도구 가이드 · 업무별 프롬프트 부록.">
-<meta property="og:title" content="생성형 AI 기반 사무관리 업무혁신 실무 · 학습사이트">
-<meta property="og:description" content="농협사료 임직원 대상 1일 8차시 생성형 AI 실무 과정 학습사이트. 8차시 교재 · 실습 · AI 도구 가이드 · 업무별 프롬프트 부록.">
+<title>5차시 · GPT 활용 기획 문서 및 보고서 자동화 — 농협사료 AI 실무</title>
+<meta name="description" content="5차시: GPT 활용 기획 문서 및 보고서 자동화">
+<meta property="og:title" content="5차시 · GPT 활용 기획 문서 및 보고서 자동화 — 농협사료 AI 실무">
+<meta property="og:description" content="5차시: GPT 활용 기획 문서 및 보고서 자동화">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%228%22%20fill%3D%22%2312522e%22%2F%3E%3Cpath%20d%3D%22M16%207c4.6%202.8%207.4%206.2%207.4%2010.4a7.4%207.4%200%200%201-14.8%200C8.6%2013.2%2011.4%209.8%2016%207Z%22%20fill%3D%22%23fec20d%22%2F%3E%3Cpath%20d%3D%22M16%2012v11%22%20stroke%3D%22%2312522e%22%20stroke-width%3D%222.2%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
 <style>
@@ -413,38 +413,21 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
 
 
 /* ===== 이 페이지 전용 ===== */
-.hero{background:linear-gradient(135deg,var(--b900) 0%,var(--b800) 45%,var(--b600) 100%);
-  color:#fff; padding:56px 28px 60px; position:relative; overflow:hidden}
-.hero::after{content:""; position:absolute; right:-90px; top:-90px; width:340px; height:340px;
-  border-radius:50%; background:rgba(254,194,13,.12)}
-.hero__in{position:relative; z-index:1; max-width:1180px; margin:0 auto}
-.hero__tag{display:inline-block; padding:5px 13px; border-radius:var(--pill);
-  background:rgba(255,255,255,.16); font-size:12.5px; font-weight:800; margin-bottom:14px}
-.hero h1{font-size:38px; font-weight:800; letter-spacing:-.035em; line-height:1.28; max-width:20ch}
-.hero p{margin-top:12px; font-size:17px; color:rgba(255,255,255,.9); max-width:52ch}
-.hero__cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px}
-.hero__meta{display:flex; flex-wrap:wrap; gap:12px 32px; margin-top:32px;
-  padding-top:22px; border-top:1px solid rgba(255,255,255,.18)}
-.hero__meta b{display:block; font-size:19px; font-weight:800; color:var(--s300)}
-.hero__meta span{font-size:13px; color:rgba(255,255,255,.75)}
-.part-card__n{font-size:12px; font-weight:800; color:var(--b600); margin-bottom:5px}
-.part-card__badges{display:flex; flex-wrap:wrap; gap:6px; margin-top:12px}
-.part-card.is-done{border-color:var(--b400); background:var(--b50)}
-.part-card.is-done .part-card__n::after{content:" ✓ 완료"; color:var(--b600)}
-.tl{background:#fff; border:1px solid var(--g200); border-radius:var(--radius); overflow:hidden; min-width:560px}
-.tl thead th{background:var(--b800); color:#fff; padding:11px 13px; text-align:left; font-size:13.5px}
-.tl td{padding:11px 13px; border-top:1px solid var(--g100); font-size:14px}
-.tl .c{text-align:center}
-.tl .nowrap{white-space:nowrap; color:var(--g500)}
-@media (max-width:900px){ .hero{padding:40px 20px 46px} .hero h1{font-size:26px} .hero p{font-size:15px} }
-@media (max-width:640px){ .hero h1{font-size:22px} .hero__cta .btn{width:auto; flex:1} }
+.pn{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:22px}
+.pn__a{display:block; padding:15px 18px; border-radius:var(--radius);
+  border:1px solid var(--g200); background:#fff; transition:border-color .2s var(--ease)}
+.pn__a:hover{border-color:var(--b400)}
+.pn__a span{display:block; font-size:12px; font-weight:800; color:var(--b600); margin-bottom:3px}
+.pn__a b{font-size:14px; color:var(--g700); font-weight:700; line-height:1.5}
+.pn__a--r{text-align:right}
+@media (max-width:640px){ .pn{grid-template-columns:1fr} .pn__a--r{text-align:left} }
 </style>
 <noscript><style>
 /* 스크립트가 꺼져 있어도 목차는 보여야 한다 */
 .sb{transform:none !important; position:static !important; height:auto !important}
 </style></noscript>
 </head>
-<body data-page="home">
+<body data-page="part-5">
 
 <a class="skip-link" href="#main">본문 바로가기</a>
 <header class="hd">
@@ -456,8 +439,8 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
     <span>농협사료<small>AI 사무관리 업무혁신</small></span>
   </a>
   <nav class="hd__nav" aria-label="주 메뉴">
-    <a href="index.html" class="on" aria-current="page">홈</a>
-    <a href="course.html">교재</a>
+    <a href="index.html">홈</a>
+    <a href="course.html" class="on" aria-current="page">교재</a>
     <a href="schedule.html">일정</a>
     <a href="labs.html">실습</a>
     <a href="tools.html">AI 도구</a>
@@ -471,189 +454,287 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
   <aside class="sb" id="sb"><div class="sb__title">생성형 AI 기반 사무관리 업무혁신 실무</div>
 <a class="sb__cta" href="schedule.html">📅 8차시 교육 일정 보기</a>
 <div class="sb__label">학습 목차</div>
-<a class="sb__item on" href="course.html"><span>교재 전체 개요</span></a>
+<a class="sb__item" href="course.html"><span>교재 전체 개요</span></a>
 <a class="sb__item" href="part-1.html" data-done-mark="part-1"><span class="sb__num">1</span><span>생성형 AI와 프롬프트 엔지니어링 이해</span></a>
 <a class="sb__item" href="part-2.html" data-done-mark="part-2"><span class="sb__num">2</span><span>사무관리 업무별 AI 활용 구조 이해</span></a>
 <a class="sb__item" href="part-3.html" data-done-mark="part-3"><span class="sb__num">3</span><span>AI 기반 시장분석 및 트렌드 도출</span></a>
 <a class="sb__item" href="part-4.html" data-done-mark="part-4"><span class="sb__num">4</span><span>AI 활용 전략 기획 및 아이디어션</span></a>
-<a class="sb__item" href="part-5.html" data-done-mark="part-5"><span class="sb__num">5</span><span>GPT 활용 기획 문서 및 보고서 자동화</span></a>
+<a class="sb__item on" href="part-5.html" data-done-mark="part-5"><span class="sb__num">5</span><span>GPT 활용 기획 문서 및 보고서 자동화</span></a>
+<div class="sb__sub"><a href="#sec-1">1. 보고서는 &#39;구조가 절반&#39;이다</a>
+<a href="#sec-2">2. 보고서 자동화 3단계: 구조 설계 → 항목 작성 → 톤·분량 다듬기</a>
+<a href="#sec-3">3. 톤과 페르소나: 역할을 주면 왜 문체가 바뀔까</a>
+<a href="#sec-4">4. 개조식과 서술식, 그리고 표 기반 보고서</a>
+<a href="#sec-5">5. 회의록을 회의자료 요약문으로 바꾸기</a>
+<a href="#sec-6">6. Claude로 문체 교정 후 Google Docs에 정리하기</a></div>
 <a class="sb__item" href="part-6.html" data-done-mark="part-6"><span class="sb__num">6</span><span>AI 기반 데이터 분석</span></a>
 <a class="sb__item" href="part-7.html" data-done-mark="part-7"><span class="sb__num">7</span><span>AI 활용 의사결정 지원 시스템 구축</span></a>
 <a class="sb__item" href="part-8.html" data-done-mark="part-8"><span class="sb__num">8</span><span>종합 실습 및 현업 적용 계획 수립</span></a></aside>
   <main id="main" style="flex:1;min-width:0">
+<div class="main"><div class="wrap">
+<ol class="crumb"><li><a href="index.html">홈</a></li><li><a href="course.html">교재</a></li><li>5차시</li></ol>
+<div class="ph">
+  <span class="ph__eyebrow">5차시</span>
+  <h1>GPT 활용 기획 문서 및 보고서 자동화</h1>
 
-<section class="hero">
-  <div class="hero__in">
-    <span class="hero__tag">농협사료 임직원 교육 · 1일 8차시</span>
-    <h1>생성형 AI 기반 사무관리 업무혁신 실무</h1>
-    <p>무료 AI 도구로 완성하는 1일 8차시 실습 과정</p>
-    <div class="hero__cta">
-      <a class="btn btn--gold" href="part-1.html">1차시부터 시작하기</a>
-      <a class="btn btn--white" href="schedule.html">교육 일정 보기</a>
-    </div>
-    <ul class="hero__meta">
-      <li><b>08:00–17:00</b><span>점심 1시간 제외</span></li>
-      <li><b>8차시</b><span>이론 30 · 실습 50 · 사례 20</span></li>
-      <li><b>무료 도구</b><span>ChatGPT · Claude · Gemini 외</span></li>
-    </ul>
-  </div>
+</div>
+<div class="b-obj">
+  <div class="b-obj__t"><span aria-hidden="true">🎯</span>학습 목표</div>
+  <ul><li>보고서는 &#39;내용&#39;보다 &#39;구조&#39;가 절반이라는 원리를 이해하고, 구조부터 잡는 습관을 들인다.</li><li>&#39;구조 설계 → 항목 작성 → 톤·분량 다듬기&#39;의 3단계 보고서 자동화 흐름을 몸에 익힌다.</li><li>AI에게 역할(페르소나)과 톤을 지정하면 문체가 왜 바뀌는지 원리를 알고 활용한다.</li><li>개조식(~함/~임)과 서술식의 차이를 구분하고 상황에 맞게 골라 쓴다.</li><li>기획 보고서 초안, 회의자료 요약문, 제안서 개요를 실제로 만들어 Google Docs에 정리한다.</li></ul>
+</div>
+<div class="b-keywords"><span>보고서 구조</span><span>3단계 자동화</span><span>페르소나</span><span>톤 지정</span><span>개조식과 서술식</span><span>회의록 요약</span><span>기획 보고서</span><span>제안서 개요</span><span>Claude 문체 교정</span><span>Google Docs</span></div>
+
+<section id="sec-1">
+  <h2 class="sec-h"><span class="sec-h__n">1</span>보고서는 &#39;구조가 절반&#39;이다</h2>
+  <p class="b-para" style="white-space:pre-line">회사에서 쓰는 보고서를 어렵게 느끼는 이유는 대부분 &#39;무슨 말을 쓸지&#39;가 아니라 &#39;어떤 순서로 쌓을지&#39;를 몰라서입니다. 오늘은 이 순서, 즉 구조를 먼저 잡는 법부터 배웁니다.</p>
+<p class="b-label">집을 짓는 것에 비유하면</p>
+<p class="b-para" style="white-space:pre-line">보고서를 집이라고 생각해 봅시다. 벽지와 가구(내용)를 아무리 예쁘게 골라도, 기둥과 방 배치(구조)가 엉성하면 무너지는 집이 됩니다. 반대로 뼈대가 튼튼하면 가구는 나중에 하나씩 채워 넣어도 됩니다. 보고서도 똑같아서, 목차라는 뼈대를 먼저 세우면 나머지는 칸을 채우는 일이 됩니다.</p>
+<p class="b-para" style="white-space:pre-line">실무에서는 이 뼈대가 거의 정해져 있습니다. 예를 들어 사료 신제품 판촉 기획 보고서라면 &#39;추진배경 → 목적 → 현황 → 개선방안 → 기대효과 → 추진일정&#39;이라는 여섯 개의 방이 있는 집을 짓는 셈입니다. AI는 이 방을 하나씩 채우는 데 아주 능숙합니다.</p>
+<p class="b-para" style="white-space:pre-line">기술적으로 왜 그럴까요? GPT 같은 생성형 AI는 &#39;다음에 올 말&#39;을 확률로 이어 붙이는 도구입니다. 그런데 아무 방향 없이 이어 붙이면 이야기가 옆길로 샙니다. 목차라는 뼈대를 먼저 주면, AI가 각 방(항목) 안에서만 말을 이어 붙이기 때문에 훨씬 정확하고 회사 문서다운 결과가 나옵니다. 즉 구조는 AI의 &#39;길 안내판&#39; 역할을 합니다.</p>
+<div class="b-note b-tip">
+  <div class="b-note__t"><span aria-hidden="true">💡</span>Tip</div>
+  <p style="white-space:pre-line">보고서를 시작할 때 본문부터 쓰지 마세요. &#39;AI야, 이 주제로 보고서 목차부터 6개 항목으로 잡아줘&#39;라고 목차를 먼저 받는 것이 가장 빠른 지름길입니다.</p>
+</div>
+  
+  <h3 class="sub-h" id="sub-1">1 농협사료 실무에서 자주 쓰는 보고서 뼈대</h3>
+  <div class="b-table">
+  <p class="b-table__cap">업무별 기본 보고서 구조(방 배치) 예시</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th class="cell-pre">보고서 종류</th><th class="cell-pre">기본 뼈대(항목 순서)</th></tr></thead>
+    <tbody><tr><td class="cell-pre">기획 보고서</td><td class="cell-pre">추진배경 → 목적 → 현황 → 개선방안 → 기대효과 → 추진일정</td></tr><tr><td class="cell-pre">현황 보고서</td><td class="cell-pre">개요 → 현황(수치) → 문제점 → 원인 → 조치계획</td></tr><tr><td class="cell-pre">회의자료</td><td class="cell-pre">안건 → 배경 → 논의사항 → 결정사항 → 후속조치(담당·기한)</td></tr><tr><td class="cell-pre">제안서 개요</td><td class="cell-pre">고객 니즈 → 제안 개요 → 기대효과 → 추진범위 → 일정·비용</td></tr></tbody>
+  </table></div>
+</div>
+<p class="b-para" style="white-space:pre-line">이 표를 즐겨찾기처럼 기억해 두면, 어떤 보고서를 만나도 &#39;아, 이건 이 뼈대구나&#39; 하고 바로 시작할 수 있습니다. 뼈대만 정해지면 AI에게 각 방을 채워 달라고 부탁하면 됩니다.</p>
+<div class="b-note b-case">
+  <div class="b-note__t"><span aria-hidden="true">📌</span>현장 사례</div>
+  <p style="white-space:pre-line">총무팀 김 대리는 매번 백지에서 보고서를 시작해 30분씩 헤맸습니다. 위 뼈대 표를 벽에 붙여두고 나서는, 항목만 정한 뒤 AI에게 채우게 해 초안 작성 시간을 10분 아래로 줄였습니다.</p>
+</div>
 </section>
 
-<div class="main"><div class="wrap wrap--wide">
-  <h2 class="sec-h"><span class="sec-h__n">1</span>8차시 커리큘럼</h2>
-  <div class="grid g2">
-    <a class="card part-card" href="part-1.html" data-done-mark="part-1">
-      <div class="part-card__n">1차시</div>
-      <h3>생성형 AI와 프롬프트 엔지니어링 이해</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 46</span>
-        <span class="bdg bdg--green">실습 2</span>
-        <span class="bdg bdg--gold">표 5</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-2.html" data-done-mark="part-2">
-      <div class="part-card__n">2차시</div>
-      <h3>사무관리 업무별 AI 활용 구조 이해</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 37</span>
-        <span class="bdg bdg--green">실습 2</span>
-        <span class="bdg bdg--gold">표 5</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-3.html" data-done-mark="part-3">
-      <div class="part-card__n">3차시</div>
-      <h3>AI 기반 시장분석 및 트렌드 도출</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 47</span>
-        <span class="bdg bdg--green">실습 3</span>
-        <span class="bdg bdg--gold">표 3</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-4.html" data-done-mark="part-4">
-      <div class="part-card__n">4차시</div>
-      <h3>AI 활용 전략 기획 및 아이디어션</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 51</span>
-        <span class="bdg bdg--green">실습 6</span>
-        <span class="bdg bdg--gold">표 4</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-5.html" data-done-mark="part-5">
-      <div class="part-card__n">5차시</div>
-      <h3>GPT 활용 기획 문서 및 보고서 자동화</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 59</span>
-        <span class="bdg bdg--green">실습 5</span>
-        <span class="bdg bdg--gold">표 3</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-6.html" data-done-mark="part-6">
-      <div class="part-card__n">6차시</div>
-      <h3>AI 기반 데이터 분석</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 53</span>
-        <span class="bdg bdg--green">실습 5</span>
-        <span class="bdg bdg--gold">표 3</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-7.html" data-done-mark="part-7">
-      <div class="part-card__n">7차시</div>
-      <h3>AI 활용 의사결정 지원 시스템 구축</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 61</span>
-        <span class="bdg bdg--green">실습 3</span>
-        <span class="bdg bdg--gold">표 3</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-8.html" data-done-mark="part-8">
-      <div class="part-card__n">8차시</div>
-      <h3>종합 실습 및 현업 적용 계획 수립</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 54</span>
-        <span class="bdg bdg--green">실습 3</span>
-        <span class="bdg bdg--gold">표 4</span>
-      </p>
-    </a>
+<section id="sec-2">
+  <h2 class="sec-h"><span class="sec-h__n">2</span>보고서 자동화 3단계: 구조 설계 → 항목 작성 → 톤·분량 다듬기</h2>
+  <p class="b-para" style="white-space:pre-line">AI로 보고서를 만드는 일은 한 번에 완성하는 마술이 아니라, 세 번에 나눠 완성하는 요리 과정에 가깝습니다. 재료 손질(구조) → 조리(항목 작성) → 간 맞추기(톤·분량)의 순서입니다.</p>
+<p class="b-label">1단계 · 구조 설계</p>
+<p class="b-para" style="white-space:pre-line">먼저 목차를 잡습니다. 주제와 목적을 알려주고 항목을 나열하게 합니다. 이 단계에서 뼈대가 마음에 들 때까지 항목을 더하고 빼며 고칩니다. 아직 본문은 쓰지 않습니다.</p>
+<p class="b-label">2단계 · 항목 작성</p>
+<p class="b-para" style="white-space:pre-line">확정된 목차의 각 항목을 하나씩 채웁니다. &#39;추진배경만 3문장으로 써줘&#39;처럼 방 하나씩 부탁하면 품질이 높아집니다. 방마다 필요한 우리 회사 정보(사료 판매 수치, 거래처 상황 등)를 함께 넣어주면 더 정확해집니다.</p>
+<p class="b-label">3단계 · 톤·분량 다듬기</p>
+<p class="b-para" style="white-space:pre-line">마지막으로 문체와 길이를 맞춥니다. &#39;전체를 개조식으로 바꿔줘&#39;, &#39;한 항목당 3줄로 줄여줘&#39;, &#39;팀장 보고용으로 조금 더 격식 있게&#39;처럼 요청하면 됩니다. 이 단계가 바로 요리의 간 맞추기입니다.</p>
+<div class="b-note b-warn">
+  <div class="b-note__t"><span aria-hidden="true">⚠️</span>유의</div>
+  <p style="white-space:pre-line">세 단계를 한 번의 프롬프트에 몰아넣으면(구조·내용·톤을 한꺼번에) AI가 우선순위를 놓쳐 어중간한 결과가 나옵니다. 반드시 나눠서 진행하세요. 나누는 것이 오히려 더 빠릅니다.</p>
+</div>
+  
+  <h3 class="sub-h" id="sub-1">1 1단계 실습용 프롬프트: 목차부터 받기</h3>
+  <div class="b-prompt">
+  <p class="b-prompt__cap">기획 보고서 목차(뼈대) 설계 프롬프트</p>
+  <div class="b-prompt__box">
+    <div class="b-prompt__bar"><span>Prompt</span>
+      <button class="copy-btn" type="button">복사</button></div>
+    <pre>[역할] 너는 농협사료 총무기획 담당 10년 차 실무자야.
+[맥락] 축산농가 대상 배합사료 신제품의 사내 판촉 지원을 위한 기획 보고서를 준비 중이야. 아직 본문은 필요 없고 목차만 먼저 잡고 싶어.
+[과제] 팀장 보고에 적합한 기획 보고서 목차를 6개 대항목으로 제안하고, 각 항목에 어떤 내용이 들어가면 좋은지 한 줄씩 설명해줘.
+[제약] 항목 이름은 &#39;추진배경, 목적, 현황, 개선방안, 기대효과, 추진일정&#39; 순서를 기본으로 하되 우리 상황에 더 맞게 다듬어도 좋아. 본문은 아직 쓰지 마.
+[출력형식] 번호 매긴 목차 + 각 항목당 한 줄 설명.</pre>
   </div>
+</div>
+<div class="b-ex">
+  <div class="b-ex__h"><span aria-hidden="true">✏️</span>실습 1</div>
+  <div class="b-ex__b" style="white-space:pre-line">위 프롬프트를 ChatGPT에 넣어 목차를 받아보세요. 그리고 우리 팀 실제 상황에 맞게 항목 하나를 추가하거나 이름을 바꿔 목차를 확정하세요. 확정된 목차를 메모장에 붙여두면 2단계에서 씁니다.</div>
+</div>
 
-  <h2 class="sec-h"><span class="sec-h__n">2</span>이 과정에서 쓰는 무료 AI 도구</h2>
-  <div class="grid g3">
-    <a class="card" href="tool-chatgpt.html">
-      <h3>ChatGPT <span class="bdg bdg--gray">OpenAI</span></h3>
-      <p>가장 범용적인 올라운더 — Custom GPT와 데이터 분석으로 사무 업무 자동화</p>
-    </a>
-    <a class="card" href="tool-claude.html">
-      <h3>Claude <span class="bdg bdg--gray">Anthropic</span></h3>
-      <p>장문·정확성·안전성의 강자 — Artifacts로 즉석 문서·표 제작</p>
-    </a>
-    <a class="card" href="tool-gemini.html">
-      <h3>Gemini <span class="bdg bdg--gray">Google</span></h3>
-      <p>Google 생태계 통합 + 초대형 컨텍스트 + Deep Research</p>
-    </a>
-    <a class="card" href="tool-perplexity.html">
-      <h3>Perplexity <span class="bdg bdg--gray">Perplexity AI</span></h3>
-      <p>출처를 인용하는 AI 검색 — 최신 시장·업계 조사에 최적</p>
-    </a>
-    <a class="card" href="tool-sheets.html">
-      <h3>Google Sheets <span class="bdg bdg--gray">Google</span></h3>
-      <p>데이터 정리·집계·기초 분석 + AI와 결합해 인사이트까지</p>
-    </a>
-    <a class="card" href="tool-docs.html">
-      <h3>Google Docs <span class="bdg bdg--gray">Google</span></h3>
-      <p>문서 작성·공동 편집 + AI 초안 정리·문체 교정</p>
-    </a>
+  <h3 class="sub-h" id="sub-2">2 2단계 실습용 프롬프트: 방 하나씩 채우기</h3>
+  <div class="b-prompt">
+  <p class="b-prompt__cap">항목별 본문 작성 프롬프트(추진배경 예시)</p>
+  <div class="b-prompt__box">
+    <div class="b-prompt__bar"><span>Prompt</span>
+      <button class="copy-btn" type="button">복사</button></div>
+    <pre>[역할] 너는 농협사료 기획 보고서를 다듬는 사무관리 담당자야.
+[맥락] 아래 확정된 목차 중 &#39;추진배경&#39; 항목만 먼저 작성하려고 해. 참고 정보: 최근 사료 원가가 올라 농가의 가격 부담이 커졌고, 경쟁사 신제품 출시로 우리 판매량이 전월 대비 소폭 줄었어.
+[과제] &#39;추진배경&#39;을 3~4문장으로 써줘. 왜 이 기획이 지금 필요한지가 자연스럽게 드러나게 해줘.
+[제약] 과장 없이 사실 기반으로, 회사 보고서 톤으로. 아직 다른 항목은 쓰지 마.
+[출력형식] 문단 형태 3~4문장.</pre>
   </div>
+</div>
+<div class="b-note b-tip">
+  <div class="b-note__t"><span aria-hidden="true">💡</span>Tip</div>
+  <p style="white-space:pre-line">항목을 하나씩 받은 뒤 &#39;다음은 목적 항목&#39; 하는 식으로 이어가면, 한 항목에 집중해 품질이 올라갑니다. 참고 정보(수치·상황)를 방마다 조금씩 넣어주는 것이 핵심입니다.</p>
+</div>
+<div class="b-ex">
+  <div class="b-ex__h"><span aria-hidden="true">✏️</span>실습 2</div>
+  <div class="b-ex__b" style="white-space:pre-line">확정한 목차의 항목을 최소 3개(추진배경·목적·개선방안) 이상 각각 프롬프트로 채워보세요. 각 항목에 우리 팀의 가상 수치를 한두 개씩 넣어 현실감을 더해보세요.</div>
+</div>
+</section>
 
-  <h2 class="sec-h"><span class="sec-h__n">3</span>바로가기</h2>
-  <div class="grid g4">
-    <a class="card" href="promptlab.html"><h3>프롬프트 실습실</h3><p>5요소로 프롬프트를 쓰고 점수로 확인한다.</p></a>
-    <a class="card" href="labs.html"><h3>실습 모음</h3><p>8차시 실습을 단계별 지시문으로 정리했다.</p></a>
-    <a class="card" href="appendix.html"><h3>업무별 프롬프트</h3><p>메일·보고서·회의록 등 바로 쓰는 예제.</p></a>
-    <a class="card" href="dashboard.html"><h3>학습 진도</h3><p>어디까지 봤는지 이 브라우저에 기록된다.</p></a>
-  </div>
-
-  <h2 class="sec-h"><span class="sec-h__n">4</span>하루 흐름</h2>
-  <div class="table-wrap"><table class="tl">
-    <thead><tr><th>차시</th><th>시간</th><th>구분</th><th>주제</th></tr></thead>
-    <tbody><tr>
-      <td class="c"><b>1차시</b></td>
-      <td class="c nowrap">08:00–09:00</td>
-      <td class="c"><span class="bdg bdg--green">학습</span></td>
-      <td>프롬프트 엔지니어링 이해</td></tr><tr>
-      <td class="c"><b>2차시</b></td>
-      <td class="c nowrap">09:00–10:00</td>
-      <td class="c"><span class="bdg bdg--green">학습</span></td>
-      <td>사무관리 업무별 AI 활용 구조 이해</td></tr><tr>
-      <td class="c"><b>3차시</b></td>
-      <td class="c nowrap">10:00–11:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>AI 기반 시장분석 및 트렌드 도출</td></tr><tr>
-      <td class="c"><b>4차시</b></td>
-      <td class="c nowrap">11:00–12:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>AI 활용 전략 기획 및 아이디어션</td></tr><tr>
-      <td class="c"><b>점심</b></td>
-      <td class="c nowrap">12:00–13:00</td>
-      <td class="c"><span class="bdg bdg--green">점심</span></td>
-      <td>점심 식사</td></tr><tr>
-      <td class="c"><b>5차시</b></td>
-      <td class="c nowrap">13:00–14:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>GPT 활용 기획 문서 및 보고서 자동화</td></tr><tr>
-      <td class="c"><b>6차시</b></td>
-      <td class="c nowrap">14:00–15:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>AI 기반 데이터 분석</td></tr><tr>
-      <td class="c"><b>7차시</b></td>
-      <td class="c nowrap">15:00–16:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>AI 활용 의사결정 지원 시스템 구축</td></tr><tr>
-      <td class="c"><b>8차시</b></td>
-      <td class="c nowrap">16:00–17:00</td>
-      <td class="c"><span class="bdg bdg--green">정리</span></td>
-      <td>종합 실습 및 현업 적용 계획 수립</td></tr></tbody>
+<section id="sec-3">
+  <h2 class="sec-h"><span class="sec-h__n">3</span>톤과 페르소나: 역할을 주면 왜 문체가 바뀔까</h2>
+  <p class="b-para" style="white-space:pre-line">같은 내용도 누가 말하느냐에 따라 느낌이 다릅니다. 옆집 아이가 설명하는 것과 은행 창구 직원이 설명하는 것은 단어와 말투가 다르지요. AI도 마찬가지여서, &#39;너는 누구야&#39;라고 역할을 정해주면 그 사람이 쓸 법한 문체로 말합니다. 이것을 페르소나(역할) 지정이라고 합니다.</p>
+<p class="b-label">왜 역할 한 줄로 문체가 바뀔까 (원리)</p>
+<p class="b-para" style="white-space:pre-line">AI는 인터넷과 책에 있던 엄청난 양의 글을 학습했습니다. 그 안에는 신입사원의 캐주얼한 메모도, 임원 보고용 격식 있는 문서도 함께 들어 있습니다. &#39;너는 20년 차 기획팀장이야&#39;라고 하면, AI는 &#39;팀장이 쓴 격식 있는 글&#39; 쪽 표현을 더 많이 골라 씁니다. 역할이라는 힌트가, AI가 어떤 서랍에서 단어를 꺼낼지를 정해주는 셈입니다.</p>
+<p class="b-para" style="white-space:pre-line">쉽게 말하면 역할 지정은 &#39;AI에게 옷을 입혀주는 일&#39;입니다. 정장을 입히면 격식 있게, 앞치마를 입히면 친근하게 말합니다. 그래서 보고서에는 &#39;실무 담당자·팀장&#39; 옷을, 농가 안내문에는 &#39;친절한 상담원&#39; 옷을 입히면 좋습니다.</p>
+<div class="b-table">
+  <p class="b-table__cap">역할·톤 지정에 따른 문체 변화 예시</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th class="cell-pre">지정한 역할·톤</th><th class="cell-pre">나오는 문체 느낌</th></tr></thead>
+    <tbody><tr><td class="cell-pre">신입사원, 편하게</td><td class="cell-pre">쉬운 단어, 짧고 친근한 문장</td></tr><tr><td class="cell-pre">10년 차 기획팀장, 격식 있게</td><td class="cell-pre">정돈된 용어, 논리적·간결한 보고체</td></tr><tr><td class="cell-pre">농가 상담원, 따뜻하게</td><td class="cell-pre">배려하는 말투, 안내·권유형 문장</td></tr><tr><td class="cell-pre">감사·심사역, 엄격하게</td><td class="cell-pre">근거 중심, 단정적이고 건조한 문장</td></tr></tbody>
   </table></div>
-  <p style="margin-top:14px"><a class="btn btn--line btn--sm" href="schedule.html">자세한 일정 보기 →</a></p>
+</div>
+<div class="b-note b-tip">
+  <div class="b-note__t"><span aria-hidden="true">💡</span>Tip</div>
+  <p style="white-space:pre-line">역할 + 톤 + 독자를 함께 지정하면 가장 정확합니다. 예: &#39;너는 기획팀장이고(역할), 격식 있고 간결하게(톤), 본부장 보고용으로(독자) 써줘.&#39;</p>
+</div>
+  
+  <h3 class="sub-h" id="sub-1">1 톤 지정 프롬프트 연습</h3>
+  <div class="b-prompt">
+  <p class="b-prompt__cap">동일 내용을 세 가지 톤으로 바꿔보는 프롬프트</p>
+  <div class="b-prompt__box">
+    <div class="b-prompt__bar"><span>Prompt</span>
+      <button class="copy-btn" type="button">복사</button></div>
+    <pre>[역할] 너는 문체를 자유자재로 바꾸는 글쓰기 코치야.
+[맥락] 아래 문장은 사료 신제품 판촉 기획의 목적이야: &#39;이번 기획은 신제품 판매를 늘리고 거래처 농가의 만족도를 높이기 위한 것이다.&#39;
+[과제] 이 문장을 (1) 본부장 보고용 격식체, (2) 거래처 농가 안내용 친근체, (3) 팀 내부 공유용 간단체 세 가지로 각각 다시 써줘.
+[제약] 의미는 그대로 두고 말투만 바꿔. 각 버전은 2문장 이내.
+[출력형식] (1)(2)(3) 번호로 구분해 제시.</pre>
+  </div>
+</div>
+<div class="b-ex">
+  <div class="b-ex__h"><span aria-hidden="true">✏️</span>실습 3</div>
+  <div class="b-ex__b" style="white-space:pre-line">위 프롬프트를 실행하고, 세 버전이 어떻게 달라지는지 비교해보세요. 우리 팀 보고서에 가장 잘 맞는 톤은 어느 것인지 골라보고, 그 이유를 한 줄로 적어보세요.</div>
+</div>
+</section>
+
+<section id="sec-4">
+  <h2 class="sec-h"><span class="sec-h__n">4</span>개조식과 서술식, 그리고 표 기반 보고서</h2>
+  <p class="b-para" style="white-space:pre-line">회사 보고서에는 크게 두 가지 문체가 있습니다. 하나는 &#39;~함, ~임, ~필요&#39;처럼 짧게 끊는 개조식이고, 다른 하나는 &#39;~합니다, ~입니다&#39;처럼 문장으로 풀어쓰는 서술식입니다. 둘은 쓰임새가 다릅니다.</p>
+<p class="b-label">언제 무엇을 쓸까</p>
+<ul class="b-bullets"><li>개조식(~함/~임): 핵심만 빠르게 전달하는 보고·회의자료·요약에 적합. 바쁜 상급자가 훑어보기 좋음.</li><li>서술식(~합니다): 배경 설명, 제안 취지, 대외 안내문처럼 맥락을 부드럽게 전할 때 적합.</li><li>표 기반: 수치 비교, 일정, 담당·기한처럼 항목이 반복되는 정보는 문장보다 표가 훨씬 명확함.</li></ul>
+<div class="b-table">
+  <p class="b-table__cap">개조식 vs 서술식 같은 내용 비교</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th class="cell-pre">구분</th><th class="cell-pre">예시 문장</th></tr></thead>
+    <tbody><tr><td class="cell-pre">개조식</td><td class="cell-pre">신제품 판매 전월 대비 8% 감소함. 원가 상승이 주요인으로 판단됨. 판촉 강화 필요.</td></tr><tr><td class="cell-pre">서술식</td><td class="cell-pre">신제품 판매가 전월 대비 8% 줄었습니다. 원가 상승이 주요 원인으로 보이며, 판촉 강화가 필요합니다.</td></tr></tbody>
+  </table></div>
+</div>
+<p class="b-para" style="white-space:pre-line">원리적으로 개조식은 &#39;주어와 서술을 최소화해 정보 밀도를 높인&#39; 형식입니다. 그래서 같은 내용을 더 적은 글자로 담을 수 있어, 한눈에 스캔하기 좋습니다. AI에게 &#39;개조식으로 바꿔줘, 어미는 ~함·~임으로&#39;라고 명확히 지정하면 깔끔하게 변환해 줍니다.</p>
+<div class="b-note b-warn">
+  <div class="b-note__t"><span aria-hidden="true">⚠️</span>유의</div>
+  <p style="white-space:pre-line">개조식과 서술식을 한 문서에서 뒤섞으면 어수선해 보입니다. 보고서 하나는 한 가지 문체로 통일하세요. AI에게 &#39;문체를 개조식으로 통일해줘&#39;라고 마지막에 한 번 정리시키면 좋습니다.</p>
+</div>
+  
+  <h3 class="sub-h" id="sub-1">1 표 기반 보고서 만들기</h3>
+  <div class="b-prompt">
+  <p class="b-prompt__cap">일정·기대효과를 표로 정리하는 프롬프트</p>
+  <div class="b-prompt__box">
+    <div class="b-prompt__bar"><span>Prompt</span>
+      <button class="copy-btn" type="button">복사</button></div>
+    <pre>[역할] 너는 보고서를 표로 깔끔하게 정리하는 사무관리 담당자야.
+[맥락] 사료 신제품 판촉 기획의 추진일정과 기대효과를 표로 만들고 싶어. 판촉은 이번 달 준비, 다음 달 시행, 그다음 달 성과점검 순으로 진행할 예정이야.
+[과제] (1) 추진일정 표(단계·주요활동·담당·기한)와 (2) 기대효과 표(항목·현재·목표)를 각각 만들어줘.
+[제약] 담당·수치는 예시 값으로 채우되 현실적으로. 표는 간결하게.
+[출력형식] 표 2개(각각 제목 붙여서).</pre>
+  </div>
+</div>
+<div class="b-note b-out">
+  <div class="b-note__t"><span aria-hidden="true">📦</span>핵심 산출물</div>
+  <p style="white-space:pre-line">산출물: 추진일정 표와 기대효과 표가 포함된 표 기반 보고서 조각. 이후 기획 보고서 초안에 그대로 붙여 넣습니다.</p>
+</div>
+</section>
+
+<section id="sec-5">
+  <h2 class="sec-h"><span class="sec-h__n">5</span>회의록을 회의자료 요약문으로 바꾸기</h2>
+  <p class="b-para" style="white-space:pre-line">회의가 끝나면 길게 받아 적은 회의록이 남습니다. 하지만 상급자에게 보고할 때는 이 긴 기록을 &#39;결정된 것&#39;과 &#39;누가 언제까지 할 것&#39;만 뽑은 요약문이 필요합니다. AI는 이 요약을 아주 잘합니다.</p>
+<p class="b-label">요약은 &#39;버리는 기술&#39;이다</p>
+<p class="b-para" style="white-space:pre-line">요약을 잘한다는 것은 좋은 내용을 남기는 것이 아니라, 덜 중요한 것을 과감히 버리는 것입니다. 큰 짐가방에서 정말 필요한 물건만 작은 손가방에 옮겨 담는 일과 같습니다. AI에게 &#39;무엇을 남기고 무엇을 버릴지&#39; 기준(안건·결정사항·후속조치)을 정해주면 요약 품질이 확 올라갑니다.</p>
+<div class="b-prompt">
+  <p class="b-prompt__cap">회의록 → 회의자료 요약 프롬프트</p>
+  <div class="b-prompt__box">
+    <div class="b-prompt__bar"><span>Prompt</span>
+      <button class="copy-btn" type="button">복사</button></div>
+    <pre>[역할] 너는 회의 내용을 핵심만 뽑는 사무관리 담당자야.
+[맥락] 아래는 사료 구매·총무팀 주간회의 기록이야. (여기에 회의록 원문을 붙여넣기)
+[과제] 이 회의록을 상급자 보고용 회의자료로 요약해줘. 안건, 주요 논의사항, 결정사항, 후속조치(담당·기한) 순서로 정리해줘.
+[제약] 개조식(~함/~임)으로, 각 항목은 3줄 이내. 회의록에 없는 내용은 지어내지 마.
+[출력형식] 4개 소제목(안건/논의사항/결정사항/후속조치) + 각 항목 불릿.</pre>
+  </div>
+</div>
+<div class="b-note b-warn">
+  <div class="b-note__t"><span aria-hidden="true">⚠️</span>유의</div>
+  <p style="white-space:pre-line">AI가 회의록에 없던 결정사항이나 날짜를 그럴듯하게 지어낼 수 있습니다(환각). 요약 결과는 반드시 원본 회의록과 대조해 확인하세요. 특히 담당자와 기한은 꼭 검증하세요.</p>
+</div>
+<div class="b-ex">
+  <div class="b-ex__h"><span aria-hidden="true">✏️</span>실습 4</div>
+  <div class="b-ex__b" style="white-space:pre-line">가상의 주간회의 기록 10~15줄을 직접 만들어(또는 예시 회의록을 사용해) 위 프롬프트로 요약해보세요. 요약본과 원본을 나란히 놓고, 빠지거나 잘못된 부분이 없는지 확인해보세요.</div>
+</div>
+<div class="b-note b-out">
+  <div class="b-note__t"><span aria-hidden="true">📦</span>핵심 산출물</div>
+  <p style="white-space:pre-line">산출물: 안건·논의·결정·후속조치가 정리된 회의자료 요약문 1건.</p>
+</div>
+  
+</section>
+
+<section id="sec-6">
+  <h2 class="sec-h"><span class="sec-h__n">6</span>Claude로 문체 교정 후 Google Docs에 정리하기</h2>
+  <p class="b-para" style="white-space:pre-line">초안이 만들어졌으면 마지막으로 문장을 다듬습니다. 이 단계에서는 Claude를 추천합니다. Claude는 긴 글의 흐름을 자연스럽게 다듬고 어색한 문장을 부드럽게 고치는 데 강점이 있어, &#39;교정 담당자&#39;로 쓰기 좋습니다.</p>
+<p class="b-label">도구를 나눠 쓰는 이유</p>
+<p class="b-para" style="white-space:pre-line">요리에 비유하면 ChatGPT로 재료를 손질하고 조리했다면, Claude는 마지막에 접시에 예쁘게 담고 간을 맞추는 역할입니다. 도구마다 잘하는 결이 조금씩 달라서, 초안 생성과 문체 교정을 나눠 쓰면 더 좋은 결과를 얻을 수 있습니다.</p>
+<div class="b-prompt">
+  <p class="b-prompt__cap">Claude 문체 교정 프롬프트</p>
+  <div class="b-prompt__box">
+    <div class="b-prompt__bar"><span>Prompt</span>
+      <button class="copy-btn" type="button">복사</button></div>
+    <pre>[역할] 너는 회사 보고서를 다듬는 꼼꼼한 교정 담당자야.
+[맥락] 아래는 사료 신제품 판촉 기획 보고서 초안이야. (초안 붙여넣기)
+[과제] 맞춤법과 띄어쓰기를 바로잡고, 어색하거나 중복된 문장을 자연스럽게 다듬어줘. 문체는 개조식(~함/~임)으로 통일해줘.
+[제약] 원래 내용과 수치는 바꾸지 말고 표현만 다듬어. 크게 고친 부분은 마지막에 3줄로 알려줘.
+[출력형식] 교정본 전체 + 하단에 &#39;주요 수정사항&#39; 요약.</pre>
+  </div>
+</div>
+<p class="b-label">Google Docs로 옮겨 정리하기</p>
+<ul class="b-bullets"><li>교정된 결과를 복사해 Google Docs 새 문서에 붙여넣습니다.</li><li>제목 스타일(제목1·제목2)을 적용해 항목 위계를 정리합니다.</li><li>표는 Docs의 표 삽입 기능으로 다시 정돈하면 인쇄·공유 시 깔끔합니다.</li><li>&#39;공유&#39; 버튼으로 팀원에게 링크를 보내면 실시간으로 함께 검토할 수 있습니다.</li></ul>
+<div class="b-note b-tip">
+  <div class="b-note__t"><span aria-hidden="true">💡</span>Tip</div>
+  <p style="white-space:pre-line">Google Docs는 자동 저장되고 버전 기록이 남습니다. &#39;파일 → 버전 기록&#39;에서 이전 버전으로 언제든 되돌릴 수 있으니, 마음 편히 여러 번 고쳐보세요.</p>
+</div>
+<div class="b-ex">
+  <div class="b-ex__h"><span aria-hidden="true">✏️</span>실습 5</div>
+  <div class="b-ex__b" style="white-space:pre-line">5차시에서 만든 기획 보고서 초안을 Claude로 교정한 뒤 Google Docs로 옮겨 제목 스타일과 표를 정리해 완성하세요. 완성본 링크를 팀 동료 1명에게 공유해 피드백을 받아보세요.</div>
+</div>
+<div class="b-note b-out">
+  <div class="b-note__t"><span aria-hidden="true">📦</span>핵심 산출물</div>
+  <p style="white-space:pre-line">산출물: (1) 기획 보고서 초안(추진배경·목적·현황·개선방안·기대효과·일정표 포함), (2) 회의자료 요약문, (3) 제안서 개요 — 총 3종을 Google Docs에 정리.</p>
+</div>
+<div class="b-note b-case">
+  <div class="b-note__t"><span aria-hidden="true">🔗</span>연계 학습</div>
+  <p style="white-space:pre-line">다음 6차시에서는 이렇게 정리한 보고서에 넣을 &#39;숫자 근거&#39;를 만드는 법을 배웁니다. 판매·업무·고객 데이터를 AI로 요약하고 인사이트를 뽑아, 보고서의 현황·기대효과 항목을 수치로 뒷받침하게 됩니다.</p>
+</div>
+  
+  <h3 class="sub-h" id="sub-1">1 제안서 개요까지 마무리하기</h3>
+  <div class="b-prompt">
+  <p class="b-prompt__cap">제안서 개요 초안 프롬프트</p>
+  <div class="b-prompt__box">
+    <div class="b-prompt__bar"><span>Prompt</span>
+      <button class="copy-btn" type="button">복사</button></div>
+    <pre>[역할] 너는 거래처에 제출할 제안서를 작성하는 영업지원 담당자야.
+[맥락] 축산농가 거래처에 배합사료 정기공급 계약을 제안하려고 해. 강점은 안정적 품질, 원가 변동 시 유연한 가격 조정, 신속한 배송이야.
+[과제] 제안서 개요를 &#39;고객 니즈 → 제안 개요 → 기대효과 → 추진범위 → 일정·비용&#39; 순서로 각 항목 2~3줄씩 작성해줘.
+[제약] 과장 없이 신뢰감 있게. 비용은 &#39;협의&#39; 수준으로 표기.
+[출력형식] 5개 소제목 + 각 항목 불릿.</pre>
+  </div>
+</div>
+<div class="b-note b-out">
+  <div class="b-note__t"><span aria-hidden="true">📦</span>핵심 산출물</div>
+  <p style="white-space:pre-line">산출물: 5개 항목으로 구성된 제안서 개요 1건. Google Docs에 별도 문서로 저장합니다.</p>
+</div>
+</section>
+
+<div class="done-bar">
+  <button class="done-btn" type="button" data-done="part-5" aria-pressed="false">학습 완료로 표시</button>
+  <span class="muted" style="font-size:13px;color:var(--g400)">이 브라우저에만 저장됩니다.</span>
+</div>
+
+<nav class="pn" aria-label="차시 이동">
+  <a class="pn__a" href="part-4.html"><span>← 4차시</span><b>AI 활용 전략 기획 및 아이디어션</b></a>
+  <a class="pn__a pn__a--r" href="part-6.html"><span>6차시 →</span><b>AI 기반 데이터 분석</b></a>
+</nav>
 </div></div>
   </main>
 </div>

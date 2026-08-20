@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="format-detection" content="telephone=no">
-<title>생성형 AI 기반 사무관리 업무혁신 실무 · 학습사이트</title>
-<meta name="description" content="농협사료 임직원 대상 1일 8차시 생성형 AI 실무 과정 학습사이트. 8차시 교재 · 실습 · AI 도구 가이드 · 업무별 프롬프트 부록.">
-<meta property="og:title" content="생성형 AI 기반 사무관리 업무혁신 실무 · 학습사이트">
-<meta property="og:description" content="농협사료 임직원 대상 1일 8차시 생성형 AI 실무 과정 학습사이트. 8차시 교재 · 실습 · AI 도구 가이드 · 업무별 프롬프트 부록.">
+<title>Perplexity · 농협사료 AI 실무</title>
+<meta name="description" content="출처를 인용하는 AI 검색 — 최신 시장·업계 조사에 최적">
+<meta property="og:title" content="Perplexity · 농협사료 AI 실무">
+<meta property="og:description" content="출처를 인용하는 AI 검색 — 최신 시장·업계 조사에 최적">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%228%22%20fill%3D%22%2312522e%22%2F%3E%3Cpath%20d%3D%22M16%207c4.6%202.8%207.4%206.2%207.4%2010.4a7.4%207.4%200%200%201-14.8%200C8.6%2013.2%2011.4%209.8%2016%207Z%22%20fill%3D%22%23fec20d%22%2F%3E%3Cpath%20d%3D%22M16%2012v11%22%20stroke%3D%22%2312522e%22%20stroke-width%3D%222.2%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
 <style>
@@ -413,38 +413,30 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
 
 
 /* ===== 이 페이지 전용 ===== */
-.hero{background:linear-gradient(135deg,var(--b900) 0%,var(--b800) 45%,var(--b600) 100%);
-  color:#fff; padding:56px 28px 60px; position:relative; overflow:hidden}
-.hero::after{content:""; position:absolute; right:-90px; top:-90px; width:340px; height:340px;
-  border-radius:50%; background:rgba(254,194,13,.12)}
-.hero__in{position:relative; z-index:1; max-width:1180px; margin:0 auto}
-.hero__tag{display:inline-block; padding:5px 13px; border-radius:var(--pill);
-  background:rgba(255,255,255,.16); font-size:12.5px; font-weight:800; margin-bottom:14px}
-.hero h1{font-size:38px; font-weight:800; letter-spacing:-.035em; line-height:1.28; max-width:20ch}
-.hero p{margin-top:12px; font-size:17px; color:rgba(255,255,255,.9); max-width:52ch}
-.hero__cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px}
-.hero__meta{display:flex; flex-wrap:wrap; gap:12px 32px; margin-top:32px;
-  padding-top:22px; border-top:1px solid rgba(255,255,255,.18)}
-.hero__meta b{display:block; font-size:19px; font-weight:800; color:var(--s300)}
-.hero__meta span{font-size:13px; color:rgba(255,255,255,.75)}
-.part-card__n{font-size:12px; font-weight:800; color:var(--b600); margin-bottom:5px}
-.part-card__badges{display:flex; flex-wrap:wrap; gap:6px; margin-top:12px}
-.part-card.is-done{border-color:var(--b400); background:var(--b50)}
-.part-card.is-done .part-card__n::after{content:" ✓ 완료"; color:var(--b600)}
-.tl{background:#fff; border:1px solid var(--g200); border-radius:var(--radius); overflow:hidden; min-width:560px}
-.tl thead th{background:var(--b800); color:#fff; padding:11px 13px; text-align:left; font-size:13.5px}
-.tl td{padding:11px 13px; border-top:1px solid var(--g100); font-size:14px}
-.tl .c{text-align:center}
-.tl .nowrap{white-space:nowrap; color:var(--g500)}
-@media (max-width:900px){ .hero{padding:40px 20px 46px} .hero h1{font-size:26px} .hero p{font-size:15px} }
-@media (max-width:640px){ .hero h1{font-size:22px} .hero__cta .btn{width:auto; flex:1} }
+.steps{counter-reset:st; margin:14px 0 18px}
+.steps li{counter-increment:st; position:relative; padding-left:32px; margin-bottom:9px;
+  font-size:14.5px; line-height:1.8; color:var(--g600)}
+.steps li::before{content:counter(st); position:absolute; left:0; top:.15em;
+  display:grid; place-items:center; width:22px; height:22px; border-radius:50%;
+  background:var(--b600); color:#fff; font-size:12px; font-weight:800}
+.b-table__t{background:#fff; border:1px solid var(--g200); border-radius:var(--radius);
+  overflow:hidden; min-width:480px; font-size:14px}
+.b-table__t thead th{background:var(--b800); color:#fff; padding:10px 13px; text-align:left}
+.b-table__t td{padding:10px 13px; border-top:1px solid var(--g100); color:var(--g600)}
+.b-table__t .nowrap{white-space:nowrap}
+.lab{margin:14px 0 22px; border:1px solid var(--g200); border-radius:var(--radius); background:#fff; padding:18px 20px}
+.lab__h{display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-bottom:11px}
+.lab__h h3{font-size:16px; font-weight:800; color:var(--g900)}
+.lab__goal{font-size:14.5px; color:var(--g600); line-height:1.8}
+.lab__goal b,.lab__out b{color:var(--b700); font-weight:800; margin-right:5px}
+.lab__out{margin-top:10px; padding:11px 14px; border-radius:10px; background:var(--s50); color:#713f12; font-size:14px}
 </style>
 <noscript><style>
 /* 스크립트가 꺼져 있어도 목차는 보여야 한다 */
 .sb{transform:none !important; position:static !important; height:auto !important}
 </style></noscript>
 </head>
-<body data-page="home">
+<body data-page="tool-perplexity">
 
 <a class="skip-link" href="#main">본문 바로가기</a>
 <header class="hd">
@@ -456,11 +448,11 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
     <span>농협사료<small>AI 사무관리 업무혁신</small></span>
   </a>
   <nav class="hd__nav" aria-label="주 메뉴">
-    <a href="index.html" class="on" aria-current="page">홈</a>
+    <a href="index.html">홈</a>
     <a href="course.html">교재</a>
     <a href="schedule.html">일정</a>
     <a href="labs.html">실습</a>
-    <a href="tools.html">AI 도구</a>
+    <a href="tools.html" class="on" aria-current="page">AI 도구</a>
     <a href="appendix.html">부록</a>
     <a href="about.html">소개</a>
     <a href="dashboard.html">진도</a>
@@ -468,192 +460,171 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
 </header>
 
 <div class="shell">
-  <aside class="sb" id="sb"><div class="sb__title">생성형 AI 기반 사무관리 업무혁신 실무</div>
-<a class="sb__cta" href="schedule.html">📅 8차시 교육 일정 보기</a>
-<div class="sb__label">학습 목차</div>
-<a class="sb__item on" href="course.html"><span>교재 전체 개요</span></a>
-<a class="sb__item" href="part-1.html" data-done-mark="part-1"><span class="sb__num">1</span><span>생성형 AI와 프롬프트 엔지니어링 이해</span></a>
-<a class="sb__item" href="part-2.html" data-done-mark="part-2"><span class="sb__num">2</span><span>사무관리 업무별 AI 활용 구조 이해</span></a>
-<a class="sb__item" href="part-3.html" data-done-mark="part-3"><span class="sb__num">3</span><span>AI 기반 시장분석 및 트렌드 도출</span></a>
-<a class="sb__item" href="part-4.html" data-done-mark="part-4"><span class="sb__num">4</span><span>AI 활용 전략 기획 및 아이디어션</span></a>
-<a class="sb__item" href="part-5.html" data-done-mark="part-5"><span class="sb__num">5</span><span>GPT 활용 기획 문서 및 보고서 자동화</span></a>
-<a class="sb__item" href="part-6.html" data-done-mark="part-6"><span class="sb__num">6</span><span>AI 기반 데이터 분석</span></a>
-<a class="sb__item" href="part-7.html" data-done-mark="part-7"><span class="sb__num">7</span><span>AI 활용 의사결정 지원 시스템 구축</span></a>
-<a class="sb__item" href="part-8.html" data-done-mark="part-8"><span class="sb__num">8</span><span>종합 실습 및 현업 적용 계획 수립</span></a></aside>
+  <aside class="sb" id="sb"><div class="sb__title">AI 도구 가이드</div>
+<div class="sb__label">무료 AI 도구</div>
+<a class="sb__item" href="promptlab.html"><span>프롬프트 실습실</span></a>
+<a class="sb__item" href="tool-chatgpt.html"><span>ChatGPT</span></a>
+<a class="sb__item" href="tool-claude.html"><span>Claude</span></a>
+<a class="sb__item" href="tool-gemini.html"><span>Gemini</span></a>
+<a class="sb__item on" href="tool-perplexity.html"><span>Perplexity</span></a>
+<a class="sb__item" href="tool-sheets.html"><span>Google Sheets</span></a>
+<a class="sb__item" href="tool-docs.html"><span>Google Docs</span></a></aside>
   <main id="main" style="flex:1;min-width:0">
+<div class="main"><div class="wrap">
+<ol class="crumb"><li><a href="index.html">홈</a></li><li><a href="tools.html">AI 도구</a></li><li>Perplexity</li></ol>
+<div class="ph">
+  <span class="ph__eyebrow">Perplexity AI</span>
+  <h1>Perplexity</h1>
+  <p>출처를 인용하는 AI 검색 — 최신 시장·업계 조사에 최적</p>
+</div>
+<p class="b-para" style="white-space:pre-line">질문에 대해 웹을 실시간 검색하고, 답변에 각주로 출처를 달아주는 “AI 검색 엔진”이다. 최신 정보 확인과 사실 기반 시장·업계 조사에 강하다. 여러 모델(ChatGPT·Claude·Gemini 계열)을 골라 쓸 수 있고, Spaces로 주제별 자료를 모아 협업하며, Deep Research로 심층 보고서를 만든다.</p>
 
-<section class="hero">
-  <div class="hero__in">
-    <span class="hero__tag">농협사료 임직원 교육 · 1일 8차시</span>
-    <h1>생성형 AI 기반 사무관리 업무혁신 실무</h1>
-    <p>무료 AI 도구로 완성하는 1일 8차시 실습 과정</p>
-    <div class="hero__cta">
-      <a class="btn btn--gold" href="part-1.html">1차시부터 시작하기</a>
-      <a class="btn btn--white" href="schedule.html">교육 일정 보기</a>
+<h2 class="sec-h" id="strengths"><span class="sec-h__n">■</span>강점</h2>
+<ul class="b-bullets"><li>출처 인용 — 모든 답변에 각주 링크, 사실 확인 용이</li><li>최신성 — 실시간 웹 검색 기반</li><li>모델 선택 — 작업에 맞춰 상위 모델 선택 사용</li><li>Spaces — 주제별 자료·스레드 모음 협업</li><li>Deep Research / Labs — 심층 리서치·산출물</li></ul>
+<h2 class="sec-h" id="start"><span class="sec-h__n">■</span>시작하기</h2>
+<ol class="steps"><li>perplexity.ai 접속(로그인 시 기록·Spaces 사용)</li><li>질문 입력 → 출처가 달린 답변 확인</li><li>정밀 조사는 Pro Search/Deep Research 선택</li><li>Focus로 검색 소스 한정, Spaces로 자료 보관</li></ol>
+<h2 class="sec-h" id="plans"><span class="sec-h__n">■</span>요금제</h2>
+<div class="table-wrap"><table class="b-table__t"><thead><tr><th>구분</th><th>가격</th><th>내용</th></tr></thead>
+     <tbody><tr><td><b>Free</b></td><td class="nowrap">무료</td><td>기본 검색·제한된 Pro Search</td></tr><tr><td><b>Pro</b></td><td class="nowrap">약 $20/월</td><td>Pro Search 확대·모델 선택·파일 업로드·Deep Research</td></tr><tr><td><b>Enterprise</b></td><td class="nowrap">문의</td><td>조직 보안·관리</td></tr></tbody></table></div>
+<h2 class="sec-h" id="features"><span class="sec-h__n">■</span>주요 기능</h2>
+<div class="grid g2"><div class="card"><h3>Answer + 출처</h3>
+       <p>검색 결과를 종합한 답변에 각주 출처를 함께 제공.</p></div><div class="card"><h3>Pro Search</h3>
+       <p>여러 단계로 더 깊게 검색해 정밀한 답변 도출.</p></div><div class="card"><h3>Spaces</h3>
+       <p>주제별로 자료·대화를 모아 두고 팀과 공유.</p></div><div class="card"><h3>Deep Research</h3>
+       <p>광범위한 출처를 조사해 보고서 형태로 정리.</p></div></div>
+<h2 class="sec-h" id="guide"><span class="sec-h__n">■</span>기능별 사용법</h2>
+<div class="card" style="margin-bottom:14px">
+      <h3>답변 + 출처 인용</h3>
+      <p><b style="color:var(--b700)">무엇</b> 웹을 실시간 검색해 답을 요약하고, 문장마다 각주로 출처 링크를 단다. 사실 확인이 쉽다.</p>
+      <p style="margin-top:7px"><b style="color:var(--b700)">방법</b> 질문 입력,답변 하단/문장의 각주 클릭,원문에서 수치·맥락 확인</p>
+      <p style="margin-top:7px"><b style="color:var(--s700)">Tip</b> “출처와 기준 연도 함께”라고 요청하면 검증이 쉽다.</p>
+    </div><div class="card" style="margin-bottom:14px">
+      <h3>Pro Search (다단계 검색)</h3>
+      <p><b style="color:var(--b700)">무엇</b> 질문을 여러 단계로 분해해 더 깊게 검색하고 정밀한 답을 도출한다.</p>
+      <p style="margin-top:7px"><b style="color:var(--b700)">방법</b> Pro 토글 켜기,복합 질문 입력,후속 질문으로 좁혀가기</p>
+      <p style="margin-top:7px"><b style="color:var(--s700)">Tip</b> 정책·경쟁사 비교 등 복합 조사에 적합.</p>
+    </div><div class="card" style="margin-bottom:14px">
+      <h3>Focus (소스 한정 검색)</h3>
+      <p><b style="color:var(--b700)">무엇</b> 웹 전체 대신 학술·동영상·소셜 등 특정 소스 유형으로 검색 범위를 좁힌다.</p>
+      <p style="margin-top:7px"><b style="color:var(--b700)">방법</b> Focus 선택(웹/학술/동영상 등),목적에 맞는 소스로 한정,검색 실행</p>
+      <p style="margin-top:7px"><b style="color:var(--s700)">Tip</b> 통계 근거가 필요하면 학술, 사용법은 동영상 Focus.</p>
+    </div><div class="card" style="margin-bottom:14px">
+      <h3>Deep Research</h3>
+      <p><b style="color:var(--b700)">무엇</b> 광범위한 출처를 자동 조사해 보고서 형태로 정리한다.</p>
+      <p style="margin-top:7px"><b style="color:var(--b700)">방법</b> Deep Research 선택,주제·관점 구체화,보고서의 출처·논리 검수 후 재구성</p>
+      <p style="margin-top:7px"><b style="color:var(--s700)">Tip</b> 시장·동향 심층 보고서 초안에 유용.</p>
+    </div><div class="card" style="margin-bottom:14px">
+      <h3>모델 선택</h3>
+      <p><b style="color:var(--b700)">무엇</b> 작업에 따라 상위 모델(추론/장문 등)을 골라 검색·작성에 활용한다.</p>
+      <p style="margin-top:7px"><b style="color:var(--b700)">방법</b> 설정에서 기본 모델 선택,정밀 작업은 상위 모델로 전환</p>
+      <p style="margin-top:7px"><b style="color:var(--s700)">Tip</b> 사실 검색은 검색 강점, 작성·추론은 모델 강점을 활용.</p>
+    </div><div class="card" style="margin-bottom:14px">
+      <h3>Spaces (리서치 아카이브)</h3>
+      <p><b style="color:var(--b700)">무엇</b> 주제별로 검색·자료·스레드를 모아 팀과 공유하는 공간을 만든다.</p>
+      <p style="margin-top:7px"><b style="color:var(--b700)">방법</b> 새 Space 생성(예: 사료 시장),관련 질문·파일·링크 축적,맞춤 지시로 답변 형식 고정,팀 초대</p>
+      <p style="margin-top:7px"><b style="color:var(--s700)">Tip</b> 흩어진 리서치를 한곳에 — 팀 지식화.</p>
+    </div><div class="card" style="margin-bottom:14px">
+      <h3>Comet · 브라우징 확장</h3>
+      <p><b style="color:var(--b700)">무엇</b> 브라우징 환경에서 페이지를 요약·질의하는 등 검색을 한층 강화한다(가용 기능은 플랜·지역에 따라 다름).</p>
+      <p style="margin-top:7px"><b style="color:var(--b700)">방법</b> 지원 환경에서 활성화,보고 있는 페이지에 대해 질의·요약</p>
+      <p style="margin-top:7px"><b style="color:var(--s700)">Tip</b> 가용 여부·정책은 공식 사이트에서 확인.</p>
     </div>
-    <ul class="hero__meta">
-      <li><b>08:00–17:00</b><span>점심 1시간 제외</span></li>
-      <li><b>8차시</b><span>이론 30 · 실습 50 · 사례 20</span></li>
-      <li><b>무료 도구</b><span>ChatGPT · Claude · Gemini 외</span></li>
-    </ul>
-  </div>
-</section>
+<h2 class="sec-h" id="usecases"><span class="sec-h__n">■</span>사무관리 활용</h2>
+<div class="grid g2"><div class="card"><h3>시장·업계 조사</h3>
+       <p>최신 사료·축산 시장 동향·경쟁사 정보를 출처와 함께 빠르게 확인.</p></div><div class="card"><h3>정책·규제 확인</h3>
+       <p>사료·축산 관련 정책·지원사업 등 사실 정보 1차 조사.</p></div><div class="card"><h3>보고서 팩트체크</h3>
+       <p>보고서에 인용할 통계·수치의 출처와 기준 연도를 확인.</p></div></div>
+<h2 class="sec-h" id="practices"><span class="sec-h__n">■</span>실습</h2>
 
-<div class="main"><div class="wrap wrap--wide">
-  <h2 class="sec-h"><span class="sec-h__n">1</span>8차시 커리큘럼</h2>
-  <div class="grid g2">
-    <a class="card part-card" href="part-1.html" data-done-mark="part-1">
-      <div class="part-card__n">1차시</div>
-      <h3>생성형 AI와 프롬프트 엔지니어링 이해</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 46</span>
-        <span class="bdg bdg--green">실습 2</span>
-        <span class="bdg bdg--gold">표 5</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-2.html" data-done-mark="part-2">
-      <div class="part-card__n">2차시</div>
-      <h3>사무관리 업무별 AI 활용 구조 이해</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 37</span>
-        <span class="bdg bdg--green">실습 2</span>
-        <span class="bdg bdg--gold">표 5</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-3.html" data-done-mark="part-3">
-      <div class="part-card__n">3차시</div>
-      <h3>AI 기반 시장분석 및 트렌드 도출</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 47</span>
-        <span class="bdg bdg--green">실습 3</span>
-        <span class="bdg bdg--gold">표 3</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-4.html" data-done-mark="part-4">
-      <div class="part-card__n">4차시</div>
-      <h3>AI 활용 전략 기획 및 아이디어션</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 51</span>
-        <span class="bdg bdg--green">실습 6</span>
-        <span class="bdg bdg--gold">표 4</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-5.html" data-done-mark="part-5">
-      <div class="part-card__n">5차시</div>
-      <h3>GPT 활용 기획 문서 및 보고서 자동화</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 59</span>
-        <span class="bdg bdg--green">실습 5</span>
-        <span class="bdg bdg--gold">표 3</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-6.html" data-done-mark="part-6">
-      <div class="part-card__n">6차시</div>
-      <h3>AI 기반 데이터 분석</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 53</span>
-        <span class="bdg bdg--green">실습 5</span>
-        <span class="bdg bdg--gold">표 3</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-7.html" data-done-mark="part-7">
-      <div class="part-card__n">7차시</div>
-      <h3>AI 활용 의사결정 지원 시스템 구축</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 61</span>
-        <span class="bdg bdg--green">실습 3</span>
-        <span class="bdg bdg--gold">표 3</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-8.html" data-done-mark="part-8">
-      <div class="part-card__n">8차시</div>
-      <h3>종합 실습 및 현업 적용 계획 수립</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 54</span>
-        <span class="bdg bdg--green">실습 3</span>
-        <span class="bdg bdg--gold">표 4</span>
-      </p>
-    </a>
-  </div>
+  <article class="lab">
+    <div class="lab__h"><span class="bdg bdg--solid">입문</span><h3>실습 ① 출처 기반 사실 확인</h3></div>
+    <p class="lab__goal"><b>목표</b> 최신 수치·사실을 각주 출처와 함께 빠르게 확인한다.</p>
+    <ol class="steps"><li>질문 입력 + “출처와 함께, 최신 기준” 명시</li><li>답변 하단 각주 링크 클릭해 원문 확인</li><li>필요 시 “더 최신 자료로” 후속 질문</li></ol>
+    
+  </article>
 
-  <h2 class="sec-h"><span class="sec-h__n">2</span>이 과정에서 쓰는 무료 AI 도구</h2>
-  <div class="grid g3">
-    <a class="card" href="tool-chatgpt.html">
-      <h3>ChatGPT <span class="bdg bdg--gray">OpenAI</span></h3>
-      <p>가장 범용적인 올라운더 — Custom GPT와 데이터 분석으로 사무 업무 자동화</p>
-    </a>
-    <a class="card" href="tool-claude.html">
-      <h3>Claude <span class="bdg bdg--gray">Anthropic</span></h3>
-      <p>장문·정확성·안전성의 강자 — Artifacts로 즉석 문서·표 제작</p>
-    </a>
-    <a class="card" href="tool-gemini.html">
-      <h3>Gemini <span class="bdg bdg--gray">Google</span></h3>
-      <p>Google 생태계 통합 + 초대형 컨텍스트 + Deep Research</p>
-    </a>
-    <a class="card" href="tool-perplexity.html">
-      <h3>Perplexity <span class="bdg bdg--gray">Perplexity AI</span></h3>
-      <p>출처를 인용하는 AI 검색 — 최신 시장·업계 조사에 최적</p>
-    </a>
-    <a class="card" href="tool-sheets.html">
-      <h3>Google Sheets <span class="bdg bdg--gray">Google</span></h3>
-      <p>데이터 정리·집계·기초 분석 + AI와 결합해 인사이트까지</p>
-    </a>
-    <a class="card" href="tool-docs.html">
-      <h3>Google Docs <span class="bdg bdg--gray">Google</span></h3>
-      <p>문서 작성·공동 편집 + AI 초안 정리·문체 교정</p>
-    </a>
-  </div>
+  <article class="lab">
+    <div class="lab__h"><span class="bdg bdg--solid">실전</span><h3>실습 ② 정책·지원사업 1차 조사</h3></div>
+    <p class="lab__goal"><b>목표</b> 업무에 필요한 정책·규제·지원사업을 출처 기반으로 정리한다.</p>
+    <ol class="steps"><li>Pro Search 사용</li><li>분야·항목(정책/규제/지원) 지정</li><li>출처별 상이한 내용은 비교 정리 요청</li></ol>
+    
+  </article>
 
-  <h2 class="sec-h"><span class="sec-h__n">3</span>바로가기</h2>
-  <div class="grid g4">
-    <a class="card" href="promptlab.html"><h3>프롬프트 실습실</h3><p>5요소로 프롬프트를 쓰고 점수로 확인한다.</p></a>
-    <a class="card" href="labs.html"><h3>실습 모음</h3><p>8차시 실습을 단계별 지시문으로 정리했다.</p></a>
-    <a class="card" href="appendix.html"><h3>업무별 프롬프트</h3><p>메일·보고서·회의록 등 바로 쓰는 예제.</p></a>
-    <a class="card" href="dashboard.html"><h3>학습 진도</h3><p>어디까지 봤는지 이 브라우저에 기록된다.</p></a>
-  </div>
+  <article class="lab">
+    <div class="lab__h"><span class="bdg bdg--solid">심화</span><h3>실습 ③ Deep Research 심층 보고서</h3></div>
+    <p class="lab__goal"><b>목표</b> 광범위한 출처를 조사해 보고서 형태로 받는다.</p>
+    <ol class="steps"><li>Deep Research 선택</li><li>조사 주제·관점 구체화</li><li>생성 보고서의 출처·논리 검수 후 재구성</li></ol>
+    
+  </article>
 
-  <h2 class="sec-h"><span class="sec-h__n">4</span>하루 흐름</h2>
-  <div class="table-wrap"><table class="tl">
-    <thead><tr><th>차시</th><th>시간</th><th>구분</th><th>주제</th></tr></thead>
-    <tbody><tr>
-      <td class="c"><b>1차시</b></td>
-      <td class="c nowrap">08:00–09:00</td>
-      <td class="c"><span class="bdg bdg--green">학습</span></td>
-      <td>프롬프트 엔지니어링 이해</td></tr><tr>
-      <td class="c"><b>2차시</b></td>
-      <td class="c nowrap">09:00–10:00</td>
-      <td class="c"><span class="bdg bdg--green">학습</span></td>
-      <td>사무관리 업무별 AI 활용 구조 이해</td></tr><tr>
-      <td class="c"><b>3차시</b></td>
-      <td class="c nowrap">10:00–11:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>AI 기반 시장분석 및 트렌드 도출</td></tr><tr>
-      <td class="c"><b>4차시</b></td>
-      <td class="c nowrap">11:00–12:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>AI 활용 전략 기획 및 아이디어션</td></tr><tr>
-      <td class="c"><b>점심</b></td>
-      <td class="c nowrap">12:00–13:00</td>
-      <td class="c"><span class="bdg bdg--green">점심</span></td>
-      <td>점심 식사</td></tr><tr>
-      <td class="c"><b>5차시</b></td>
-      <td class="c nowrap">13:00–14:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>GPT 활용 기획 문서 및 보고서 자동화</td></tr><tr>
-      <td class="c"><b>6차시</b></td>
-      <td class="c nowrap">14:00–15:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>AI 기반 데이터 분석</td></tr><tr>
-      <td class="c"><b>7차시</b></td>
-      <td class="c nowrap">15:00–16:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>AI 활용 의사결정 지원 시스템 구축</td></tr><tr>
-      <td class="c"><b>8차시</b></td>
-      <td class="c nowrap">16:00–17:00</td>
-      <td class="c"><span class="bdg bdg--green">정리</span></td>
-      <td>종합 실습 및 현업 적용 계획 수립</td></tr></tbody>
-  </table></div>
-  <p style="margin-top:14px"><a class="btn btn--line btn--sm" href="schedule.html">자세한 일정 보기 →</a></p>
+  <article class="lab">
+    <div class="lab__h"><span class="bdg bdg--solid">실전</span><h3>실습 ④ Spaces로 팀 리서치 아카이브</h3></div>
+    <p class="lab__goal"><b>목표</b> 주제별로 검색·자료를 모아 팀과 공유하는 리서치 공간을 만든다.</p>
+    <ol class="steps"><li>Spaces → 새 Space(예: “사료 시장 조사”)</li><li>관련 질문·파일·링크 축적</li><li>맞춤 지시문으로 답변 톤·형식 고정</li><li>팀 초대·공유</li></ol>
+    
+  </article>
+
+  <article class="lab">
+    <div class="lab__h"><span class="bdg bdg--solid">입문</span><h3>실습 ⑤ Focus로 학술·통계 한정 검색</h3></div>
+    <p class="lab__goal"><b>목표</b> 근거가 필요한 질문은 학술·통계 소스로 검색 범위를 좁힌다.</p>
+    <ol class="steps"><li>Focus에서 소스 유형 선택(학술/웹)</li><li>질문 입력</li><li>출처 신뢰도 확인</li></ol>
+    
+  </article>
+<h2 class="sec-h" id="prompts"><span class="sec-h__n">■</span>추천 프롬프트</h2>
+<div class="b-prompt">
+  <p class="b-prompt__cap">사실 확인</p>
+  <div class="b-prompt__box">
+    <div class="b-prompt__bar"><span>Prompt</span>
+      <button class="copy-btn" type="button">복사</button></div>
+    <pre>국내 배합사료 생산량·축산 사육두수 추이를 최신 기준으로, 각 수치의 출처와 기준 연도를 함께 알려줘.</pre>
+  </div>
+</div>
+<div class="b-prompt">
+  <p class="b-prompt__cap">정책 조사</p>
+  <div class="b-prompt__box">
+    <div class="b-prompt__bar"><span>Prompt</span>
+      <button class="copy-btn" type="button">복사</button></div>
+    <pre>축산·사료 산업 관련 정부 지원사업·규제 동향을 항목별 출처와 함께 표로 정리해줘.</pre>
+  </div>
+</div>
+<div class="b-prompt">
+  <p class="b-prompt__cap">심층 보고서</p>
+  <div class="b-prompt__box">
+    <div class="b-prompt__bar"><span>Prompt</span>
+      <button class="copy-btn" type="button">복사</button></div>
+    <pre>(Deep Research) 축산업 스마트팜·데이터 활용 동향과 사료업계 시사점을 출처 포함해 정리해줘.</pre>
+  </div>
+</div>
+<h2 class="sec-h" id="cases"><span class="sec-h__n">■</span>활용 사례</h2>
+<div class="card" style="margin-bottom:14px">
+    <h3>정책·지원사업 1차 조사 <span class="bdg bdg--gray">기획·총무</span></h3>
+    <p><b style="color:#b45309">문제</b> 축산·사료 관련 정책·지원사업 정보가 흩어져 있어 확인이 오래 걸림.</p>
+    <p style="margin-top:7px"><b style="color:var(--b700)">해결</b> Pro Search로 항목별 정책을 출처와 함께 조사, 상이한 출처는 비교 정리.</p>
+    <p style="margin-top:7px"><b style="color:var(--b700)">결과</b> 정책 체크리스트 초안 확보(담당 부서 확인 전제).</p>
+  </div><div class="card" style="margin-bottom:14px">
+    <h3>시장 수치 팩트체크 <span class="bdg bdg--gray">기획·영업지원</span></h3>
+    <p><b style="color:#b45309">문제</b> 보고서에 인용할 시장 수치의 출처·기준연도가 불명확.</p>
+    <p style="margin-top:7px"><b style="color:var(--b700)">해결</b> 답변+출처 인용으로 수치를 받고 각주 원문으로 직접 검증.</p>
+    <p style="margin-top:7px"><b style="color:var(--b700)">결과</b> 근거 있는 수치로 보고서 신뢰도 향상.</p>
+  </div><div class="card" style="margin-bottom:14px">
+    <h3>업계 동향 심층 리포트 <span class="bdg bdg--gray">전략·기획</span></h3>
+    <p><b style="color:#b45309">문제</b> 스마트팜·사료 효율 등 업계 동향을 빠르게 파악해야 함.</p>
+    <p style="margin-top:7px"><b style="color:var(--b700)">해결</b> Deep Research로 국내외 사례·효과·한계를 출처 포함 보고서로 정리.</p>
+    <p style="margin-top:7px"><b style="color:var(--b700)">결과</b> 전략 기획용 동향 리포트 초안 확보.</p>
+  </div><div class="card" style="margin-bottom:14px">
+    <h3>경쟁사·원자재 모니터링 <span class="bdg bdg--gray">영업지원·구매</span></h3>
+    <p><b style="color:#b45309">문제</b> 경쟁사 동향·곡물 가격 변화를 적시에 파악하기 어려움.</p>
+    <p style="margin-top:7px"><b style="color:var(--b700)">해결</b> Perplexity로 주기적 검색+출처 확인으로 변화 모니터링.</p>
+    <p style="margin-top:7px"><b style="color:var(--b700)">결과</b> 최신 동향을 출처와 함께 신속 파악.</p>
+  </div>
+<h2 class="sec-h" id="tips"><span class="sec-h__n">■</span>프롬프트 요령</h2>
+<ul class="b-bullets"><li>“출처와 함께, 최신 자료 기준으로”라고 명시하고 각주를 직접 확인한다.</li><li>심층 조사는 Pro Search / Deep Research를 사용한다.</li><li>검색 결과는 1차 자료일 뿐 — 중요한 수치는 원문 출처로 재확인한다.</li></ul>
+<h2 class="sec-h" id="limits"><span class="sec-h__n">■</span>한계와 유의점</h2>
+<ul class="b-bullets"><li>검색 결과는 1차 자료 — 중요한 수치는 반드시 원문 출처로 재확인한다.</li><li>출처의 신뢰도(공식/언론/블로그)를 직접 판단해야 한다.</li><li>민감 정보의 검색·입력은 지양한다.</li></ul>
+<h2 class="sec-h" id="links"><span class="sec-h__n">■</span>링크</h2>
+<a class="b-link" href="https://www.perplexity.ai" target="_blank" rel="noopener">공식 사이트 ↗</a>
+<h2 class="sec-h" id="refs"><span class="sec-h__n">■</span>본 과정 연계</h2>
+<a class="b-link" href="part-3.html">본 과정 3차시 · AI 기반 시장분석·트렌드 →</a><a class="b-link" href="part-7.html">본 과정 7차시 · 의사결정 지원 →</a>
 </div></div>
   </main>
 </div>

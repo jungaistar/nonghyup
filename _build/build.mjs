@@ -1,60 +1,31 @@
 /* ==========================================================================
-   농협사료 클론 실습 — 빌드 스크립트
-   --------------------------------------------------------------------------
-   _build/parts/*  (공용 CSS · JS · 헤더 · 푸터)
-   _build/pages/*  (페이지별 조각)
-        ↓  합친다
-   ./*.html        (CSS · JS 가 전부 <style> · <script> 안에 들어간 단일 파일)
-
+   빌드 — _원본(React/Vite) 의 데이터를 읽어 인라인 단일 HTML 로 만든다.
    실행:  node _build/build.mjs
-   외부 패키지를 쓰지 않는다. Node 18 이상이면 그대로 돈다.
+   외부 패키지 없음. Node 18 이상.
    ========================================================================== */
-import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
-import { join, dirname, basename } from 'node:path';
+import { readFileSync, writeFileSync, readdirSync, unlinkSync } from 'node:fs';
+import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { loadData, ROOT } from './gen/load.mjs';
+import { header, footer } from './gen/shell.mjs';
+import * as core from './gen/pages-core.mjs';
+import * as tools from './gen/pages-tools.mjs';
+import * as about from './gen/pages-about.mjs';
 
 const BUILD = dirname(fileURLToPath(import.meta.url));
-const ROOT  = join(BUILD, '..');            // 저장소 뿌리
-const read  = (p) => readFileSync(p, 'utf8');
+const sharedCss = readFileSync(join(BUILD, 'parts/style.css'), 'utf8');
+const sharedJs = readFileSync(join(BUILD, 'parts/common.js'), 'utf8');
 
-/* --- 공용 조각 ---------------------------------------------------------- */
-const sharedCss = read(join(BUILD, 'parts/style.css'));
-const sharedJs  = read(join(BUILD, 'parts/common.js'));
-const header    = read(join(BUILD, 'parts/header.html'));
-const footer    = read(join(BUILD, 'parts/footer.html'));
+/* 탭 아이콘 — 외부 요청 없이 인라인 SVG. 글자는 넣지 않는다. */
+const favicon = 'data:image/svg+xml,' + encodeURIComponent(
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">' +
+  '<rect width="32" height="32" rx="8" fill="#12522e"/>' +
+  '<path d="M16 7c4.6 2.8 7.4 6.2 7.4 10.4a7.4 7.4 0 0 1-14.8 0C8.6 13.2 11.4 9.8 16 7Z" fill="#fec20d"/>' +
+  '<path d="M16 12v11" stroke="#12522e" stroke-width="2.2" stroke-linecap="round"/></svg>');
 
-/* --- 페이지 조각 파서 ---------------------------------------------------- */
-// <!--@meta {...}--> · <!--@style--> … <!--@/style--> 형태의 구역을 잘라낸다
-function section(src, name) {
-  const re = new RegExp(`<!--@${name}-->([\\s\\S]*?)<!--@/${name}-->`);
-  const m  = src.match(re);
-  return m ? m[1].trim() : '';
-}
-function meta(src) {
-  const m = src.match(/<!--@meta([\s\S]*?)-->/);
-  if (!m) throw new Error('@meta 구역이 없습니다');
-  return JSON.parse(m[1].trim());
-}
-
-/* --- 탭 아이콘 (외부 요청 없이 인라인 SVG data URI) ---------------------- */
-// 탭 제목 바로 옆에 붙는 자리라 글자를 넣지 않는다 — 도형만.
-const favicon =
-  'data:image/svg+xml,' +
-  encodeURIComponent(
-    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">' +
-    '<rect width="32" height="32" rx="8" fill="#00A651"/>' +
-    '<path d="M16 6c5 3 8 6.5 8 11a8 8 0 0 1-16 0c0-4.5 3-8 8-11Z" fill="#fff" opacity=".92"/>' +
-    '<path d="M16 11v12" stroke="#00A651" stroke-width="2" stroke-linecap="round"/>' +
-    '</svg>'
-  );
-
-/* --- 한 페이지 조립 ------------------------------------------------------ */
-function buildPage(file) {
-  const src  = read(join(BUILD, 'pages', file));
-  const m    = meta(src);
-  const css  = section(src, 'style');
-  const body = section(src, 'body');
-  const js   = section(src, 'script');
+function html(p) {
+  const inner = p.noMainWrap ? p.body
+    : `<div class="main"><div class="wrap${p.wide ? ' wrap--wide' : ''}">\n${p.body}\n</div></div>`;
 
   return `<!doctype html>
 <html lang="ko">
@@ -62,53 +33,74 @@ function buildPage(file) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="format-detection" content="telephone=no">
-<title>${m.title}</title>
-<meta name="description" content="${m.desc}">
-<meta property="og:title" content="${m.title}">
-<meta property="og:description" content="${m.desc}">
+<title>${p.title}</title>
+<meta name="description" content="${p.desc || ''}">
+<meta property="og:title" content="${p.title}">
+<meta property="og:description" content="${p.desc || ''}">
 <meta property="og:type" content="website">
 <link rel="icon" href="${favicon}">
 <style>
 ${sharedCss}
-
-/* ===== 이 페이지에만 쓰는 스타일 ===== */
-${css}
+${p.style ? `\n/* ===== 이 페이지 전용 ===== */${p.style}` : ''}
 </style>
 <noscript><style>
-/* 스크립트가 꺼져 있으면 등장 애니메이션 대상이 영영 안 보인다 — 그때는 그냥 보여 준다 */
-.reveal{opacity:1 !important; transform:none !important}
+/* 스크립트가 꺼져 있어도 목차는 보여야 한다 */
+.sb{transform:none !important; position:static !important; height:auto !important}
 </style></noscript>
 </head>
-<body data-page="${m.key}">
+<body data-page="${p.key}">
 
-${header}
+${header(p.mode)}
 
-<main id="main">
-${body}
-</main>
+<div class="shell">
+  <aside class="sb" id="sb">${p.sidebar || ''}</aside>
+  <main id="main" style="flex:1;min-width:0">
+${inner}
+  </main>
+</div>
 
-${footer}
+${footer()}
 
 <script>
 ${sharedJs}
 </script>
-${js ? `<script>\n${js}\n</script>` : ''}
+${p.script ? `<script>\n${p.script}\n</script>` : ''}
 </body>
 </html>
 `;
 }
 
-/* --- 전체 실행 ----------------------------------------------------------- */
-const pages = readdirSync(join(BUILD, 'pages')).filter((f) => f.endsWith('.html')).sort();
-let total = 0;
+/* --- 실행 -------------------------------------------------------------- */
+const d = await loadData();
+const vol = d.content[0];
 
-for (const file of pages) {
-  const html = buildPage(file);
-  const out  = join(ROOT, basename(file));
-  writeFileSync(out, html, 'utf8');
-  total += html.length;
-  console.log(`  ✓ ${basename(file).padEnd(16)} ${(html.length / 1024).toFixed(1)} KB`);
+const pages = [
+  core.home(d),
+  core.courseOverview(d),
+  ...vol.parts.map((p) => core.partPage(d, p)),
+  core.schedule(d),
+  core.labs(d),
+  core.dashboard(d),
+  tools.toolsHome(d),
+  ...d.tools.tools.map((t) => tools.toolPage(d, t)),
+  tools.promptLab(d),
+  tools.appendix(d),
+  about.about(d),
+  about.instructor(),
+  about.company(d),
+];
+
+// 이전 빌드 결과를 지운다 (원본 폴더·빌드 재료는 건드리지 않는다)
+for (const f of readdirSync(ROOT)) {
+  if (f.endsWith('.html')) unlinkSync(join(ROOT, f));
 }
 
-console.log(`\n${pages.length}개 페이지, 합계 ${(total / 1024).toFixed(1)} KB`);
+let total = 0;
+for (const p of pages) {
+  const out = html(p);
+  writeFileSync(join(ROOT, p.file), out, 'utf8');
+  total += out.length;
+  console.log(`  ✓ ${p.file.padEnd(20)} ${(out.length / 1024).toFixed(1).padStart(6)} KB`);
+}
+console.log(`\n${pages.length}개 페이지 · 합계 ${(total / 1024).toFixed(1)} KB`);
 console.log('브라우저로 index.html 을 바로 열면 된다 (서버 없이 동작).');

@@ -1,192 +1,148 @@
 /* ==========================================================================
-   농협사료 클론 실습 — 공용 스크립트
-   프레임워크 없이 표준 DOM API 만 쓴다. 빌드 시 <script> 안으로 인라인 삽입.
+   공용 스크립트 — 프레임워크 없이 표준 DOM API 만 쓴다.
+   원본은 React + Supabase 였지만, 강의실이 폐쇄망이라 네트워크를 쓰지 않는다.
+   진도는 localStorage 한 곳에만 남긴다.
    ========================================================================== */
 (function () {
   'use strict';
 
-  var $  = function (sel, root) { return (root || document).querySelector(sel); };
-  var $$ = function (sel, root) {
-    return Array.prototype.slice.call((root || document).querySelectorAll(sel));
-  };
+  var $  = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
-  /* --- 1) 현재 페이지 메뉴에 활성 표시 --------------------------------- */
-  function markActiveMenu() {
-    var key = document.body.dataset.page;
-    if (!key) return;
-    var li = $('.gnb > ul > li[data-key="' + key + '"]');
-    if (li) {
-      li.classList.add('is-active');
-      li.querySelector('a').setAttribute('aria-current', 'page');
-    }
+  var STORE = 'nonghyupsaryo_progress';   // 원본과 같은 접두사
+
+  /* --- 진도: 읽기/쓰기 ------------------------------------------------- */
+  function readProgress() {
+    try { return JSON.parse(localStorage.getItem(STORE) || '{}'); }
+    catch (e) { return {}; }              // 값이 깨졌으면 빈 것으로 시작한다
+  }
+  function writeProgress(p) {
+    try { localStorage.setItem(STORE, JSON.stringify(p)); } catch (e) {}
+  }
+  function isDone(key) { return !!readProgress()[key]; }
+  function setDone(key, on) {
+    var p = readProgress();
+    if (on) p[key] = new Date().toISOString(); else delete p[key];
+    writeProgress(p);
   }
 
-  /* --- 2) 모바일 서랍 메뉴 --------------------------------------------- */
-  function initNavToggle() {
-    var btn = $('.nav-toggle');
-    var nav = $('#gnb');
-    if (!btn || !nav) return;
+  /* --- 1) 사이드바 서랍 ------------------------------------------------- */
+  function initSidebar() {
+    var btn = $('.hd__burger'), sb = $('.sb');
+    if (!btn || !sb) return;
+
+    var scrim = document.createElement('div');
+    scrim.className = 'sb__scrim';
+    document.body.appendChild(scrim);
 
     function setOpen(open) {
+      sb.classList.toggle('open', open);
+      scrim.classList.toggle('on', open);
       btn.setAttribute('aria-expanded', String(open));
-      nav.classList.toggle('is-open', open);
       // 서랍이 열린 동안 뒤 본문이 스크롤되지 않게 잠근다
-      document.body.style.overflow = open ? 'hidden' : '';
-      $('.sr-only', btn).textContent = open ? '전체 메뉴 닫기' : '전체 메뉴 열기';
+      document.body.style.overflow = open && window.innerWidth <= 1024 ? 'hidden' : '';
     }
-
     btn.addEventListener('click', function () {
-      setOpen(btn.getAttribute('aria-expanded') !== 'true');
+      setOpen(!sb.classList.contains('open'));
     });
-
-    // ESC 로 닫기
+    scrim.addEventListener('click', function () { setOpen(false); });
+    sb.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
-        setOpen(false);
-        btn.focus();
-      }
+      if (e.key === 'Escape' && sb.classList.contains('open')) { setOpen(false); btn.focus(); }
     });
-
-    // 메뉴 안 링크를 누르면 닫기
-    nav.addEventListener('click', function (e) {
-      if (e.target.closest('a')) setOpen(false);
-    });
-
-    // 데스크톱 폭으로 돌아오면 잠금 해제
-    window.matchMedia('(min-width: 901px)').addEventListener('change', function (m) {
+    window.matchMedia('(min-width: 1025px)').addEventListener('change', function (m) {
       if (m.matches) setOpen(false);
     });
-  }
 
-  /* --- 3) 스크롤 등장 애니메이션 ---------------------------------------- */
-  function initReveal() {
-    var items = $$('.reveal');
-    if (!items.length) return;
-
-    // IntersectionObserver 를 못 쓰는 환경이면 그냥 다 보여준다
-    if (!('IntersectionObserver' in window)) {
-      items.forEach(function (el) { el.classList.add('is-in'); });
-      return;
+    // 열려 있는 메뉴 항목이 보이도록 사이드바를 스크롤해 둔다
+    var on = $('.sb a.sb__item.on');
+    if (on) {
+      var t = on.offsetTop - sb.clientHeight / 2;
+      if (t > 0) sb.scrollTop = t;
     }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('is-in');
-        io.unobserve(entry.target);          // 한 번만 실행
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-    items.forEach(function (el) { io.observe(el); });
   }
 
-  /* --- 4) 숫자 카운트업 ------------------------------------------------- */
-  function initCounters() {
-    var nums = $$('[data-count]');
-    if (!nums.length || !('IntersectionObserver' in window)) {
-      nums.forEach(function (el) { el.textContent = el.dataset.count; });
-      return;
-    }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        var el = entry.target;
-        io.unobserve(el);
-        var target = Number(el.dataset.count);
-        var dur = 1100, t0 = performance.now();
-        (function step(now) {
-          var p = Math.min((now - t0) / dur, 1);
-          var eased = 1 - Math.pow(1 - p, 3);           // easeOutCubic
-          el.textContent = Math.round(target * eased).toLocaleString('ko-KR');
-          if (p < 1) requestAnimationFrame(step);
-        })(t0);
-      });
-    }, { threshold: 0.5 });
-    nums.forEach(function (el) { io.observe(el); });
-  }
+  /* --- 2) 프롬프트 복사 ------------------------------------------------- */
+  function initCopy() {
+    $$('.copy-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var pre = $('pre', btn.closest('.b-prompt__box'));
+        if (!pre) return;
+        var text = pre.textContent;
 
-  /* --- 5) 푸터 관련 사이트 select --------------------------------------- */
-  function initFamilySelect() {
-    var sel = $('[data-family]');
-    if (!sel) return;
-    sel.addEventListener('change', function () {
-      if (sel.value) location.href = sel.value;
+        function ok() {
+          var old = btn.textContent;
+          btn.textContent = '복사됨';
+          btn.classList.add('done');
+          setTimeout(function () { btn.textContent = old; btn.classList.remove('done'); }, 1600);
+        }
+        // file:// 에서는 clipboard API 가 막히는 브라우저가 있어 대비책을 둔다
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(text).then(ok, fallback);
+        } else fallback();
+
+        function fallback() {
+          var ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.cssText = 'position:fixed;top:-1000px';
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand('copy'); ok(); } catch (e) { btn.textContent = '복사 실패'; }
+          document.body.removeChild(ta);
+        }
+      });
     });
   }
 
-  /* --- 6) 서브 페이지 좌측 메뉴 → 좁은 화면에서 select ------------------- */
-  function initSubNavSelect() {
-    var nav = $('.sub-nav');
-    if (!nav) return;
-    var links = $$('.sub-nav ul a');
-    if (!links.length) return;
+  /* --- 3) 진도 체크 버튼 ------------------------------------------------ */
+  function initDone() {
+    $$('[data-done]').forEach(function (btn) {
+      var key = btn.dataset.done;
+      function paint() {
+        var on = isDone(key);
+        btn.classList.toggle('on', on);
+        btn.setAttribute('aria-pressed', String(on));
+        btn.textContent = on ? '✓ 학습 완료' : '학습 완료로 표시';
+      }
+      btn.addEventListener('click', function () { setDone(key, !isDone(key)); paint(); });
+      paint();
+    });
+  }
 
-    // 같은 배열(DOM)에서 만들어 쓴다 — 좁은 화면용 마크업을 따로 두지 않는다
-    var wrap = document.createElement('div');
-    wrap.className = 'sub-nav__select';
-    var sel = document.createElement('select');
-    sel.className = 'select';
-    sel.setAttribute('aria-label', '하위 메뉴 이동');
+  /* --- 4) 사이드바·목록에 완료 표시 ------------------------------------- */
+  function paintDoneMarks() {
+    var p = readProgress();
+    $$('[data-done-mark]').forEach(function (el) {
+      if (p[el.dataset.doneMark]) el.classList.add('is-done');
+    });
+  }
 
+  /* --- 5) 본문 목차 스크롤 추적 ----------------------------------------- */
+  function initSpy() {
+    var links = $$('.sb__sub a[href^="#"]');
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    var map = {};
     links.forEach(function (a) {
-      var op = document.createElement('option');
-      op.value = a.getAttribute('href');
-      op.textContent = a.textContent.trim();
-      if (a.classList.contains('is-active')) op.selected = true;
-      sel.appendChild(op);
+      var el = document.getElementById(a.getAttribute('href').slice(1));
+      if (el) map[el.id] = a;
     });
-    sel.addEventListener('change', function () { location.hash = sel.value.replace(/^.*#/, '#'); });
-
-    wrap.appendChild(sel);
-    nav.appendChild(wrap);
-  }
-
-  /* --- 7) sticky 헤더 높이만큼 앵커 위치 보정 --------------------------- */
-  function initAnchorOffset() {
-    var header = $('.header');
-    if (!header) return;
-    document.documentElement.style.scrollPaddingTop = (header.offsetHeight + 12) + 'px';
-  }
-
-  /* --- 8) 아코디언 (FAQ · 게시판 상세 공용) ------------------------------ */
-  function initAccordion() {
-    $$('.acc').forEach(function (acc) {
-      var single = acc.dataset.single === 'true';   // 한 번에 하나만 열기
-      $$('.acc__btn', acc).forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          var open = btn.getAttribute('aria-expanded') === 'true';
-          if (single && !open) {
-            $$('.acc__btn', acc).forEach(function (b) {
-              b.setAttribute('aria-expanded', 'false');
-              document.getElementById(b.getAttribute('aria-controls'))
-                      .classList.remove('is-open');
-            });
-          }
-          btn.setAttribute('aria-expanded', String(!open));
-          document.getElementById(btn.getAttribute('aria-controls'))
-                  .classList.toggle('is-open', !open);
-        });
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        links.forEach(function (a) { a.style.color = ''; a.style.fontWeight = ''; });
+        var a = map[e.target.id];
+        if (a) { a.style.color = 'var(--b700)'; a.style.fontWeight = '800'; }
       });
-    });
+    }, { rootMargin: '-25% 0px -65% 0px' });
+    Object.keys(map).forEach(function (id) { io.observe(document.getElementById(id)); });
   }
 
-  /* --- 실행 ------------------------------------------------------------- */
   function boot() {
-    markActiveMenu();
-    initNavToggle();
-    initReveal();
-    initCounters();
-    initFamilySelect();
-    initSubNavSelect();
-    initAnchorOffset();
-    initAccordion();
+    initSidebar(); initCopy(); initDone(); paintDoneMarks(); initSpy();
   }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot);
-  } else {
-    boot();
-  }
-
-  // 페이지별 스크립트가 쓸 수 있게 최소한만 노출한다
-  window.NH = { $: $, $$: $$ };
+  // 페이지별 스크립트가 쓸 수 있게 최소한만 내보낸다
+  window.NH = { $: $, $$: $$, readProgress: readProgress, setDone: setDone, isDone: isDone, STORE: STORE };
 })();

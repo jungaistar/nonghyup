@@ -2,13 +2,13 @@
 chcp 65001 > nul
 rem ===========================================================================
 rem  농협 강의용 클론 실습본 — 로컬 배치 (더블클릭용)
-rem  이 폴더의 내용을 D:\data\dev\nonghyup 으로 복사한다.
+rem  이 폴더의 내용을 D:\dev\nonghyup 으로 복사한다.
 rem  세밀한 설정이 필요하면 setup-local.ps1 을 직접 실행할 것.
 rem ===========================================================================
 setlocal
 
 set "SRC=%~dp0"
-set "DST=D:\data\dev\nonghyup"
+set "DST=D:\dev\nonghyup"
 
 echo.
 echo  농협 강의용 클론 실습본 — 로컬 배치

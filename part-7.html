@@ -1,0 +1,861 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<title>7차시 · AI 활용 의사결정 지원 시스템 구축 — 농협사료 AI 실무</title>
+<meta name="description" content="7차시: AI 활용 의사결정 지원 시스템 구축">
+<meta property="og:title" content="7차시 · AI 활용 의사결정 지원 시스템 구축 — 농협사료 AI 실무">
+<meta property="og:description" content="7차시: AI 활용 의사결정 지원 시스템 구축">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%228%22%20fill%3D%22%2312522e%22%2F%3E%3Cpath%20d%3D%22M16%207c4.6%202.8%207.4%206.2%207.4%2010.4a7.4%207.4%200%200%201-14.8%200C8.6%2013.2%2011.4%209.8%2016%207Z%22%20fill%3D%22%23fec20d%22%2F%3E%3Cpath%20d%3D%22M16%2012v11%22%20stroke%3D%22%2312522e%22%20stroke-width%3D%222.2%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
+<style>
+/* ==========================================================================
+   농협사료 · 생성형 AI 사무관리 업무혁신 학습사이트
+   공용 스타일 — 빌드 시 각 HTML 의 <style> 안으로 인라인 삽입된다.
+   색·글꼴은 원본(tailwind.config.js)의 NH 아이덴티티를 그대로 옮겼다.
+   ========================================================================== */
+
+/* --- 1. 디자인 토큰 ------------------------------------------------------ */
+:root{
+  /* 신뢰의 딥 그린 (NH) */
+  --b50:#edfaf1;  --b100:#d2f2dd; --b200:#a6e5bd; --b300:#6fd196;
+  --b400:#3cb96f; --b500:#1fa054; --b600:#158043; --b700:#136637;
+  --b800:#12522e; --b900:#0d3b21; --b950:#072414;
+  /* 결실의 골드 (농협 심볼 공식 CI) */
+  --s50:#fffaeb;  --s100:#fef0c7; --s200:#fde08a; --s300:#fccb4d;
+  --s400:#fec20d; --s500:#e09a0b; --s600:#c17706; --s700:#a05a0a;
+  /* 중립 */
+  --g50:#f8fafc;  --g100:#f1f5f9; --g200:#e2e8f0; --g300:#cbd5e1;
+  --g400:#94a3b8; --g500:#64748b; --g600:#475569; --g700:#334155;
+  --g800:#1e293b; --g900:#0f172a;
+
+  --radius:12px; --radius-lg:16px; --pill:999px;
+  --shadow-sm:0 1px 2px rgba(15,23,42,.06);
+  --shadow:0 6px 24px rgba(7,36,20,.10);
+  --ease:cubic-bezier(.22,.61,.36,1);
+
+  --header-h:56px;
+  --sidebar-w:272px;
+}
+
+/* --- 2. 리셋 ------------------------------------------------------------- */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth; -webkit-text-size-adjust:100%; scroll-padding-top:72px}
+body{
+  margin:0;
+  font-family:Pretendard,"Pretendard Variable",-apple-system,BlinkMacSystemFont,
+              system-ui,Roboto,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
+  font-size:16px; line-height:1.7; color:var(--g700);
+  background:var(--g50);
+  font-feature-settings:'tnum';
+  word-break:keep-all;      /* 한글은 낱말 단위로 줄바꿈 */
+  overflow-wrap:break-word; /* 단, 한 줄을 넘기는 덩어리는 끊는다 */
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%; height:auto; vertical-align:middle}
+a{color:inherit; text-decoration:none}
+button{font:inherit; color:inherit; cursor:pointer; background:none; border:0}
+ul,ol{margin:0; padding:0; list-style:none}
+h1,h2,h3,h4,p{margin:0}
+table{border-collapse:collapse; width:100%}
+:focus-visible{outline:3px solid var(--b500); outline-offset:2px; border-radius:4px}
+
+.sr-only{position:absolute; width:1px; height:1px; margin:-1px; padding:0;
+  overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0}
+.skip-link{position:absolute; left:0; top:-60px; z-index:200;
+  background:var(--b800); color:#fff; padding:12px 20px; transition:top .2s var(--ease)}
+.skip-link:focus{top:0}
+
+/* 표 셀의 줄바꿈 보존 (원본 .cell-pre) */
+.cell-pre{white-space:pre-line}
+
+/* --- 3. 헤더 ------------------------------------------------------------- */
+.hd{
+  position:sticky; top:0; z-index:40; height:var(--header-h);
+  display:flex; align-items:center; gap:12px; padding:0 16px;
+  background:var(--b800); color:#fff;
+}
+.hd__burger{
+  display:grid; place-items:center; width:40px; height:40px; border-radius:9px;
+  color:#fff; flex:none;
+}
+.hd__burger:hover{background:rgba(255,255,255,.14)}
+.hd__logo{display:flex; align-items:center; gap:9px; font-weight:800; font-size:15px; letter-spacing:-.02em}
+.hd__mark{
+  display:grid; place-items:center; width:30px; height:30px; border-radius:8px;
+  background:var(--s400); color:var(--b900); font-size:12px; font-weight:900; flex:none;
+}
+.hd__logo small{display:block; font-size:10.5px; font-weight:600; color:rgba(255,255,255,.65); letter-spacing:.04em}
+.hd__nav{margin-left:auto; display:flex; align-items:center; gap:2px}
+.hd__nav a{
+  padding:8px 12px; border-radius:8px; font-size:13.5px; font-weight:600;
+  color:rgba(255,255,255,.86); white-space:nowrap;
+}
+.hd__nav a:hover{background:rgba(255,255,255,.14); color:#fff}
+.hd__nav a.on{background:rgba(255,255,255,.18); color:#fff}
+
+/* --- 4. 골격: 사이드바 + 본문 -------------------------------------------- */
+.shell{display:flex; align-items:flex-start; max-width:1440px; margin:0 auto}
+.sb{
+  position:sticky; top:var(--header-h); z-index:30; flex:none;
+  width:var(--sidebar-w); height:calc(100vh - var(--header-h));
+  overflow-y:auto; padding:16px;
+  background:#fff; border-right:1px solid var(--g200);
+  scrollbar-width:thin;
+}
+.sb__title{
+  margin-bottom:12px; padding:10px 12px; border-radius:var(--radius);
+  background:var(--b800); color:#fff; font-size:12.5px; font-weight:800; text-align:center;
+  line-height:1.5;
+}
+.sb__cta{
+  display:block; margin-bottom:12px; padding:9px 10px; border-radius:10px;
+  background:var(--s50); color:var(--s700); font-size:12px; font-weight:700;
+}
+.sb__cta:hover{background:var(--s100)}
+.sb__label{padding:0 8px; margin:14px 0 6px; font-size:11px; font-weight:800;
+  letter-spacing:.08em; text-transform:uppercase; color:var(--g400)}
+.sb a.sb__item{
+  display:flex; align-items:center; gap:8px; min-height:40px; padding:8px 10px;
+  border-radius:9px; font-size:13.5px; color:var(--g600); font-weight:500;
+}
+.sb a.sb__item:hover{background:var(--b50); color:var(--b700)}
+.sb a.sb__item.on{background:var(--b50); color:var(--b700); font-weight:800}
+.sb__num{
+  flex:none; display:grid; place-items:center; min-width:22px; height:22px; padding:0 5px;
+  border-radius:6px; background:var(--g100); color:var(--g500);
+  font-size:11px; font-weight:800;
+}
+.sb a.sb__item.on .sb__num{background:var(--b600); color:#fff}
+.sb__sub{margin:2px 0 6px 30px}
+.sb__sub a{display:block; padding:6px 8px; border-radius:7px; font-size:12.5px; color:var(--g500)}
+.sb__sub a:hover{background:var(--g100); color:var(--b700)}
+
+.sb__scrim{display:none}
+
+.main{flex:1; min-width:0; padding:28px 28px 72px}
+.wrap{max-width:920px; margin:0 auto}
+.wrap--wide{max-width:1180px}
+
+/* --- 5. 페이지 머리 ------------------------------------------------------ */
+.crumb{display:flex; flex-wrap:wrap; gap:6px; font-size:12.5px; color:var(--g400); margin-bottom:10px}
+.crumb li+li::before{content:"›"; margin-right:6px}
+.crumb a:hover{color:var(--b600)}
+
+.ph{margin-bottom:26px}
+.ph__eyebrow{
+  display:inline-flex; align-items:center; gap:6px; margin-bottom:10px;
+  padding:4px 11px; border-radius:var(--pill);
+  background:var(--b50); color:var(--b700); font-size:12px; font-weight:800;
+}
+.ph h1{font-size:30px; font-weight:800; letter-spacing:-.03em; color:var(--g900); line-height:1.3}
+.ph p{margin-top:10px; font-size:16px; color:var(--g500)}
+
+.sec-h{
+  display:flex; align-items:flex-start; gap:11px;
+  margin:38px 0 16px; padding-top:6px;
+  font-size:21px; font-weight:800; letter-spacing:-.02em; color:var(--g900); line-height:1.4;
+}
+.sec-h__n{
+  flex:none; display:grid; place-items:center; min-width:30px; height:30px; padding:0 8px;
+  margin-top:2px; border-radius:8px;
+  background:var(--b800); color:#fff; font-size:13px; font-weight:800;
+}
+.sub-h{
+  margin:26px 0 12px; padding-left:11px; border-left:3px solid var(--b300);
+  font-size:17px; font-weight:800; color:var(--b800); line-height:1.45;
+}
+
+/* --- 6. 카드 · 뱃지 · 버튼 ----------------------------------------------- */
+.card{
+  background:#fff; border:1px solid var(--g200); border-radius:var(--radius);
+  padding:20px; box-shadow:var(--shadow-sm);
+  transition:border-color .2s var(--ease), box-shadow .2s var(--ease), transform .2s var(--ease);
+}
+a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow); transform:translateY(-2px)}
+.card h3{font-size:16.5px; font-weight:800; color:var(--g900); margin-bottom:6px}
+.card p{font-size:14px; color:var(--g500); line-height:1.75}
+
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.grid > *{min-width:0}
+
+.bdg{display:inline-block; padding:3px 10px; border-radius:var(--pill);
+  font-size:11.5px; font-weight:800; line-height:1.7; white-space:nowrap}
+.bdg--green{background:var(--b50); color:var(--b700)}
+.bdg--gold{background:var(--s50); color:var(--s700)}
+.bdg--gray{background:var(--g100); color:var(--g500)}
+.bdg--solid{background:var(--b800); color:#fff}
+
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  min-height:46px; padding:0 20px; border:1px solid transparent; border-radius:var(--pill);
+  font-size:14.5px; font-weight:800; transition:background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease);
+}
+.btn--fill{background:var(--b600); color:#fff}
+.btn--fill:hover{background:var(--b700)}
+.btn--gold{background:var(--s400); color:var(--b900)}
+.btn--gold:hover{background:var(--s300)}
+.btn--line{border-color:var(--g200); background:#fff; color:var(--g700)}
+.btn--line:hover{border-color:var(--b500); color:var(--b700)}
+.btn--white{border-color:rgba(255,255,255,.65); color:#fff}
+.btn--white:hover{background:#fff; color:var(--b800)}
+.btn--sm{min-height:38px; padding:0 14px; font-size:13px}
+
+.table-wrap{overflow-x:auto; -webkit-overflow-scrolling:touch}
+
+/* --- 7. 본문 블록 (원본 BlockRenderer 의 14종) ---------------------------- */
+.blk{margin:0 0 4px}
+
+/* 가운뎃점(·)으로만 이어진 도구 이름 나열은 keep-all 아래에서 한 낱말로 취급되어
+   좁은 화면을 넘긴다. 본문 텍스트에서는 어디서든 끊을 수 있게 둔다. */
+.b-para,.b-bullets li,.b-obj li,.b-note,.b-note p,.b-note li,
+.b-ex__b,.b-keywords span,.cell-pre,.lab__goal,.apx__when,.apx__why{
+  overflow-wrap:anywhere;
+}
+
+/* para — 본문 문단 */
+.b-para{margin:14px 0; font-size:15.5px; line-height:1.85; color:var(--g600)}
+
+/* label — 작은 머리표 */
+.b-label{margin:22px 0 8px; font-size:14.5px; font-weight:800; color:var(--b800)}
+
+/* bullets — 목록 */
+.b-bullets{margin:12px 0 16px}
+.b-bullets li{position:relative; padding-left:17px; margin-bottom:7px; font-size:15px; color:var(--g600); line-height:1.8}
+.b-bullets li::before{content:""; position:absolute; left:2px; top:.75em;
+  width:5px; height:5px; border-radius:50%; background:var(--b400)}
+
+/* keywords — 키워드 칩 */
+.b-keywords{display:flex; flex-wrap:wrap; gap:7px; margin:14px 0 18px}
+.b-keywords span{padding:5px 12px; border-radius:var(--pill);
+  background:var(--b50); color:var(--b700); font-size:12.5px; font-weight:700}
+
+/* objectives — 학습 목표 */
+.b-obj{margin:16px 0 20px; padding:18px 20px; border-radius:var(--radius);
+  background:var(--b50); border:1px solid var(--b100)}
+.b-obj__t{display:flex; align-items:center; gap:7px; margin-bottom:10px;
+  font-size:13.5px; font-weight:800; color:var(--b800)}
+.b-obj li{position:relative; padding-left:24px; margin-bottom:6px; font-size:14.5px; color:var(--b900); line-height:1.8}
+.b-obj li::before{content:"✓"; position:absolute; left:2px; top:0; color:var(--b500); font-weight:900}
+
+/* table */
+.b-table{margin:20px 0}
+.b-table__cap{margin-bottom:8px; font-size:13px; font-weight:800; color:var(--b700)}
+.b-table .table-wrap{border:1px solid var(--g200); border-radius:var(--radius); box-shadow:var(--shadow-sm)}
+.b-table table{font-size:13.5px; min-width:520px}
+.b-table thead th{background:var(--b800); color:#fff; font-weight:700; text-align:left;
+  padding:11px 13px; border-right:1px solid rgba(255,255,255,.16)}
+.b-table thead th:last-child{border-right:0}
+.b-table tbody tr:nth-child(even){background:var(--g50)}
+.b-table td{padding:11px 13px; border-top:1px solid var(--g100); border-right:1px solid var(--g100);
+  vertical-align:top; color:var(--g600)}
+.b-table td:last-child{border-right:0}
+
+/* promptbox — 복사 가능한 프롬프트 */
+.b-prompt{margin:18px 0}
+.b-prompt__cap{margin-bottom:8px; font-size:13px; font-weight:800; color:var(--b700)}
+.b-prompt__box{position:relative; border-radius:var(--radius); overflow:hidden;
+  background:var(--b950); border:1px solid var(--b800)}
+.b-prompt__bar{display:flex; align-items:center; gap:8px; padding:8px 12px;
+  background:rgba(255,255,255,.06); border-bottom:1px solid rgba(255,255,255,.09)}
+.b-prompt__bar span{font-size:11.5px; font-weight:800; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--s300)}
+.b-prompt pre{
+  margin:0; padding:16px 18px; overflow-x:auto;
+  font-family:"D2Coding",ui-monospace,SFMono-Regular,Menlo,Consolas,"Malgun Gothic",monospace;
+  font-size:13.5px; line-height:1.85; color:#e6f5ec; white-space:pre-wrap; word-break:break-word;
+}
+.copy-btn{
+  margin-left:auto; min-height:32px; padding:0 12px; border-radius:var(--pill);
+  background:rgba(255,255,255,.12); color:#fff; font-size:12px; font-weight:800;
+}
+.copy-btn:hover{background:rgba(255,255,255,.22)}
+.copy-btn.done{background:var(--s400); color:var(--b900)}
+
+/* tip · warning · outcome · case · exercise — 색 띠 상자 */
+.b-note{margin:18px 0; padding:16px 18px 16px 17px; border-radius:var(--radius);
+  border-left:4px solid; font-size:14.5px; line-height:1.8}
+.b-note__t{display:flex; align-items:center; gap:7px; margin-bottom:7px; font-size:13.5px; font-weight:800}
+.b-note p{font-size:14.5px; line-height:1.8}
+.b-note li{position:relative; padding-left:16px; margin-bottom:5px}
+.b-note li::before{content:""; position:absolute; left:2px; top:.72em; width:4px; height:4px;
+  border-radius:50%; background:currentColor; opacity:.5}
+
+.b-tip{background:var(--b50); border-color:var(--b400); color:var(--b900)}
+.b-tip .b-note__t{color:var(--b700)}
+.b-warn{background:#fff7ed; border-color:#fb923c; color:#7c2d12}
+.b-warn .b-note__t{color:#c2410c}
+.b-out{background:var(--s50); border-color:var(--s400); color:#713f12}
+.b-out .b-note__t{color:var(--s700)}
+.b-case{background:#eff6ff; border-color:#60a5fa; color:#1e3a8a}
+.b-case .b-note__t{color:#1d4ed8}
+
+/* exercise — 실습 과제 */
+.b-ex{margin:20px 0; border-radius:var(--radius); overflow:hidden;
+  border:1px solid var(--b200); background:#fff}
+.b-ex__h{display:flex; align-items:center; gap:9px; padding:12px 16px;
+  background:var(--b600); color:#fff; font-size:14px; font-weight:800}
+.b-ex__h .bdg{background:rgba(255,255,255,.2); color:#fff}
+.b-ex__b{padding:16px 18px; font-size:14.5px; line-height:1.85; color:var(--g600)}
+.b-ex__b li{position:relative; padding-left:22px; margin-bottom:7px}
+.b-ex__b li::before{
+  content:counter(exli); counter-increment:exli;
+  position:absolute; left:0; top:.28em;
+  display:grid; place-items:center; width:16px; height:16px; border-radius:50%;
+  background:var(--b100); color:var(--b700); font-size:10.5px; font-weight:800;
+}
+.b-ex__b ol{counter-reset:exli}
+
+/* link · download */
+.b-link{display:inline-flex; align-items:center; gap:8px; margin:10px 8px 10px 0;
+  padding:9px 15px; border-radius:var(--pill); border:1px solid var(--g200);
+  background:#fff; font-size:13.5px; font-weight:700; color:var(--b700)}
+.b-link:hover{border-color:var(--b500); background:var(--b50)}
+.b-dl{display:inline-flex; align-items:center; gap:8px; margin:10px 0;
+  padding:11px 17px; border-radius:var(--pill);
+  background:var(--s400); color:var(--b900); font-size:13.5px; font-weight:800}
+.b-dl:hover{background:var(--s300)}
+
+/* source — 출처 */
+.b-source{margin:8px 0 16px; font-size:12px; color:var(--g400)}
+
+/* --- 8. 진도 체크 -------------------------------------------------------- */
+.done-bar{display:flex; flex-wrap:wrap; gap:10px; align-items:center;
+  margin:30px 0 0; padding:16px 18px; border-radius:var(--radius);
+  background:#fff; border:1px solid var(--g200)}
+.done-btn{min-height:44px; padding:0 20px; border-radius:var(--pill);
+  border:1px solid var(--b200); background:var(--b50); color:var(--b700); font-size:14px; font-weight:800}
+.done-btn:hover{background:var(--b100)}
+.done-btn.on{background:var(--b600); border-color:var(--b600); color:#fff}
+
+.prog{height:9px; border-radius:var(--pill); background:var(--g200); overflow:hidden}
+.prog__fill{height:100%; border-radius:var(--pill);
+  background:linear-gradient(90deg,var(--b600),var(--b400)); transition:width .5s var(--ease)}
+
+/* --- 9. 애니메이션 ------------------------------------------------------- */
+@keyframes fadeUp{from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none}}
+.fade{animation:fadeUp .4s var(--ease)}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(-3deg)} 50%{transform:translateY(-18px) rotate(3deg)}}
+.floaty{animation:floaty 6s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important; transition-duration:.01ms !important}
+  html{scroll-behavior:auto}
+}
+
+/* --- 10. 푸터 ------------------------------------------------------------ */
+.ft{background:var(--b950); color:#9fb8a9; padding:34px 0 30px; font-size:13.5px}
+.ft__in{max-width:1180px; margin:0 auto; padding:0 24px}
+.ft__top{display:flex; flex-wrap:wrap; gap:10px 22px; padding-bottom:16px;
+  border-bottom:1px solid rgba(255,255,255,.1)}
+.ft__top a{font-weight:700; color:#fff}
+.ft__top a:hover{color:var(--s300)}
+.ft__body{padding-top:18px; line-height:1.9}
+.ft strong{color:#fff}
+.ft__note{margin-top:14px; padding:11px 14px; border-radius:10px;
+  background:rgba(254,194,13,.1); color:#f2d38a; font-size:12.5px; line-height:1.7}
+
+/* --- 11. 반응형 ---------------------------------------------------------- */
+@media (max-width:1100px){
+  .g4{grid-template-columns:repeat(2,1fr)}
+}
+
+/* 사이드바를 서랍으로 */
+@media (max-width:1024px){
+  .sb{
+    position:fixed; left:0; top:var(--header-h); z-index:35;
+    transform:translateX(-100%); transition:transform .28s var(--ease);
+    box-shadow:0 12px 40px rgba(7,36,20,.18);
+  }
+  .sb.open{transform:none}
+  .sb__scrim{display:block; position:fixed; inset:var(--header-h) 0 0; z-index:34;
+    background:rgba(15,23,42,.42); opacity:0; visibility:hidden; transition:opacity .28s var(--ease), visibility .28s}
+  .sb__scrim.on{opacity:1; visibility:visible}
+  .main{padding:22px 20px 64px}
+  .hd__nav a{padding:8px 9px; font-size:13px}
+}
+
+@media (max-width:900px){
+  .ph h1{font-size:24px}
+  .ph p{font-size:15px}
+  .sec-h{font-size:18.5px; margin:30px 0 14px}
+  .sub-h{font-size:16px}
+  .g3{grid-template-columns:repeat(2,1fr)}
+  /* 좁은 화면에서 인라인으로 박힌 작은 글씨를 16px 으로 되돌린다 */
+  input,select,textarea{font-size:16px !important}
+}
+
+@media (max-width:768px){
+  .hd__nav{display:none}          /* 상단 메뉴는 서랍 안으로 */
+  .hd__logo small{display:none}
+}
+
+@media (max-width:640px){
+  .main{padding:18px 16px 56px}
+  .g2,.g3,.g4{grid-template-columns:1fr}
+  .ph h1{font-size:21px}
+  .sec-h{font-size:17px; gap:9px}
+  .b-para,.b-note,.b-note p{font-size:15px}
+  .btn{width:100%}
+  .ft__in{padding:0 16px}
+}
+
+@media print{
+  .hd,.sb,.sb__scrim,.ft,.done-bar,.copy-btn{display:none !important}
+  .main{padding:0}
+  body{background:#fff}
+}
+
+
+/* ===== 이 페이지 전용 ===== */
+.pn{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:22px}
+.pn__a{display:block; padding:15px 18px; border-radius:var(--radius);
+  border:1px solid var(--g200); background:#fff; transition:border-color .2s var(--ease)}
+.pn__a:hover{border-color:var(--b400)}
+.pn__a span{display:block; font-size:12px; font-weight:800; color:var(--b600); margin-bottom:3px}
+.pn__a b{font-size:14px; color:var(--g700); font-weight:700; line-height:1.5}
+.pn__a--r{text-align:right}
+@media (max-width:640px){ .pn{grid-template-columns:1fr} .pn__a--r{text-align:left} }
+</style>
+<noscript><style>
+/* 스크립트가 꺼져 있어도 목차는 보여야 한다 */
+.sb{transform:none !important; position:static !important; height:auto !important}
+</style></noscript>
+</head>
+<body data-page="part-7">
+
+<a class="skip-link" href="#main">본문 바로가기</a>
+<header class="hd">
+  <button class="hd__burger" type="button" aria-expanded="false" aria-controls="sb" aria-label="목차 열기">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  </button>
+  <a class="hd__logo" href="index.html">
+    <span class="hd__mark" aria-hidden="true">NH</span>
+    <span>농협사료<small>AI 사무관리 업무혁신</small></span>
+  </a>
+  <nav class="hd__nav" aria-label="주 메뉴">
+    <a href="index.html">홈</a>
+    <a href="course.html" class="on" aria-current="page">교재</a>
+    <a href="schedule.html">일정</a>
+    <a href="labs.html">실습</a>
+    <a href="tools.html">AI 도구</a>
+    <a href="appendix.html">부록</a>
+    <a href="about.html">소개</a>
+    <a href="dashboard.html">진도</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sb" id="sb"><div class="sb__title">생성형 AI 기반 사무관리 업무혁신 실무</div>
+<a class="sb__cta" href="schedule.html">📅 8차시 교육 일정 보기</a>
+<div class="sb__label">학습 목차</div>
+<a class="sb__item" href="course.html"><span>교재 전체 개요</span></a>
+<a class="sb__item" href="part-1.html" data-done-mark="part-1"><span class="sb__num">1</span><span>생성형 AI와 프롬프트 엔지니어링 이해</span></a>
+<a class="sb__item" href="part-2.html" data-done-mark="part-2"><span class="sb__num">2</span><span>사무관리 업무별 AI 활용 구조 이해</span></a>
+<a class="sb__item" href="part-3.html" data-done-mark="part-3"><span class="sb__num">3</span><span>AI 기반 시장분석 및 트렌드 도출</span></a>
+<a class="sb__item" href="part-4.html" data-done-mark="part-4"><span class="sb__num">4</span><span>AI 활용 전략 기획 및 아이디어션</span></a>
+<a class="sb__item" href="part-5.html" data-done-mark="part-5"><span class="sb__num">5</span><span>GPT 활용 기획 문서 및 보고서 자동화</span></a>
+<a class="sb__item" href="part-6.html" data-done-mark="part-6"><span class="sb__num">6</span><span>AI 기반 데이터 분석</span></a>
+<a class="sb__item on" href="part-7.html" data-done-mark="part-7"><span class="sb__num">7</span><span>AI 활용 의사결정 지원 시스템 구축</span></a>
+<div class="sb__sub"><a href="#sec-1">1. 왜 &#39;감&#39;이 아니라 &#39;기준&#39;으로 결정해야 할까</a>
+<a href="#sec-2">2. 평가 기준과 가중치: 급식 메뉴 고르기로 배우기</a>
+<a href="#sec-3">3. 의사결정 매트릭스 만들기: 대안×기준 점수표</a>
+<a href="#sec-4">4. 리스크 분석과 대응책 준비하기</a>
+<a href="#sec-5">5. AI는 보조, 최종 결정과 근거 기록은 사람의 몫</a></div>
+<a class="sb__item" href="part-8.html" data-done-mark="part-8"><span class="sb__num">8</span><span>종합 실습 및 현업 적용 계획 수립</span></a></aside>
+  <main id="main" style="flex:1;min-width:0">
+<div class="main"><div class="wrap">
+<ol class="crumb"><li><a href="index.html">홈</a></li><li><a href="course.html">교재</a></li><li>7차시</li></ol>
+<div class="ph">
+  <span class="ph__eyebrow">7차시</span>
+  <h1>AI 활용 의사결정 지원 시스템 구축</h1>
+
+</div>
+<div class="b-obj">
+  <div class="b-obj__t"><span aria-hidden="true">🎯</span>학습 목표</div>
+  <ul><li>&#39;감(感)&#39;이 아니라 &#39;기준&#39;으로 결정하는 원리를 이해하고, 왜 기준이 더 안전한지 설명할 수 있다.</li><li>평가 기준과 가중치의 개념을 쉬운 비유로 이해하고, 우리 업무에 맞게 세울 수 있다.</li><li>의사결정 매트릭스(대안×기준 점수표)를 직접 만들어 여러 대안을 공정하게 비교할 수 있다.</li><li>결정에 따르는 리스크를 미리 찾아내고 대응책을 준비하는 리스크 점검표를 작성할 수 있다.</li><li>AI는 판단을 돕는 보조 도구이며, 최종 결정과 근거 기록은 사람이 해야 함을 체득한다.</li></ul>
+</div>
+<div class="b-keywords"><span>의사결정 매트릭스</span><span>평가 기준</span><span>가중치</span><span>대안 비교</span><span>리스크 분석</span><span>대응책</span><span>근거 기록</span><span>실행계획서</span></div>
+
+<section id="sec-1">
+  <h2 class="sec-h"><span class="sec-h__n">1</span>왜 &#39;감&#39;이 아니라 &#39;기준&#39;으로 결정해야 할까</h2>
+  <p class="b-para" style="white-space:pre-line">우리는 하루에도 수십 번 결정을 합니다. 점심 메뉴처럼 가벼운 것부터, 어느 거래처와 계약할지처럼 회사에 영향을 주는 것까지요. 이번 차시에서는 &#39;왠지 이게 좋을 것 같아&#39;라는 감(感) 대신, 누구에게나 설명할 수 있는 &#39;기준&#39;으로 결정하는 방법을 배웁니다.</p>
+<p class="b-label">쉽게 말하면: 자로 재는 것과 눈대중의 차이</p>
+<p class="b-para" style="white-space:pre-line">초등학생이 두 개의 막대 중 어느 것이 더 긴지 눈대중으로 고르면 틀리기 쉽습니다. 하지만 자를 대고 재면 누가 봐도 똑같은 답이 나오지요. &#39;기준으로 결정한다&#39;는 것은 바로 이 &#39;자&#39;를 만드는 일입니다. 감은 사람마다 다르고 그날 기분에 따라 흔들리지만, 기준은 흔들리지 않습니다.</p>
+<p class="b-label">실무에서는: 결정의 &#39;근거&#39;가 남는다</p>
+<p class="b-para" style="white-space:pre-line">농협사료에서 배합사료 원료 공급업체를 고를 때 &#39;사장님이 아는 곳이라서&#39; 정했다고 하면, 나중에 문제가 생겼을 때 설명할 근거가 없습니다. 반면 &#39;가격·품질·납기·신뢰도 네 가지 기준으로 점수를 매겨 가장 높은 곳을 선택했다&#39;고 하면, 상급자에게도 감사에도 당당하게 설명할 수 있습니다. 기준은 곧 나를 지켜주는 기록입니다.</p>
+<p class="b-label">왜 그럴까: 인간의 직관은 &#39;편향&#39;에 약하다</p>
+<p class="b-para" style="white-space:pre-line">심리학과 행동경제학 연구에 따르면 사람의 직관적 판단은 여러 &#39;편향(bias)&#39;에 쉽게 흔들립니다. 가장 최근에 들은 정보에 끌리는 최신 편향, 처음 본 숫자에 끌려가는 기준점 편향, 내 생각을 뒷받침하는 정보만 찾는 확증 편향 등이 대표적입니다. 명시적인 평가 기준과 점수표를 쓰면 이런 편향을 크게 줄일 수 있습니다. 기준이 &#39;생각의 안전벨트&#39; 역할을 하는 셈입니다.</p>
+<div class="b-note b-tip">
+  <div class="b-note__t"><span aria-hidden="true">💡</span>Tip</div>
+  <p style="white-space:pre-line">감이 나쁘다는 뜻이 아닙니다. 경험에서 나온 감은 귀중한 힌트예요. 다만 감을 &#39;출발점&#39;으로 삼되, 기준으로 검증해서 결정을 &#39;완성&#39;하는 것이 안전합니다.</p>
+</div>
+  
+  <h3 class="sub-h" id="sub-1">1 좋은 결정과 좋은 결과는 다르다</h3>
+  <p class="b-para" style="white-space:pre-line">여기서 중요한 구분이 하나 있습니다. &#39;좋은 결정&#39;과 &#39;좋은 결과&#39;는 같지 않습니다. 아무리 기준을 잘 세워 결정해도 예상 못 한 사고로 결과가 나쁠 수 있고, 대충 정했는데 운 좋게 잘될 수도 있습니다.</p>
+<p class="b-para" style="white-space:pre-line">우리가 통제할 수 있는 것은 결과가 아니라 &#39;결정의 과정&#39;입니다. 그래서 기준과 근거를 갖춘 결정 과정을 만드는 것이 실무자의 진짜 실력입니다. 결과가 나빠도 &#39;그때 최선의 기준으로 판단했다&#39;는 기록이 있으면, 그것은 실패가 아니라 배움의 자료가 됩니다.</p>
+<div class="b-note b-case">
+  <div class="b-note__t"><span aria-hidden="true">📌</span>사례</div>
+  <p style="white-space:pre-line">구매담당 김 대리는 A업체가 가장 싸서 계약했다가 납기가 늦어 축산농가 공급에 차질을 빚었습니다. 알고 보니 A업체는 항상 납기가 불안정했지요. 가격만 봤지 &#39;납기&#39;라는 기준을 빼먹은 것입니다. 다음부터는 가격·품질·납기·신뢰도를 함께 점수 매기기로 했습니다.</p>
+</div>
+</section>
+
+<section id="sec-2">
+  <h2 class="sec-h"><span class="sec-h__n">2</span>평가 기준과 가중치: 급식 메뉴 고르기로 배우기</h2>
+  <p class="b-para" style="white-space:pre-line">이제 결정의 두 가지 재료인 &#39;평가 기준&#39;과 &#39;가중치&#39;를 아주 쉬운 예로 익혀봅시다. 학교 급식 메뉴를 정한다고 생각해 볼게요.</p>
+<p class="b-label">평가 기준 = &#39;무엇을 볼 것인가&#39;</p>
+<p class="b-para" style="white-space:pre-line">급식 메뉴를 고를 때 우리는 여러 가지를 봅니다. &#39;맛있는가&#39;, &#39;영양이 좋은가&#39;, &#39;가격이 싼가&#39;, &#39;조리가 쉬운가&#39;. 이렇게 판단할 때 보는 항목 하나하나가 &#39;평가 기준&#39;입니다. 기준을 미리 정해두면, 메뉴가 여러 개여도 똑같은 잣대로 비교할 수 있습니다.</p>
+<p class="b-label">가중치 = &#39;무엇이 더 중요한가&#39;</p>
+<p class="b-para" style="white-space:pre-line">그런데 모든 기준이 똑같이 중요하지는 않지요. 성장기 학생에게는 &#39;맛&#39;보다 &#39;영양&#39;이 더 중요할 수 있습니다. 이렇게 기준마다 매기는 중요도의 크기가 &#39;가중치&#39;입니다. 영양에 큰 가중치를, 맛에 작은 가중치를 주면, 영양 좋은 메뉴가 최종 점수에서 유리해집니다. 가중치는 &#39;우리가 진짜 소중하게 여기는 것&#39;을 숫자로 표현한 것입니다.</p>
+<div class="b-table">
+  <p class="b-table__cap">급식 메뉴 기준과 가중치 예시</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th class="cell-pre">평가 기준</th><th class="cell-pre">가중치(중요도)</th><th class="cell-pre">이유</th></tr></thead>
+    <tbody><tr><td class="cell-pre">영양</td><td class="cell-pre">40%</td><td class="cell-pre">성장기 학생에게 가장 중요</td></tr><tr><td class="cell-pre">맛(선호도)</td><td class="cell-pre">30%</td><td class="cell-pre">남기지 않고 잘 먹어야 함</td></tr><tr><td class="cell-pre">가격</td><td class="cell-pre">20%</td><td class="cell-pre">예산 한도 내여야 함</td></tr><tr><td class="cell-pre">조리 편의</td><td class="cell-pre">10%</td><td class="cell-pre">급식실 인력 고려</td></tr></tbody>
+  </table></div>
+</div>
+<p class="b-label">왜 그럴까: 가중치는 &#39;가치의 우선순위&#39;를 드러낸다</p>
+<p class="b-para" style="white-space:pre-line">가중치를 정하는 과정은 사실 &#39;우리 조직이 무엇을 가장 중요하게 여기는가&#39;를 합의하는 과정입니다. 그래서 가중치는 정답이 있는 게 아니라, 상황과 목표에 따라 달라집니다. 축산농가에 안정적으로 사료를 공급하는 것이 최우선이라면 &#39;납기·품질&#39;에 큰 가중치를, 원가 절감이 급하다면 &#39;가격&#39;에 큰 가중치를 주는 식이지요. 가중치를 눈에 보이게 적어두는 것만으로도 팀의 의사소통이 훨씬 명확해집니다.</p>
+<div class="b-note b-tip">
+  <div class="b-note__t"><span aria-hidden="true">💡</span>Tip</div>
+  <p style="white-space:pre-line">가중치의 합은 100%(또는 합계 10점)로 맞추면 계산이 쉽고 서로 비교하기 편합니다. 처음에는 &#39;크다·중간·작다&#39;를 3-2-1점으로 단순하게 시작해도 충분합니다.</p>
+</div>
+  
+  <h3 class="sub-h" id="sub-1">1 우리 업무 기준을 AI와 함께 뽑아내기</h3>
+  <p class="b-para" style="white-space:pre-line">막상 &#39;기준을 정하라&#39;고 하면 무엇부터 봐야 할지 막막할 수 있습니다. 이럴 때 AI에게 &#39;이런 결정을 할 때 보통 어떤 기준을 보는지&#39; 물어보면, 빠뜨리기 쉬운 항목까지 골고루 제안해 줍니다. 그중에서 우리 상황에 맞는 것을 고르면 됩니다.</p>
+<div class="b-prompt">
+  <p class="b-prompt__cap">업체 선정 평가 기준 도출 프롬프트 (복사해서 사용)</p>
+  <div class="b-prompt__box">
+    <div class="b-prompt__bar"><span>Prompt</span>
+      <button class="copy-btn" type="button">복사</button></div>
+    <pre>[역할] 너는 축산·사료업계 구매 실무를 잘 아는 의사결정 컨설턴트야.
+[맥락] 나는 농협사료 구매 담당자야. 배합사료 원료(옥수수·대두박) 공급업체를 새로 선정하려고 해. 우리 회사는 축산농가에 안정적으로 사료를 공급하는 것을 가장 중요하게 생각해.
+[과제] 이 업체 선정에서 반드시 고려해야 할 평가 기준을 6~8개 제안하고, 각 기준이 왜 중요한지 한 줄로 설명해줘. 그리고 우리 회사의 최우선 가치(안정적 공급)를 반영한 가중치 배분 예시(%합계 100)도 함께 제안해줘.
+[제약] 사료·축산 현장에서 실제로 쓰는 현실적인 기준으로. 전문 용어는 쉬운 말로 풀어서.
+[출력형식] 표로: 기준 | 중요한 이유 | 추천 가중치(%)</pre>
+  </div>
+</div>
+<div class="b-note b-warn">
+  <div class="b-note__t"><span aria-hidden="true">⚠️</span>유의</div>
+  <p style="white-space:pre-line">AI가 제안한 기준과 가중치는 &#39;초안&#39;일 뿐입니다. 그대로 쓰지 말고, 우리 회사 사정과 상급자 의견을 반영해 반드시 사람이 수정·확정하세요.</p>
+</div>
+</section>
+
+<section id="sec-3">
+  <h2 class="sec-h"><span class="sec-h__n">3</span>의사결정 매트릭스 만들기: 대안×기준 점수표</h2>
+  <p class="b-para" style="white-space:pre-line">기준과 가중치를 정했으면, 이제 여러 대안을 한눈에 비교하는 &#39;의사결정 매트릭스&#39;를 만들 차례입니다. 이름은 어렵게 들리지만, 사실은 &#39;표에 점수를 매겨 합산하는 것&#39;이 전부입니다.</p>
+<p class="b-label">쉽게 말하면: 심사위원 채점표</p>
+<p class="b-para" style="white-space:pre-line">노래 경연 프로그램의 채점표를 떠올려 보세요. 참가자(대안)가 가로줄에, 심사 항목(기준)이 세로줄에 있고, 각 칸에 점수를 적은 뒤 합산해서 우승자를 정합니다. 의사결정 매트릭스가 바로 이 채점표입니다. 대안을 줄로, 기준을 칸으로 놓고 점수를 매긴 뒤, 가중치를 곱해 합계가 가장 높은 대안을 고르는 것이지요.</p>
+<p class="b-label">만드는 4단계</p>
+<ul class="b-bullets"><li>1단계: 비교할 대안을 나열한다 (예: A업체·B업체·C업체).</li><li>2단계: 평가 기준과 가중치를 정한다 (앞 섹션에서 만든 것).</li><li>3단계: 각 대안에 기준별로 점수를 매긴다 (예: 1~5점).</li><li>4단계: 점수×가중치를 더해 &#39;가중 합계&#39;를 구하고, 가장 높은 대안을 선택한다.</li></ul>
+<div class="b-table">
+  <p class="b-table__cap">원료 공급업체 의사결정 매트릭스 예시 (점수 1~5점 × 가중치)</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th class="cell-pre">기준(가중치)</th><th class="cell-pre">A업체</th><th class="cell-pre">B업체</th><th class="cell-pre">C업체</th></tr></thead>
+    <tbody><tr><td class="cell-pre">가격 (30%)</td><td class="cell-pre">5 → 1.5</td><td class="cell-pre">3 → 0.9</td><td class="cell-pre">4 → 1.2</td></tr><tr><td class="cell-pre">품질 (30%)</td><td class="cell-pre">3 → 0.9</td><td class="cell-pre">5 → 1.5</td><td class="cell-pre">4 → 1.2</td></tr><tr><td class="cell-pre">납기 안정 (25%)</td><td class="cell-pre">2 → 0.5</td><td class="cell-pre">5 → 1.25</td><td class="cell-pre">4 → 1.0</td></tr><tr><td class="cell-pre">신뢰도 (15%)</td><td class="cell-pre">3 → 0.45</td><td class="cell-pre">4 → 0.6</td><td class="cell-pre">4 → 0.6</td></tr><tr><td class="cell-pre">가중 합계</td><td class="cell-pre">3.35</td><td class="cell-pre">4.25 ★</td><td class="cell-pre">4.0</td></tr></tbody>
+  </table></div>
+</div>
+<p class="b-para" style="white-space:pre-line">위 표를 보면 A업체가 가격은 가장 싸지만, 품질과 납기 점수가 낮아 총점이 밀립니다. 반대로 B업체는 가격은 보통이지만 품질과 납기가 뛰어나 총점 1위(4.25)가 됩니다. &#39;싸다&#39;는 눈에 잘 띄는 장점 하나에 끌리지 않고, 중요한 것을 골고루 반영한 결과입니다.</p>
+<p class="b-label">왜 그럴까: 여러 기준을 한 숫자로 합치는 &#39;가중합 모델&#39;</p>
+<p class="b-para" style="white-space:pre-line">이 방식은 학문적으로 &#39;가중합 모델(Weighted Sum Model)&#39;이라고 부르는, 다기준 의사결정(MCDA)의 가장 기본이 되는 방법입니다. 서로 성격이 다른 여러 기준(원/점/일 단위가 제각각인 것들)을 공통 점수로 바꾼 뒤 중요도만큼 곱해 하나의 숫자로 합치는 것이지요. 복잡한 판단을 &#39;비교 가능한 하나의 값&#39;으로 정리해 준다는 점에서 강력하고, 그래서 정부·기업의 입찰 평가에서도 널리 쓰입니다.</p>
+<div class="b-note b-tip">
+  <div class="b-note__t"><span aria-hidden="true">💡</span>Tip</div>
+  <p style="white-space:pre-line">점수를 매길 때 &#39;가격은 쌀수록 5점&#39;처럼 방향을 미리 정하세요. 좋을수록 높은 점수가 되도록 통일해야 합계가 올바르게 나옵니다.</p>
+</div>
+  
+  <h3 class="sub-h" id="sub-1">1 Google Sheets로 자동 계산하기</h3>
+  <p class="b-para" style="white-space:pre-line">매트릭스는 Google Sheets로 만들면 점수만 바꿔도 합계가 자동으로 다시 계산되어 아주 편리합니다. 계산식이 어렵다면 AI에게 수식까지 만들어 달라고 하면 됩니다.</p>
+<div class="b-prompt">
+  <p class="b-prompt__cap">Sheets 의사결정 매트릭스 수식 요청 프롬프트</p>
+  <div class="b-prompt__box">
+    <div class="b-prompt__bar"><span>Prompt</span>
+      <button class="copy-btn" type="button">복사</button></div>
+    <pre>[역할] 너는 Google Sheets 수식을 쉽게 알려주는 사무 도우미야.
+[맥락] 나는 엑셀·시트 초급자야. 업체 3곳(A·B·C)을 4개 기준(가격·품질·납기·신뢰도)으로 비교하는 의사결정 매트릭스를 시트로 만들고 있어. 각 기준에는 가중치(%)가 있고, 업체별로 1~5점을 입력할 거야.
+[과제] (1) 시트를 어떻게 배치하면 좋은지 셀 위치를 예로 알려주고, (2) 각 업체의 &#39;가중 합계&#39;를 자동으로 계산하는 SUMPRODUCT 수식을 만들어줘. (3) 합계가 가장 높은 업체를 자동으로 표시하는 방법도 알려줘.
+[제약] 초급자가 그대로 따라 할 수 있게, 클릭 순서와 수식을 하나하나 풀어서 설명해줘.
+[출력형식] 1) 시트 배치표 2) 복사용 수식 3) 따라하기 단계</pre>
+  </div>
+</div>
+<div class="b-note b-out">
+  <div class="b-note__t"><span aria-hidden="true">📦</span>핵심 산출물</div>
+  <p style="white-space:pre-line">산출물: 점수만 바꾸면 합계가 자동 갱신되는 Google Sheets 의사결정 매트릭스 (재사용 가능한 템플릿).</p>
+</div>
+</section>
+
+<section id="sec-4">
+  <h2 class="sec-h"><span class="sec-h__n">4</span>리스크 분석과 대응책 준비하기</h2>
+  <p class="b-para" style="white-space:pre-line">가장 높은 점수의 대안을 골랐다고 끝이 아닙니다. &#39;이 결정을 실행했을 때 무엇이 잘못될 수 있을까&#39;를 미리 살펴보는 것이 진짜 실무자의 태도입니다. 이 과정을 &#39;리스크 분석&#39;이라고 합니다.</p>
+<p class="b-label">쉽게 말하면: 소풍 전날 일기예보 보기</p>
+<p class="b-para" style="white-space:pre-line">소풍 가기 전날 일기예보를 확인하고 &#39;비 오면 우산 챙기자&#39;고 준비하는 것, 그게 리스크 분석입니다. 나쁜 일이 반드시 일어난다는 게 아니라, &#39;혹시 일어나면 이렇게 대응하자&#39;고 미리 계획을 세우는 것이지요. 준비해 둔 사람은 당황하지 않습니다.</p>
+<p class="b-label">리스크를 보는 두 개의 눈금: 가능성과 영향</p>
+<p class="b-para" style="white-space:pre-line">모든 위험을 똑같이 걱정하면 지칩니다. 그래서 리스크는 두 가지로 나눠 봅니다. &#39;얼마나 자주 일어날까(가능성)&#39;와 &#39;일어나면 얼마나 아플까(영향)&#39;입니다. 이 둘을 곱해서 큰 것부터 집중 관리하는 것이 요령입니다. 자주 일어나면서 타격도 큰 위험이 1순위, 드물고 사소한 위험은 나중 순위가 됩니다.</p>
+<div class="b-table">
+  <p class="b-table__cap">B업체 계약 리스크 점검표 예시</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th class="cell-pre">예상 리스크</th><th class="cell-pre">가능성</th><th class="cell-pre">영향</th><th class="cell-pre">대응책(사전 준비)</th></tr></thead>
+    <tbody><tr><td class="cell-pre">원료 가격 급등으로 단가 상승</td><td class="cell-pre">중</td><td class="cell-pre">상</td><td class="cell-pre">3개월 단위 가격 재협상 조항 삽입</td></tr><tr><td class="cell-pre">갑작스런 납기 지연</td><td class="cell-pre">중</td><td class="cell-pre">상</td><td class="cell-pre">예비 공급처(C업체) 비상 계약 확보</td></tr><tr><td class="cell-pre">품질 편차 발생</td><td class="cell-pre">하</td><td class="cell-pre">상</td><td class="cell-pre">입고 시 품질검사 기준·반품 조항 명시</td></tr><tr><td class="cell-pre">담당자 변경으로 소통 혼선</td><td class="cell-pre">중</td><td class="cell-pre">중</td><td class="cell-pre">정기 소통 창구·문서화된 발주 절차 유지</td></tr></tbody>
+  </table></div>
+</div>
+<p class="b-label">왜 그럴까: 리스크 관리는 &#39;불확실성을 다루는 기술&#39;</p>
+<p class="b-para" style="white-space:pre-line">미래는 아무도 정확히 알 수 없습니다. 리스크 관리는 이 &#39;불확실성&#39;을 없애는 것이 아니라, 관리 가능한 크기로 줄이는 기술입니다. 위험을 미리 목록으로 만들면 두 가지 효과가 있습니다. 첫째, 막연한 불안이 &#39;구체적 항목&#39;이 되어 대응할 수 있게 됩니다. 둘째, 실제로 문제가 터졌을 때 준비된 대응책 덕에 피해와 대응 시간을 크게 줄일 수 있습니다. 이것이 &#39;리스크 완화(mitigation)&#39;의 핵심입니다.</p>
+<div class="b-prompt">
+  <p class="b-prompt__cap">리스크 도출·대응책 프롬프트</p>
+  <div class="b-prompt__box">
+    <div class="b-prompt__bar"><span>Prompt</span>
+      <button class="copy-btn" type="button">복사</button></div>
+    <pre>[역할] 너는 신중하고 꼼꼼한 리스크 관리 전문가야.
+[맥락] 나는 농협사료 구매 담당자야. 배합사료 원료 공급업체로 B업체와 1년 계약을 맺으려고 결정했어. 우리에게 가장 중요한 것은 축산농가에 사료가 끊기지 않는 것이야.
+[과제] 이 계약을 실행했을 때 발생할 수 있는 리스크를 6가지 찾아줘. 각 리스크마다 (1)발생 가능성(상·중·하) (2)영향 크기(상·중·하) (3)사전에 준비할 수 있는 현실적 대응책을 제시해줘.
+[제약] 너무 극단적이거나 비현실적인 위험 말고, 실제로 자주 일어나는 것 중심으로. 대응책은 우리가 실제로 실행 가능한 것으로.
+[출력형식] 표로: 리스크 | 가능성 | 영향 | 대응책</pre>
+  </div>
+</div>
+<div class="b-note b-warn">
+  <div class="b-note__t"><span aria-hidden="true">⚠️</span>유의</div>
+  <p style="white-space:pre-line">AI가 알려준 리스크가 전부는 아닙니다. 우리 회사만 아는 특수한 사정(지역·계절·거래처 관계 등)은 AI가 모릅니다. 반드시 현장 경험을 더해 점검표를 보완하세요.</p>
+</div>
+  
+</section>
+
+<section id="sec-5">
+  <h2 class="sec-h"><span class="sec-h__n">5</span>AI는 보조, 최종 결정과 근거 기록은 사람의 몫</h2>
+  <p class="b-para" style="white-space:pre-line">이번 차시의 가장 중요한 메시지입니다. 아무리 AI가 똑똑하게 점수를 매기고 리스크를 정리해 줘도, 최종 결정을 내리고 그 결정에 책임지는 것은 사람입니다.</p>
+<div class="b-note b-warn">
+  <div class="b-note__t"><span aria-hidden="true">⚠️</span>유의</div>
+  <p style="white-space:pre-line">AI는 &#39;결정을 대신하는 기계&#39;가 아니라 &#39;판단을 돕는 계산기·조언자&#39;입니다. 최종 선택, 그리고 왜 그렇게 정했는지에 대한 근거 기록은 반드시 사람이 직접 해야 합니다. 이것이 책임 있는 AI 활용의 기본 원칙입니다.</p>
+</div>
+<p class="b-label">왜 사람이 최종 결정을 해야 할까</p>
+<ul class="b-bullets"><li>책임의 문제: AI는 결과에 책임지지 못합니다. 감사·상급자에게 설명하는 것은 사람입니다.</li><li>맥락의 문제: 회사의 미묘한 사정, 거래처와의 오랜 관계 같은 것은 AI가 알 수 없습니다.</li><li>오류의 문제: AI도 잘못된 정보(할루시네이션)를 그럴듯하게 말할 수 있어 사람의 검토가 필수입니다.</li><li>가치의 문제: 무엇을 더 중요하게 여길지는 사람과 조직의 가치 판단이며, 이는 위임할 수 없습니다.</li></ul>
+<p class="b-label">근거 기록: 결정의 &#39;영수증&#39;을 남기자</p>
+<p class="b-para" style="white-space:pre-line">결정을 내렸으면 반드시 &#39;왜 이렇게 정했는지&#39;를 짧게라도 기록으로 남기세요. 사용한 기준과 가중치, 매트릭스 결과, 검토한 리스크, 그리고 최종 선택 이유를요. 이 기록은 나중에 문제가 생겼을 때 나를 지켜주는 영수증이자, 다음 사람이 같은 실수를 반복하지 않게 하는 교과서가 됩니다.</p>
+<div class="b-prompt">
+  <p class="b-prompt__cap">의사결정 실행계획서 초안 작성 프롬프트</p>
+  <div class="b-prompt__box">
+    <div class="b-prompt__bar"><span>Prompt</span>
+      <button class="copy-btn" type="button">복사</button></div>
+    <pre>[역할] 너는 깔끔한 보고 문서를 잘 만드는 사무 도우미야.
+[맥락] 나는 농협사료 구매 담당자야. 원료 공급업체로 B업체를 선정하기로 결정했어. 의사결정 매트릭스 결과(B업체 4.25점으로 1위)와 리스크 점검표를 이미 만들었어.
+[과제] 이 결정을 상급자에게 보고할 &#39;실행계획서 초안&#39;을 만들어줘. 다음을 포함해줘: (1)결정 사항 한 줄 요약 (2)평가 기준·가중치 (3)매트릭스 비교 결과 (4)선정 이유 3가지 (5)주요 리스크와 대응책 (6)실행 일정(누가·언제·무엇을).
+[제약] A4 한 장 분량, 상급자가 30초 안에 핵심을 파악할 수 있게 간결하게. 확정 아닌 부분은 &#39;검토 필요&#39;로 표시.
+[출력형식] 제목 + 항목별 소제목이 있는 보고서 형식</pre>
+  </div>
+</div>
+<div class="b-note b-out">
+  <div class="b-note__t"><span aria-hidden="true">📦</span>핵심 산출물</div>
+  <p style="white-space:pre-line">산출물: 의사결정 매트릭스 · 리스크 점검표 · 실행계획서 초안 (세 가지가 세트로, 결정의 근거를 완결적으로 보여주는 문서 묶음).</p>
+</div>
+  
+  <h3 class="sub-h" id="sub-1">1 [실습] 실제 업무 결정을 매트릭스로 풀어보기</h3>
+  <p class="b-para" style="white-space:pre-line">이제 직접 해볼 차례입니다. 지금 여러분이 실제로 고민 중이거나 최근에 내렸던 업무 결정을 하나 골라, 오늘 배운 도구로 처음부터 끝까지 풀어봅니다.</p>
+<div class="b-ex">
+  <div class="b-ex__h"><span aria-hidden="true">✏️</span>실습 1</div>
+  <div class="b-ex__b" style="white-space:pre-line">업체 선정 또는 방식 결정 하나를 골라 의사결정 매트릭스를 만드세요. ① 비교할 대안 2~3개를 정한다 → ② 평가 기준 4개와 가중치(합 100%)를 정한다 → ③ 각 대안에 1~5점을 매긴다 → ④ 가중 합계를 구해 1위를 찾는다. (Google Sheets 또는 표로 작성)</div>
+</div>
+<div class="b-ex">
+  <div class="b-ex__h"><span aria-hidden="true">✏️</span>실습 2</div>
+  <div class="b-ex__b" style="white-space:pre-line">매트릭스에서 고른 1위 대안에 대해 리스크 점검표를 만드세요. 예상 리스크 4~6개를 찾고, 각각 가능성·영향·대응책을 채웁니다. AI 프롬프트를 활용하되, 우리 현장 사정을 반영해 최소 2개는 직접 추가하세요.</div>
+</div>
+<div class="b-ex">
+  <div class="b-ex__h"><span aria-hidden="true">✏️</span>실습 3</div>
+  <div class="b-ex__b" style="white-space:pre-line">위 두 가지를 근거로 &#39;실행계획서 초안&#39;을 A4 한 장으로 작성하고, 마지막에 &#39;최종 결정자: (본인)&#39;과 &#39;선정 이유&#39;를 사람이 직접 한 문단 써넣어 근거 기록을 완성하세요.</div>
+</div>
+<div class="b-note b-tip">
+  <div class="b-note__t"><span aria-hidden="true">💡</span>Tip</div>
+  <p style="white-space:pre-line">실습 주제가 떠오르지 않으면: 사무용품 납품업체 변경, 사내 행사 장소 선정, 문서관리 방식(종이 vs 전자) 결정, 회식 장소 정하기 등 가벼운 것부터 시작해도 좋습니다. 도구에 익숙해지는 것이 목적입니다.</p>
+</div>
+</section>
+
+<div class="done-bar">
+  <button class="done-btn" type="button" data-done="part-7" aria-pressed="false">학습 완료로 표시</button>
+  <span class="muted" style="font-size:13px;color:var(--g400)">이 브라우저에만 저장됩니다.</span>
+</div>
+
+<nav class="pn" aria-label="차시 이동">
+  <a class="pn__a" href="part-6.html"><span>← 6차시</span><b>AI 기반 데이터 분석</b></a>
+  <a class="pn__a pn__a--r" href="part-8.html"><span>8차시 →</span><b>종합 실습 및 현업 적용 계획 수립</b></a>
+</nav>
+</div></div>
+  </main>
+</div>
+
+<footer class="ft">
+  <div class="ft__in">
+    <div class="ft__top">
+      <a href="about.html">제작 의도</a>
+      <a href="instructor.html">강사 소개</a>
+      <a href="company.html">회사 소개</a>
+      <a href="appendix.html">프롬프트 부록</a>
+      <a href="dashboard.html">학습 진도</a>
+    </div>
+    <div class="ft__body">
+      <strong>생성형 AI 기반 사무관리 업무혁신 실무</strong><br>
+      농협사료 사무관리직 임직원 대상 · 1일 8차시 (08:00–17:00)<br>
+      이론 30% + 실습 50% + 사례 20% · 무료 AI 도구 중심
+      <p class="ft__note">
+        이 사이트는 <strong>강의용 학습자료</strong>입니다. 네트워크 없이 동작하도록
+        모든 스타일과 스크립트를 파일 안에 넣었고, 학습 진도는 이 브라우저에만 저장됩니다.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ==========================================================================
+   공용 스크립트 — 프레임워크 없이 표준 DOM API 만 쓴다.
+   원본은 React + Supabase 였지만, 강의실이 폐쇄망이라 네트워크를 쓰지 않는다.
+   진도는 localStorage 한 곳에만 남긴다.
+   ========================================================================== */
+(function () {
+  'use strict';
+
+  var $  = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+
+  var STORE = 'nonghyupsaryo_progress';   // 원본과 같은 접두사
+
+  /* --- 진도: 읽기/쓰기 ------------------------------------------------- */
+  function readProgress() {
+    try { return JSON.parse(localStorage.getItem(STORE) || '{}'); }
+    catch (e) { return {}; }              // 값이 깨졌으면 빈 것으로 시작한다
+  }
+  function writeProgress(p) {
+    try { localStorage.setItem(STORE, JSON.stringify(p)); } catch (e) {}
+  }
+  function isDone(key) { return !!readProgress()[key]; }
+  function setDone(key, on) {
+    var p = readProgress();
+    if (on) p[key] = new Date().toISOString(); else delete p[key];
+    writeProgress(p);
+  }
+
+  /* --- 1) 사이드바 서랍 ------------------------------------------------- */
+  function initSidebar() {
+    var btn = $('.hd__burger'), sb = $('.sb');
+    if (!btn || !sb) return;
+
+    var scrim = document.createElement('div');
+    scrim.className = 'sb__scrim';
+    document.body.appendChild(scrim);
+
+    function setOpen(open) {
+      sb.classList.toggle('open', open);
+      scrim.classList.toggle('on', open);
+      btn.setAttribute('aria-expanded', String(open));
+      // 서랍이 열린 동안 뒤 본문이 스크롤되지 않게 잠근다
+      document.body.style.overflow = open && window.innerWidth <= 1024 ? 'hidden' : '';
+    }
+    btn.addEventListener('click', function () {
+      setOpen(!sb.classList.contains('open'));
+    });
+    scrim.addEventListener('click', function () { setOpen(false); });
+    sb.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && sb.classList.contains('open')) { setOpen(false); btn.focus(); }
+    });
+    window.matchMedia('(min-width: 1025px)').addEventListener('change', function (m) {
+      if (m.matches) setOpen(false);
+    });
+
+    // 열려 있는 메뉴 항목이 보이도록 사이드바를 스크롤해 둔다
+    var on = $('.sb a.sb__item.on');
+    if (on) {
+      var t = on.offsetTop - sb.clientHeight / 2;
+      if (t > 0) sb.scrollTop = t;
+    }
+  }
+
+  /* --- 2) 프롬프트 복사 ------------------------------------------------- */
+  function initCopy() {
+    $$('.copy-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var pre = $('pre', btn.closest('.b-prompt__box'));
+        if (!pre) return;
+        var text = pre.textContent;
+
+        function ok() {
+          var old = btn.textContent;
+          btn.textContent = '복사됨';
+          btn.classList.add('done');
+          setTimeout(function () { btn.textContent = old; btn.classList.remove('done'); }, 1600);
+        }
+        // file:// 에서는 clipboard API 가 막히는 브라우저가 있어 대비책을 둔다
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(text).then(ok, fallback);
+        } else fallback();
+
+        function fallback() {
+          var ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.cssText = 'position:fixed;top:-1000px';
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand('copy'); ok(); } catch (e) { btn.textContent = '복사 실패'; }
+          document.body.removeChild(ta);
+        }
+      });
+    });
+  }
+
+  /* --- 3) 진도 체크 버튼 ------------------------------------------------ */
+  function initDone() {
+    $$('[data-done]').forEach(function (btn) {
+      var key = btn.dataset.done;
+      function paint() {
+        var on = isDone(key);
+        btn.classList.toggle('on', on);
+        btn.setAttribute('aria-pressed', String(on));
+        btn.textContent = on ? '✓ 학습 완료' : '학습 완료로 표시';
+      }
+      btn.addEventListener('click', function () { setDone(key, !isDone(key)); paint(); });
+      paint();
+    });
+  }
+
+  /* --- 4) 사이드바·목록에 완료 표시 ------------------------------------- */
+  function paintDoneMarks() {
+    var p = readProgress();
+    $$('[data-done-mark]').forEach(function (el) {
+      if (p[el.dataset.doneMark]) el.classList.add('is-done');
+    });
+  }
+
+  /* --- 5) 본문 목차 스크롤 추적 ----------------------------------------- */
+  function initSpy() {
+    var links = $$('.sb__sub a[href^="#"]');
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    var map = {};
+    links.forEach(function (a) {
+      var el = document.getElementById(a.getAttribute('href').slice(1));
+      if (el) map[el.id] = a;
+    });
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        links.forEach(function (a) { a.style.color = ''; a.style.fontWeight = ''; });
+        var a = map[e.target.id];
+        if (a) { a.style.color = 'var(--b700)'; a.style.fontWeight = '800'; }
+      });
+    }, { rootMargin: '-25% 0px -65% 0px' });
+    Object.keys(map).forEach(function (id) { io.observe(document.getElementById(id)); });
+  }
+
+  function boot() {
+    initSidebar(); initCopy(); initDone(); paintDoneMarks(); initSpy();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+
+  // 페이지별 스크립트가 쓸 수 있게 최소한만 내보낸다
+  window.NH = { $: $, $$: $$, readProgress: readProgress, setDone: setDone, isDone: isDone, STORE: STORE };
+})();
+
+</script>
+
+</body>
+</html>

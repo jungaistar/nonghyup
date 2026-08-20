@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="format-detection" content="telephone=no">
-<title>생성형 AI 기반 사무관리 업무혁신 실무 · 학습사이트</title>
-<meta name="description" content="농협사료 임직원 대상 1일 8차시 생성형 AI 실무 과정 학습사이트. 8차시 교재 · 실습 · AI 도구 가이드 · 업무별 프롬프트 부록.">
-<meta property="og:title" content="생성형 AI 기반 사무관리 업무혁신 실무 · 학습사이트">
-<meta property="og:description" content="농협사료 임직원 대상 1일 8차시 생성형 AI 실무 과정 학습사이트. 8차시 교재 · 실습 · AI 도구 가이드 · 업무별 프롬프트 부록.">
+<title>3차시 · AI 기반 시장분석 및 트렌드 도출 — 농협사료 AI 실무</title>
+<meta name="description" content="3차시: AI 기반 시장분석 및 트렌드 도출">
+<meta property="og:title" content="3차시 · AI 기반 시장분석 및 트렌드 도출 — 농협사료 AI 실무">
+<meta property="og:description" content="3차시: AI 기반 시장분석 및 트렌드 도출">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%228%22%20fill%3D%22%2312522e%22%2F%3E%3Cpath%20d%3D%22M16%207c4.6%202.8%207.4%206.2%207.4%2010.4a7.4%207.4%200%200%201-14.8%200C8.6%2013.2%2011.4%209.8%2016%207Z%22%20fill%3D%22%23fec20d%22%2F%3E%3Cpath%20d%3D%22M16%2012v11%22%20stroke%3D%22%2312522e%22%20stroke-width%3D%222.2%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
 <style>
@@ -413,38 +413,21 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
 
 
 /* ===== 이 페이지 전용 ===== */
-.hero{background:linear-gradient(135deg,var(--b900) 0%,var(--b800) 45%,var(--b600) 100%);
-  color:#fff; padding:56px 28px 60px; position:relative; overflow:hidden}
-.hero::after{content:""; position:absolute; right:-90px; top:-90px; width:340px; height:340px;
-  border-radius:50%; background:rgba(254,194,13,.12)}
-.hero__in{position:relative; z-index:1; max-width:1180px; margin:0 auto}
-.hero__tag{display:inline-block; padding:5px 13px; border-radius:var(--pill);
-  background:rgba(255,255,255,.16); font-size:12.5px; font-weight:800; margin-bottom:14px}
-.hero h1{font-size:38px; font-weight:800; letter-spacing:-.035em; line-height:1.28; max-width:20ch}
-.hero p{margin-top:12px; font-size:17px; color:rgba(255,255,255,.9); max-width:52ch}
-.hero__cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px}
-.hero__meta{display:flex; flex-wrap:wrap; gap:12px 32px; margin-top:32px;
-  padding-top:22px; border-top:1px solid rgba(255,255,255,.18)}
-.hero__meta b{display:block; font-size:19px; font-weight:800; color:var(--s300)}
-.hero__meta span{font-size:13px; color:rgba(255,255,255,.75)}
-.part-card__n{font-size:12px; font-weight:800; color:var(--b600); margin-bottom:5px}
-.part-card__badges{display:flex; flex-wrap:wrap; gap:6px; margin-top:12px}
-.part-card.is-done{border-color:var(--b400); background:var(--b50)}
-.part-card.is-done .part-card__n::after{content:" ✓ 완료"; color:var(--b600)}
-.tl{background:#fff; border:1px solid var(--g200); border-radius:var(--radius); overflow:hidden; min-width:560px}
-.tl thead th{background:var(--b800); color:#fff; padding:11px 13px; text-align:left; font-size:13.5px}
-.tl td{padding:11px 13px; border-top:1px solid var(--g100); font-size:14px}
-.tl .c{text-align:center}
-.tl .nowrap{white-space:nowrap; color:var(--g500)}
-@media (max-width:900px){ .hero{padding:40px 20px 46px} .hero h1{font-size:26px} .hero p{font-size:15px} }
-@media (max-width:640px){ .hero h1{font-size:22px} .hero__cta .btn{width:auto; flex:1} }
+.pn{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:22px}
+.pn__a{display:block; padding:15px 18px; border-radius:var(--radius);
+  border:1px solid var(--g200); background:#fff; transition:border-color .2s var(--ease)}
+.pn__a:hover{border-color:var(--b400)}
+.pn__a span{display:block; font-size:12px; font-weight:800; color:var(--b600); margin-bottom:3px}
+.pn__a b{font-size:14px; color:var(--g700); font-weight:700; line-height:1.5}
+.pn__a--r{text-align:right}
+@media (max-width:640px){ .pn{grid-template-columns:1fr} .pn__a--r{text-align:left} }
 </style>
 <noscript><style>
 /* 스크립트가 꺼져 있어도 목차는 보여야 한다 */
 .sb{transform:none !important; position:static !important; height:auto !important}
 </style></noscript>
 </head>
-<body data-page="home">
+<body data-page="part-3">
 
 <a class="skip-link" href="#main">본문 바로가기</a>
 <header class="hd">
@@ -456,8 +439,8 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
     <span>농협사료<small>AI 사무관리 업무혁신</small></span>
   </a>
   <nav class="hd__nav" aria-label="주 메뉴">
-    <a href="index.html" class="on" aria-current="page">홈</a>
-    <a href="course.html">교재</a>
+    <a href="index.html">홈</a>
+    <a href="course.html" class="on" aria-current="page">교재</a>
     <a href="schedule.html">일정</a>
     <a href="labs.html">실습</a>
     <a href="tools.html">AI 도구</a>
@@ -471,189 +454,221 @@ a.card:hover,button.card:hover{border-color:var(--b400); box-shadow:var(--shadow
   <aside class="sb" id="sb"><div class="sb__title">생성형 AI 기반 사무관리 업무혁신 실무</div>
 <a class="sb__cta" href="schedule.html">📅 8차시 교육 일정 보기</a>
 <div class="sb__label">학습 목차</div>
-<a class="sb__item on" href="course.html"><span>교재 전체 개요</span></a>
+<a class="sb__item" href="course.html"><span>교재 전체 개요</span></a>
 <a class="sb__item" href="part-1.html" data-done-mark="part-1"><span class="sb__num">1</span><span>생성형 AI와 프롬프트 엔지니어링 이해</span></a>
 <a class="sb__item" href="part-2.html" data-done-mark="part-2"><span class="sb__num">2</span><span>사무관리 업무별 AI 활용 구조 이해</span></a>
-<a class="sb__item" href="part-3.html" data-done-mark="part-3"><span class="sb__num">3</span><span>AI 기반 시장분석 및 트렌드 도출</span></a>
+<a class="sb__item on" href="part-3.html" data-done-mark="part-3"><span class="sb__num">3</span><span>AI 기반 시장분석 및 트렌드 도출</span></a>
+<div class="sb__sub"><a href="#sec-1">1. 검색형 AI와 생성형 AI, 무엇이 다를까</a>
+<a href="#sec-2">2. 환각(할루시네이션)을 막는 출처 확인 습관</a>
+<a href="#sec-3">3. 시장·트렌드·경쟁사 조사 방법</a>
+<a href="#sec-4">4. 분석 프레임 쉽게 이해하기: SWOT · PESTEL · 3C</a></div>
 <a class="sb__item" href="part-4.html" data-done-mark="part-4"><span class="sb__num">4</span><span>AI 활용 전략 기획 및 아이디어션</span></a>
 <a class="sb__item" href="part-5.html" data-done-mark="part-5"><span class="sb__num">5</span><span>GPT 활용 기획 문서 및 보고서 자동화</span></a>
 <a class="sb__item" href="part-6.html" data-done-mark="part-6"><span class="sb__num">6</span><span>AI 기반 데이터 분석</span></a>
 <a class="sb__item" href="part-7.html" data-done-mark="part-7"><span class="sb__num">7</span><span>AI 활용 의사결정 지원 시스템 구축</span></a>
 <a class="sb__item" href="part-8.html" data-done-mark="part-8"><span class="sb__num">8</span><span>종합 실습 및 현업 적용 계획 수립</span></a></aside>
   <main id="main" style="flex:1;min-width:0">
+<div class="main"><div class="wrap">
+<ol class="crumb"><li><a href="index.html">홈</a></li><li><a href="course.html">교재</a></li><li>3차시</li></ol>
+<div class="ph">
+  <span class="ph__eyebrow">3차시</span>
+  <h1>AI 기반 시장분석 및 트렌드 도출</h1>
 
-<section class="hero">
-  <div class="hero__in">
-    <span class="hero__tag">농협사료 임직원 교육 · 1일 8차시</span>
-    <h1>생성형 AI 기반 사무관리 업무혁신 실무</h1>
-    <p>무료 AI 도구로 완성하는 1일 8차시 실습 과정</p>
-    <div class="hero__cta">
-      <a class="btn btn--gold" href="part-1.html">1차시부터 시작하기</a>
-      <a class="btn btn--white" href="schedule.html">교육 일정 보기</a>
-    </div>
-    <ul class="hero__meta">
-      <li><b>08:00–17:00</b><span>점심 1시간 제외</span></li>
-      <li><b>8차시</b><span>이론 30 · 실습 50 · 사례 20</span></li>
-      <li><b>무료 도구</b><span>ChatGPT · Claude · Gemini 외</span></li>
-    </ul>
-  </div>
+</div>
+<div class="b-obj">
+  <div class="b-obj__t"><span aria-hidden="true">🎯</span>학습 목표</div>
+  <ul><li>검색형 AI(Perplexity·Gemini)와 생성형 AI(ChatGPT·Claude)의 작동 원리 차이를 이해하고 상황에 맞게 골라 쓸 수 있다.</li><li>AI가 지어내는 &#39;환각&#39;을 알아채고, 출처 확인 습관으로 신뢰할 수 있는 정보만 걸러낼 수 있다.</li><li>배합사료·축산 업계의 시장·트렌드·경쟁사 정보를 AI로 빠르게 조사하고 출처와 함께 요약할 수 있다.</li><li>SWOT·PESTEL·3C 같은 분석 프레임을 쉬운 비유로 이해하고, 실제 업무 자료로 표를 완성할 수 있다.</li></ul>
+</div>
+<div class="b-keywords"><span>검색형 AI</span><span>생성형 AI</span><span>출처 확인</span><span>환각(할루시네이션)</span><span>Perplexity</span><span>Gemini</span><span>시장분석</span><span>트렌드</span><span>경쟁사 조사</span><span>SWOT</span><span>PESTEL</span><span>3C</span><span>배합사료</span><span>축산농가</span></div>
+
+<section id="sec-1">
+  <h2 class="sec-h"><span class="sec-h__n">1</span>검색형 AI와 생성형 AI, 무엇이 다를까</h2>
+  <p class="b-para" style="white-space:pre-line">지난 차시까지 우리는 ChatGPT와 Claude에게 문서를 쓰거나 정리하는 일을 맡겨 봤어요. 그런데 &#39;요즘 배합사료 원자재 가격이 어떻게 되지?&#39;, &#39;경쟁 사료회사 신제품이 뭐가 나왔지?&#39; 같은 최신 정보를 물으면 엉뚱한 답이 돌아올 때가 있습니다. 왜 그럴까요? 오늘은 그 이유를 이해하고, 정보를 조사하는 데 특화된 AI를 제대로 다뤄 봅니다.</p>
+<p class="b-label">쉬운 비유: &#39;기억으로 답하는 친구&#39; vs &#39;검색해서 답하는 친구&#39;</p>
+<p class="b-para" style="white-space:pre-line">생성형 AI(ChatGPT·Claude)는 마치 책을 아주 많이 읽고 나서 시험을 보는 학생과 같아요. 배운 내용을 머릿속 기억으로 술술 답하지만, 시험 범위(학습한 시점) 이후에 생긴 일은 모릅니다. 게다가 기억이 가물가물하면 그럴듯하게 &#39;지어내기도&#39; 합니다. 반면 검색형 AI(Perplexity·Gemini)는 답하기 전에 인터넷을 직접 찾아보고 오는 친구예요. &#39;이거 어디서 봤냐면...&#39; 하고 출처(웹사이트 주소)를 같이 알려줍니다.</p>
+<p class="b-para" style="white-space:pre-line">실무에서는 이 둘을 나눠 쓰는 게 핵심입니다. 보고서 문장을 다듬거나 아이디어를 만들 땐 생성형 AI가, 최신 사료 시세·업계 뉴스·경쟁사 근황처럼 &#39;사실&#39;을 확인해야 할 땐 검색형 AI가 유리합니다.</p>
+<div class="b-table">
+  <p class="b-table__cap">생성형 AI vs 검색형 AI 한눈에 비교</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th class="cell-pre">구분</th><th class="cell-pre">생성형 AI (ChatGPT·Claude)</th><th class="cell-pre">검색형 AI (Perplexity·Gemini)</th></tr></thead>
+    <tbody><tr><td class="cell-pre">작동 방식</td><td class="cell-pre">학습한 기억으로 답 생성</td><td class="cell-pre">실시간 웹 검색 후 요약</td></tr><tr><td class="cell-pre">출처 표기</td><td class="cell-pre">대체로 없음</td><td class="cell-pre">링크로 출처 제공</td></tr><tr><td class="cell-pre">강점</td><td class="cell-pre">글쓰기·요약·아이디어·정리</td><td class="cell-pre">최신 사실·시세·뉴스·근거 확인</td></tr><tr><td class="cell-pre">약점</td><td class="cell-pre">최신 정보 약함, 지어내기 위험</td><td class="cell-pre">긴 창작·정교한 문서 편집은 약함</td></tr><tr><td class="cell-pre">사무 활용 예</td><td class="cell-pre">거래처 안내문 초안 작성</td><td class="cell-pre">이번 달 옥수수·대두박 가격 동향 조사</td></tr></tbody>
+  </table></div>
+</div>
+<div class="b-note b-tip">
+  <div class="b-note__t"><span aria-hidden="true">💡</span>Tip</div>
+  <p style="white-space:pre-line">한 가지 일에 둘을 이어 쓰면 최고예요. Perplexity로 &#39;사실과 출처&#39;를 모은 뒤, 그 내용을 ChatGPT에 붙여넣어 &#39;보고용 문장&#39;으로 다듬는 식입니다.</p>
+</div>
+  
+  <h3 class="sub-h" id="sub-1">1 왜 Perplexity는 출처를 달아줄까 (원리)</h3>
+  <p class="b-para" style="white-space:pre-line">조금 더 깊이 들어가 볼게요. 왜 어떤 AI는 출처를 달고 어떤 AI는 못 달까요? 이건 &#39;기술 원리&#39;의 차이입니다.</p>
+<p class="b-para" style="white-space:pre-line">생성형 AI는 방대한 글을 학습하면서 &#39;다음에 올 단어를 확률로 예측&#39;하도록 훈련됩니다. 초등학생 식으로 말하면, &#39;높은 산 위에 하얀 ○○&#39; 하면 &#39;눈&#39;이라고 자연스럽게 이어 말하는 능력이에요. 그래서 문장은 매끄럽지만, 그 문장이 &#39;어느 웹페이지에서 왔는지&#39;는 기억하지 않습니다. 재료(원본 문서)는 녹여 없애고 맛(패턴)만 남긴 셈이죠.</p>
+<p class="b-para" style="white-space:pre-line">반면 Perplexity 같은 검색형 AI는 &#39;RAG(검색 증강 생성)&#39;라는 방식을 씁니다. 질문을 받으면 (1) 먼저 웹을 검색해 관련 문서 여러 개를 찾아오고 (2) 그 문서를 근거로 답을 만들며 (3) 어떤 문서를 참고했는지 링크로 붙여 줍니다. &#39;내가 이 페이지들을 보고 정리했어요&#39;라고 영수증을 함께 주는 것과 같아요. 그래서 출처가 달립니다.</p>
+<div class="b-note b-case">
+  <div class="b-note__t"><span aria-hidden="true">📌</span>사례</div>
+  <p style="white-space:pre-line">총무팀 김 대리가 ChatGPT에 &#39;2025년 국내 배합사료 생산량&#39;을 물었더니 구체적 수치가 나왔지만 출처가 없었다. 같은 질문을 Perplexity에 하니 협회 통계 페이지 링크와 함께 수치가 나왔다. 김 대리는 링크를 눌러 원문 표를 직접 확인한 뒤 보고서에 인용했다.</p>
+</div>
+<div class="b-note b-warn">
+  <div class="b-note__t"><span aria-hidden="true">⚠️</span>유의</div>
+  <p style="white-space:pre-line">검색형 AI도 100% 정확하진 않습니다. 잘못된 뉴스를 참고하면 잘못 요약할 수 있어요. &#39;출처가 달렸다&#39;는 건 &#39;확인할 수 있다&#39;는 뜻이지 &#39;무조건 맞다&#39;는 뜻이 아닙니다. 반드시 링크를 눌러 원문을 확인하세요.</p>
+</div>
 </section>
 
-<div class="main"><div class="wrap wrap--wide">
-  <h2 class="sec-h"><span class="sec-h__n">1</span>8차시 커리큘럼</h2>
-  <div class="grid g2">
-    <a class="card part-card" href="part-1.html" data-done-mark="part-1">
-      <div class="part-card__n">1차시</div>
-      <h3>생성형 AI와 프롬프트 엔지니어링 이해</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 46</span>
-        <span class="bdg bdg--green">실습 2</span>
-        <span class="bdg bdg--gold">표 5</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-2.html" data-done-mark="part-2">
-      <div class="part-card__n">2차시</div>
-      <h3>사무관리 업무별 AI 활용 구조 이해</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 37</span>
-        <span class="bdg bdg--green">실습 2</span>
-        <span class="bdg bdg--gold">표 5</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-3.html" data-done-mark="part-3">
-      <div class="part-card__n">3차시</div>
-      <h3>AI 기반 시장분석 및 트렌드 도출</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 47</span>
-        <span class="bdg bdg--green">실습 3</span>
-        <span class="bdg bdg--gold">표 3</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-4.html" data-done-mark="part-4">
-      <div class="part-card__n">4차시</div>
-      <h3>AI 활용 전략 기획 및 아이디어션</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 51</span>
-        <span class="bdg bdg--green">실습 6</span>
-        <span class="bdg bdg--gold">표 4</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-5.html" data-done-mark="part-5">
-      <div class="part-card__n">5차시</div>
-      <h3>GPT 활용 기획 문서 및 보고서 자동화</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 59</span>
-        <span class="bdg bdg--green">실습 5</span>
-        <span class="bdg bdg--gold">표 3</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-6.html" data-done-mark="part-6">
-      <div class="part-card__n">6차시</div>
-      <h3>AI 기반 데이터 분석</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 53</span>
-        <span class="bdg bdg--green">실습 5</span>
-        <span class="bdg bdg--gold">표 3</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-7.html" data-done-mark="part-7">
-      <div class="part-card__n">7차시</div>
-      <h3>AI 활용 의사결정 지원 시스템 구축</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 61</span>
-        <span class="bdg bdg--green">실습 3</span>
-        <span class="bdg bdg--gold">표 3</span>
-      </p>
-    </a>
-    <a class="card part-card" href="part-8.html" data-done-mark="part-8">
-      <div class="part-card__n">8차시</div>
-      <h3>종합 실습 및 현업 적용 계획 수립</h3>
-      <p class="part-card__badges">
-        <span class="bdg bdg--gray">본문 54</span>
-        <span class="bdg bdg--green">실습 3</span>
-        <span class="bdg bdg--gold">표 4</span>
-      </p>
-    </a>
-  </div>
-
-  <h2 class="sec-h"><span class="sec-h__n">2</span>이 과정에서 쓰는 무료 AI 도구</h2>
-  <div class="grid g3">
-    <a class="card" href="tool-chatgpt.html">
-      <h3>ChatGPT <span class="bdg bdg--gray">OpenAI</span></h3>
-      <p>가장 범용적인 올라운더 — Custom GPT와 데이터 분석으로 사무 업무 자동화</p>
-    </a>
-    <a class="card" href="tool-claude.html">
-      <h3>Claude <span class="bdg bdg--gray">Anthropic</span></h3>
-      <p>장문·정확성·안전성의 강자 — Artifacts로 즉석 문서·표 제작</p>
-    </a>
-    <a class="card" href="tool-gemini.html">
-      <h3>Gemini <span class="bdg bdg--gray">Google</span></h3>
-      <p>Google 생태계 통합 + 초대형 컨텍스트 + Deep Research</p>
-    </a>
-    <a class="card" href="tool-perplexity.html">
-      <h3>Perplexity <span class="bdg bdg--gray">Perplexity AI</span></h3>
-      <p>출처를 인용하는 AI 검색 — 최신 시장·업계 조사에 최적</p>
-    </a>
-    <a class="card" href="tool-sheets.html">
-      <h3>Google Sheets <span class="bdg bdg--gray">Google</span></h3>
-      <p>데이터 정리·집계·기초 분석 + AI와 결합해 인사이트까지</p>
-    </a>
-    <a class="card" href="tool-docs.html">
-      <h3>Google Docs <span class="bdg bdg--gray">Google</span></h3>
-      <p>문서 작성·공동 편집 + AI 초안 정리·문체 교정</p>
-    </a>
-  </div>
-
-  <h2 class="sec-h"><span class="sec-h__n">3</span>바로가기</h2>
-  <div class="grid g4">
-    <a class="card" href="promptlab.html"><h3>프롬프트 실습실</h3><p>5요소로 프롬프트를 쓰고 점수로 확인한다.</p></a>
-    <a class="card" href="labs.html"><h3>실습 모음</h3><p>8차시 실습을 단계별 지시문으로 정리했다.</p></a>
-    <a class="card" href="appendix.html"><h3>업무별 프롬프트</h3><p>메일·보고서·회의록 등 바로 쓰는 예제.</p></a>
-    <a class="card" href="dashboard.html"><h3>학습 진도</h3><p>어디까지 봤는지 이 브라우저에 기록된다.</p></a>
-  </div>
-
-  <h2 class="sec-h"><span class="sec-h__n">4</span>하루 흐름</h2>
-  <div class="table-wrap"><table class="tl">
-    <thead><tr><th>차시</th><th>시간</th><th>구분</th><th>주제</th></tr></thead>
-    <tbody><tr>
-      <td class="c"><b>1차시</b></td>
-      <td class="c nowrap">08:00–09:00</td>
-      <td class="c"><span class="bdg bdg--green">학습</span></td>
-      <td>프롬프트 엔지니어링 이해</td></tr><tr>
-      <td class="c"><b>2차시</b></td>
-      <td class="c nowrap">09:00–10:00</td>
-      <td class="c"><span class="bdg bdg--green">학습</span></td>
-      <td>사무관리 업무별 AI 활용 구조 이해</td></tr><tr>
-      <td class="c"><b>3차시</b></td>
-      <td class="c nowrap">10:00–11:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>AI 기반 시장분석 및 트렌드 도출</td></tr><tr>
-      <td class="c"><b>4차시</b></td>
-      <td class="c nowrap">11:00–12:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>AI 활용 전략 기획 및 아이디어션</td></tr><tr>
-      <td class="c"><b>점심</b></td>
-      <td class="c nowrap">12:00–13:00</td>
-      <td class="c"><span class="bdg bdg--green">점심</span></td>
-      <td>점심 식사</td></tr><tr>
-      <td class="c"><b>5차시</b></td>
-      <td class="c nowrap">13:00–14:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>GPT 활용 기획 문서 및 보고서 자동화</td></tr><tr>
-      <td class="c"><b>6차시</b></td>
-      <td class="c nowrap">14:00–15:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>AI 기반 데이터 분석</td></tr><tr>
-      <td class="c"><b>7차시</b></td>
-      <td class="c nowrap">15:00–16:00</td>
-      <td class="c"><span class="bdg bdg--gold">실습</span></td>
-      <td>AI 활용 의사결정 지원 시스템 구축</td></tr><tr>
-      <td class="c"><b>8차시</b></td>
-      <td class="c nowrap">16:00–17:00</td>
-      <td class="c"><span class="bdg bdg--green">정리</span></td>
-      <td>종합 실습 및 현업 적용 계획 수립</td></tr></tbody>
+<section id="sec-2">
+  <h2 class="sec-h"><span class="sec-h__n">2</span>환각(할루시네이션)을 막는 출처 확인 습관</h2>
+  <p class="b-para" style="white-space:pre-line">AI가 사실이 아닌 내용을 자신 있게 지어내는 현상을 &#39;환각(할루시네이션)&#39;이라고 불러요. 사람으로 치면, 잘 모르면서도 창피해서 그럴듯하게 둘러대는 것과 비슷합니다. 문제는 AI가 너무 자신만만하게 말해서 진짜인지 가짜인지 티가 안 난다는 점이에요.</p>
+<p class="b-label">왜 환각이 생기나 (원리)</p>
+<p class="b-para" style="white-space:pre-line">앞서 말했듯 생성형 AI는 &#39;그럴듯한 다음 단어&#39;를 이어 붙이는 기계예요. &#39;진실을 말하기&#39;가 목표가 아니라 &#39;자연스러운 문장 만들기&#39;가 목표죠. 그래서 존재하지 않는 통계, 가짜 논문 제목, 없는 법 조항도 문법적으로 완벽하게 만들어냅니다. 축산·사료 분야는 통계 수치와 규정이 많아서 특히 조심해야 합니다.</p>
+<div class="b-table">
+  <p class="b-table__cap">환각이 특히 잘 나오는 위험 질문 유형</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th class="cell-pre">위험 유형</th><th class="cell-pre">예시</th><th class="cell-pre">안전한 방법</th></tr></thead>
+    <tbody><tr><td class="cell-pre">구체적 숫자·통계</td><td class="cell-pre">&#39;작년 대두박 수입량은?&#39;</td><td class="cell-pre">검색형 AI + 원문 통계 확인</td></tr><tr><td class="cell-pre">최신 사건·시세</td><td class="cell-pre">&#39;이번 달 옥수수 선물 가격은?&#39;</td><td class="cell-pre">검색형 AI로 날짜 포함 조회</td></tr><tr><td class="cell-pre">법·규정·인증</td><td class="cell-pre">&#39;사료관리법 몇 조?&#39;</td><td class="cell-pre">정부·협회 공식 사이트 직접 확인</td></tr><tr><td class="cell-pre">출처·인용</td><td class="cell-pre">&#39;이 내용 어느 논문?&#39;</td><td class="cell-pre">링크 클릭해 실재 여부 확인</td></tr></tbody>
   </table></div>
-  <p style="margin-top:14px"><a class="btn btn--line btn--sm" href="schedule.html">자세한 일정 보기 →</a></p>
+</div>
+<div class="b-note b-tip">
+  <div class="b-note__t"><span aria-hidden="true">💡</span>Tip</div>
+  <p style="white-space:pre-line">황금 습관 세 가지: (1) 숫자·날짜·규정은 항상 출처를 요구한다 (2) 출처 링크를 반드시 눌러 원문을 본다 (3) 중요한 사실은 서로 다른 AI 두 곳에 물어 교차 확인한다.</p>
+</div>
+  
+  <h3 class="sub-h" id="sub-1">1 출처를 강제하는 프롬프트 만들기</h3>
+  <p class="b-para" style="white-space:pre-line">AI에게 그냥 물으면 출처를 빼먹기 쉬워요. 프롬프트에 &#39;출처를 붙여라, 모르면 모른다고 말해라&#39;를 명시하면 환각이 크게 줄어듭니다. 아래 프롬프트를 그대로 복사해 Perplexity나 Gemini에 붙여 넣어 보세요.</p>
+<div class="b-prompt">
+  <p class="b-prompt__cap">출처를 강제하는 시장조사 프롬프트 (Perplexity·Gemini)</p>
+  <div class="b-prompt__box">
+    <div class="b-prompt__bar"><span>Prompt</span>
+      <button class="copy-btn" type="button">복사</button></div>
+    <pre>[역할] 당신은 국내 배합사료·축산 산업을 조사하는 리서치 애널리스트입니다.
+[맥락] 나는 농협사료 사무관리직으로, 내부 보고서에 인용할 신뢰도 높은 최신 정보가 필요합니다.
+[과제] &#39;2025년 이후 국내 배합사료 원자재(옥수수·대두박) 가격 동향&#39;을 조사해 3~5문장으로 요약해 주세요.
+[제약] 반드시 각 주장 옆에 출처 링크를 붙이고, 발표 기관과 날짜를 함께 표기하세요. 확실하지 않은 정보는 &#39;확인 필요&#39;라고 명시하고 절대 추측으로 숫자를 만들지 마세요.
+[출력형식] ①핵심 요약(불릿) ②근거 출처 목록(기관명-날짜-링크) 순서로 정리해 주세요.</pre>
+  </div>
+</div>
+<div class="b-ex">
+  <div class="b-ex__h"><span aria-hidden="true">✏️</span>실습 1</div>
+  <div class="b-ex__b" style="white-space:pre-line">위 프롬프트를 Perplexity에 붙여 넣고 실행한 뒤, 나온 출처 링크 중 하나를 실제로 클릭해 원문을 확인해 보세요. AI 요약과 원문이 일치하는지 표시(O/X)하고, 다른 점이 있으면 한 줄로 적어 보세요.</div>
+</div>
+<div class="b-note b-warn">
+  <div class="b-note__t"><span aria-hidden="true">⚠️</span>유의</div>
+  <p style="white-space:pre-line">링크가 열리지 않거나, 클릭했더니 요약과 전혀 다른 내용이면 그 정보는 보고서에 넣지 마세요. &#39;열어봤더니 없더라&#39;가 바로 환각을 잡아내는 순간입니다.</p>
+</div>
+</section>
+
+<section id="sec-3">
+  <h2 class="sec-h"><span class="sec-h__n">3</span>시장·트렌드·경쟁사 조사 방법</h2>
+  <p class="b-para" style="white-space:pre-line">이제 도구를 알았으니, &#39;무엇을 어떤 순서로 조사할지&#39;를 익힐 차례입니다. 조사는 크게 세 갈래예요: (1) 시장 전체 흐름 (2) 최신 트렌드·이슈 (3) 경쟁사 동향. 넓게 보고, 뜨거운 것을 짚고, 옆집을 살피는 순서라고 생각하면 쉬워요.</p>
+<p class="b-label">조사 순서 세 단계</p>
+<ul class="b-bullets"><li>1단계 시장 파악: 국내 배합사료 시장 규모, 수요 흐름(양돈·양계·낙농 등 축종별), 원자재 수입 구조를 큰 그림으로 잡는다.</li><li>2단계 트렌드 포착: 사료값 상승, 대체 원료, 친환경·무항생제 사료, 스마트 축산 같은 최근 이슈를 뉴스로 훑는다.</li><li>3단계 경쟁사 관찰: 주요 사료회사의 신제품, 가격 정책, 축산농가 대상 서비스 등을 비교한다.</li></ul>
+<p class="b-para" style="white-space:pre-line">각 단계마다 &#39;검색형 AI로 사실과 출처를 모으고 → 생성형 AI로 표·요약으로 다듬는&#39; 흐름을 반복하면 됩니다. 조사 결과는 반드시 &#39;날짜&#39;와 &#39;출처&#39;를 함께 기록해 두세요. 나중에 보고서에서 근거를 묻는 사람에게 바로 답할 수 있어야 하니까요.</p>
+<div class="b-prompt">
+  <p class="b-prompt__cap">업계 최신 이슈 3가지 조사 프롬프트 (검색형 AI)</p>
+  <div class="b-prompt__box">
+    <div class="b-prompt__bar"><span>Prompt</span>
+      <button class="copy-btn" type="button">복사</button></div>
+    <pre>[역할] 당신은 축산·사료 산업 동향을 정리하는 뉴스 큐레이터입니다.
+[맥락] 농협사료 내부 주간 회의에서 공유할 업계 이슈 브리핑이 필요합니다.
+[과제] 최근 6개월 내 국내 배합사료·축산 업계의 주요 이슈 3가지를 골라 각각 2~3문장으로 요약해 주세요.
+[제약] 각 이슈마다 발생 시점, 우리 업무에 미칠 영향, 출처 링크를 반드시 포함하세요. 확인되지 않은 소문은 제외하고 공식 보도·통계만 사용하세요.
+[출력형식] 이슈별로 &#39;제목 / 요약 / 우리 영향 / 출처(기관-날짜-링크)&#39; 4줄 구조로 정리해 주세요.</pre>
+  </div>
+</div>
+<div class="b-note b-out">
+  <div class="b-note__t"><span aria-hidden="true">📦</span>핵심 산출물</div>
+  <p style="white-space:pre-line">산출물 A: 업계 뉴스 요약 — 최신 이슈 3가지를 &#39;제목·요약·우리 영향·출처&#39;로 정리한 브리핑 한 장.</p>
+</div>
+  
+  <h3 class="sub-h" id="sub-1">1 조사 결과를 표로 모으기 (Google Sheets 연계)</h3>
+  <p class="b-para" style="white-space:pre-line">조사한 내용은 흩어 두면 금세 잊혀집니다. Google Sheets에 &#39;이슈 / 요약 / 날짜 / 출처 링크 / 우리 영향&#39; 다섯 칸으로 표를 만들어 차곡차곡 모아 두세요. AI가 준 결과를 그대로 붙여 넣기 좋게, 프롬프트에 &#39;표 형식으로 달라&#39;고 요청하면 편합니다.</p>
+<div class="b-note b-tip">
+  <div class="b-note__t"><span aria-hidden="true">💡</span>Tip</div>
+  <p style="white-space:pre-line">ChatGPT에 &#39;이 내용을 5열 표로, 각 셀은 한 줄로 정리해서 줘&#39;라고 하면 시트에 바로 붙일 수 있는 형태로 나옵니다. 붙여 넣은 뒤 &#39;데이터 &gt; 텍스트를 열로 분할&#39;을 쓰면 깔끔하게 나뉩니다.</p>
+</div>
+<div class="b-ex">
+  <div class="b-ex__h"><span aria-hidden="true">✏️</span>실습 2</div>
+  <div class="b-ex__b" style="white-space:pre-line">실습 1·3에서 조사한 업계 이슈 3가지를 Google Sheets에 5열 표로 정리하세요. 출처 링크는 반드시 클릭 가능한 상태로 넣고, &#39;우리 영향&#39; 칸은 여러분의 팀(총무·회계·구매·영업지원) 관점에서 한 줄로 적어 보세요.</div>
+</div>
+</section>
+
+<section id="sec-4">
+  <h2 class="sec-h"><span class="sec-h__n">4</span>분석 프레임 쉽게 이해하기: SWOT · PESTEL · 3C</h2>
+  <p class="b-para" style="white-space:pre-line">정보를 잔뜩 모았다면, 이제 &#39;정리하는 틀&#39;이 필요해요. 재료가 아무리 많아도 레시피가 없으면 요리가 안 되듯, 분석 프레임은 정보를 담는 그릇입니다. 대표적인 세 가지를 아주 쉬운 비유로 익혀 봅시다.</p>
+<p class="b-label">SWOT — &#39;나의 장단점과 주변 기회·위협&#39;</p>
+<p class="b-para" style="white-space:pre-line">SWOT은 소풍 가기 전 점검과 같아요. 내 안의 것(강점 S·약점 W)과 바깥의 것(기회 O·위협 T)을 나눠 봅니다. &#39;나는 달리기를 잘해(강점), 길을 잘 몰라(약점), 오늘 날씨가 좋아(기회), 비가 올 수도 있어(위협)&#39;처럼요. 회사로 치면 강점은 전국 조합망, 약점은 원자재 수입 의존, 기회는 친환경 사료 수요 증가, 위협은 곡물가 급등이 될 수 있습니다.</p>
+<p class="b-label">PESTEL — &#39;우리를 둘러싼 여섯 가지 날씨&#39;</p>
+<p class="b-para" style="white-space:pre-line">PESTEL은 회사 바깥의 큰 환경을 여섯 가지 날씨로 나눠 보는 틀이에요. 정치(P)·경제(E)·사회(S)·기술(T)·환경(E)·법(L). 사료회사라면 &#39;수입 관세 정책(정치), 환율·곡물가(경제), 육류 소비 트렌드(사회), 스마트 축산 기술(기술), 탄소·분뇨 규제(환경), 사료관리법(법)&#39;처럼 채워 넣습니다.</p>
+<p class="b-label">3C — &#39;나·손님·경쟁자 삼각형&#39;</p>
+<p class="b-para" style="white-space:pre-line">3C는 딱 세 명만 봐요. 우리 회사(Company), 고객(Customer), 경쟁사(Competitor). &#39;우리는 뭘 잘하나 / 축산농가는 뭘 원하나 / 경쟁 사료사는 뭘 하나&#39; 이 삼각형만 채워도 방향이 잡힙니다.</p>
+<div class="b-table">
+  <p class="b-table__cap">세 가지 프레임 비교 (언제 쓰나)</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th class="cell-pre">프레임</th><th class="cell-pre">한 줄 비유</th><th class="cell-pre">언제 쓰면 좋나</th></tr></thead>
+    <tbody><tr><td class="cell-pre">SWOT</td><td class="cell-pre">나의 장단점 + 주변 기회·위협</td><td class="cell-pre">특정 사업·제품의 종합 진단</td></tr><tr><td class="cell-pre">PESTEL</td><td class="cell-pre">회사 밖 여섯 가지 날씨</td><td class="cell-pre">거시 환경·정책 변화 점검</td></tr><tr><td class="cell-pre">3C</td><td class="cell-pre">나·손님·경쟁자 삼각형</td><td class="cell-pre">경쟁 구도와 고객 파악</td></tr></tbody>
+  </table></div>
+</div>
+<div class="b-note b-case">
+  <div class="b-note__t"><span aria-hidden="true">📌</span>사례</div>
+  <p style="white-space:pre-line">구매팀 이 과장은 신규 친환경 사료 도입을 검토하며 3C를 먼저 그렸다. 고객(농가)은 무항생제 인증을 원하고, 경쟁사는 이미 관련 제품을 냈으며, 우리 강점은 조합망 유통력임을 확인했다. 이 삼각형을 근거로 &#39;A제품군 우선 검토&#39; 결론을 한 장으로 정리해 팀장에게 보고했다.</p>
+</div>
+  
+  <h3 class="sub-h" id="sub-1">1 AI로 SWOT·경쟁사 분석표 완성하기</h3>
+  <p class="b-para" style="white-space:pre-line">프레임을 이해했으니 AI에게 초안을 맡겨 봅시다. 중요한 건, 3층으로 일하는 거예요: (1) 검색형 AI로 사실·출처를 모으고 (2) 그걸 근거로 생성형 AI에게 프레임 표를 채우게 하고 (3) 사람이 실무 감각으로 검토·수정합니다. AI가 지어낸 항목이 없는지 꼭 확인하세요.</p>
+<div class="b-prompt">
+  <p class="b-prompt__cap">SWOT 분석표 작성 프롬프트 (생성형 AI)</p>
+  <div class="b-prompt__box">
+    <div class="b-prompt__bar"><span>Prompt</span>
+      <button class="copy-btn" type="button">복사</button></div>
+    <pre>[역할] 당신은 축산·사료 산업을 잘 아는 경영전략 컨설턴트입니다.
+[맥락] 아래 [조사자료]는 내가 검색형 AI로 출처를 확인해 모은 배합사료 시장·경쟁사 정보입니다.
+[과제] 이 자료를 근거로 농협사료 관점의 SWOT 분석표를 작성해 주세요.
+[제약] 강점·약점·기회·위협을 각 3개씩, 반드시 [조사자료]에 있는 사실만 사용하고 자료에 없는 내용은 &#39;추가 확인 필요&#39;로 표시하세요. 축산농가·거래처·원자재 관점을 균형 있게 담아 주세요.
+[출력형식] 4칸(S/W/O/T) 표로 만들고, 표 아래에 &#39;가장 시급한 과제 1가지&#39;를 한 문장으로 제안해 주세요.
+
+[조사자료]
+(여기에 3차시에서 모은 이슈·경쟁사 정보를 붙여넣기)</pre>
+  </div>
+</div>
+<div class="b-prompt">
+  <p class="b-prompt__cap">경쟁사 분석 요약표 프롬프트 (생성형 AI)</p>
+  <div class="b-prompt__box">
+    <div class="b-prompt__bar"><span>Prompt</span>
+      <button class="copy-btn" type="button">복사</button></div>
+    <pre>[역할] 당신은 시장조사 리포트를 작성하는 분석가입니다.
+[맥락] 국내 주요 배합사료 회사들을 우리 회사와 비교하려 합니다. 아래 [조사자료]는 출처 확인을 마친 내용입니다.
+[과제] 경쟁사 3곳과 우리 회사를 비교하는 요약표를 만들어 주세요.
+[제약] 비교 항목은 &#39;주력 제품군 / 가격 정책 / 농가 서비스 / 강점 / 약점&#39;으로 하고, 확인되지 않은 항목은 빈칸 대신 &#39;자료 없음&#39;으로 표기하세요. 근거가 된 출처를 표 아래에 목록으로 붙이세요.
+[출력형식] 회사별 행, 항목별 열의 표 1개와 출처 목록으로 정리해 주세요.
+
+[조사자료]
+(여기에 경쟁사 조사 내용을 붙여넣기)</pre>
+  </div>
+</div>
+<div class="b-ex">
+  <div class="b-ex__h"><span aria-hidden="true">✏️</span>실습 3</div>
+  <div class="b-ex__b" style="white-space:pre-line">실습 2에서 모은 자료를 위 두 프롬프트에 붙여 넣어 (1) SWOT 분석표와 (2) 경쟁사 분석 요약표를 완성하세요. AI 결과에서 &#39;조사자료에 없는데 지어낸 항목&#39;이 있는지 찾아 빨간색으로 표시하고, 실무 감각으로 최소 2곳을 직접 수정해 보세요.</div>
+</div>
+<div class="b-note b-out">
+  <div class="b-note__t"><span aria-hidden="true">📦</span>핵심 산출물</div>
+  <p style="white-space:pre-line">산출물 B·C: SWOT 분석표 1장, 경쟁사 분석 요약표 1장 (모두 출처 목록 포함, 사람이 검토·수정한 최종본).</p>
+</div>
+<div class="b-note b-warn">
+  <div class="b-note__t"><span aria-hidden="true">⚠️</span>유의</div>
+  <p style="white-space:pre-line">AI가 만든 표를 그대로 보고서에 붙이지 마세요. 분석표는 &#39;생각의 재료&#39;이지 &#39;완성된 결론&#39;이 아닙니다. 반드시 실무자의 눈으로 사실 여부와 우선순위를 다시 판단해야 합니다.</p>
+</div>
+<div class="b-note b-case">
+  <div class="b-note__t"><span aria-hidden="true">🔗</span>연계 학습</div>
+  <p style="white-space:pre-line">다음 차시(4차시)에서는 오늘 만든 SWOT·경쟁사 분석을 바탕으로, 실제 업무 개선 아이디어를 발산하고 우선순위를 정하는 &#39;전략 기획·아이디어션&#39;을 배웁니다. 오늘의 산출물을 꼭 저장해 두세요.</p>
+</div>
+</section>
+
+<div class="done-bar">
+  <button class="done-btn" type="button" data-done="part-3" aria-pressed="false">학습 완료로 표시</button>
+  <span class="muted" style="font-size:13px;color:var(--g400)">이 브라우저에만 저장됩니다.</span>
+</div>
+
+<nav class="pn" aria-label="차시 이동">
+  <a class="pn__a" href="part-2.html"><span>← 2차시</span><b>사무관리 업무별 AI 활용 구조 이해</b></a>
+  <a class="pn__a pn__a--r" href="part-4.html"><span>4차시 →</span><b>AI 활용 전략 기획 및 아이디어션</b></a>
+</nav>
 </div></div>
   </main>
 </div>
